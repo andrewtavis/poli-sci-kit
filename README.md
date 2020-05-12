@@ -12,7 +12,7 @@
 
 **Jump to:** [Application](#application) • [References](#references)
 
-__poli-sci-kit__ is a Python package for political science including vote, election and appointment analysis methods.
+ **poli-sci-kit** is a Python package for political science including vote, election and appointment analysis methods.
 
 # Installation
 ```bash
