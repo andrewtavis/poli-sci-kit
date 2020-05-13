@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/master/resources/poli-sci-kit_logo.png" width="250" height="225"></a>
+  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/master/resources/poli-sci-kit_logo.png" width="800" height="350"></a>
 </div>
 
 # 
@@ -27,7 +27,7 @@ pip install poli-sci-kit
 
 <strong>Python</strong>
 
-https://github.com/crflynn/voting
+- https://github.com/crflynn/voting
 
 </p>
 </details>
@@ -35,6 +35,11 @@ https://github.com/crflynn/voting
 # References
 <details><summary><strong>Full list of references<strong></summary>
 <p>
+
+- https://blogs.reading.ac.uk/readingpolitics/2015/06/29/electoral-disproportionality-what-is-it-and-how-should-we-measure-it/
+- Karpov, A. (2008). "Measurement of disproportionality in proportional representation systems". Mathematical and Computer Modelling, Vol. 48, pp. 1421-1438. URL: https://www.sciencedirect.com/science/article/pii/S0895717708001933.
+- Kohler, U., and Zeh, J. (2012). “Apportionment methods”. The Stata Journal, Vol. 12, No. 3, pp. 375–392. URL: https://journals.sagepub.com/doi/pdf/10.1177/1536867X1201200303.
+- Taagepera, R., Grofman, B. (2003). "Mapping the Indices of Seats-Votes Disproportionality and Inter-Election Volatility". Party Politics, Vol. 9, No. 6, pp. 659–677. URL: https://escholarship.org/content/qt0m9912ff/qt0m9912ff.pdf.
 
 </p>
 </details>
