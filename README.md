@@ -12,16 +12,25 @@
 
 **Jump to:** [Application](#application) • [References](#references)
 
- **poli-sci-kit** is a Python package for political science including vote, election and appointment analysis methods.
+**poli-sci-kit** is a Python package for political science including vote, election and appointment analysis methods.
 
 # Installation
 ```bash
 pip install poli-sci-kit
 ```
 
-
 # Application
 
+# Similar Packages
+<details><summary><strong>Similar packages/modules to CauseInfer<strong></summary>
+<p>
+
+<strong>Python</strong>
+
+https://github.com/crflynn/voting
+
+</p>
+</details>
 
 # References
 <details><summary><strong>Full list of references<strong></summary>
