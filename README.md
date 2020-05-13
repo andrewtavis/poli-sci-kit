@@ -22,7 +22,7 @@ pip install poli-sci-kit
 # Application
 
 # Similar Packages
-<details><summary><strong>Similar packages/modules to CauseInfer<strong></summary>
+<details><summary><strong>Similar packages/modules to poli-sci-kit<strong></summary>
 <p>
 
 <strong>Python</strong>
