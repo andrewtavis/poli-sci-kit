@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/master/resources/poli-sci-kit_logo.png" width="800" height="350"></a>
+  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/master/resources/poli-sci-kit_logo.png" width="600" height="250"></a>
 </div>
 
 # 
