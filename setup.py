@@ -9,8 +9,8 @@ with open("README.md", "r") as fh:
 
 setup_args = dict(
     name='poli-sci-kit',
-    version='0.0.2.1',
-    description='Politcal science appointment and analysis in Python',
+    version='0.0.2.2',
+    description='Political science appointment and analysis in Python',
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_namespace_packages(),

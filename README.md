@@ -8,7 +8,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7-blue.svg)](https://pypi.org/project/poli-sci-kit/)
 [![GitHub](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/master/LICENSE)
 
-### Politcal science appointment and analysis in Python
+### Political science appointment and analysis in Python
 
 **Jump to:** [Appointment](#appointment) • [To-Do](#to-do)
 
