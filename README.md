@@ -60,7 +60,7 @@ disproportionality
 # To-Do
 
 - Checks for the appointment method implementations
-- Creating and improving [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
+- Creating and improving [examples](https://github.com/andrewtavis/poli-sci-kit/tree/master/examples)
 
 # References
 <details><summary><strong>Full list of references<strong></summary>
