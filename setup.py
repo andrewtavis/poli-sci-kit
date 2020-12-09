@@ -10,21 +10,19 @@ with open("README.md", "r") as fh:
 setup_args = dict(
     name='poli-sci-kit',
     version='0.0.1',
-    description='Vote, election, and political appointment analysis in Python',
+    description='Politcal science appointment and analysis in Python',
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=find_namespace_packages(),
-    license='MIT',
+    license='new BSD',
     url="https://github.com/andrewtavis/poli-sci-kit",
     author='Andrew Tavis McAllister',
     author_email='andrew.t.mcallister@gmail.com'
 )
 
 install_requires = [
-    'numpy',
-    'pandas',
-    'matplotlib',
-    'seaborn'
+    'scipy',
+    'pandas'
 ]
 
 if __name__ == '__main__':
