@@ -49,7 +49,7 @@ ha_allocations
 # [18, 11, 7, 6, 6, 2]
 
 # The Gallagher method is a measure of absolute difference similar to summing square residuals
-disproportionality = appointmentmetrics.dispr_index(shares=vote_counts, 
+disproportionality = appointment.metrics.dispr_index(shares=vote_counts, 
                                                     allocations=ha_allocations, 
                                                     mertric_type='Gallagher')
 
