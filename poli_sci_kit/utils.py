@@ -8,31 +8,12 @@
 #       wrap_print_list
 #
 #       normalize
+#
 #       gen_list_of_lists
 #       gen_faction_groups
 # =============================================================================
 
 import pandas as pd
-
-def head_shape(df, length=5):
-    """Displays a variable head of a df and gives its shape"""
-    base_length = pd.get_option("display.max_rows")
-    pd.set_option("display.max_rows", length)
-    
-    from IPython.display import display
-    display(df.head(length))
-    display(df.shape)
-
-    pd.set_option("display.max_rows", base_length)
-
-
-def wrap_print_list(a_list, sort=False):
-    """Prints a list as a comma separated string"""
-    if sort:
-        print(*sorted(a_list), sep=', ')
-    else:
-        print(*a_list, sep=', ')
-
 
 def normalize(vals):
     """Returns respective normalized values"""
