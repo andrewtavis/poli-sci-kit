@@ -9,7 +9,7 @@ with open("README.md", "r") as fh:
 
 setup_args = dict(
     name='poli-sci-kit',
-    version='0.0.2.4',
+    version='0.0.2.4.1',
     description='Political science appointment and analysis in Python',
     long_description=long_description,
     long_description_content_type="text/markdown",
