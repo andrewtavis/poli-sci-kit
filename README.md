@@ -127,9 +127,9 @@ Examples in poli-sci-kit use publically available Wikidata statistics sourced vi
 
 - Checks for [appointment.methods] implementations
 - Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit
-- Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/master/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
+- Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/master/resources/gh_images/bar.png) that coincide with the systems used by governments around the world
     - This would allow quick comparisons of actual systems with variations
-- Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/master/examples)
+- Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/blob/master/resources/gh_images/semicircle_parliament.png)
 - Testing for poli-sci-kit
 
 # References
