@@ -95,11 +95,6 @@ ax.set_xlabel('Party', fontsize=15)
 plt.show()
 ```
 
-<p align="middle">
-  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/master/resources/gh_images/bar.png" width="600" />
-</p>
-
-
 ```python
 ax = stdviz.plot.parliament(seat_counts=ha_allocations, 
                             names=parties, colors=party_colors, 
@@ -108,10 +103,6 @@ ax = stdviz.plot.parliament(seat_counts=ha_allocations,
 
 plt.show()
 ```
-
-<p align="middle">
-  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/master/resources/gh_images/semicircle_parliament.png" width="600" />
-</p>
 
 # Examples
 
