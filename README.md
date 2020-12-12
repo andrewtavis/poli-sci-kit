@@ -12,7 +12,7 @@
 
 **Jump to:** [Appointment](#appointment) • [Examples](#examples) • [To-Do](#to-do)
 
-**poli-sci-kit** is a Python package for politcal science appointment and election analysis. The goal is to provide a comprehensive tool for all methods needed to analyze and simulate election results.
+**poli-sci-kit** is a Python package for political science appointment and election analysis. The goal is to provide a comprehensive tool for all methods needed to analyze and simulate election results.
 
 # Installation via PyPi
 ```bash
@@ -25,7 +25,7 @@ import poli_sci_kit
 
 # Appointment
 
-[appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/master/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Arguments to allow allocation threshholds, minimum allocations per group, tie break conditions, and other election features are also provided. Along with deriving results for visualization and reporting, these functions allow the user to analyze outcomes given systematic or situational changes. The [appointment.metrics](https://github.com/andrewtavis/poli-sci-kit/blob/master/poli_sci_kit/appointment/metrics.py) module further provides diagnostics to analyze the results of elections, apportionments, and other politcal science scenarios.
+[appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/master/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Arguments to allow allocation thresholds, minimum allocations per group, tie break conditions, and other election features are also provided. Along with deriving results for visualization and reporting, these functions allow the user to analyze outcomes given systematic or situational changes. The [appointment.metrics](https://github.com/andrewtavis/poli-sci-kit/blob/master/poli_sci_kit/appointment/metrics.py) module further provides diagnostics to analyze the results of elections, apportionments, and other political science scenarios.
 
 A basic example of political appointment using poli-sci-kit is:
 
@@ -35,7 +35,7 @@ from poli_sci_kit import appointment
 vote_counts = [2700, 900, 3300, 1300, 2150, 500]
 seats_to_allocate = 50
 
-# Huntington-Hill is the method used to allocate House of Represenatives seats to US states
+# Huntington-Hill is the method used to allocate House of Representatives seats to US states
 ha_allocations = appointment.methods.highest_average(averaging_style='Huntington-Hill',
                                                      shares=vote_counts, 
                                                      total_alloc=seats_to_allocate, 
@@ -96,7 +96,7 @@ plt.show()
 ```
 
 <p align="middle">
-  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/master/resources/gh_images/bar.png" width="600" />
+  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/main/resources/gh_images/bar.png" width="600" />
 </p>
 
 ```python
@@ -109,7 +109,7 @@ plt.show()
 ```
 
 <p align="middle">
-  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/master/resources/gh_images/semicircle_parliament.png" width="600" />
+  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/main/resources/gh_images/semicircle_parliament.png" width="600" />
 </p>
 
 ```python
@@ -142,18 +142,18 @@ plt.show()
 ```
 
 <p align="middle">
-  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/master/resources/gh_images/dispr_bar.png" width="600" />
+  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/main/resources/gh_images/dispr_bar.png" width="600" />
 </p>
 
 # Examples
 
-Examples in poli-sci-kit use publically available Wikidata statistics sourced via the Python package [wikirepo](https://github.com/andrewtavis/wikirepo). Current examples include:
+Examples in poli-sci-kit use publicly available Wikidata statistics sourced via the Python package [wikirepo](https://github.com/andrewtavis/wikirepo). Current examples include:
 
 - [US HoR](https://github.com/andrewtavis/poli-sci-kit/blob/master/examples/us_house_of_rep.ipynb)
     - Allocates seats to a version of the US House of Representatives that includes all US territories and Washington DC given census data, with this further being used to derive relative vote strengths of state citizens in the US presidential election
 
 - [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/master/examples/global_parliament.ipynb)
-    - Analyzes the allocation of seats in a hypothetical global parliament given the prevalance of certain counties and organizations, the distribution of seats based on Freedom House indexes, and disproportionality metrics
+    - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain counties and organizations, the distribution of seats based on Freedom House indexes, and disproportionality metrics
 
 # To-Do
 
