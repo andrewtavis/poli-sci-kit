@@ -1,12 +1,12 @@
 <div align="center">
-  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/master/resources/poli-sci-kit_logo_transparent.png" width="521" height="281"></a>
+  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/poli-sci-kit_logo_transparent.png" width="521" height="281"></a>
 </div>
 
 --------------------------------------
 
 [![PyPI Version](https://badge.fury.io/py/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
 [![Python Version](https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7-blue.svg)](https://pypi.org/project/poli-sci-kit/)
-[![GitHub](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/master/LICENSE)
+[![GitHub](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE)
 
 ### Political elections, appointment and analysis in Python
 
@@ -25,7 +25,7 @@ import poli_sci_kit
 
 # Appointment
 
-[appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/master/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Arguments to allow allocation thresholds, minimum allocations per group, tie break conditions, and other election features are also provided. Along with deriving results for visualization and reporting, these functions allow the user to analyze outcomes given systematic or situational changes. The [appointment.metrics](https://github.com/andrewtavis/poli-sci-kit/blob/master/poli_sci_kit/appointment/metrics.py) module further provides diagnostics to analyze the results of elections, apportionments, and other political science scenarios.
+[appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Arguments to allow allocation thresholds, minimum allocations per group, tie break conditions, and other election features are also provided. Along with deriving results for visualization and reporting, these functions allow the user to analyze outcomes given systematic or situational changes. The [appointment.metrics](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/metrics.py) module further provides diagnostics to analyze the results of elections, apportionments, and other political science scenarios.
 
 A basic example of political appointment using poli-sci-kit is:
 
@@ -149,19 +149,19 @@ plt.show()
 
 Examples in poli-sci-kit use publicly available Wikidata statistics sourced via the Python package [wikirepo](https://github.com/andrewtavis/wikirepo). Current examples include:
 
-- [US HoR](https://github.com/andrewtavis/poli-sci-kit/blob/master/examples/us_house_of_rep.ipynb)
+- [US HoR](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/us_house_of_rep.ipynb)
     - Allocates seats to a version of the US House of Representatives that includes all US territories and Washington DC given census data, with this further being used to derive relative vote strengths of state citizens in the US presidential election
 
-- [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/master/examples/global_parliament.ipynb)
+- [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb)
     - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain counties and organizations, the distribution of seats based on Freedom House indexes, and disproportionality metrics
 
 # To-Do
 
 - Checks for [appointment.methods] implementations
 - Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit
-- Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/master/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
+- Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
     - This would allow quick comparisons of actual systems with variations
-- Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/master/examples)
+- Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
 - Testing for poli-sci-kit
 
 # References
