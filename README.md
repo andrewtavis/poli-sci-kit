@@ -8,7 +8,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7-blue.svg)](https://pypi.org/project/poli-sci-kit/)
 [![GitHub](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/master/LICENSE)
 
-### Political science appointment and analysis in Python
+### Political elections, appointment and analysis in Python
 
 **Jump to:** [Appointment](#appointment) • [Examples](#examples) • [To-Do](#to-do)
 
@@ -110,6 +110,39 @@ plt.show()
 
 <p align="middle">
   <img src="https://github.com/andrewtavis/poli-sci-kit/blob/master/resources/gh_images/semicircle_parliament.png" width="600" />
+</p>
+
+```python
+# A bar plot of the disproportionality between expected and realized allocations
+ax = stdviz.plot.dispr_bar(shares=votes, 
+                           allocations=ha_allocations,
+                           names=parties, 
+                           colors=party_colors, 
+                           total_shares=None, 
+                           total_alloc=None,
+                           percent=True, 
+                           axis=None)
+
+handles, labels = stdviz.plot.legend.gen_elements(counts=[round(v/sum(votes), 4) for v in votes], 
+                                                  names=parties, colors=party_colors, 
+                                                  size=11, marker='o', padding_indexes=None,
+                                                  order=None)
+
+ax.legend(handles=handles, labels=labels,
+          title='Vote Percents (bar widths)', 
+          title_fontsize=15, fontsize=11, 
+          ncol=2, loc='upper left', bbox_to_anchor=(0, 1), 
+          frameon=True, facecolor='#FFFFFF', framealpha=1)
+
+ax.axes.set_title('Seat to Vote Share Disproportionality', fontsize=30)
+ax.set_xlabel('Parties', fontsize=20)
+ax.set_ylabel('Percent Shift', fontsize=20)
+
+plt.show()
+```
+
+<p align="middle">
+  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/master/resources/gh_images/dispr_bar.png" width="600" />
 </p>
 
 # Examples
