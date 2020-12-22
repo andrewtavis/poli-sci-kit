@@ -1,0 +1,10 @@
+# This file may be used to create an environment using:
+# conda env create -f environment.yml
+name: poli-sci-kit-dev
+channels:
+  - anaconda
+  - conda-forge
+  - defaults
+dependencies:
+  - scipy
+  - pandas
