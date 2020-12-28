@@ -37,20 +37,20 @@ seats_to_allocate = 50
 
 # Huntington-Hill is the method used to allocate House of Representatives seats to US states
 ha_allocations = appointment.methods.highest_average(averaging_style='Huntington-Hill',
-                                                     shares=vote_counts, 
-                                                     total_alloc=seats_to_allocate, 
-                                                     alloc_threshold=None, 
-                                                     min_alloc=1, 
-                                                     tie_break = 'majority', 
-                                                     majority_bonus=False, 
+                                                     shares=vote_counts,
+                                                     total_alloc=seats_to_allocate,
+                                                     alloc_threshold=None,
+                                                     min_alloc=1,
+                                                     tie_break = 'majority',
+                                                     majority_bonus=False,
                                                      modifier=None)
 
 ha_allocations
 # [26, 9, 37, 12, 23, 5]
 
 # The Gallagher method is a measure of absolute difference similar to summing square residuals
-disproportionality = appointment.metrics.dispr_index(shares=vote_counts, 
-                                                     allocations=ha_allocations, 
+disproportionality = appointment.metrics.dispr_index(shares=vote_counts,
+                                                     allocations=ha_allocations,
                                                      mertric_type='Gallagher')
 
 disproportionality
@@ -70,9 +70,9 @@ party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0'
 ```
 
 ```python
-ax = stdviz.plot.bar(counts=ha_allocations, names=parties, 
-                     faction_names=None, colors=party_colors, 
-                     horizontal=False, stacked=False, 
+ax = stdviz.plot.bar(counts=ha_allocations, names=parties,
+                     faction_names=None, colors=party_colors,
+                     horizontal=False, stacked=False,
                      label_bars=True, axis=None)
 
 # Initialize empty handles and labels
@@ -86,7 +86,7 @@ labels.insert(0, 'Majority: {} seats'.format(int(sum(ha_allocations)/2)+1))
 ax.legend(handles=handles, labels=labels,
           title='Bundestag: {} seats'.format(sum(ha_allocations)),
           loc='upper left', bbox_to_anchor=(0, 0.9),
-          title_fontsize=20, fontsize=15, 
+          title_fontsize=20, fontsize=15,
           frameon=True, facecolor='#FFFFFF', framealpha=1)
 
 ax.set_ylabel('Seats', fontsize=15)
@@ -100,9 +100,9 @@ plt.show()
 </p>
 
 ```python
-ax = stdviz.plot.parliament(seat_counts=ha_allocations, 
-                            names=parties, colors=party_colors, 
-                            style='semicircle', num_rows=4, marker_size=175, 
+ax = stdviz.plot.parliament(seat_counts=ha_allocations,
+                            names=parties, colors=party_colors,
+                            style='semicircle', num_rows=4, marker_size=175,
                             speaker=False, df_seat_lctns=None, axis=ax2)
 
 plt.show()
@@ -114,24 +114,24 @@ plt.show()
 
 ```python
 # A bar plot of the disproportionality between expected and realized allocations
-ax = stdviz.plot.dispr_bar(shares=votes, 
+ax = stdviz.plot.dispr_bar(shares=votes,
                            allocations=ha_allocations,
-                           names=parties, 
-                           colors=party_colors, 
-                           total_shares=None, 
+                           names=parties,
+                           colors=party_colors,
+                           total_shares=None,
                            total_alloc=None,
-                           percent=True, 
+                           percent=True,
                            axis=None)
 
-handles, labels = stdviz.plot.legend.gen_elements(counts=[round(v/sum(votes), 4) for v in votes], 
-                                                  names=parties, colors=party_colors, 
+handles, labels = stdviz.plot.legend.gen_elements(counts=[round(v/sum(votes), 4) for v in votes],
+                                                  names=parties, colors=party_colors,
                                                   size=11, marker='o', padding_indexes=None,
                                                   order=None)
 
 ax.legend(handles=handles, labels=labels,
-          title='Vote Percents (bar widths)', 
-          title_fontsize=15, fontsize=11, 
-          ncol=2, loc='upper left', bbox_to_anchor=(0, 1), 
+          title='Vote Percents (bar widths)',
+          title_fontsize=15, fontsize=11,
+          ncol=2, loc='upper left', bbox_to_anchor=(0, 1),
           frameon=True, facecolor='#FFFFFF', framealpha=1)
 
 ax.axes.set_title('Seat to Vote Share Disproportionality', fontsize=30)
@@ -157,7 +157,7 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 
 # To-Do
 
-- Checks for [appointment.methods] implementations
+- Checks for [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) implementations
 - Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit
 - Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
     - This would allow quick comparisons of actual systems with variations
