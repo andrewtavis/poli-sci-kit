@@ -40,6 +40,18 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# The suffix(es) of source filenames.
+# You can specify multiple suffix as a list of string:
+#
+# source_suffix = ['.rst', '.md']
+source_suffix = ".rst"
+
+# The master toctree document.
+master_doc = "index"
+
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = "sphinx"
+
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -129,7 +141,7 @@ texinfo_documents = [
         "poli-sci-kit Documentation",
         author,
         "poli-sci-kit",
-        "One line description of project.",
+        "Political elections, appointment and analysis in Python.",
         "Miscellaneous",
     )
 ]

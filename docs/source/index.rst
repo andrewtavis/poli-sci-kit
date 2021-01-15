@@ -1,9 +1,5 @@
-.. poli-sci-kit documentation master file, created by
-   sphinx-quickstart on Fri Jan 15 16:19:12 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-poli-sci-kit
+.. image:: https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/poli-sci-kit_logo_transparent.png
+    :target: https://github.com/andrewtavis/poli-sci-kit
 ============
 
 |travis| |rtd| |codecov| |pypi| |pyversions| |license|
@@ -45,5 +41,4 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
