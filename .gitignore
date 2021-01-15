@@ -21,8 +21,6 @@ __pycache__
 # Documentation files
 #####################
 research_papers
-_static
-_templates
 env/
 
 # Display files
