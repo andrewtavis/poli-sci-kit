@@ -34,6 +34,7 @@ def largest_remainder(
             The style of quota vote-seat quota to use
 
             Options:
+                Each defines a divisor from which remainders are defined
 
                 - Hare : total_shares / total_allocations
 

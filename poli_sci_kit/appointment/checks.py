@@ -78,6 +78,7 @@ def consistency_condition(
             Whether the consistency of a change in seats or a change in shares is checked
 
             Options:
+                The style of monotony to derive the consistency with
 
                 - seat_monotony : An incease in total seats does not decrease alloted seats
                     Note: use sums of cols of all_var_seats, checking col element monotony given a differences in sums

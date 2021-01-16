@@ -293,6 +293,7 @@ def div_index(shares, q=None, mertric_type="Shannon"):
             The type of formular to use
 
             Options:
+                The available measures of diversity
 
                 - Shannon : approaches zero (one) when shares are concentrated (dispersed), uncertainy (certainty) of the next element goes to zero
 
@@ -397,6 +398,7 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
             The type of formular to use
 
             Options:
+                The available meaures of disproportionality
 
                 - Gallagher : measure of absolute difference in percent of allocations received to true proportion
                     Note 1: accounts for magnitudes of the individual shifts
