@@ -39,7 +39,6 @@ metrics
 .. autofunction:: poli_sci_kit.appointment.metrics.effective_number_of_groups
 .. autofunction:: poli_sci_kit.appointment.metrics.dispr_index
 
-
 checks
 ^^^^^^
 :py:mod:`appointment.checks` contains functions to check the conditional efficacy of an apportionment.

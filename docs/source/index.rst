@@ -43,8 +43,7 @@ Installation
    appointment
    notes
 
-Indices and tables
-==================
+Project Indices
+===============
 
 * :ref:`genindex`
-* :ref:`search`
