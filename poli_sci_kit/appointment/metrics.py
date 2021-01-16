@@ -402,22 +402,28 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
 
                 - Gallagher : measure of absolute difference in percent of allocations received to true proportion
                     Note 1: accounts for magnitudes of the individual shifts
+
                     Note 2: deals with the magnitudes of the disproportionality, not the percentage differences from ideality
+
                     Note 3: a general form with k instead of the square root, 1/2 and second power is not monotone to k, as is thus not included
 
                 - Loosemore–Hanby : the total excess of allocated shares of overrepresented groups over the exact quota and the total shortage accruing to other groups
                     Note 1: is not consistent (it fails Dalton's principle of transfers, where transfering shares may lead to adverse effects on allocations)
+
                     Note 2: does not account for the magnitude of individual disproportionality (that few large shifts should potentially be worse than many small)
 
                 - Rose : 100 minus the Loosemore–Hanby index, so in this case larger numbers are better (suffers from similar issues)
 
                 - Rae : measure of the average absolute difference in percent of allocations received to true proportion
                     Note 1: includes the number of groups in the calculation, and thus is effected if there are many small groups
+
                     Note 2: don't use to compare appointments across situations with different numbers of groups
 
                 - Sainte-Laguë (chi-squared) : measure of relative difference in percent of allocations received to true proportion
                     Note 1: has no upper limit
+
                     Note 2: downplays the disproportionality that effects larger groups
+
                     Note 3: sensitive to if there are is large portion of the shares that are 'other' and don't receive votes
 
                 - d’Hondt : measure of relative difference in percent of allocations received to true proportion
@@ -425,6 +431,7 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
 
                 - Cox-Shugart : the slope of the line of best fit between the shares and allocations
                     Note 1: main advantage is directly showing whether larger or smaller groups are benefitting (>1 or <1 respectively)
+
                     Note 2: this index can be negative, and if it is, that implies a negative shares-allocations ratio
 
                 Note: the Gini index as a measure of disproportionality is not included, as in many cases smaller groups have a greater allocation proportion
