@@ -34,12 +34,13 @@ def largest_remainder(
             The style of quota vote-seat quota to use
 
             Options:
-                Hare : total_shares / total_allocations
 
-                Droop : int(total_shares / (total_allocations + 1)) + 1
+                - Hare : total_shares / total_allocations
+
+                - Droop : int(total_shares / (total_allocations + 1)) + 1
                     Note: favors larger groups more than the Hare quota
 
-                Hagenbach–Bischoff : total_shares / (total_allocations + 1)
+                - Hagenbach–Bischoff : total_shares / (total_allocations + 1)
                     Note: favors larger groups more than the Hare quota
 
         shares : list (default=None)
@@ -251,13 +252,13 @@ def highest_average(
             Options:
                 Each defines a divisor for each region or party to determines the next seat based on all previous assignments
 
-                Jefferson : divisor_i = share_i / (num_already_allocated_i + 1)
+                - Jefferson : divisor_i = share_i / (num_already_allocated_i + 1)
                     Note: an absolute majority always lead to an absolute majority in seats (favors large groups)
 
-                Webster : divisor_i = share_i / ((2 * num_already_allocated_i) + 1)
+                - Webster : divisor_i = share_i / ((2 * num_already_allocated_i) + 1)
                     Note: generally the smallest deviation from ideal shares (favors medium groups)
 
-                Huntington-Hill : divisor_i = share_i / sqrt(num_already_allocated_i * (num_already_allocated_i + 1))
+                - Huntington-Hill : divisor_i = share_i / sqrt(num_already_allocated_i * (num_already_allocated_i + 1))
                     Note: assures that all regions or parties receive at least one vote (favors small groups)
 
         shares : list (default=None)

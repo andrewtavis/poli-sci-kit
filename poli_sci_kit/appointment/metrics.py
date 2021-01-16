@@ -293,17 +293,18 @@ def div_index(shares, q=None, mertric_type="Shannon"):
             The type of formular to use
 
             Options:
-                Shannon : approaches zero (one) when shares are concentrated (dispersed), uncertainy (certainty) of the next element goes to zero
 
-                Renyi : generalization of the Shannon diversity
+                - Shannon : approaches zero (one) when shares are concentrated (dispersed), uncertainy (certainty) of the next element goes to zero
 
-                Simpson : probability that two entities taken at random from the dataset of interest represent the same type (assumes replacement)
+                - Renyi : generalization of the Shannon diversity
 
-                Gini-Simpson : opposite of the Simpson diversity, the probability that two entities are from different types
+                - Simpson : probability that two entities taken at random from the dataset of interest represent the same type (assumes replacement)
 
-                Berger-Parker : proportional abundance of the most abundant type
+                - Gini-Simpson : opposite of the Simpson diversity, the probability that two entities are from different types
 
-                Effective : number of equally abundant types needed for the average proportional abundance of types to equal that of the dataset
+                - Berger-Parker : proportional abundance of the most abundant type
+
+                - Effective : number of equally abundant types needed for the average proportional abundance of types to equal that of the dataset
     Returns
     -------
         div_index : float
@@ -396,30 +397,31 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
             The type of formular to use
 
             Options:
-                Gallagher : measure of absolute difference in percent of allocations received to true proportion
+
+                - Gallagher : measure of absolute difference in percent of allocations received to true proportion
                     Note 1: accounts for magnitudes of the individual shifts
                     Note 2: deals with the magnitudes of the disproportionality, not the percentage differences from ideality
                     Note 3: a general form with k instead of the square root, 1/2 and second power is not monotone to k, as is thus not included
 
-                Loosemore–Hanby : the total excess of allocated shares of overrepresented groups over the exact quota and the total shortage accruing to other groups
+                - Loosemore–Hanby : the total excess of allocated shares of overrepresented groups over the exact quota and the total shortage accruing to other groups
                     Note 1: is not consistent (it fails Dalton's principle of transfers, where transfering shares may lead to adverse effects on allocations)
                     Note 2: does not account for the magnitude of individual disproportionality (that few large shifts should potentially be worse than many small)
 
-                Rose : 100 minus the Loosemore–Hanby index, so in this case larger numbers are better (suffers from similar issues)
+                - Rose : 100 minus the Loosemore–Hanby index, so in this case larger numbers are better (suffers from similar issues)
 
-                Rae : measure of the average absolute difference in percent of allocations received to true proportion
+                - Rae : measure of the average absolute difference in percent of allocations received to true proportion
                     Note 1: includes the number of groups in the calculation, and thus is effected if there are many small groups
                     Note 2: don't use to compare appointments across situations with different numbers of groups
 
-                Sainte-Laguë (chi-squared) : measure of relative difference in percent of allocations received to true proportion
+                - Sainte-Laguë (chi-squared) : measure of relative difference in percent of allocations received to true proportion
                     Note 1: has no upper limit
                     Note 2: downplays the disproportionality that effects larger groups
                     Note 3: sensitive to if there are is large portion of the shares that are 'other' and don't receive votes
 
-                d’Hondt : measure of relative difference in percent of allocations received to true proportion
+                - d’Hondt : measure of relative difference in percent of allocations received to true proportion
                     Note: does not account for the magnitude of individual disproportionality (that few large shifts should be worse than many small)
 
-                Cox-Shugart : the slope of the line of best fit between the shares and allocations
+                - Cox-Shugart : the slope of the line of best fit between the shares and allocations
                     Note 1: main advantage is directly showing whether larger or smaller groups are benefitting (>1 or <1 respectively)
                     Note 2: this index can be negative, and if it is, that implies a negative shares-allocations ratio
 

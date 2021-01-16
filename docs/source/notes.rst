@@ -11,9 +11,5 @@ If you have additional content that you think would be suitable for this package
 License
 -------
 
-.. include:: ../LICENSE.txt
+.. include:: ../LICENSE
     :literal:
-
-
-
-.. include:: ../HISTORY.rst

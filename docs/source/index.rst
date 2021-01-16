@@ -1,4 +1,6 @@
 .. image:: https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/poli-sci-kit_logo_transparent.png
+    :width: 521
+    :height: 281
     :target: https://github.com/andrewtavis/poli-sci-kit
 ============
 
@@ -29,6 +31,10 @@ Installation
 .. code-block:: shell
 
     pip install poli-sci-kit
+
+.. code-block:: python
+
+    import poli_sci_kit
 
 .. toctree::
    :maxdepth: 2
