@@ -37,6 +37,7 @@ def largest_remainder(
                 Each defines a divisor from which remainders are defined
 
                 - Hare : total_shares / total_allocations
+                    Note: the simplest form of largest remainder quota
 
                 - Droop : int(total_shares / (total_allocations + 1)) + 1
                     Note: favors larger groups more than the Hare quota

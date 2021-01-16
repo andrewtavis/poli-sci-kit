@@ -306,6 +306,7 @@ def div_index(shares, q=None, mertric_type="Shannon"):
                 - Berger-Parker : proportional abundance of the most abundant type
 
                 - Effective : number of equally abundant types needed for the average proportional abundance of types to equal that of the dataset
+
     Returns
     -------
         div_index : float
