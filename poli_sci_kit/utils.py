@@ -425,6 +425,25 @@ def gen_parl_points(
 def swap_parl_allocations(df, row_1, pos_1, row_2, pos_2):
     """
     Replaces two allocations of the parliament plot df to clean up coloration
+
+    Parameters
+    ----------
+        row_1 : int
+            The row of one seat to swap
+
+        pos_1 : int
+            The position in the row of one seat to swap
+
+        row_2 : int
+            The row of the other seat to swap
+
+        pos_2 : int
+            The position in the row of the other seat to swap
+
+    Returns
+    -------
+        df_seat_lctns : pd.DataFrame
+            A parliament plot allocations data frame with two allocations swapped
     """
     allocation_1 = df[(df["row"] == row_1) & (df["row_position"] == pos_1)][
         "group"
