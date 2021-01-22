@@ -4,11 +4,11 @@
 
 --------------------------------------
 
-[![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg)](http://poli-sci-kit.readthedocs.io/en/latest/)
-[![travis](https://img.shields.io/travis/andrewtavis/poli-sci-kit.svg)](https://travis-ci.org/andrewtavis/poli-sci-kit)
+[![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
+[![travis](https://img.shields.io/travis/andrewtavis/poli-sci-kit.svg?logo=travis-ci)](https://travis-ci.org/andrewtavis/poli-sci-kit)
 [![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/master/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
+[![Python Version](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python)](https://pypi.org/project/poli-sci-kit/)
 [![PyPI Latest Release](https://img.shields.io/pypi/v/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
-[![Python Version](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
 [![License](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
