@@ -1,4 +1,4 @@
-## poli-sci-kit 0.0.2.1 (Dec 9, 2020)
+### poli-sci-kit 0.0.2.1 (Dec 9, 2020)
 
 The minimum viable product of poli-sci-kit
 

@@ -11,11 +11,10 @@ If you have additional content that you think would be suitable for this package
 License
 -------
 
-.. include:: ../LICENSE.txt
-    :literal:
+.. literalinclude:: ../../LICENSE.txt
+  :language: text
 
 Change log
 ----------
 
-.. include:: ../CHANGELOG.md
-    :literal:
+.. mdinclude:: ../../CHANGELOG.md
