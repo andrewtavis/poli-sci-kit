@@ -1,12 +1,9 @@
 """
-Utility functions for general operations and coloration
+Utility functions for general operations and plotting
 
 Contents
 --------
   0. No Class
-      head_shape
-      wrap_print_list
-
       normalize
 
       gen_list_of_lists

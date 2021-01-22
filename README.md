@@ -4,12 +4,13 @@
 
 --------------------------------------
 
-[![travis](https://img.shields.io/travis/andrewtavis/poli-sci-kit.svg)](https://travis-ci.org/andrewtavis/poli-sci-kit)
-[![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg)](http://poli-sci-kit.readthedocs.io/en/latest/)
-[![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/master/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
-[![PyPI Version](https://badge.fury.io/py/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
-[![Python Version](https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7-blue.svg)](https://pypi.org/project/poli-sci-kit/)
+[![PyPI Latest Release](https://img.shields.io/pypi/v/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
+[![Python Version](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
 [![GitHub](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE)
+[![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg)](http://poli-sci-kit.readthedocs.io/en/latest/)
+[![travis](https://img.shields.io/travis/andrewtavis/poli-sci-kit.svg)](https://travis-ci.org/andrewtavis/poli-sci-kit)
+[![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/master/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ### Political elections, appointment, analysis and visualization in Python
 
@@ -190,7 +191,6 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
     - This would allow quick comparisons of actual systems with variations
 - Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
 - Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/plot/parliament.py)
-- Testing for poli-sci-kit
 
 # References
 <details><summary><strong>Full list of references<strong></summary>
