@@ -9,7 +9,7 @@ A novel addition to social science analysis is the `disproportionality bar plot 
 
 Call via :py:func:`poli_sci_kit.plot.dispr_bar`
 
-.. autofunction:: poli_sci_kit.plot.dispr_bar.dispr_bar
+.. autofunction:: poli_sci_kit.plot.dispr_bar
 
 poli_sci_kit also provides Python only implementations of both rectangular and semicircle `parliament plots <https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/plot/parliament.py>`_:
 
@@ -17,7 +17,7 @@ poli_sci_kit also provides Python only implementations of both rectangular and s
 
 Call via :py:func:`poli_sci_kit.plot.parliament`
 
-.. autofunction:: poli_sci_kit.plot.parliament.parliament
+.. autofunction:: poli_sci_kit.plot.parliament
 
 The parliament plot function is built on top of scatter plots that are derived in the package's `utils <https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/utils.py>`_ module:
 
