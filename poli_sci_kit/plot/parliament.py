@@ -4,7 +4,7 @@ The parliament plot function
 Contents
 --------
   0. No Class
-      pie
+      parliament
 """
 
 import seaborn as sns

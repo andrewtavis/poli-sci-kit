@@ -62,7 +62,7 @@ disproportionality
 
 # Plotting
 
-poli-sci-kit provides Python only implementations common electoral plots.
+poli-sci-kit provides Python only implementations of common electoral plots.
 
 Let's visualize the above results:
 
@@ -111,7 +111,7 @@ plt.show()
 
 ### Parliament Plots
 
-poli_sci_kit provides Python only implementations of both rectangular and semicircle parliament plots:
+poli_sci_kit provides implementations of both rectangular and semicircle [parliament plots](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/plot/parliament.py):
 
 ```python
 fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2)
@@ -136,7 +136,7 @@ plt.show()
 
 ### Disproportionality Bar Plot
 
-A novel addition to social science analysis is the [disproportionality bar plot](https://github.com/andrewtavis/poli-sci-kit/tree/main/poli-sci-kit/plot/disp_bar), which graphically depicts the disproportionality between expected and realized results. Bar widths are the proportion of shares (ex: votes received), and heights are the difference or relative difference between shares and allocations (ex: parliament seats received).
+A novel addition to social science analysis is the [disproportionality bar plot](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/plot/dispr_bar.py), which graphically depicts the disproportionality between expected and realized results. Bar widths are the proportion of shares (ex: votes received), and heights are the difference or relative difference between shares and allocations (ex: parliament seats received).
 
 An example follows:
 
@@ -189,7 +189,7 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 - Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
     - This would allow quick comparisons of actual systems with variations
 - Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
-- Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/tree/main/poli-sci-kit/plot/parliament)
+- Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/plot/parliament.py)
 - Testing for poli-sci-kit
 
 # References
