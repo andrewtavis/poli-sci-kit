@@ -20,7 +20,7 @@ setup_args = dict(
     author_email="andrew.t.mcallister@gmail.com",
 )
 
-install_requires = ["scipy", "pandas"]
+install_requires = ["scipy", "numpy", "pandas", "seaborn"]
 
 if __name__ == "__main__":
     setup(**setup_args, install_requires=install_requires)
