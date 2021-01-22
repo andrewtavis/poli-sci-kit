@@ -11,9 +11,9 @@
 [![Python Version](https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7-blue.svg)](https://pypi.org/project/poli-sci-kit/)
 [![GitHub](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE)
 
-### Political elections, appointment and analysis in Python
+### Political elections, appointment, analysis and visualization in Python
 
-**Jump to:** [Appointment](#appointment) • [Examples](#examples) • [To-Do](#to-do)
+**Jump to:** [Appointment](#appointment) • [Plotting](#plotting) • [Examples](#examples) • [To-Do](#to-do)
 
 **poli-sci-kit** is a Python package for political science appointment and election analysis. The goal is to provide a comprehensive tool for all methods needed to analyze and simulate election results.
 
@@ -60,17 +60,24 @@ disproportionality
 # 0.01002
 ```
 
-Let's visualize the results with [stdviz](https://github.com/andrewtavis/stdviz):
+# Plotting
+
+poli-sci-kit provides Python only implementations common electoral plots.
+
+Let's visualize the above results:
 
 ```python
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
+import poli_sci_kit
 import stdviz
 
 # German political parties
 parties = ['CDU/CSU', 'FDP', 'Greens', 'Die Linke', 'SPD', 'AfD']
 party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0']
 ```
+
+Baseline visualization with [stdviz](https://github.com/andrewtavis/stdviz):
 
 ```python
 ax = stdviz.plot.bar(counts=ha_allocations, names=parties,
@@ -102,29 +109,46 @@ plt.show()
   <img src="https://github.com/andrewtavis/poli-sci-kit/blob/main/resources/gh_images/bar.png" width="600" />
 </p>
 
+### Parliament Plots
+
+poli_sci_kit provides Python only implementations of both rectangular and semicircle parliament plots:
+
 ```python
-ax = stdviz.plot.parliament(seat_counts=ha_allocations,
-                            names=parties, colors=party_colors,
-                            style='semicircle', num_rows=4, marker_size=175,
-                            speaker=False, df_seat_lctns=None, axis=ax2)
+fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2)
+
+ax1 = poli_sci_kit.plot.parliament(allocations=seat_allocations,
+                                   names=parties, colors=party_colors,
+                                   style='rectangle', num_rows=4, marker_size=300,
+                                   speaker=True, df_seat_lctns=None, axis=ax1)
+
+ax2 = poli_sci_kit.plot.parliament(allocations=seat_allocations,
+                                   names=parties, colors=party_colors,
+                                   style='semicircle', num_rows=4, marker_size=175,
+                                   speaker=False, df_seat_lctns=None, axis=ax2)
 
 plt.show()
 ```
 
 <p align="middle">
-  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/main/resources/gh_images/semicircle_parliament.png" width="600" />
+  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/gh_images/rectangle_parliament.png" width="400" />
+  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/gh_images/semicircle_parliament.png" width="400" />
 </p>
 
+### Disproportionality Bar Plot
+
+A novel addition to social science analysis is the [disproportionality bar plot](https://github.com/andrewtavis/poli-sci-kit/tree/main/poli-sci-kit/plot/disp_bar), which graphically depicts the disproportionality between expected and realized results. Bar widths are the proportion of shares (ex: votes received), and heights are the difference or relative difference between shares and allocations (ex: parliament seats received).
+
+An example follows:
+
 ```python
-# A bar plot of the disproportionality between expected and realized allocations
-ax = stdviz.plot.dispr_bar(shares=votes,
-                           allocations=ha_allocations,
-                           names=parties,
-                           colors=party_colors,
-                           total_shares=None,
-                           total_alloc=None,
-                           percent=True,
-                           axis=None)
+ax = poli_sci_kit.plot.dispr_bar(shares=votes,
+                                 allocations=ha_allocations,
+                                 names=parties,
+                                 colors=party_colors,
+                                 total_shares=None,
+                                 total_alloc=None,
+                                 percent=True,
+                                 axis=None)
 
 handles, labels = stdviz.plot.legend.gen_elements(counts=[round(v/sum(votes), 4) for v in votes],
                                                   names=parties, colors=party_colors,
@@ -165,6 +189,7 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 - Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
     - This would allow quick comparisons of actual systems with variations
 - Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
+- Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/tree/main/poli-sci-kit/plot/parliament)
 - Testing for poli-sci-kit
 
 # References

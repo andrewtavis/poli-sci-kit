@@ -41,6 +41,7 @@ Installation
    :caption: Contents:
 
    appointment
+   plot
    notes
 
 Project Indices

@@ -14,15 +14,14 @@ import os
 import sys
 
 sys.path.insert(0, os.path.abspath("."))
-sys.path.insert(0, os.path.abspath("../../poli-sci-kit"))
 
 import poli_sci_kit
 
 # -- Project information -----------------------------------------------------
 
 project = "poli-sci-kit"
-copyright = "2020-2021, poli-sci-kit developers (BSD License)'"
-author = "andrewtavis"
+copyright = "2020-2021, poli-sci-kit developers (BSD License)"
+author = "poli-sci-kit developers"
 
 # The full version, including alpha/beta/rc tags
 release = "0.0.2.5"
