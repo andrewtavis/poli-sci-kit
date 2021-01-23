@@ -27,3 +27,7 @@ env/
 ###############
 *_preview.png
 *.sketch
+
+# Testing files
+###############
+_*.ipynb

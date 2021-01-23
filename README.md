@@ -7,10 +7,11 @@
 [![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
 [![travis](https://img.shields.io/travis/andrewtavis/poli-sci-kit.svg?logo=travis-ci)](https://travis-ci.org/andrewtavis/poli-sci-kit)
 [![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/master/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
-[![Python Version](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python)](https://pypi.org/project/poli-sci-kit/)
-[![PyPI Latest Release](https://img.shields.io/pypi/v/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
-[![License](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![pyversions](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python)](https://pypi.org/project/poli-sci-kit/)
+[![pypi](https://img.shields.io/pypi/v/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
+[![pypistatus](https://img.shields.io/pypi/status/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
+[![license](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE)
+[![codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ### Political elections, appointment, analysis and visualization in Python
 
@@ -40,22 +41,26 @@ vote_counts = [2700, 900, 3300, 1300, 2150, 500]
 seats_to_allocate = 50
 
 # Huntington-Hill is the method used to allocate House of Representatives seats to US states
-ha_allocations = appointment.methods.highest_average(averaging_style='Huntington-Hill',
-                                                     shares=vote_counts,
-                                                     total_alloc=seats_to_allocate,
-                                                     alloc_threshold=None,
-                                                     min_alloc=1,
-                                                     tie_break = 'majority',
-                                                     majority_bonus=False,
-                                                     modifier=None)
+ha_allocations = appointment.methods.highest_average(
+    averaging_style="Huntington-Hill",
+    shares=vote_counts,
+    total_alloc=seats_to_allocate,
+    alloc_threshold=None,
+    min_alloc=1,
+    tie_break="majority",
+    majority_bonus=False,
+    modifier=None,
+)
 
 ha_allocations
 # [26, 9, 37, 12, 23, 5]
 
 # The Gallagher method is a measure of absolute difference similar to summing square residuals
-disproportionality = appointment.metrics.dispr_index(shares=vote_counts,
-                                                     allocations=ha_allocations,
-                                                     mertric_type='Gallagher')
+disproportionality = appointment.metrics.dispr_index(
+    shares=vote_counts,
+    allocations=ha_allocations,
+    mertric_type='Gallagher'
+)
 
 disproportionality
 # 0.01002
@@ -81,27 +86,40 @@ party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0'
 Baseline visualization with [stdviz](https://github.com/andrewtavis/stdviz):
 
 ```python
-ax = stdviz.plot.bar(counts=ha_allocations, names=parties,
-                     faction_names=None, colors=party_colors,
-                     horizontal=False, stacked=False,
-                     label_bars=True, axis=None)
+ax = stdviz.plot.bar(
+    counts=ha_allocations,
+    names=parties,
+    faction_names=None,
+    colors=party_colors,
+    horizontal=False,
+    stacked=False,
+    label_bars=True,
+    axis=None,
+)
 
 # Initialize empty handles and labels
 handles, labels = stdviz.plot.legend.gen_elements()
 
 # Add a majority line
-ax.axhline(int(sum(ha_allocations)/2)+1, ls='--', color='black')
-handles.insert(0, Line2D([0], [0], linestyle='--', color='black'))
-labels.insert(0, 'Majority: {} seats'.format(int(sum(ha_allocations)/2)+1))
+ax.axhline(int(sum(ha_allocations) / 2) + 1, ls="--", color="black")
+handles.insert(0, Line2D([0], [0], linestyle="--", color="black"))
+labels.insert(0, "Majority: {} seats".format(int(sum(ha_allocations) / 2) + 1))
 
-ax.legend(handles=handles, labels=labels,
-          title='Bundestag: {} seats'.format(sum(ha_allocations)),
-          loc='upper left', bbox_to_anchor=(0, 0.9),
-          title_fontsize=20, fontsize=15,
-          frameon=True, facecolor='#FFFFFF', framealpha=1)
+ax.legend(
+    handles=handles,
+    labels=labels,
+    title="Bundestag: {} seats".format(sum(ha_allocations)),
+    loc="upper left",
+    bbox_to_anchor=(0, 0.9),
+    title_fontsize=20,
+    fontsize=15,
+    frameon=True,
+    facecolor="#FFFFFF",
+    framealpha=1,
+)
 
-ax.set_ylabel('Seats', fontsize=15)
-ax.set_xlabel('Party', fontsize=15)
+ax.set_ylabel("Seats", fontsize=15)
+ax.set_xlabel("Party", fontsize=15)
 
 plt.show()
 ```
@@ -117,15 +135,29 @@ poli_sci_kit provides implementations of both rectangular and semicircle [parlia
 ```python
 fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2)
 
-ax1 = poli_sci_kit.plot.parliament(allocations=seat_allocations,
-                                   names=parties, colors=party_colors,
-                                   style='rectangle', num_rows=4, marker_size=300,
-                                   speaker=True, df_seat_lctns=None, axis=ax1)
+ax1 = poli_sci_kit.plot.parliament(
+    allocations=seat_allocations,
+    names=parties,
+    colors=party_colors,
+    style="rectangle",
+    num_rows=4,
+    marker_size=300,
+    speaker=True,
+    df_seat_lctns=None,
+    axis=ax1,
+)
 
-ax2 = poli_sci_kit.plot.parliament(allocations=seat_allocations,
-                                   names=parties, colors=party_colors,
-                                   style='semicircle', num_rows=4, marker_size=175,
-                                   speaker=False, df_seat_lctns=None, axis=ax2)
+ax2 = poli_sci_kit.plot.parliament(
+    allocations=seat_allocations,
+    names=parties,
+    colors=party_colors,
+    style="semicircle",
+    num_rows=4,
+    marker_size=175,
+    speaker=False,
+    df_seat_lctns=None,
+    axis=ax2,
+)
 
 plt.show()
 ```
@@ -142,25 +174,40 @@ A novel addition to social science analysis is the [disproportionality bar plot]
 An example follows:
 
 ```python
-ax = poli_sci_kit.plot.dispr_bar(shares=votes,
-                                 allocations=ha_allocations,
-                                 names=parties,
-                                 colors=party_colors,
-                                 total_shares=None,
-                                 total_alloc=None,
-                                 percent=True,
-                                 axis=None)
+ax = poli_sci_kit.plot.dispr_bar(
+    shares=votes,
+    allocations=ha_allocations,
+    names=parties,
+    colors=party_colors,
+    total_shares=None,
+    total_alloc=None,
+    percent=True,
+    axis=None,
+)
 
-handles, labels = stdviz.plot.legend.gen_elements(counts=[round(v/sum(votes), 4) for v in votes],
-                                                  names=parties, colors=party_colors,
-                                                  size=11, marker='o', padding_indexes=None,
-                                                  order=None)
+handles, labels = stdviz.plot.legend.gen_elements(
+    counts=[round(v / sum(votes), 4) for v in votes],
+    names=parties,
+    colors=party_colors,
+    size=11,
+    marker="o",
+    padding_indexes=None,
+    order=None,
+)
 
-ax.legend(handles=handles, labels=labels,
-          title='Vote Percents (bar widths)',
-          title_fontsize=15, fontsize=11,
-          ncol=2, loc='upper left', bbox_to_anchor=(0, 1),
-          frameon=True, facecolor='#FFFFFF', framealpha=1)
+ax.legend(
+    handles=handles,
+    labels=labels,
+    title="Vote Percents (bar widths)",
+    title_fontsize=15,
+    fontsize=11,
+    ncol=2,
+    loc="upper left",
+    bbox_to_anchor=(0, 1),
+    frameon=True,
+    facecolor="#FFFFFF",
+    framealpha=1,
+)
 
 ax.axes.set_title('Seat to Vote Share Disproportionality', fontsize=30)
 ax.set_xlabel('Parties', fontsize=20)

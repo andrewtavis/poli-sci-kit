@@ -4,25 +4,31 @@
     :target: https://github.com/andrewtavis/poli-sci-kit
 ============
 
-|travis| |rtd| |codecov| |pypi| |pyversions| |license|
+|rtd| |travis| |codecov| |pyversions| |pypi| |pypistatus| |license| |codestyle|
 
-.. |travis| image:: https://img.shields.io/travis/andrewtavis/poli-sci-kit.svg
-    :target: https://travis-ci.org/andrewtavis/poli-sci-kit
-
-.. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg
+.. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
+
+.. |travis| image:: https://img.shields.io/travis/andrewtavis/poli-sci-kit.svg?logo=travis-ci
+    :target: https://travis-ci.org/andrewtavis/poli-sci-kit
 
 .. |codecov| image:: https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/master/graphs/badge.svg
     :target: https://codecov.io/gh/andrewtavis/poli-sci-kit
 
-.. |pypi| image:: https://badge.fury.io/py/poli-sci-kit.svg
-    :target: https://pypi.python.org/pypi/poli-sci-kit
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python
+    :target: https://pypi.org/project/poli-sci-kit/
 
-.. |pyversions| image:: https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7-blue.svg
-    :target: https://pypi.python.org/pypi/poli-sci-kit
+.. |pypi| image:: https://badge.fury.io/py/poli-sci-kit.svg
+    :target: https://pypi.org/project/poli-sci-kit/
+
+.. |pypistatus| image:: https://img.shields.io/pypi/status/poli-sci-kit.svg
+    :target: https://pypi.org/project/poli-sci-kit/
 
 .. |license| image:: https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg
     :target: https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE
+
+.. |codestyle| image:: https://img.shields.io/badge/code%20style-black-000000.svg
+    :target: https://github.com/psf/black
 
 Political elections, appointment and analysis in Python
 
