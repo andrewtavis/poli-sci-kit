@@ -148,7 +148,7 @@ texinfo_documents = [
         "poli-sci-kit Documentation",
         author,
         "poli-sci-kit",
-        "Political elections, appointment and analysis in Python.",
+        "Political elections, appointment, analysis and visualization in Python",
         "Miscellaneous",
     )
 ]

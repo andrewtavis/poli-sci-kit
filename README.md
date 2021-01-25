@@ -240,6 +240,7 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 - Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/plot/parliament.py)
 
 # References
+
 <details><summary><strong>Full list of references<strong></summary>
 <p>
 
