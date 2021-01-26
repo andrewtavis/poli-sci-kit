@@ -99,7 +99,7 @@ def dispr_bar(
             shares
         ), "The number of colors provided doesn't match the number of counts to be displayed"
         colors = [
-            viz_utils.scale_saturation(rgb=utils.hex_to_rgb(c), sat=dsat)
+            viz_utils.scale_saturation(rgb=viz_utils.hex_to_rgb(c), sat=dsat)
             for c in colors
         ]
         sns.set_palette(colors)
@@ -107,7 +107,7 @@ def dispr_bar(
     elif colors == None:
         sns.set_palette("deep")  # default sns palette
         colors = [
-            utils.rgb_to_hex(c)
+            viz_utils.rgb_to_hex(c)
             for c in sns.color_palette(n_colors=len(shares), desat=1)
         ]
 
