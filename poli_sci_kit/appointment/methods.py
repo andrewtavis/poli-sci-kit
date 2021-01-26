@@ -280,6 +280,7 @@ def highest_average(
 
         modifier : float (default=None)
             What to replace the divisor of the first quotient by to change the advantage of groups yet to receive an assignment
+
             Note: modifiers > 1 disadvantage smaller parties, and modifiers < 1 advantage them
 
     Returns
