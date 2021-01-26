@@ -9,7 +9,7 @@ with open("README.md", "r") as fh:
 
 setup_args = dict(
     name="poli-sci-kit",
-    version="0.0.2.7",
+    version="0.0.2.8",
     author="Andrew Tavis McAllister",
     author_email="andrew.t.mcallister@gmail.com",
     classifiers=[
@@ -35,7 +35,7 @@ setup_args = dict(
     url="https://github.com/andrewtavis/poli-sci-kit",
 )
 
-install_requires = ["scipy", "numpy", "pandas", "seaborn"]
+install_requires = ["scipy", "numpy", "pandas", "seaborn", "stdviz"]
 
 if __name__ == "__main__":
     setup(**setup_args, install_requires=install_requires)
