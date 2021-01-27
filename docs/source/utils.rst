@@ -5,10 +5,10 @@ The :py:mod:`utils` module provides functions for general operations and plottin
 
 **Functions**
 
-* :py:func:`stdviz.utils.normalize`
-* :py:func:`stdviz.utils.gen_list_of_lists`
-* :py:func:`stdviz.utils.gen_faction_groups`
+* :py:func:`poli_sci_kit.utils.normalize`
+* :py:func:`poli_sci_kit.utils.gen_list_of_lists`
+* :py:func:`poli_sci_kit.utils.gen_faction_groups`
 
-.. autofunction:: stdviz.utils.normalize
-.. autofunction:: stdviz.utils.gen_list_of_lists
-.. autofunction:: stdviz.utils.gen_faction_groups
+.. autofunction:: poli_sci_kit.utils.normalize
+.. autofunction:: poli_sci_kit.utils.gen_list_of_lists
+.. autofunction:: poli_sci_kit.utils.gen_faction_groups
