@@ -7,6 +7,8 @@ methods
 ^^^^^^^
 :py:mod:`appointment.methods` includes functions to allocate parliamentary seats based on population or vote shares. Arguments to allow allocation thresholds, minimum allocations per group, tie break conditions, and other election features are also provided. Along with deriving results for visualization and reporting, these functions allow the user to analyze outcomes given systematic or situational changes.
 
+**Functions**
+
 * :py:func:`poli_sci_kit.appointment.methods.largest_remainder`
 * :py:func:`poli_sci_kit.appointment.methods.highest_average`
 
@@ -16,6 +18,8 @@ methods
 metrics
 ^^^^^^^
 :py:mod:`appointment.metrics` further provides diagnostics to analyze the results of elections, apportionments, and other political science scenarios.
+
+**Functions**
 
 * :py:func:`poli_sci_kit.appointment.metrics.ideal_share`
 * :py:func:`poli_sci_kit.appointment.metrics.alloc_to_share_ratio`
@@ -42,6 +46,8 @@ metrics
 checks
 ^^^^^^
 :py:mod:`appointment.checks` contains functions to check the conditional efficacy of an apportionment.
+
+**Functions**
 
 * :py:func:`poli_sci_kit.appointment.checks.quota_condition`
 * :py:func:`poli_sci_kit.appointment.checks.consistency_condition`
