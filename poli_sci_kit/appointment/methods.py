@@ -1,14 +1,17 @@
 """
+Appointment Methods
+-------------------
+
 Methods used to derive allocations based on recevied shares
 
 Contents
---------
-  0. No Class
-      largest_remainder (aka Hamilton, Vinton, Hare–Niemeyer)
-          Options: Hare, Droop, Hagenbach–Bischoff
+    largest_remainder (aka Hamilton, Vinton, Hare–Niemeyer)
 
-      highest_average
-          Options: Jefferson, Webster, Huntington-Hill
+        Options: Hare, Droop, Hagenbach–Bischoff
+
+    highest_average
+
+        Options: Jefferson, Webster, Huntington-Hill
 """
 
 from math import ceil, modf, sqrt

@@ -24,7 +24,7 @@ copyright = "2020-2021, poli-sci-kit developers (BSD License)"
 author = "poli-sci-kit developers"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.2.9"
+release = "0.0.3"
 
 
 # -- General configuration ---------------------------------------------------
@@ -38,6 +38,9 @@ extensions = [
     "numpydoc",
     "sphinx.ext.viewcode",
 ]
+
+numpydoc_show_inherited_class_members = False
+numpydoc_show_class_members = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]

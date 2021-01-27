@@ -1,8 +1,10 @@
 """
+Appointment Metrics
+-------------------
+
 Functions to analyze the results of appointments, allocations and other social science scenarious
 
 Based on
---------
   Kohler, U., and Zeh, J. (2012). “Apportionment methods”.
   The Stata Journal, Vol. 12, No. 3, pp. 375–392.
   URL: https://journals.sagepub.com/doi/pdf/10.1177/1536867X1201200303
@@ -16,21 +18,19 @@ Based on
   URL: https://escholarship.org/content/qt0m9912ff/qt0m9912ff.pdf.
 
 Contents
---------
-  0. No Class
-      ideal_share
+    ideal_share
 
-      alloc_to_share_ratio
-      sqr_alloc_to_share_error
-      total_alloc_to_share_error
+    alloc_to_share_ratio
+    sqr_alloc_to_share_error
+    total_alloc_to_share_error
 
-      rep_weight
-      sqr_rep_weight_error
-      total_rep_weight_error
+    rep_weight
+    sqr_rep_weight_error
+    total_rep_weight_error
 
-      div_index
-      effective_number_of_groups
-      dispr_index
+    div_index
+    effective_number_of_groups
+    dispr_index
 """
 
 from math import exp, log, sqrt

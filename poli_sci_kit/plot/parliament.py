@@ -1,10 +1,9 @@
 """
-The parliament plot function
+Parliament Plot
+---------------
 
 Contents
---------
-  0. No Class
-      parliament
+    parliament
 """
 
 import seaborn as sns

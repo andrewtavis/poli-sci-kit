@@ -1,11 +1,12 @@
 """
+Appointment Method Checks
+-------------------------
+
 Functions to conditionally check appointment methods
 
 Contents
---------
-  0. No Class
-      quota_condition
-      consistency_condition
+    quota_condition
+    consistency_condition
 """
 
 import pandas as pd

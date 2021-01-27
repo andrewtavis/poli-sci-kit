@@ -1,10 +1,9 @@
 """
-The disproportionality bar plot function
+Disproportionality Bar Plot
+---------------------------
 
 Contents
---------
-  0. No Class
-      dispr_bar
+    dispr_bar
 """
 
 import pandas as pd
