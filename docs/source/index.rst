@@ -51,6 +51,7 @@ Installation
 
    appointment
    plot
+   utils
    notes
 
 Project Indices
