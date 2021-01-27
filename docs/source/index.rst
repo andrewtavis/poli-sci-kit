@@ -49,7 +49,7 @@ Installation
    :maxdepth: 2
    :caption: Contents:
 
-   appointment
+   appointment/index
    plot
    utils
    notes

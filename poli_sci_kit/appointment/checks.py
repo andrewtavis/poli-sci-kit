@@ -5,7 +5,7 @@ Appointment Method Checks
 Functions to conditionally check appointment methods
 
 Contents
-    quota_condition
+    quota_condition,
     consistency_condition
 """
 

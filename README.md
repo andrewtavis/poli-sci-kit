@@ -18,7 +18,7 @@
 
 **Jump to:** [Appointment](#appointment) • [Plotting](#plotting) • [Examples](#examples) • [To-Do](#to-do)
 
-**poli-sci-kit** is a Python package for political science appointment and election analysis. The goal is to provide a comprehensive tool for all methods needed to analyze and simulate election results.
+**poli-sci-kit** is a Python package for political science appointment and election analysis. The goal is to provide a comprehensive tool for all methods needed to analyze and simulate election results. See the [documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for a full outline of the package including algorithms and visualization techniques.
 
 # Installation via PyPi
 ```bash

@@ -5,12 +5,10 @@ Utilities
 Utility functions for general operations and plotting
 
 Contents
-    normalize
-
-    gen_list_of_lists
-    gen_faction_groups
-
-    gen_parl_points
+    normalize,
+    gen_list_of_lists,
+    gen_faction_groups,
+    gen_parl_points,
     swap_parl_allocations
 """
 
