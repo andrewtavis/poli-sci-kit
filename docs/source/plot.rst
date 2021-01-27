@@ -22,6 +22,6 @@ The parliament plot function is built on top of scatter plots that are derived i
 
 .. autofunction:: poli_sci_kit.utils.gen_parl_points
 
-A final function to swap poorly allocated seats is also provided in `utils <https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/utils.py>`_ :
+A final function to swap poorly allocated seats is also provided in `utils <https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/utils.py>`_:
 
 .. autofunction:: poli_sci_kit.utils.swap_parl_allocations
