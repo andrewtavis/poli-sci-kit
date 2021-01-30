@@ -11,3 +11,4 @@ dependencies:
   - numpy
   - pandas
   - seaborn
+  - stdviz

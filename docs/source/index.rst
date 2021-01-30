@@ -1,6 +1,5 @@
 .. image:: https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/poli-sci-kit_logo_transparent.png
-    :width: 521
-    :height: 281
+    :scale: 60 %
     :target: https://github.com/andrewtavis/poli-sci-kit
 ============
 
