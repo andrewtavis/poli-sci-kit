@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/poli-sci-kit_logo_transparent.png" width=60% height=60%></a>
+  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/poli-sci-kit_logo_transparent.png" width=463 height=251></a>
 </div>
 
 --------------------------------------
@@ -13,10 +13,13 @@
 [![license](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE)
 [![codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/CONTRIBUTING.md)
+[![coc](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CODE_OF_CONDUCT.md)
+
 
 ### Political elections, appointment, analysis and visualization in Python
 
-**Jump to:** [Appointment](#appointment) • [Plotting](#plotting) • [Examples](#examples) • [To-Do](#to-do)
+[//]: # "The '-' after the section links is needed to make them work on GH (because of ↩s)"
+**Jump to:**<a id="jumpto"></a> [Appointment](#appointment-) • [Plotting](#plotting-) • [Examples](#examples-) • [To-Do](#to-do-)
 
 **poli-sci-kit** is a Python package for political science appointment and election analysis. The goal is to provide a comprehensive tool for all methods needed to analyze and simulate election results. See the [documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for a full outline of the package including algorithms and visualization techniques.
 
@@ -29,7 +32,7 @@ pip install poli-sci-kit
 import poli_sci_kit
 ```
 
-# Appointment
+# Appointment [`↩`](#jumpto)
 
 [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Arguments to allow allocation thresholds, minimum allocations per group, tie break conditions, and other election features are also provided. Along with deriving results for visualization and reporting, these functions allow the user to analyze outcomes given systematic or situational changes. The [appointment.metrics](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/metrics.py) module further provides diagnostics to analyze the results of elections, apportionments, and other political science scenarios.
 
@@ -67,7 +70,7 @@ disproportionality
 # 0.01002
 ```
 
-# Plotting
+# Plotting [`↩`](#jumpto)
 
 poli-sci-kit provides Python only implementations of common electoral plots.
 
@@ -221,7 +224,7 @@ plt.show()
   <img src="https://github.com/andrewtavis/poli-sci-kit/blob/main/resources/gh_images/dispr_bar.png" width="600" />
 </p>
 
-# Examples
+# Examples [`↩`](#jumpto)
 
 Examples in poli-sci-kit use publicly available Wikidata statistics sourced via the Python package [wikirepo](https://github.com/andrewtavis/wikirepo). Current examples include:
 
@@ -231,7 +234,7 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 - [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb)
     - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain counties and organizations, the distribution of seats based on Freedom House indexes, and disproportionality metrics
 
-# To-Do
+# To-Do [`↩`](#jumpto)
 
 - Checks for [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) implementations
 - Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit
