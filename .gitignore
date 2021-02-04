@@ -17,11 +17,14 @@ dist
 *.egg-info
 # Caches
 __pycache__
+# Virtual Environments
+.venv
+venv
+poli-sci-kit-dev
 
 # Documentation files
 #####################
 research_papers
-env/
 
 # Display files
 ###############
