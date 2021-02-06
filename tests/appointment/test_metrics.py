@@ -1,0 +1,1 @@
+"""Appointment metric tests"""
