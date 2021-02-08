@@ -19,6 +19,10 @@ def quota_condition(all_shares, all_seats):
     """
     Checks whether assignment method results fall within the range of the ideal share rounded down and up
 
+    Notes
+    -----
+    https://en.wikipedia.org/wiki/Quota_rule
+
     Parameters
     ----------
         all_shares : list
@@ -65,6 +69,9 @@ def consistency_condition(
 ):
     """
     Checks the consistency of assignment method results given dataframes of shares and allocations
+
+    Notes
+    -----
     Rows and columns of the df(s) will be marked and dropped if consistent, with a failed condition being if the resulting df has size > 0 (some where inconsistent)
 
     Parameters
@@ -82,9 +89,11 @@ def consistency_condition(
                 The style of monotony to derive the consistency with
 
                 - seat_monotony : An incease in total seats does not decrease alloted seats
+
                     Note: use sums of cols of all_var_seats, checking col element monotony given a differences in sums
 
                 - share_monotony : An incease in share does not decrease alloted seats
+
                     Note: use rows of all_var_shares and check coinciding elements of all_var_seats for monotony
 
     Returns
@@ -145,46 +154,62 @@ def consistency_condition(
                     df_fail_report.columns[i - cols_droppped], axis=1, inplace=True
                 )
                 cols_droppped += 1
+
             else:
                 # Keep the column, and remove the indexes of any columns that break the condition to keep them as well
                 for later_col in check_cols[i]:
                     col_range.pop(later_col)
 
-        # Find elements in a row that are greater than following elements
-        check_rows = [
-            [
+        if len(df_fail_report.columns) != 0:
+            # Find elements in a row that are greater than following elements
+            check_rows = [
                 [
-                    df_fail_report.loc[row, df_fail_report.columns[col]]
-                    <= df_fail_report.loc[row, df_fail_report.columns[col_after]]
-                    for col_after in range(len(df_fail_report.columns))[col:]
+                    [
+                        df_fail_report.loc[row, df_fail_report.columns[col]]
+                        <= df_fail_report.loc[row, df_fail_report.columns[col_after]]
+                        for col_after in range(len(df_fail_report.columns))[col:]
+                    ]
+                    for col in range(len(df_fail_report.columns))
                 ]
-                for col in range(len(df_fail_report.columns))
+                for row in df_fail_report.index
             ]
-            for row in df_fail_report.index
-        ]
 
-        check_rows = [
-            [
-                True
-                if list(set(comparison))[0] == True and len(set(comparison)) == 1
-                else False
-                for comparison in i
+            check_rows = [
+                [
+                    True
+                    if list(set(comparison))[0] == True and len(set(comparison)) == 1
+                    else False
+                    for comparison in i
+                ]
+                for i in check_rows
             ]
-            for i in check_rows
-        ]
-        check_rows = [
-            True if list(set(i))[0] == True and len(set(i)) == 1 else False
-            for i in check_rows
-        ]
 
-        rows_droppped = 0
-        for i in range(len(df_fail_report.index)):
-            if check_rows[i] == True:
-                # Drop the row if no elements are greater than following ones, and add to an indexer to maintain lengths
-                df_fail_report.drop(
-                    df_fail_report.index[i - rows_droppped], axis=0, inplace=True
-                )
-                rows_droppped += 1
+            check_rows = [
+                True if list(set(i))[0] == True and len(set(i)) == 1 else False
+                for i in check_rows
+            ]
+
+            rows_droppped = 0
+            for i in range(len(df_fail_report.index)):
+                if check_rows[i] == True:
+                    # Drop the row if no elements are greater than following ones, and add to an indexer to maintain lengths
+                    df_fail_report.drop(
+                        df_fail_report.index[i - rows_droppped], axis=0, inplace=True
+                    )
+                    rows_droppped += 1
+
+        check_pass = len(df_fail_report.columns) == 0
+        print(
+            f"Consistency condition based on {check_type.split('_')[0]} monotony passed:",
+            check_pass,
+        )
+
+        if not check_pass:
+            print("Returning df of argument elements that failed the condition.")
+            return df_fail_report
+
+        else:
+            return check_pass
 
     elif check_type == "share_monotony":
         # The fail report df has share and seat columns alternated
