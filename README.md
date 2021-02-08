@@ -5,7 +5,7 @@
 --------------------------------------
 
 [![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
-[![travis](https://img.shields.io/travis/andrewtavis/poli-sci-kit.svg?logo=travis-ci)](https://travis-ci.org/andrewtavis/poli-sci-kit)
+[![travis](https://img.shields.io/travis/andrewtavis/poli-sci-kit.svg?logo=travis-ci)](https://www.travis-ci.com/github/andrewtavis/poli-sci-kit)
 [![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/master/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
 [![pyversions](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python)](https://pypi.org/project/poli-sci-kit/)
 [![pypi](https://img.shields.io/pypi/v/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
@@ -69,6 +69,20 @@ disproportionality = appointment.metrics.dispr_index(
 disproportionality
 # 0.01002
 ```
+
+We can also check that the allocations pass the [quota condition](https://en.wikipedia.org/wiki/Quota_rule):
+
+```python
+passes_qc = appointment.checks.quota_condition(
+    all_shares=ha_allocations,
+    all_seats=seats_to_allocate
+)
+
+passes_qc
+# True
+```
+
+Allocation consistency can further be checked using dataframes of shares and seats given electoral settings. See [appointment.checks](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/checks.py) and [the documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for explanations of method checks.
 
 # Plotting [`↩`](#jumpto)
 
@@ -237,6 +251,8 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 # To-Do [`↩`](#jumpto)
 
 - Checks for [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) implementations
+- Adding the [Adams method](https://en.wikipedia.org/wiki/Highest_averages_method) to [appointment.methods.highest_average](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py)
+- Adding equations to [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) docstrings for the [documentation](http://poli-sci-kit.readthedocs.io/en/latest/)
 - Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit
 - Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
     - This would allow quick comparisons of actual systems with variations
