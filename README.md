@@ -74,8 +74,8 @@ We can also check that the allocations pass the [quota condition](https://en.wik
 
 ```python
 passes_qc = appointment.checks.quota_condition(
-    all_shares=ha_allocations,
-    all_seats=seats_to_allocate
+    all_shares=vote_counts,
+    all_seats=ha_allocations
 )
 
 passes_qc
