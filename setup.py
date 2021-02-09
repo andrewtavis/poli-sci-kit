@@ -34,7 +34,15 @@ setup_args = dict(
     url="https://github.com/andrewtavis/poli-sci-kit",
 )
 
-install_requires = ["scipy", "numpy", "pandas", "seaborn", "stdviz"]
+install_requires = [
+    "pytest",
+    "pytest-cov",
+    "scipy",
+    "numpy",
+    "pandas",
+    "seaborn",
+    "stdviz",
+]
 
 if __name__ == "__main__":
     setup(**setup_args, install_requires=install_requires)
