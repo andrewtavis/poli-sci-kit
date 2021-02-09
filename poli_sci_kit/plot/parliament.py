@@ -7,7 +7,6 @@ Contents
 """
 
 import seaborn as sns
-from stdviz import utils as viz_utils
 
 from poli_sci_kit import utils
 
@@ -79,14 +78,11 @@ def parliament(
     elif colors == None:
         sns.set_palette("deep")  # default sns palette
         colors = [
-            viz_utils.rgb_to_hex(c)
+            utils.rgb_to_hex(c)
             for c in sns.color_palette(n_colors=len(allocations), desat=1)
         ]
 
-    colors = [
-        viz_utils.scale_saturation(rgb=viz_utils.hex_to_rgb(c), sat=dsat)
-        for c in colors
-    ]
+    colors = [utils.scale_saturation(rgb=utils.hex_to_rgb(c), sat=dsat) for c in colors]
     sns.set_palette(colors)
 
     if df_seat_lctns is None:

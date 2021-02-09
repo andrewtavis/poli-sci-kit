@@ -51,7 +51,6 @@ scipy==1.5.2
 seaborn==0.11.1
 setuptools==52.0.0.post20210125
 six==1.15.0
-stdviz==0.0.1.6
 toml==0.10.1
 tornado==6.1
 twine==3.3.0

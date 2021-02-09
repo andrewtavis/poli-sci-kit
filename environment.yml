@@ -89,4 +89,3 @@ dependencies:
     - decorator==4.4.2
     - networkx==2.5
     - poli-sci-kit==0.0.3
-    - stdviz==0.0.1.6

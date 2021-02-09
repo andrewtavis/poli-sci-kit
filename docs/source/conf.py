@@ -24,7 +24,7 @@ copyright = "2020-2021, poli-sci-kit developers (BSD License)"
 author = "poli-sci-kit developers"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.3"
+release = "0.0.3.1"
 
 
 # -- General configuration ---------------------------------------------------
