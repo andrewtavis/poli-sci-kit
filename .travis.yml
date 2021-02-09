@@ -1,3 +1,4 @@
+dist: xenial
 language: python
 python:
   - "3.5"
@@ -5,8 +6,8 @@ python:
   - "3.7"
   - "3.8"
 install:
-- pip install -r requirements.txt
+- pip install -r requirements-dev.txt
 script:
-- pytest
+- pytest -s --cov=poli_sci_kit tests
 after_success:
 - codecov
