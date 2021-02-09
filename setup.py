@@ -35,7 +35,6 @@ setup_args = dict(
 )
 
 install_requires = [
-    "pytest",
     "pytest-cov",
     "scipy",
     "numpy",
