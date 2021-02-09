@@ -6,7 +6,7 @@ python:
   - "3.7"
   - "3.8"
 install:
-- pip install -r requirements-dev.txt
+- python setup.py install
 script:
 - pytest -s --cov=poli_sci_kit tests
 after_success:
