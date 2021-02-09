@@ -7,4 +7,4 @@ install:
 script:
 - pytest -s --cov=poli_sci_kit tests
 after_success:
-- codecov
+- bash <(curl -s https://codecov.io/bash)
