@@ -38,9 +38,6 @@ dependencies:
   - lz4-c=1.9.3
   - matplotlib=3.3.2
   - matplotlib-base=3.3.2
-  - mkl=2019.4
-  - mkl-service=2.3.0
-  - mkl_random=1.1.1
   - more-itertools=8.6.0
   - mypy_extensions=0.4.3
   - ncurses=6.2
