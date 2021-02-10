@@ -19,7 +19,7 @@
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python
     :target: https://pypi.org/project/poli-sci-kit/
 
-.. |pypi| image:: https://badge.fury.io/py/poli-sci-kit.svg
+.. |pypi| image:: https://img.shields.io/pypi/v/poli-sci-kit.svg
     :target: https://pypi.org/project/poli-sci-kit/
 
 .. |pypistatus| image:: https://img.shields.io/pypi/status/poli-sci-kit.svg
