@@ -11,7 +11,7 @@
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
 
 .. |travis| image:: https://img.shields.io/travis/com/andrewtavis/poli-sci-kit.svg?logo=travis-ci
-    :target: https://travis-ci.org/andrewtavis/poli-sci-kit
+    :target: https://www.travis-ci.com/github/andrewtavis/poli-sci-kit
 
 .. |codecov| image:: https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg
     :target: https://codecov.io/gh/andrewtavis/poli-sci-kit

@@ -6,7 +6,7 @@
 
 [![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
 [![travis](https://img.shields.io/travis/com/andrewtavis/poli-sci-kit.svg?logo=travis-ci)](https://www.travis-ci.com/github/andrewtavis/poli-sci-kit)
-[![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/master/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
+[![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
 [![pyversions](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python)](https://pypi.org/project/poli-sci-kit/)
 [![pypi](https://img.shields.io/pypi/v/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
 [![pypistatus](https://img.shields.io/pypi/status/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)

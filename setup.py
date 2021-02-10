@@ -9,7 +9,7 @@ with open("README.md", "r") as fh:
 
 setup_args = dict(
     name="poli-sci-kit",
-    version="0.0.3.1",
+    version="0.1",
     author="Andrew Tavis McAllister",
     author_email="andrew.t.mcallister@gmail.com",
     classifiers=[
