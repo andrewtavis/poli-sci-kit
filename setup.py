@@ -39,7 +39,7 @@ install_requires = [
     "numpy",
     "pandas",
     "seaborn",
-    "colormath",
+    "stdviz",
 ]
 
 if __name__ == "__main__":

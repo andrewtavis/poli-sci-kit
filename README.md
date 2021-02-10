@@ -6,13 +6,13 @@
 
 [![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
 [![travis](https://img.shields.io/travis/com/andrewtavis/poli-sci-kit.svg?logo=travis-ci)](https://www.travis-ci.com/github/andrewtavis/poli-sci-kit)
-[![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
+[![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/master/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
 [![pyversions](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python)](https://pypi.org/project/poli-sci-kit/)
 [![pypi](https://img.shields.io/pypi/v/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
 [![pypistatus](https://img.shields.io/pypi/status/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
 [![license](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE.txt)
 [![codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CONTRIBUTING.md)
+[![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/CONTRIBUTING.md)
 [![coc](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CODE_OF_CONDUCT.md)
 
 
@@ -104,7 +104,7 @@ party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0'
 Baseline visualization with [pltviz](https://github.com/andrewtavis/pltviz):
 
 ```python
-ax = pltviz.bar(
+ax = pltviz.plot.bar(
     counts=ha_allocations,
     labels=parties,
     faction_labels=None,
@@ -116,7 +116,7 @@ ax = pltviz.bar(
 )
 
 # Initialize empty handles and labels
-handles, labels = pltviz.legend.gen_elements()
+handles, labels = pltviz.plot.legend.gen_elements()
 
 # Add a majority line
 ax.axhline(int(sum(ha_allocations) / 2) + 1, ls="--", color="black")
@@ -201,7 +201,7 @@ ax = poli_sci_kit.plot.dispr_bar(
     axis=None,
 )
 
-handles, labels = pltviz.legend.gen_elements(
+handles, labels = pltviz.plot.legend.gen_elements(
     counts=[round(v / sum(votes), 4) for v in votes],
     labels=parties,
     colors=party_colors,
