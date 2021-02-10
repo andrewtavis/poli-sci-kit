@@ -10,10 +10,17 @@ Contents
     gen_faction_groups,
     gen_parl_points,
     swap_parl_allocations
+    hex_to_rgb,
+    rgb_to_hex,
+    scale_saturation
 """
+
+import colorsys
 
 import numpy as np
 import pandas as pd
+
+from colormath.color_objects import sRGBColor
 
 
 def normalize(vals):
@@ -64,7 +71,7 @@ def gen_faction_groups(original_list, factions_indexes):
 
 
 def gen_parl_points(
-    allocations, names=None, style="semicircle", num_rows=2, speaker=False
+    allocations, labels=None, style="semicircle", num_rows=2, speaker=False
 ):
     """
     Produces a df with coordinates for a parliament plot
@@ -74,7 +81,7 @@ def gen_parl_points(
         allocations : list
             The share of seats given to the regions or parties
 
-        names : list : optional (default=None)
+        labels : list : optional (default=None)
             The names of the groups
 
         style : str (default=semicircle)
@@ -85,23 +92,28 @@ def gen_parl_points(
 
         speaker : bool : optional (default=False)
             Whether to include a point for the speaker of the house colored by their group
-            Note: 'True' colors the point based on the largest group, but passing a name from 'names' is also possible
+            Note: 'True' colors the point based on the largest group, but passing a name from 'labels' is also possible
 
     Returns
     -------
         df_seat_lctns : pd.DataFrame
             A dataframe with points to be converted to a parliament plot via seaborn's scatterplot
     """
+    assert style in [
+        "semicircle",
+        "rectangle",
+    ], "Please choose one of semicircle or rectangle for the plotting style."
+
     total_seats = sum(allocations)
 
-    if not names:
+    if not labels:
         # For dataframe assignment
-        names = [f"group_{i}" for i in range(len(allocations))]
+        labels = [f"group_{i}" for i in range(len(allocations))]
 
     if speaker:
         assert (speaker == True) or (
-            speaker in names
-        ), "Either the 'speaker' argument must be true, or must match an element from the provided 'names' argument"
+            speaker in labels
+        ), "Either the 'speaker' argument must be true, or must match an element from the provided 'labels' argument"
         total_seats -= 1
         allocations = list(allocations)
 
@@ -114,10 +126,10 @@ def gen_parl_points(
             allocations[largest_group_index] -= 1
 
             # Reassign 'speaker' to the largest group's name so it can be assigned later
-            speaker = names[largest_group_index]
+            speaker = labels[largest_group_index]
 
-        elif speaker in names:
-            largest_group_index = names.index(speaker)
+        elif speaker in labels:
+            largest_group_index = labels.index(speaker)
             allocations[largest_group_index] -= 1
 
     # Make an empty dataframe and fill it with coordinates for the structure
@@ -198,7 +210,7 @@ def gen_parl_points(
                     == row_position_indexes[row_index][0]
                 ][0]
 
-                df_seat_lctns.loc[index_to_assign, "group"] = names[group_index]
+                df_seat_lctns.loc[index_to_assign, "group"] = labels[group_index]
 
                 total_seats -= 1
 
@@ -252,7 +264,7 @@ def gen_parl_points(
 
             df_seat_lctns["row"] = [0] * len(df_seat_lctns)
             list_of_name_lists = [
-                [names[i]] * allocations[i] for i in range(len(allocations))
+                [labels[i]] * allocations[i] for i in range(len(allocations))
             ]
             df_seat_lctns["group"] = [
                 item for sublist in list_of_name_lists for item in sublist
@@ -326,7 +338,7 @@ def gen_parl_points(
                     and df_seat_lctns.loc[i, "y_loc"] == top_y
                 ][0]
 
-                df_seat_lctns.loc[index_to_assign, "group"] = names[group_index]
+                df_seat_lctns.loc[index_to_assign, "group"] = labels[group_index]
 
                 seats_to_allocate[group_index] -= 1
                 if seats_to_allocate[group_index] == 0:
@@ -369,7 +381,7 @@ def gen_parl_points(
                     and df_seat_lctns.loc[i, "y_loc"] == bottom_y
                 ][0]
 
-                df_seat_lctns.loc[index_to_assign, "group"] = names[group_index]
+                df_seat_lctns.loc[index_to_assign, "group"] = labels[group_index]
 
                 seats_to_allocate[group_index] -= 1
                 if seats_to_allocate[group_index] == 0:
@@ -418,22 +430,22 @@ def gen_parl_points(
     return df_seat_lctns
 
 
-def swap_parl_allocations(df, row_1, pos_1, row_2, pos_2):
+def swap_parl_allocations(df, row_0, pos_0, row_1, pos_1):
     """
     Replaces two allocations of the parliament plot df to clean up coloration
 
     Parameters
     ----------
-        row_1 : int
+        row_0 : int
             The row of one seat to swap
 
-        pos_1 : int
+        pos_0 : int
             The position in the row of one seat to swap
 
-        row_2 : int
+        row_1 : int
             The row of the other seat to swap
 
-        pos_2 : int
+        pos_1 : int
             The position in the row of the other seat to swap
 
     Returns
@@ -441,15 +453,94 @@ def swap_parl_allocations(df, row_1, pos_1, row_2, pos_2):
         df_seat_lctns : pd.DataFrame
             A parliament plot allocations data frame with two allocations swapped
     """
+    allocation_0 = df[(df["row"] == row_0) & (df["row_position"] == pos_0)][
+        "group"
+    ].values[0]
+    index_1 = df[(df["row"] == row_0) & (df["row_position"] == pos_0)].index
+
     allocation_1 = df[(df["row"] == row_1) & (df["row_position"] == pos_1)][
         "group"
     ].values[0]
-    index_1 = df[(df["row"] == row_1) & (df["row_position"] == pos_1)].index
+    index_2 = df[(df["row"] == row_1) & (df["row_position"] == pos_1)].index
 
-    allocation_2 = df[(df["row"] == row_2) & (df["row_position"] == pos_2)][
-        "group"
-    ].values[0]
-    index_2 = df[(df["row"] == row_2) & (df["row_position"] == pos_2)].index
+    df.loc[index_1, "group"] = allocation_1
+    df.loc[index_2, "group"] = allocation_0
 
-    df.loc[index_1, "group"] = allocation_2
-    df.loc[index_2, "group"] = allocation_1
+
+def hex_to_rgb(hex_rep):
+    """
+    Converts a hexadecimal representation to its RGB ratios
+
+    Parameters
+    ----------
+        hex_rep : str
+            The hex representation of the color
+
+    Returns
+    -------
+        rgb_trip : tuple
+            An RGB tuple color representation
+    """
+    rgb_trip = sRGBColor(
+        *[int(hex_rep[i + 1 : i + 3], 16) for i in (0, 2, 4)], is_upscaled=True
+    )
+    return rgb_trip
+
+
+def rgb_to_hex(rgb_trip):
+    """
+    Converts rgb ratios to their hexadecimal representation
+
+    Parameters
+    ----------
+        rgb_trip : tuple
+            An RGB tuple color representation
+
+    Returns
+    -------
+        hex_rep : str
+            The hex representation of the color
+    """
+    trip_0, trip_1, trip_2 = rgb_trip[0], rgb_trip[1], rgb_trip[2]
+    if type(trip_0) == float or np.float64:
+        trip_0 *= 255
+        trip_1 *= 255
+        trip_2 *= 255
+
+    hex_rep = "#%02x%02x%02x" % (int(trip_0), int(trip_1), int(trip_2))
+
+    return hex_rep
+
+
+def scale_saturation(rgb_trip, sat):
+    """
+    Changes the saturation of an rgb color
+
+    Parameters
+    ----------
+        rgb_trip : tuple
+            An RGB tuple color representation
+
+        sat : float
+            The saturation it rgb_trip should be modified by
+
+    Returns
+    -------
+        saturated_rgb : tuple
+            colorsys.hls_to_rgb saturation of the given color
+    """
+    if (type(rgb_trip) == str) and (len(rgb_trip) == 9) and (rgb_trip[-2:] == "00"):
+        # An RGBA has been provided and its alpha is 00, so return it for a transparent marker
+        return rgb_trip
+
+    if (type(rgb_trip) == str) and (len(rgb_trip) == 7):
+        rgb_trip = hex_to_rgb(rgb_trip)
+
+    if type(rgb_trip) == sRGBColor:
+        rgb_trip = rgb_trip.get_value_tuple()
+
+    h, l, s = colorsys.rgb_to_hls(*rgb_trip)
+
+    saturated_rgb = colorsys.hls_to_rgb(h, min(1, l * sat), s=s)
+
+    return saturated_rgb

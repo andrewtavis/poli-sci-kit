@@ -5,12 +5,12 @@
 --------------------------------------
 
 [![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
-[![travis](https://img.shields.io/travis/andrewtavis/poli-sci-kit.svg?logo=travis-ci)](https://www.travis-ci.com/github/andrewtavis/poli-sci-kit)
+[![travis](https://img.shields.io/travis/com/andrewtavis/poli-sci-kit.svg?logo=travis-ci)](https://www.travis-ci.com/github/andrewtavis/poli-sci-kit)
 [![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/master/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
 [![pyversions](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python)](https://pypi.org/project/poli-sci-kit/)
 [![pypi](https://img.shields.io/pypi/v/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
 [![pypistatus](https://img.shields.io/pypi/status/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
-[![license](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE.txt)
 [![codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/CONTRIBUTING.md)
 [![coc](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CODE_OF_CONDUCT.md)
@@ -94,20 +94,20 @@ Let's visualize the above results:
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import poli_sci_kit
-import stdviz
+import pltviz
 
 # German political parties
 parties = ['CDU/CSU', 'FDP', 'Greens', 'Die Linke', 'SPD', 'AfD']
 party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0']
 ```
 
-Baseline visualization with [stdviz](https://github.com/andrewtavis/stdviz):
+Baseline visualization with [pltviz](https://github.com/andrewtavis/pltviz):
 
 ```python
-ax = stdviz.plot.bar(
+ax = pltviz.plot.bar(
     counts=ha_allocations,
-    names=parties,
-    faction_names=None,
+    labels=parties,
+    faction_labels=None,
     colors=party_colors,
     horizontal=False,
     stacked=False,
@@ -116,7 +116,7 @@ ax = stdviz.plot.bar(
 )
 
 # Initialize empty handles and labels
-handles, labels = stdviz.plot.legend.gen_elements()
+handles, labels = pltviz.plot.legend.gen_elements()
 
 # Add a majority line
 ax.axhline(int(sum(ha_allocations) / 2) + 1, ls="--", color="black")
@@ -155,25 +155,23 @@ fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2)
 
 ax1 = poli_sci_kit.plot.parliament(
     allocations=seat_allocations,
-    names=parties,
+    labels=parties,
     colors=party_colors,
     style="rectangle",
     num_rows=4,
     marker_size=300,
     speaker=True,
-    df_seat_lctns=None,
     axis=ax1,
 )
 
 ax2 = poli_sci_kit.plot.parliament(
     allocations=seat_allocations,
-    names=parties,
+    labels=parties,
     colors=party_colors,
     style="semicircle",
     num_rows=4,
     marker_size=175,
     speaker=False,
-    df_seat_lctns=None,
     axis=ax2,
 )
 
@@ -195,7 +193,7 @@ An example follows:
 ax = poli_sci_kit.plot.dispr_bar(
     shares=votes,
     allocations=ha_allocations,
-    names=parties,
+    labels=parties,
     colors=party_colors,
     total_shares=None,
     total_alloc=None,
@@ -203,9 +201,9 @@ ax = poli_sci_kit.plot.dispr_bar(
     axis=None,
 )
 
-handles, labels = stdviz.plot.legend.gen_elements(
+handles, labels = pltviz.plot.legend.gen_elements(
     counts=[round(v / sum(votes), 4) for v in votes],
-    names=parties,
+    labels=parties,
     colors=party_colors,
     size=11,
     marker="o",
@@ -257,6 +255,7 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 - Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
     - This would allow quick comparisons of actual systems with variations
 - Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
+- Improving [tests](https://github.com/andrewtavis/poli-sci-kit/tree/main/tests) for greater [code coverage](https://codecov.io/gh/andrewtavis/poli-sci-kit)
 - Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/plot/parliament.py)
 
 # References
