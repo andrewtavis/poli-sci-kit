@@ -9,7 +9,11 @@ Contents
     gen_list_of_lists,
     gen_faction_groups,
     gen_parl_points,
+<<<<<<< HEAD
     swap_parl_allocations
+=======
+    swap_parl_allocations,
+>>>>>>> e11d38f0c0df1dc063f591d1e88907690e1f816c
     hex_to_rgb,
     rgb_to_hex,
     scale_saturation
@@ -21,6 +25,10 @@ import numpy as np
 import pandas as pd
 
 from colormath.color_objects import sRGBColor
+<<<<<<< HEAD
+=======
+import colorsys
+>>>>>>> e11d38f0c0df1dc063f591d1e88907690e1f816c
 
 
 def normalize(vals):
@@ -543,4 +551,87 @@ def scale_saturation(rgb_trip, sat):
 
     saturated_rgb = colorsys.hls_to_rgb(h, min(1, l * sat), s=s)
 
+<<<<<<< HEAD
+=======
+    df.loc[index_1, "group"] = allocation_2
+    df.loc[index_2, "group"] = allocation_1
+
+
+def hex_to_rgb(hex_rep):
+    """
+    Converts a hexadecimal representation to its RGB ratios
+
+    Parameters
+    ----------
+        hex_rep : str
+            The hex representation of the color
+
+    Returns
+    -------
+        rgb_trip : tuple
+            An RGB tuple color representation
+    """
+    rgb_trip = sRGBColor(
+        *[int(hex_rep[i + 1 : i + 3], 16) for i in (0, 2, 4)], is_upscaled=True
+    )
+    return rgb_trip
+
+
+def rgb_to_hex(rgb_trip):
+    """
+    Converts rgb ratios to their hexadecimal representation
+
+    Parameters
+    ----------
+        rgb_trip : tuple
+            An RGB tuple color representation
+
+    Returns
+    -------
+        hex_rep : str
+            The hex representation of the color
+    """
+    trip_0, trip_1, trip_2 = rgb_trip[0], rgb_trip[1], rgb_trip[2]
+    if type(trip_0) == float or np.float64:
+        trip_0 *= 255
+        trip_1 *= 255
+        trip_2 *= 255
+
+    hex_rep = "#%02x%02x%02x" % (int(trip_0), int(trip_1), int(trip_2))
+
+    return hex_rep
+
+
+def scale_saturation(rgb_trip, sat):
+    """
+    Changes the saturation of an rgb color
+
+    Parameters
+    ----------
+        rgb_trip : tuple
+            An RGB tuple color representation
+
+        sat : float
+            The saturation it rgb_trip should be modified by
+
+    Returns
+    -------
+        saturated_rgb : tuple
+            colorsys.hls_to_rgb saturation of the given color
+    """
+    if (type(rgb_trip) == str) and (len(rgb_trip) == 9) and (rgb_trip[-2:] == "00"):
+        # An RGBA has been provided and its alpha is 00, so return it for a transparent marker
+        return rgb_trip
+
+    if (type(rgb_trip) == str) and (len(rgb_trip) == 7):
+        rgb = hex_to_rgb(rgb_trip)
+
+    if type(rgb_trip) == sRGBColor:
+        rgb = rgb.get_value_tuple()
+
+    h, l, s = colorsys.rgb_to_hls(*rgb_trip)
+
+    saturated_rgb = colorsys.hls_to_rgb(h, min(1, l * sat), s=s)
+
+>>>>>>> e11d38f0c0df1dc063f591d1e88907690e1f816c
     return saturated_rgb

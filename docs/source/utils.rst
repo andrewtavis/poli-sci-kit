@@ -16,5 +16,9 @@ The :py:mod:`utils` module provides functions for general operations and plottin
 .. autofunction:: poli_sci_kit.utils.gen_list_of_lists
 .. autofunction:: poli_sci_kit.utils.gen_faction_groups
 .. autofunction:: poli_sci_kit.utils.hex_to_rgb
+<<<<<<< HEAD
 .. autofunction:: poli_sci_kit.utils.rgb_to_hex
+=======
+.. autofunction:: poli_sci_kit.utils.hex_to_rgb
+>>>>>>> e11d38f0c0df1dc063f591d1e88907690e1f816c
 .. autofunction:: poli_sci_kit.utils.scale_saturation
