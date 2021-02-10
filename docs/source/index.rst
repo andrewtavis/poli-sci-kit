@@ -26,7 +26,7 @@
     :target: https://pypi.org/project/poli-sci-kit/
 
 .. |license| image:: https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg
-    :target: https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE
+    :target: https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE.txt
 
 .. |codestyle| image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/psf/black

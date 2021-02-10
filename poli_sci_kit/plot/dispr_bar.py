@@ -18,7 +18,7 @@ default_sat = 0.95
 def dispr_bar(
     shares,
     allocations,
-    names=None,
+    labels=None,
     colors=None,
     total_shares=None,
     total_alloc=None,
@@ -32,13 +32,13 @@ def dispr_bar(
     Parameters
     ----------
         shares : list
-            The shares amouunts or those that allocations should be compared to
+            The shares amounts or those that allocations should be compared to
 
         allocations : list
             The allocated amounts
 
-        names : list (default=None)
-            A list of grpup names as labels for the x-axis
+        labels : list (default=None)
+            A list of group names as labels for the x-axis
 
         colors : list or list of lists : optional (default=None)
             The colors of the groups as hex keys
@@ -87,10 +87,10 @@ def dispr_bar(
             for i in range(len(share_percents))
         ]
 
-    if not names:
-        names = [range(len(disproportionality) + 1)[1:]]
+    if not labels:
+        labels = list(range(len(disproportionality) + 1)[1:])
 
-    df = pd.DataFrame(disproportionality, index=names, columns=["disproportionality"])
+    df = pd.DataFrame(disproportionality, index=labels, columns=["disproportionality"])
 
     if colors:
         assert len(colors) == len(
@@ -149,7 +149,7 @@ def dispr_bar(
             bar_positions[i] - (bar_widths[i] / 2.0) for i in range(len(bar_positions))
         ]
     )
-    ax.set_xticklabels(labels=[names[i] for i in range(len(bar_widths))])
+    ax.set_xticklabels(labels=[labels[i] for i in range(len(bar_widths))])
 
     ax.set_ylim([min(disproportionality) * 1.5, max(disproportionality) * 1.5])
     ax.set_xlim([0, len(shares)])

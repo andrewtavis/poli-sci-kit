@@ -15,7 +15,7 @@ default_sat = 0.95
 
 def parliament(
     allocations,
-    names=None,
+    labels=None,
     colors=None,
     style="semicircle",
     num_rows=2,
@@ -33,7 +33,7 @@ def parliament(
         allocations : list
             The share of seats given to the regions or parties
 
-        names : list (contains strs) : optional (default=None)
+        labels : list (contains strs) : optional (default=None)
             The names of the groups
 
         colors : list : optional (default=None)
@@ -50,7 +50,7 @@ def parliament(
 
         speaker : bool : optional (default=False)
             Whether to include a point for the speaker of the house colored by their group
-            Note: 'True' colors the point based on the largest group, but passing a name from 'names' is also possible
+            Note: 'True' colors the point based on the largest group, but passing a name from 'labels' is also possible
 
         df_seat_lctns : df : optional (default=None)
             A df of coordinates to plot
@@ -82,13 +82,15 @@ def parliament(
             for c in sns.color_palette(n_colors=len(allocations), desat=1)
         ]
 
-    colors = [utils.scale_saturation(rgb=utils.hex_to_rgb(c), sat=dsat) for c in colors]
+    colors = [
+        utils.scale_saturation(rgb_trip=utils.hex_to_rgb(c), sat=dsat) for c in colors
+    ]
     sns.set_palette(colors)
 
     if df_seat_lctns is None:
         df_seat_lctns = utils.gen_parl_points(
             allocations=allocations,
-            names=names,
+            labels=labels,
             style=style,
             num_rows=num_rows,
             speaker=speaker,
@@ -100,9 +102,12 @@ def parliament(
     elif style == "rectangle":
         marker = "s"
 
+    if labels == None:
+        labels = list(df_seat_lctns["group"].unique())
+
     # Loop through groups and plot their allocations
-    for g in range(len(names)):
-        df_subsetted = df_seat_lctns[df_seat_lctns["group"] == names[g]]
+    for g in range(len(labels)):
+        df_subsetted = df_seat_lctns[df_seat_lctns["group"] == labels[g]]
 
         ax = sns.scatterplot(
             data=df_subsetted,

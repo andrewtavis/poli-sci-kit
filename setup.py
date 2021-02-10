@@ -20,7 +20,6 @@ setup_args = dict(
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
@@ -34,14 +33,7 @@ setup_args = dict(
     url="https://github.com/andrewtavis/poli-sci-kit",
 )
 
-install_requires = [
-    "pytest-cov",
-    "scipy",
-    "numpy",
-    "pandas",
-    "seaborn",
-    "colormath",
-]
+install_requires = ["pytest-cov", "scipy", "numpy", "pandas", "seaborn", "colormath"]
 
 if __name__ == "__main__":
     setup(**setup_args, install_requires=install_requires)
