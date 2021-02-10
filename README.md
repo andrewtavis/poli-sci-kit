@@ -63,7 +63,7 @@ ha_allocations
 disproportionality = appointment.metrics.dispr_index(
     shares=vote_counts,
     allocations=ha_allocations,
-    mertric_type='Gallagher'
+    metric_type='Gallagher'
 )
 
 disproportionality
@@ -74,8 +74,8 @@ We can also check that the allocations pass the [quota condition](https://en.wik
 
 ```python
 passes_qc = appointment.checks.quota_condition(
-    all_shares=vote_counts,
-    all_seats=ha_allocations
+    shares=vote_counts,
+    seats=ha_allocations
 )
 
 passes_qc

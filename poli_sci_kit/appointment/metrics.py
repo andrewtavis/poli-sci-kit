@@ -2,20 +2,19 @@
 Appointment Metrics
 -------------------
 
-Functions to analyze the results of appointments, allocations and other social science scenarious
+Functions to analyze the results of appointments, allocations and other social science scenarios
 
 Based on
-  Kohler, U., and Zeh, J. (2012). “Apportionment methods”.
-  The Stata Journal, Vol. 12, No. 3, pp. 375–392.
-  URL: https://journals.sagepub.com/doi/pdf/10.1177/1536867X1201200303
+    Kohler, U., and Zeh, J. (2012). “Apportionment methods”.
+    The Stata Journal, Vol. 12, No. 3, pp. 375–392.
+    URL: https://journals.sagepub.com/doi/pdf/10.1177/1536867X1201200303
 
-  Karpov, A. (2008). "Measurement of disproportionality in proportional representation systems".
-  Mathematical and Computer Modelling, Vol. 48, 1421-1438.
-  URL: https://www.sciencedirect.com/science/article/pii/S0895717708001933
+    Karpov, A. (2008). "Measurement of disproportionality in proportional representation systems".
+    Mathematical and Computer Modelling, Vol. 48, 1421-1438.
+    URL: https://www.sciencedirect.com/science/article/pii/S0895717708001933
 
-  Taagepera, R., Grofman, B. (2003). "Mapping the Indices of Seats-Votes Disproportionality and
-  Inter-Election Volatility". Party Politics, Vol. 9, No. 6, pp. 659–677.
-  URL: https://escholarship.org/content/qt0m9912ff/qt0m9912ff.pdf.
+    Taagepera, R., Grofman, B. (2003). "Mapping the Indices of Seats-Votes Disproportionality and Inter-Election Volatility". Party Politics, Vol. 9, No. 6, pp. 659–677.
+    URL: https://escholarship.org/content/qt0m9912ff/qt0m9912ff.pdf.
 
 Contents
     ideal_share,
@@ -54,7 +53,7 @@ def ideal_share(share, total_shares, total_alloc):
     Returns
     -------
         ideal : float
-            The ideal share that would be alocated
+            The ideal share that would be allocated
     """
     ideal = 1.0 * share / total_shares * total_alloc
 
@@ -274,9 +273,9 @@ def total_rep_weight_error(shares, allocations, proportional=True):
     return total_rw_err
 
 
-def div_index(shares, q=None, mertric_type="Shannon"):
+def div_index(shares, q=None, metric_type="Shannon"):
     """
-    Calculates the diversity index: the uncertainty assosciated with predicting further elements within the vote or population distributions
+    Calculates the diversity index: the uncertainty associated with predicting further elements within the vote or population distributions
 
     Parameters
     ----------
@@ -286,13 +285,13 @@ def div_index(shares, q=None, mertric_type="Shannon"):
         q : float
             The order of diversity (a weight value for the sensitivity of the diversity value to rare vs. abundant)
 
-        mertric_type : str (default=Shannon)
-            The type of formular to use
+        metric_type : str (default=Shannon)
+            The type of formula to use
 
             Options:
                 The available measures of diversity
 
-                - Shannon : approaches zero (one) when shares are concentrated (dispersed), uncertainy (certainty) of the next element goes to zero
+                - Shannon : approaches zero (one) when shares are concentrated (dispersed), uncertainty (certainty) of the next element goes to zero
 
                 - Renyi : generalization of the Shannon diversity
 
@@ -306,47 +305,47 @@ def div_index(shares, q=None, mertric_type="Shannon"):
 
     Returns
     -------
-        div_index : float
+        index : float
             The measure of diversity given the share distribution
     """
     norm_shares = normalize(vals=shares)
 
-    if mertric_type == "Shannon":
-        div_index = -1 * sum([share * log(share) for share in norm_shares])
+    if metric_type == "Shannon":
+        index = -1 * sum([share * log(share) for share in norm_shares])
 
-    elif mertric_type == "Renyi":
+    elif metric_type == "Renyi":
         assert (
             q
         ), "The order of diversity 'q' argument must be used with Renyi diversity calculations"
-        div_index = 1.0 / (1 - q) * log(sum([share ** q for share in norm_shares]))
+        index = 1.0 / (1 - q) * log(sum([share ** q for share in norm_shares]))
 
-    elif mertric_type == "Simpson":
-        div_index = sum([share ** 2 for share in norm_shares])
+    elif metric_type == "Simpson":
+        index = sum([share ** 2 for share in norm_shares])
 
-    elif mertric_type == "Gini-Simpson":
-        div_index = 1 - sum([share ** 2 for share in norm_shares])
+    elif metric_type == "Gini-Simpson":
+        index = 1 - sum([share ** 2 for share in norm_shares])
 
-    elif mertric_type == "Berger-Parker":
-        div_index = max(norm_shares)
+    elif metric_type == "Berger-Parker":
+        index = max(norm_shares)
 
-    elif mertric_type == "Effective":
+    elif metric_type == "Effective":
         assert (
             q
         ), "The order of diversity 'q' argument must be used with Effective diversity calculations"
         if q == 1:
-            div_index = exp(div_index(shares=shares, q=None, mertric_type="Shannon"))
+            index = exp(div_index(shares=shares, q=None, metric_type="Shannon"))
         else:
-            div_index = sum([share ** q for share in norm_shares]) ** (1.0 / (1 - q))
+            index = sum([share ** q for share in norm_shares]) ** (1.0 / (1 - q))
 
     else:
         ValueError(
-            f"{mertric_type} is not a valid value for the 'mertric_type' agrument."
+            f"{metric_type} is not a valid value for the 'metric_type' argument."
         )
 
-    return div_index
+    return index
 
 
-def effective_number_of_groups(shares, mertric_type="Laakso-Taagepera"):
+def effective_number_of_groups(shares, metric_type="Laakso-Taagepera"):
     """
     Calculates the effective number of groups given vote or population distributions
 
@@ -355,32 +354,32 @@ def effective_number_of_groups(shares, mertric_type="Laakso-Taagepera"):
         shares : list
             The proportion of the original shares for the regions or groups
 
-        mertric_type : str (default=Laakso-Taagepera, option=Golosov, Inverse-Simpson)
-            The type of formular to use
+        metric_type : str (default=Laakso-Taagepera, option=Golosov, Inverse-Simpson)
+            The type of formula to use
 
     Returns
     -------
         num_groups : float
-            A float representing the effiecient number of groups given the share distributions
+            A float representing the efficient number of groups given the share distributions
     """
     norm_shares = normalize(vals=shares)
 
-    if mertric_type == "Laakso-Taagepera":
+    if metric_type == "Laakso-Taagepera":
         num_groups = 1.0 / sum([share ** 2 for share in norm_shares])
 
-    elif mertric_type == "Golosov":
+    elif metric_type == "Golosov":
         max_share = max(shares)
         num_groups = sum(
             [share / (share + max_share ** 2 - share ** 2) for share in norm_shares]
         )
 
-    elif mertric_type == "Inverse-Simpson":
-        num_groups = 1.0 / div_index(shares=shares, mertric_type="Shannon")
+    elif metric_type == "Inverse-Simpson":
+        num_groups = 1.0 / div_index(shares=shares, metric_type="Shannon")
 
     return num_groups
 
 
-def dispr_index(shares, allocations, mertric_type="Gallagher"):
+def dispr_index(shares, allocations, metric_type="Gallagher"):
     """
     Measures of the degree to which the actual allocations deviates from the shares, with larger indexes implying greater disproportionality
 
@@ -392,11 +391,11 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
         allocations : list
             The share of allocations given to the regions or groups
 
-        mertric_type : str (default=Gallagher)
-            The type of formular to use
+        metric_type : str (default=Gallagher)
+            The type of formula to use
 
             Options:
-                The available meaures of disproportionality
+                The available measures of disproportionality
 
                 - Gallagher : measure of absolute difference in percent of allocations received to true proportion
                     Note 1: accounts for magnitudes of the individual shifts
@@ -436,7 +435,7 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
 
     Returns
     -------
-        dispr_index : float
+        index : float
             A measure of disproportionality between allocations and original shares
     """
     assert len(shares) == len(
@@ -453,8 +452,8 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
         "Cox-Shugart",
         "Gini",
     ]
-    assert mertric_type in available_metrics, (
-        "{} is not a valid value for the 'mertric_type' agrument. Please choose from the following options: "
+    assert metric_type in available_metrics, (
+        f"{metric_type} is not a valid value for the 'metric_type' argument. Please choose from the following options: "
         + ", ".join(available_metrics)
         + "."
     )
@@ -462,8 +461,8 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
     norm_shares = normalize(vals=shares)
     norm_allocations = normalize(vals=allocations)
 
-    if mertric_type == "Gallagher":
-        dispr_index = sqrt(1.0 / 2) * sqrt(
+    if metric_type == "Gallagher":
+        index = sqrt(1.0 / 2) * sqrt(
             sum(
                 [
                     (share - allocation) ** 2
@@ -472,8 +471,8 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
             )
         )
 
-    elif mertric_type == "Loosemore-Hanby":
-        dispr_index = (
+    elif metric_type == "Loosemore–Hanby":
+        index = (
             1.0
             / 2
             * sum(
@@ -484,13 +483,13 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
             )
         )
 
-    elif mertric_type == "Rose":
-        dispr_index = 100 - dispr_index(
-            shares=shares, allocations=allocations, mertric_type="Loosemore-Hanby"
+    elif metric_type == "Rose":
+        index = 100 - dispr_index(
+            shares=shares, allocations=allocations, metric_type="Loosemore–Hanby"
         )
 
-    elif mertric_type == "Rae":
-        dispr_index = (
+    elif metric_type == "Rae":
+        index = (
             1.0
             / len(norm_shares)
             * sum(
@@ -501,21 +500,21 @@ def dispr_index(shares, allocations, mertric_type="Gallagher"):
             )
         )
 
-    elif mertric_type in ["Sainte-Laguë", "Sainte-Lague"]:
-        dispr_index = sum(
+    elif metric_type in ["Sainte-Laguë", "Sainte-Lague"]:
+        index = sum(
             1.0 / share * (share - allocation) ** 2
             for share, allocation in zip(norm_shares, norm_allocations)
         )
 
-    elif mertric_type in ["dHondt", "dhondt", "d’Hondt", "d’hondt"]:
-        dispr_index = max(
+    elif metric_type in ["dHondt", "dhondt", "d’Hondt", "d’hondt"]:
+        index = max(
             [
                 1.0 * allocation / share
                 for share, allocation in zip(norm_shares, norm_allocations)
             ]
         )
 
-    elif mertric_type == "Cox-Shugart":
-        dispr_index = linregress(shares, allocations)[0]
+    elif metric_type == "Cox-Shugart":
+        index = linregress(shares, allocations)[0]
 
-    return dispr_index
+    return index

@@ -2,7 +2,7 @@
 Appointment Methods
 -------------------
 
-Methods used to derive allocations based on recevied shares
+Methods used to derive allocations based on received shares
 
 Contents
     largest_remainder (aka Hamilton, Vinton, Hare–Niemeyer)
@@ -328,7 +328,8 @@ def highest_average(
     else:
         allocations = [0] * len(shares)
 
-    while total_alloc > 0:
+    remaining_alloc = total_alloc
+    while remaining_alloc > 0:
 
         if averaging_style == "Jefferson":
             if modifier:
@@ -395,14 +396,14 @@ def highest_average(
         ]
 
         # Normal assignment to all that have the max quotient
-        if len(max_quotient_indexes) <= total_alloc:
+        if len(max_quotient_indexes) <= remaining_alloc:
             for i in max_quotient_indexes:
                 allocations[i] += 1
 
-            total_alloc -= len(max_quotient_indexes)
+            remaining_alloc -= len(max_quotient_indexes)
 
         # Tie break conditions
-        elif len(max_quotient_indexes) > total_alloc:
+        elif len(max_quotient_indexes) > remaining_alloc:
             if tie_break == "majority":
                 sorted_by_results = [
                     i[0]
@@ -417,7 +418,7 @@ def highest_average(
 
                 if len(equal_to_highest) == 1:
                     allocations[sorted_by_results[0]] += 1
-                    total_alloc -= 1
+                    remaining_alloc -= 1
 
                 else:
                     # Defaults to random for those with equal allocation and remainder
@@ -426,7 +427,7 @@ def highest_average(
             if tie_break == "random":
                 shuffle(max_quotient_indexes)
                 allocations[max_quotient_indexes[0]] += 1
-                total_alloc -= 1
+                remaining_alloc -= 1
 
             else:
                 ValueError(
@@ -442,6 +443,7 @@ def highest_average(
             non_majority_shares = [s for s in shares if s != max(shares)]
             reduced_seats = total_alloc - int(ceil(total_alloc / 2))
             non_majority_allocations = highest_average(
+                averaging_style=averaging_style,
                 shares=non_majority_shares,
                 total_alloc=reduced_seats,
                 alloc_threshold=alloc_threshold,
@@ -449,7 +451,6 @@ def highest_average(
                 tie_break=tie_break,
                 majority_bonus=False,
                 modifier=modifier,
-                averaging_style=averaging_style,
             )
 
             # Insert majority allocation
