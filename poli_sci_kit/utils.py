@@ -51,10 +51,10 @@ def gen_faction_groups(original_list, factions_indexes):
     Parameters
     ----------
         original_list : list
-            The data to be reorganizaed
+            The data to be reorganized
 
         factions_indexes : list of lists (contains ints)
-           The structure of original_list indexes to output
+            The structure of original_list indexes to output
 
     Returns
     -------
@@ -188,7 +188,7 @@ def gen_parl_points(
             item for sublist in row_position_indexes for item in sublist
         ]
 
-        # Index the group and depleat a copy of allocations at its location
+        # Index the group and deplete a copy of allocations at its location
         group_index = 0
         seats_to_allocate = allocations.copy()
         row_index = 0
@@ -316,7 +316,7 @@ def gen_parl_points(
             for row in bottom_rows:
                 total_bottom_seats += len(df_seat_lctns[df_seat_lctns["y_loc"] == row])
 
-            # Index the group and depleat a copy of allocations at its location
+            # Index the group and deplete a copy of allocations at its location
             group_index = 0
             seats_to_allocate = allocations.copy()
 
