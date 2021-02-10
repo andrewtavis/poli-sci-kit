@@ -94,17 +94,17 @@ Let's visualize the above results:
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import poli_sci_kit
-import stdviz
+import pltviz
 
 # German political parties
 parties = ['CDU/CSU', 'FDP', 'Greens', 'Die Linke', 'SPD', 'AfD']
 party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0']
 ```
 
-Baseline visualization with [stdviz](https://github.com/andrewtavis/stdviz):
+Baseline visualization with [pltviz](https://github.com/andrewtavis/pltviz):
 
 ```python
-ax = stdviz.plot.bar(
+ax = pltviz.bar(
     counts=ha_allocations,
     names=parties,
     faction_names=None,
@@ -116,7 +116,7 @@ ax = stdviz.plot.bar(
 )
 
 # Initialize empty handles and labels
-handles, labels = stdviz.plot.legend.gen_elements()
+handles, labels = pltviz.legend.gen_elements()
 
 # Add a majority line
 ax.axhline(int(sum(ha_allocations) / 2) + 1, ls="--", color="black")
@@ -203,7 +203,7 @@ ax = poli_sci_kit.plot.dispr_bar(
     axis=None,
 )
 
-handles, labels = stdviz.plot.legend.gen_elements(
+handles, labels = pltviz.legend.gen_elements(
     counts=[round(v / sum(votes), 4) for v in votes],
     names=parties,
     colors=party_colors,
