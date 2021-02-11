@@ -85,7 +85,6 @@ dependencies:
   - zlib=1.2.11
   - zstd=1.4.5
   - pip:
-    - colormath==3.0.0
-    - decorator==4.4.2
-    - networkx==2.5
-    - poli-sci-kit==0.0.3
+      - colormath==3.0.0
+      - decorator==4.4.2
+      - networkx==2.5
