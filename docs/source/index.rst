@@ -45,6 +45,12 @@ Installation
 
     pip install poli-sci-kit
 
+.. code-block:: shell
+
+    git clone https://github.com/andrewtavis/poli-sci-kit.git
+    cd poli-sci-kit
+    python setup.py install
+
 .. code-block:: python
 
     import poli_sci_kit
