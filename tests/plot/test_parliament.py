@@ -2,6 +2,7 @@
 Parliament Plot Tests
 ---------------------
 """
+
 import matplotlib.pyplot as plt
 
 from poli_sci_kit import plot

@@ -1,4 +1,8 @@
-"""Fixtures"""
+"""
+Fixtures
+--------
+"""
+
 import pytest
 
 from poli_sci_kit.utils import normalize
@@ -6,6 +10,9 @@ from poli_sci_kit.utils import gen_list_of_lists
 from poli_sci_kit.utils import gen_faction_groups
 from poli_sci_kit.utils import gen_parl_points
 from poli_sci_kit.utils import swap_parl_allocations
+from poli_sci_kit.utils import hex_to_rgb
+from poli_sci_kit.utils import rgb_to_hex
+from poli_sci_kit.utils import scale_saturation
 
 from poli_sci_kit.appointment.checks import quota_condition
 from poli_sci_kit.appointment.checks import consistency_condition
