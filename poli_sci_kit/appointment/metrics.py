@@ -152,17 +152,17 @@ def total_alloc_to_share_error(shares, allocations, proportional=True):
 
     sqr_asr_errors = [
         sqr_alloc_to_share_error(
-            share=shares[i],
+            share=s,
             total_shares=sum_share,
             allocation=allocations[i],
             total_alloc=sum_allocations,
         )
-        for i in range(len(shares))
+        for i, s in enumerate(shares)
     ]
 
     if proportional:
         proportional_errors = [
-            shares[i] / sum_share * sqr_asr_errors[i] for i in range(len(shares))
+            s / sum_share * sqr_asr_errors[i] for i, s in enumerate(shares)
         ]
         total_asr_err = sum(proportional_errors)
 
@@ -253,17 +253,17 @@ def total_rep_weight_error(shares, allocations, proportional=True):
 
     sqr_rw_errors = [
         sqr_rep_weight_error(
-            share=shares[i],
+            share=s,
             total_shares=sum_share,
             allocation=allocations[i],
             total_alloc=sum_allocations,
         )
-        for i in range(len(shares))
+        for i, s in enumerate(shares)
     ]
 
     if proportional:
         proportional_errors = [
-            shares[i] / sum_share * sqr_rw_errors[i] for i in range(len(shares))
+            s / sum_share * sqr_rw_errors[i] for i, s in enumerate(shares)
         ]
         total_rw_err = sum(proportional_errors)
 

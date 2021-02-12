@@ -106,8 +106,8 @@ def parliament(
         labels = list(df_seat_lctns["group"].unique())
 
     # Loop through groups and plot their allocations
-    for g in range(len(labels)):
-        df_subsetted = df_seat_lctns[df_seat_lctns["group"] == labels[g]]
+    for g, lbl in enumerate(labels):
+        df_subsetted = df_seat_lctns[df_seat_lctns["group"] == lbl]
 
         ax = sns.scatterplot(
             data=df_subsetted,

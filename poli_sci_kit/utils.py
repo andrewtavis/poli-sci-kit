@@ -173,17 +173,17 @@ def gen_parl_points(
         seats_shift = [
             i * int(num_rows / 2) for i in seats_shift
         ]  # greater shift for higher rows for more equal spacing
-        seats_per_row = [row_seats[i] + seats_shift[i] for i in range(len(row_seats))]
+        seats_per_row = [rs + seats_shift[i] for i, rs in enumerate(row_seats)]
 
         row_indexes = []
         row_position_indexes = []
-        for i in range(len(seats_per_row)):
-            arc_xs, arc_ys = arc_coordinates(radii[i], seats_per_row[i])
+        for i, spr in enumerate(seats_per_row):
+            arc_xs, arc_ys = arc_coordinates(radii[i], spr)
             xs += arc_xs
             ys += arc_ys
-            row_indexes += [i] * seats_per_row[i]
+            row_indexes += [i] * spr
             # List of lists for position indexes such that they can be accessed by row and position
-            row_position_indexes += [list(range(seats_per_row[i]))]
+            row_position_indexes += [list(range(spr))]
 
         for i in range(total_seats):
             df_seat_lctns.loc[i, "x_loc"] = xs[i]
@@ -263,9 +263,7 @@ def gen_parl_points(
                 x_coordinate += 2
 
             df_seat_lctns["row"] = [0] * len(df_seat_lctns)
-            list_of_name_lists = [
-                [labels[i]] * allocations[i] for i in range(len(allocations))
-            ]
+            list_of_name_lists = [[labels[i]] * a for i, a in enumerate(allocations)]
             df_seat_lctns["group"] = [
                 item for sublist in list_of_name_lists for item in sublist
             ]

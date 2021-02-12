@@ -77,14 +77,13 @@ def dispr_bar(
         seat_percents = [i / sum(allocations) for i in allocations]
 
     disproportionality = [
-        round(seat_percents[i] - share_percents[i], 4)
-        for i in range(len(share_percents))
+        round(seat_percents[i] - p, 4) for i, p in enumerate(share_percents)
     ]
 
     if percent == True:
         disproportionality = [
-            round(disproportionality[i] / share_percents[i] * 100, 4)
-            for i in range(len(share_percents))
+            round(disproportionality[i] / p * 100, 4)
+            for i, p in enumerate(share_percents)
         ]
 
     if not labels:
@@ -145,9 +144,7 @@ def dispr_bar(
     ax.set_xlim([0, prev_bar_position * 1.05])
     ax.axhline(0, ls="-", color="black")  # so the x-axis is distinct
     ax.set_xticks(
-        ticks=[
-            bar_positions[i] - (bar_widths[i] / 2.0) for i in range(len(bar_positions))
-        ]
+        ticks=[p - (bar_widths[i] / 2.0) for i, p in enumerate(bar_positions)]
     )
     ax.set_xticklabels(labels=[labels[i] for i in range(len(bar_widths))])
 

@@ -94,9 +94,7 @@ def largest_remainder(
         passed_threshold = [
             True if 1.0 * s / sum(shares) > alloc_threshold else False for s in shares
         ]
-        shares = [
-            shares[i] if passed_threshold[i] == True else 0 for i in range(len(shares))
-        ]
+        shares = [s if passed_threshold[i] == True else 0 for i, s in enumerate(shares)]
 
     original_remainders = None
     if min_alloc != None and min_alloc > 0:
@@ -115,10 +113,8 @@ def largest_remainder(
 
         # If possible, append the original allocations with the baseline such that the seats for remainders are used for the minimum allocation
         original_with_baseline = [
-            original_allocations[i]
-            if original_allocations[i] >= baseline_allocations[i]
-            else baseline_allocations[i]
-            for i in range(len(original_allocations))
+            a if a >= baseline_allocations[i] else baseline_allocations[i]
+            for i, a in enumerate(original_allocations)
         ]
         if sum(original_with_baseline) <= total_alloc:
             original_with_baseline = [int(a) for a in original_with_baseline]
@@ -205,9 +201,7 @@ def largest_remainder(
             )
 
     if min_alloc:
-        allocations = [
-            allocations[i] + original_with_baseline[i] for i in range(len(allocations))
-        ]
+        allocations = [a + original_with_baseline[i] for i, a in enumerate(allocations)]
 
     if majority_bonus:
         # If a single majority group does not receive at least 50%, then they are given it, and assignment is redone for the rest
@@ -312,9 +306,7 @@ def highest_average(
         passed_threshold = [
             True if 1.0 * i / sum(shares) > alloc_threshold else False for i in shares
         ]
-        shares = [
-            shares[i] if passed_threshold[i] == True else 0 for i in range(len(shares))
-        ]
+        shares = [s if passed_threshold[i] == True else 0 for i, s in enumerate(shares)]
 
     if min_alloc != None and min_alloc > 0:
         assert (
