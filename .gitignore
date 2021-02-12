@@ -23,8 +23,6 @@ __pycache__
 env
 venv
 poli-sci-kit-dev
-# Testing files
-.coverage
 
 # Documentation files
 #####################
@@ -37,4 +35,5 @@ research_papers
 
 # Testing files
 ###############
+.coverage
 _*.ipynb

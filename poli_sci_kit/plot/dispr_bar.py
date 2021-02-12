@@ -2,7 +2,7 @@
 Disproportionality Bar Plot
 ---------------------------
 
-Contents
+Contents:
     dispr_bar
 """
 

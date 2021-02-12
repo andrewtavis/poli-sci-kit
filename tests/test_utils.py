@@ -1,6 +1,6 @@
 """
 Utilities Tests
------------
+---------------
 """
 
 from poli_sci_kit import utils

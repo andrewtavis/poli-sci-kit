@@ -4,7 +4,7 @@ Appointment Methods
 
 Methods used to derive allocations based on received shares
 
-Contents
+Contents:
     largest_remainder (aka Hamilton, Vinton, Hare–Niemeyer)
 
         Options: Hare, Droop, Hagenbach–Bischoff

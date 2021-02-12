@@ -4,7 +4,7 @@ Utilities
 
 Utility functions for general operations and plotting
 
-Contents
+Contents:
     normalize,
     gen_list_of_lists,
     gen_faction_groups,
