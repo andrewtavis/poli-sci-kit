@@ -36,10 +36,12 @@ jobs:
         conda env create --file environment.yml
         eval "$(conda shell.bash hook)"
         conda activate psk-dev
+    # - name: Build
+    #     eval "$(conda shell.bash hook)"
+    #     pip install -e .
     - name: Test and generate coverage
       run: |
-        pip install pytest
-        pip install pytest-cov
+        eval "$(conda shell.bash hook)"
         pytest --cov=./ --cov-report=xml
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
