@@ -167,7 +167,6 @@ def test_lr_threshold(short_votes_list, seats_large):
 
 def test_lr_modifier(short_votes_list):
     seats = 5
-
     results = [3, 1, 1, 0, 0]
 
     assert (
@@ -186,7 +185,6 @@ def test_lr_modifier(short_votes_list):
 
 def test_lr_tie_break(tie_votes_list):
     seats = 8
-
     results_1 = [3, 2, 1, 1, 1]
     results_2 = [3, 1, 2, 1, 1]
 
@@ -203,7 +201,6 @@ def test_lr_tie_break(tie_votes_list):
 
 def test_lr_majority(tie_votes_list):
     seats = 8
-
     results = [4, 1, 1, 1, 1]
 
     assert (
