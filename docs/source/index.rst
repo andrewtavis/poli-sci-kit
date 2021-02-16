@@ -5,7 +5,7 @@
     :target: https://github.com/andrewtavis/poli-sci-kit
 ============
 
-|rtd| |ci| |codecov| |pyversions| |pypi| |pypistatus| |license| |codestyle| |contributions| |coc|
+|rtd| |ci| |codecov| |pyversions| |pypi| |pypistatus| |license| |contributions| |coc| |codestyle|
 
 .. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
