@@ -10,16 +10,16 @@
 .. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
 
-.. |ci| image:: https://github.com/andrewtavis/poli-sci-kit/workflows/CI/badge.svg
+.. |ci| image:: https://img.shields.io/github/workflow/status/andrewtavis/poli-sci-kit/CI?logo=github
     :target: https://github.com/andrewtavis/poli-sci-kit/actions?query=workflow%3ACI
 
 .. |codecov| image:: https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg
     :target: https://codecov.io/gh/andrewtavis/poli-sci-kit
 
-.. |pyversions| image:: https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python&logoColor=FFD43B&color=306998
     :target: https://pypi.org/project/poli-sci-kit/
 
-.. |pypi| image:: https://img.shields.io/pypi/v/poli-sci-kit.svg
+.. |pypi| image:: https://img.shields.io/pypi/v/poli-sci-kit.svg?color=4B8BBE
     :target: https://pypi.org/project/poli-sci-kit/
 
 .. |pypistatus| image:: https://img.shields.io/pypi/status/poli-sci-kit.svg
@@ -31,7 +31,7 @@
 .. |contributions| image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg
     :target: https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CONTRIBUTING.md
 
-.. |coc| image:: https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg
+.. |coc| image:: https://img.shields.io/badge/coc-contributor%20convent-ff69b4.svg
     :target: https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CODE_OF_CONDUCT.md
 
 .. |codestyle| image:: https://img.shields.io/badge/code%20style-black-000000.svg
