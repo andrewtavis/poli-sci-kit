@@ -96,63 +96,16 @@ Allocation consistency can further be checked using dataframes of shares and sea
 
 poli-sci-kit provides Python only implementations of common electoral plots.
 
-Let's visualize the above results:
+Visualizing the above results:
 
 ```python
 import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
 import poli_sci_kit
-import pltviz
 
 # German political parties
 parties = ['CDU/CSU', 'FDP', 'Greens', 'Die Linke', 'SPD', 'AfD']
 party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0']
 ```
-
-Baseline visualization with [pltviz](https://github.com/andrewtavis/pltviz):
-
-```python
-ax = pltviz.plot.bar(
-    counts=ha_allocations,
-    labels=parties,
-    faction_labels=None,
-    colors=party_colors,
-    horizontal=False,
-    stacked=False,
-    label_bars=True,
-    axis=None,
-)
-
-# Initialize empty handles and labels
-handles, labels = pltviz.plot.legend.gen_elements()
-
-# Add a majority line
-ax.axhline(int(sum(ha_allocations) / 2) + 1, ls="--", color="black")
-handles.insert(0, Line2D([0], [0], linestyle="--", color="black"))
-labels.insert(0, "Majority: {} seats".format(int(sum(ha_allocations) / 2) + 1))
-
-ax.legend(
-    handles=handles,
-    labels=labels,
-    title="Bundestag: {} seats".format(sum(ha_allocations)),
-    loc="upper left",
-    bbox_to_anchor=(0, 0.9),
-    title_fontsize=20,
-    fontsize=15,
-    frameon=True,
-    facecolor="#FFFFFF",
-    framealpha=1,
-)
-
-ax.set_ylabel("Seats", fontsize=15)
-ax.set_xlabel("Party", fontsize=15)
-
-plt.show()
-```
-
-<p align="middle">
-  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/main/resources/gh_images/bar.png" width="600" />
-</p>
 
 ### Parliament Plots
 
