@@ -22,7 +22,7 @@ def test_dispr_bar_percent(monkeypatch, short_votes_list, allocations):
     )
 
 
-def test_dispr_bar_percent(
+def test_dispr_bar_subset(
     monkeypatch, short_votes_list, allocations, total_shares, seats
 ):
     monkeypatch.setattr(plt, "show", lambda: None)
