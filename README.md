@@ -211,7 +211,7 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
     - Allocates seats to a version of the US House of Representatives that includes all US territories and Washington DC given census data, with this further being used to derive relative vote strengths of state citizens in the US presidential election
 
 - [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb)
-    - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain counties and organizations, the distribution of seats based on Freedom House indexes, and disproportionality metrics
+    - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain countries and organizations, the distribution of seats based on Freedom House indexes, as well as disproportionality metrics
 
 # To-Do [`↩`](#jumpto)
 
