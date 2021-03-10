@@ -37,6 +37,9 @@
 .. |codestyle| image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/psf/black
 
+.. |colab| image:: https://img.shields.io/badge/%20-Open%20in%20Colab-097ABB.svg?logo=google-colab&color=097ABB&labelColor=525252
+    :target: https://colab.research.google.com/github/andrewtavis/poli-sci-kit
+
 Political elections, appointment, analysis and visualization in Python
 
 Installation
