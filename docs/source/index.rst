@@ -5,7 +5,7 @@
     :target: https://github.com/andrewtavis/poli-sci-kit
 ============
 
-|rtd| |ci| |codecov| |pyversions| |pypi| |pypistatus| |license| |contributions| |coc| |codestyle| |colab|
+|rtd| |ci| |codecov| |pyversions| |pypi| |pypistatus| |license| |coc| |codestyle| |colab|
 
 .. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
@@ -27,9 +27,6 @@
 
 .. |license| image:: https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg
     :target: https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE.txt
-
-.. |contributions| image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg
-    :target: https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CONTRIBUTING.md
 
 .. |coc| image:: https://img.shields.io/badge/coc-Contributor%20Covenant-ff69b4.svg
     :target: https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CODE_OF_CONDUCT.md
