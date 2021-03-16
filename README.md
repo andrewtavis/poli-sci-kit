@@ -157,6 +157,8 @@ A novel addition to social science analysis is the [disproportionality bar plot]
 An example follows:
 
 ```python
+import pltviz
+
 ax = poli_sci_kit.plot.dispr_bar(
     shares=votes,
     allocations=ha_allocations,
@@ -200,7 +202,7 @@ plt.show()
 ```
 
 <p align="middle">
-  <img src="https://github.com/andrewtavis/poli-sci-kit/blob/main/resources/gh_images/dispr_bar.png" width="600" />
+  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/gh_images/dispr_bar.png" width="600" />
 </p>
 
 # Examples [`↩`](#jumpto)
