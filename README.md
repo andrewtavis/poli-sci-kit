@@ -17,7 +17,7 @@
 
 ### Political elections, appointment, analysis and visualization in Python
 
-**Jump to:**<a id="jumpto"></a> [Appointment](#appointment) • [Plotting](#plotting) • [Examples](#examples) • [To-Do](#to-do)
+**Contents:**<a id="contents"></a> [Appointment](#appointment) • [Plotting](#plotting) • [Examples](#examples) • [To-Do](#to-do)
 
 **poli-sci-kit** is a Python package for political science appointment and election analysis. The goal is to provide a comprehensive tool for all methods needed to analyze and simulate election results. See the [documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for a full outline of the package including algorithms and visualization techniques.
 
@@ -39,7 +39,7 @@ python setup.py install
 import poli_sci_kit
 ```
 
-# Appointment [`↩`](#jumpto) <a id="appointment"></a>
+# Appointment [`↩`](#contents) <a id="appointment"></a>
 
 [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Included methods are:
 
@@ -97,7 +97,7 @@ passes_qc
 
 Allocation consistency can further be checked using dataframes of shares and seats given electoral settings. See [appointment.checks](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/checks.py) and [the documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for explanations of method checks.
 
-# Plotting [`↩`](#jumpto) <a id="plotting"></a>
+# Plotting [`↩`](#contents) <a id="plotting"></a>
 
 poli-sci-kit provides Python only implementations of common electoral plots.
 
@@ -204,7 +204,7 @@ plt.show()
   <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/gh_images/dispr_bar.png" width="600" />
 </p>
 
-# Examples [`↩`](#jumpto) <a id="examples"></a>
+# Examples [`↩`](#contents) <a id="examples"></a>
 
 Examples in poli-sci-kit use publicly available Wikidata statistics sourced via the Python package [wikirepo](https://github.com/andrewtavis/wikirepo). Current examples include:
 
@@ -214,7 +214,7 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 - [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb)
     - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain countries and organizations, the distribution of seats based on Freedom House indexes, as well as disproportionality metrics
 
-# To-Do [`↩`](#jumpto) <a id="to-do"></a>
+# To-Do [`↩`](#contents) <a id="to-do"></a>
 
 - Checks for [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) implementations
 - Adding the [Adams method](https://en.wikipedia.org/wiki/Highest_averages_method) to [appointment.methods.highest_average](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py)
