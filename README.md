@@ -23,7 +23,7 @@
 
 # Installation
 
-poli-sci-kit can be downloaded from pypi via pip or sourced directly from this repository:
+poli-sci-kit can be downloaded from PyPI via pip or sourced directly from this repository:
 
 ```bash
 pip install poli-sci-kit
