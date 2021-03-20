@@ -5,7 +5,7 @@
     :target: https://github.com/andrewtavis/poli-sci-kit
 ============
 
-|rtd| |ci| |codecov| |pyversions| |pypi| |pypistatus| |license| |coc| |codestyle| |colab|
+|rtd| |ci| |codecov| |quality| |pyversions| |pypi| |pypistatus| |license| |coc| |codestyle| |colab|
 
 .. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
@@ -15,6 +15,9 @@
 
 .. |codecov| image:: https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg
     :target: https://codecov.io/gh/andrewtavis/poli-sci-kit
+
+.. |quality| image:: https://img.shields.io/codacy/grade/ed790ce081e3459e8c8d6d0b3a07634a?logo=codacy
+    :target: https://app.codacy.com/gh/andrewtavis/poli-sci-kit/dashboard
 
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python&logoColor=FFD43B&color=306998
     :target: https://pypi.org/project/poli-sci-kit/
