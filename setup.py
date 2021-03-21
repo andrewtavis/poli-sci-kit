@@ -2,16 +2,14 @@ try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
-from setuptools import find_packages
+from setuptools import find_namespace_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup_args = dict(
     name="poli-sci-kit",
-    packages=find_packages(where="src"),
-    package_dir={"": "src"},
-    version="0.1.2.3",
+    version="0.1.2.2",
     author="Andrew Tavis McAllister",
     author_email="andrew.t.mcallister@gmail.com",
     classifiers=[
@@ -30,6 +28,7 @@ setup_args = dict(
     description="Political elections, appointment, analysis and visualization in Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
+    packages=find_namespace_packages(),
     license="new BSD",
     url="https://github.com/andrewtavis/poli-sci-kit",
 )
