@@ -11,7 +11,7 @@ setup_args = dict(
     name="poli-sci-kit",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
-    version="0.1.2.3",
+    version="0.1.2.4",
     author="Andrew Tavis McAllister",
     author_email="andrew.t.mcallister@gmail.com",
     classifiers=[
