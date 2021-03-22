@@ -96,7 +96,8 @@ def dispr_bar(
             shares
         ), "The number of colors provided doesn't match the number of counts to be displayed"
         colors = [
-            utils.scale_saturation(rgb=utils.hex_to_rgb(c), sat=dsat) for c in colors
+            utils.scale_saturation(rgb_trip=utils.hex_to_rgb(c), sat=dsat)
+            for c in colors
         ]
         sns.set_palette(colors)
 
