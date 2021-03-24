@@ -5,9 +5,6 @@ Fixtures
 
 import pytest
 
-from poli_sci_kit.appointment.methods import largest_remainder
-from poli_sci_kit.appointment.methods import highest_average
-
 
 @pytest.fixture(params=[[2560, 3315, 995, 5012]])
 def votes(request):
