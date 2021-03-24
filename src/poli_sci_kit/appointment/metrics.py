@@ -55,9 +55,7 @@ def ideal_share(share, total_shares, total_alloc):
         ideal : float
             The ideal share that would be allocated
     """
-    ideal = 1.0 * share / total_shares * total_alloc
-
-    return ideal
+    return 1.0 * share / total_shares * total_alloc
 
 
 def alloc_to_share_ratio(share, total_shares, allocation, total_alloc):
@@ -353,18 +351,16 @@ def effective_number_of_groups(shares, metric_type="Laakso-Taagepera"):
     norm_shares = normalize(vals=shares)
 
     if metric_type == "Laakso-Taagepera":
-        num_groups = 1.0 / sum(share ** 2 for share in norm_shares)
+        return 1.0 / sum(share ** 2 for share in norm_shares)
 
     elif metric_type == "Golosov":
         max_share = max(shares)
-        num_groups = sum(
+        return sum(
             share / (share + max_share ** 2 - share ** 2) for share in norm_shares
         )
 
     elif metric_type == "Inverse-Simpson":
-        num_groups = 1.0 / div_index(shares=shares, metric_type="Shannon")
-
-    return num_groups
+        return 1.0 / div_index(shares=shares, metric_type="Shannon")
 
 
 def dispr_index(shares, allocations, metric_type="Gallagher"):
