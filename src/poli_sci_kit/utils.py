@@ -475,15 +475,14 @@ def hex_to_rgb(hex_rep):
         rgb_trip : tuple
             An RGB tuple color representation
     """
-    rgb_trip = sRGBColor(
+    return sRGBColor(
         *[int(hex_rep[i + 1 : i + 3], 16) for i in (0, 2, 4)], is_upscaled=True
     )
-    return rgb_trip
 
 
 def rgb_to_hex(rgb_trip):
     """
-    Converts rgb ratios to their hexadecimal representation
+    Converts rgb ratios to their hexadecimal representation.
 
     Parameters
     ----------
@@ -521,18 +520,16 @@ def scale_saturation(rgb_trip, sat):
         saturated_rgb : tuple
             colorsys.hls_to_rgb saturation of the given color
     """
-    if (type(rgb_trip) == str) and (len(rgb_trip) == 9) and (rgb_trip[-2:] == "00"):
+    if (isinstance(rgb_trip, str)) and (len(rgb_trip) == 9) and (rgb_trip[-2:] == "00"):
         # An RGBA has been provided and its alpha is 00, so return it for a transparent marker
         return rgb_trip
 
-    if (type(rgb_trip) == str) and (len(rgb_trip) == 7):
+    if (isinstance(rgb_trip, str)) and (len(rgb_trip) == 7):
         rgb_trip = hex_to_rgb(rgb_trip)
 
-    if type(rgb_trip) == sRGBColor:
+    if isinstance(rgb_trip, sRGBColor):
         rgb_trip = rgb_trip.get_value_tuple()
 
     h, l, s = colorsys.rgb_to_hls(*rgb_trip)
 
-    saturated_rgb = colorsys.hls_to_rgb(h, min(1, l * sat), s=s)
-
-    return saturated_rgb
+    return colorsys.hls_to_rgb(h, min(1, l * sat), s=s)

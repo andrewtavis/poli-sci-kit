@@ -83,9 +83,7 @@ def alloc_to_share_ratio(share, total_shares, allocation, total_alloc):
         asr : float
             The ratio of the allocations the region or group received to their proportion of the original shares
     """
-    asr = 1.0 * (allocation / total_alloc) / (share / total_shares)
-
-    return asr
+    return 1.0 * (allocation / total_alloc) / (share / total_shares)
 
 
 def sqr_alloc_to_share_error(share, total_shares, allocation, total_alloc):
@@ -118,9 +116,7 @@ def sqr_alloc_to_share_error(share, total_shares, allocation, total_alloc):
         total_alloc=total_alloc,
     )
 
-    sqr_asr_err = (asr - 1) ** 2
-
-    return sqr_asr_err
+    return (asr - 1) ** 2
 
 
 def total_alloc_to_share_error(shares, allocations, proportional=True):
@@ -187,9 +183,7 @@ def rep_weight(share, allocation):
         rep_weight : float
             The number of shares per allocation
     """
-    rep_weight = share / allocation
-
-    return rep_weight
+    return share / allocation
 
 
 def sqr_rep_weight_error(share, total_shares, allocation, total_alloc):

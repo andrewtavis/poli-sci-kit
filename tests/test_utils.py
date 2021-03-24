@@ -82,7 +82,7 @@ def test_hex_to_rgb():
 
 
 def test_rgb_to_hex():
-    assert utils.rgb_to_hex((1, 1, 1)) == "#ffffff"
+    assert utils.rgb_to_hex((1.0, 1.0, 1.0)) == "#ffffff"
 
 
 def test_scale_saturation():
