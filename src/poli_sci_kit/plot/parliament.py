@@ -2,6 +2,8 @@
 Parliament Plot
 ---------------
 
+The plotting function to create parliament plots.
+
 Contents:
     parliament
 """
@@ -26,7 +28,7 @@ def parliament(
     axis=None,
 ):
     """
-    Produces a parliament plot given seat allocations
+    Produces a parliament plot given seat allocations.
 
     Parameters
     ----------

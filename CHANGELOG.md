@@ -4,24 +4,24 @@ First stable release of poli-sci-kit
 
 Additions include:
 
-- Plotting functions for parliament allocations and seat disproportionality
+  - Plotting functions for parliament allocations and seat disproportionality
 
-- Full documentation of the package
+  - Full documentation of the package
 
-- Virtual environment files
+  - Virtual environment files
 
-- Bug fixes
+  - Bug fixes
 
-- Extensive testing of all modules with GH Actions and Codecov
+  - Extensive testing of all modules with GH Actions and Codecov
 
-- Code of conduct and contribution guidelines
+  - Code of conduct and contribution guidelines
 
 ### poli-sci-kit 0.0.2.1 (Dec 9, 2020)
 
 The minimum viable product of poli-sci-kit
 
-- Users are able to do political appointments using a variety of methods including largest remainder and highest average techniques
+  - Users are able to do political appointments using a variety of methods including largest   remainder and highest average techniques
 
-- Users are able to analyze the results of appointments
+  - Users are able to analyze the results of appointments
 
-- Usage examples have been created
+  - Usage examples have been created

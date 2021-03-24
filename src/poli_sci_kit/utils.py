@@ -2,14 +2,14 @@
 Utilities
 ---------
 
-Utility functions for general operations and plotting
+Utility functions for general operations and plotting.
 
 Contents:
     normalize,
     gen_list_of_lists,
     gen_faction_groups,
     gen_parl_points,
-    swap_parl_allocations
+    swap_parl_allocations,
     hex_to_rgb,
     rgb_to_hex,
     scale_saturation
@@ -26,28 +26,25 @@ from colormath.color_objects import sRGBColor
 def normalize(vals):
     """Returns respective normalized values"""
     total_vals = sum(vals)
-    proportions = [1.0 * v / total_vals for v in vals]
 
-    return proportions
+    return [1.0 * v / total_vals for v in vals]
 
 
 def gen_list_of_lists(original_list, new_structure):
-    """Generates a list of lists with a given structure from a given list"""
+    """Generates a list of lists with a given structure from a given list."""
     assert len(original_list) == sum(
         new_structure
     ), "The number of elements in the original list and desired structure don't match"
 
-    list_of_lists = [
+    return [
         [original_list[i + sum(new_structure[:j])] for i in range(new_structure[j])]
         for j in range(len(new_structure))
     ]
 
-    return list_of_lists
-
 
 def gen_faction_groups(original_list, factions_indexes):
     """
-    Reorders a list into a list of lists where sublists are faction amounts
+    Reorders a list into a list of lists where sublists are faction amounts.
 
     Parameters
     ----------
@@ -65,16 +62,15 @@ def gen_faction_groups(original_list, factions_indexes):
     factions_structure = [len(sublist) for sublist in factions_indexes]
     flat_indexes = [item for sublist in factions_indexes for item in sublist]
     ordered_original_list = [original_list[i] for i in flat_indexes]
-    factioned_list = gen_list_of_lists(ordered_original_list, factions_structure)
 
-    return factioned_list
+    return gen_list_of_lists(ordered_original_list, factions_structure)
 
 
 def gen_parl_points(
     allocations, labels=None, style="semicircle", num_rows=2, speaker=False
 ):
     """
-    Produces a df with coordinates for a parliament plot
+    Produces a df with coordinates for a parliament plot.
 
     Parameters
     ----------
@@ -142,7 +138,7 @@ def gen_parl_points(
 
         def arc_coordinates(r, seats):
             """
-            Generates an arc of the parliament plot given a radius and the number of seats
+            Generates an arc of the parliament plot given a radius and the number of seats.
             """
             angles = np.linspace(start=np.pi, stop=0, num=seats)
             x_coordinates, y_coordinates = [], []
@@ -430,7 +426,7 @@ def gen_parl_points(
 
 def swap_parl_allocations(df, row_0, pos_0, row_1, pos_1):
     """
-    Replaces two allocations of the parliament plot df to clean up coloration
+    Replaces two allocations of the parliament plot df to clean up coloration.
 
     Parameters
     ----------
@@ -467,7 +463,7 @@ def swap_parl_allocations(df, row_0, pos_0, row_1, pos_1):
 
 def hex_to_rgb(hex_rep):
     """
-    Converts a hexadecimal representation to its RGB ratios
+    Converts a hexadecimal representation to its RGB ratios.
 
     Parameters
     ----------
@@ -479,15 +475,14 @@ def hex_to_rgb(hex_rep):
         rgb_trip : tuple
             An RGB tuple color representation
     """
-    rgb_trip = sRGBColor(
+    return sRGBColor(
         *[int(hex_rep[i + 1 : i + 3], 16) for i in (0, 2, 4)], is_upscaled=True
     )
-    return rgb_trip
 
 
 def rgb_to_hex(rgb_trip):
     """
-    Converts rgb ratios to their hexadecimal representation
+    Converts rgb ratios to their hexadecimal representation.
 
     Parameters
     ----------
@@ -500,19 +495,17 @@ def rgb_to_hex(rgb_trip):
             The hex representation of the color
     """
     trip_0, trip_1, trip_2 = rgb_trip[0], rgb_trip[1], rgb_trip[2]
-    if type(trip_0) == float or np.float64:
+    if isinstance(trip_0, (float, np.float64)):
         trip_0 *= 255
         trip_1 *= 255
         trip_2 *= 255
 
-    hex_rep = "#%02x%02x%02x" % (int(trip_0), int(trip_1), int(trip_2))
-
-    return hex_rep
+    return "#%02x%02x%02x" % (int(trip_0), int(trip_1), int(trip_2))
 
 
 def scale_saturation(rgb_trip, sat):
     """
-    Changes the saturation of an rgb color
+    Changes the saturation of an rgb color.
 
     Parameters
     ----------
@@ -527,18 +520,16 @@ def scale_saturation(rgb_trip, sat):
         saturated_rgb : tuple
             colorsys.hls_to_rgb saturation of the given color
     """
-    if (type(rgb_trip) == str) and (len(rgb_trip) == 9) and (rgb_trip[-2:] == "00"):
+    if (isinstance(rgb_trip, str)) and (len(rgb_trip) == 9) and (rgb_trip[-2:] == "00"):
         # An RGBA has been provided and its alpha is 00, so return it for a transparent marker
         return rgb_trip
 
-    if (type(rgb_trip) == str) and (len(rgb_trip) == 7):
+    if (isinstance(rgb_trip, str)) and (len(rgb_trip) == 7):
         rgb_trip = hex_to_rgb(rgb_trip)
 
-    if type(rgb_trip) == sRGBColor:
+    if isinstance(rgb_trip, sRGBColor):
         rgb_trip = rgb_trip.get_value_tuple()
 
     h, l, s = colorsys.rgb_to_hls(*rgb_trip)
 
-    saturated_rgb = colorsys.hls_to_rgb(h, min(1, l * sat), s=s)
-
-    return saturated_rgb
+    return colorsys.hls_to_rgb(h, min(1, l * sat), s=s)

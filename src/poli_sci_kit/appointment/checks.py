@@ -2,7 +2,7 @@
 Appointment Method Checks
 -------------------------
 
-Functions to conditionally check appointment methods
+Functions to conditionally check appointment methods.
 
 Contents:
     quota_condition,
@@ -17,7 +17,7 @@ from poli_sci_kit.appointment.metrics import ideal_share
 
 def quota_condition(shares, seats):
     """
-    Checks whether assignment method results fall within the range of the ideal share rounded down and up
+    Checks whether assignment method results fall within the range of the ideal share rounded down and up.
 
     Notes
     -----
@@ -64,7 +64,7 @@ def quota_condition(shares, seats):
 
 def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monotony"):
     """
-    Checks the consistency of assignment method results given dataframes of shares and allocations
+    Checks the consistency of assignment method results given dataframes of shares and allocations.
 
     Notes
     -----

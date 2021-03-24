@@ -2,7 +2,7 @@
 Appointment Methods
 -------------------
 
-Methods used to derive allocations based on received shares
+Methods used to derive allocations based on received shares.
 
 Contents:
     largest_remainder (aka Hamilton, Vinton, Hare–Niemeyer)
@@ -29,7 +29,7 @@ def largest_remainder(
     majority_bonus=False,
 ):
     """
-    Apportion seats using the Largest Remainder (Hamilton, Vinton, Hare–Niemeyer) methods
+    Apportion seats using the Largest Remainder (Hamilton, Vinton, Hare–Niemeyer) methods.
 
     Parameters
     ----------
@@ -241,7 +241,7 @@ def highest_average(
     modifier=None,
 ):
     """
-    Apportion seats using the Highest Average (Jefferson, Webster, Huntington-Hill) methods
+    Apportion seats using the Highest Average (Jefferson, Webster, Huntington-Hill) methods.
 
     Parameters
     ----------
