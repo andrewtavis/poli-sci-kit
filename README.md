@@ -232,6 +232,8 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 
 - Improving [tests](https://github.com/andrewtavis/poli-sci-kit/tree/main/tests) for greater [code coverage](https://codecov.io/gh/andrewtavis/poli-sci-kit)
 
+- Improving [code quality](https://app.codacy.com/gh/andrewtavis/poli-sci-kit/dashboard) by refactoring large functions and checking conventions
+
 - Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/plot/parliament.py)
 
 # References

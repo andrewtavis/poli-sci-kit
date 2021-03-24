@@ -24,7 +24,7 @@ from colormath.color_objects import sRGBColor
 
 
 def normalize(vals):
-    """Returns respective normalized values"""
+    """Returns respective normalized values."""
     total_vals = sum(vals)
 
     return [1.0 * v / total_vals for v in vals]
