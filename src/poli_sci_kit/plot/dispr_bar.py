@@ -2,6 +2,8 @@
 Disproportionality Bar Plot
 ---------------------------
 
+The plotting function to create disproportionality bar plots.
+
 Contents:
     dispr_bar
 """
@@ -27,7 +29,7 @@ def dispr_bar(
     axis=None,
 ):
     """
-    Plots the difference in allocated seats to received shares
+    Plots the difference in allocated seats to received shares.
 
     Parameters
     ----------

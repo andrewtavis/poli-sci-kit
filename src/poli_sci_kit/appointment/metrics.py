@@ -2,7 +2,7 @@
 Appointment Metrics
 -------------------
 
-Functions to analyze the results of appointments, allocations and other social science scenarios
+Functions to analyze the results of appointments, allocations and other social science scenarios.
 
 Based on
     Kohler, U., and Zeh, J. (2012). “Apportionment methods”.
@@ -37,7 +37,7 @@ from poli_sci_kit.utils import normalize
 
 def ideal_share(share, total_shares, total_alloc):
     """
-    Calculate the ideal share of proportions and totals
+    Calculate the ideal share of proportions and totals.
 
     Parameters
     ----------
@@ -62,7 +62,7 @@ def ideal_share(share, total_shares, total_alloc):
 
 def alloc_to_share_ratio(share, total_shares, allocation, total_alloc):
     """
-    Calculate the allocation to share (advantage) ratio given to a region or group
+    Calculate the allocation to share (advantage) ratio given to a region or group.
 
     Parameters
     ----------
@@ -90,7 +90,7 @@ def alloc_to_share_ratio(share, total_shares, allocation, total_alloc):
 
 def sqr_alloc_to_share_error(share, total_shares, allocation, total_alloc):
     """
-    Calculate the squared error of an assignment's allocation to share ratio for a population or group
+    Calculate the squared error of an assignment's allocation to share ratio for a population or group.
 
     Parameters
     ----------
@@ -125,7 +125,7 @@ def sqr_alloc_to_share_error(share, total_shares, allocation, total_alloc):
 
 def total_alloc_to_share_error(shares, allocations, proportional=True):
     """
-    Calculate the total squared error of an assignment's allocation to share ratio
+    Calculate the total squared error of an assignment's allocation to share ratio.
 
     Parameters
     ----------
@@ -164,17 +164,15 @@ def total_alloc_to_share_error(shares, allocations, proportional=True):
         proportional_errors = [
             s / sum_share * sqr_asr_errors[i] for i, s in enumerate(shares)
         ]
-        total_asr_err = sum(proportional_errors)
+        return sum(proportional_errors)
 
     else:
-        total_asr_err = sum(sqr_asr_errors)
-
-    return total_asr_err
+        return sum(sqr_asr_errors)
 
 
 def rep_weight(share, allocation):
     """
-    Calculate the representative weight of an allocation to a region or group
+    Calculate the representative weight of an allocation to a region or group.
 
     Parameters
     ----------
@@ -196,7 +194,7 @@ def rep_weight(share, allocation):
 
 def sqr_rep_weight_error(share, total_shares, allocation, total_alloc):
     """
-    Calculate the squared error of an assignment's representative weight for a population or group
+    Calculate the squared error of an assignment's representative weight for a population or group.
 
     Parameters
     ----------
@@ -219,14 +217,12 @@ def sqr_rep_weight_error(share, total_shares, allocation, total_alloc):
     """
     rw = rep_weight(share=share, allocation=allocation)
 
-    sqr_rw_err = (rw - total_shares / total_alloc) ** 2
-
-    return sqr_rw_err
+    return (rw - total_shares / total_alloc) ** 2
 
 
 def total_rep_weight_error(shares, allocations, proportional=True):
     """
-    Calculate the total squared error of an assignment's representative weight error
+    Calculate the total squared error of an assignment's representative weight error.
 
     Parameters
     ----------
@@ -265,17 +261,15 @@ def total_rep_weight_error(shares, allocations, proportional=True):
         proportional_errors = [
             s / sum_share * sqr_rw_errors[i] for i, s in enumerate(shares)
         ]
-        total_rw_err = sum(proportional_errors)
+        return sum(proportional_errors)
 
     else:
-        total_rw_err = sum(sqr_rw_errors)
-
-    return total_rw_err
+        return sum(sqr_rw_errors)
 
 
 def div_index(shares, q=None, metric_type="Shannon"):
     """
-    Calculates the diversity index: the uncertainty associated with predicting further elements within the vote or population distributions
+    Calculates the diversity index: the uncertainty associated with predicting further elements within the vote or population distributions.
 
     Parameters
     ----------
@@ -311,7 +305,7 @@ def div_index(shares, q=None, metric_type="Shannon"):
     norm_shares = normalize(vals=shares)
 
     if metric_type == "Shannon":
-        index = -1 * sum([share * log(share) for share in norm_shares])
+        index = -1 * sum(share * log(share) for share in norm_shares)
 
     elif metric_type == "Renyi":
         assert (
@@ -320,10 +314,10 @@ def div_index(shares, q=None, metric_type="Shannon"):
         index = 1.0 / (1 - q) * log(sum([share ** q for share in norm_shares]))
 
     elif metric_type == "Simpson":
-        index = sum([share ** 2 for share in norm_shares])
+        index = sum(share ** 2 for share in norm_shares)
 
     elif metric_type == "Gini-Simpson":
-        index = 1 - sum([share ** 2 for share in norm_shares])
+        index = 1 - sum(share ** 2 for share in norm_shares)
 
     elif metric_type == "Berger-Parker":
         index = max(norm_shares)
@@ -335,7 +329,7 @@ def div_index(shares, q=None, metric_type="Shannon"):
         if q == 1:
             index = exp(div_index(shares=shares, q=None, metric_type="Shannon"))
         else:
-            index = sum([share ** q for share in norm_shares]) ** (1.0 / (1 - q))
+            index = sum(share ** q for share in norm_shares) ** (1.0 / (1 - q))
 
     else:
         ValueError(
@@ -347,7 +341,7 @@ def div_index(shares, q=None, metric_type="Shannon"):
 
 def effective_number_of_groups(shares, metric_type="Laakso-Taagepera"):
     """
-    Calculates the effective number of groups given vote or population distributions
+    Calculates the effective number of groups given vote or population distributions.
 
     Parameters
     ----------
@@ -365,12 +359,12 @@ def effective_number_of_groups(shares, metric_type="Laakso-Taagepera"):
     norm_shares = normalize(vals=shares)
 
     if metric_type == "Laakso-Taagepera":
-        num_groups = 1.0 / sum([share ** 2 for share in norm_shares])
+        num_groups = 1.0 / sum(share ** 2 for share in norm_shares)
 
     elif metric_type == "Golosov":
         max_share = max(shares)
         num_groups = sum(
-            [share / (share + max_share ** 2 - share ** 2) for share in norm_shares]
+            share / (share + max_share ** 2 - share ** 2) for share in norm_shares
         )
 
     elif metric_type == "Inverse-Simpson":
@@ -381,7 +375,7 @@ def effective_number_of_groups(shares, metric_type="Laakso-Taagepera"):
 
 def dispr_index(shares, allocations, metric_type="Gallagher"):
     """
-    Measures of the degree to which the actual allocations deviates from the shares, with larger indexes implying greater disproportionality
+    Measures of the degree to which the actual allocations deviates from the shares, with larger indexes implying greater disproportionality.
 
     Parameters
     ----------
@@ -464,10 +458,8 @@ def dispr_index(shares, allocations, metric_type="Gallagher"):
     if metric_type == "Gallagher":
         index = sqrt(1.0 / 2) * sqrt(
             sum(
-                [
-                    (share - allocation) ** 2
-                    for share, allocation in zip(norm_shares, norm_allocations)
-                ]
+                (share - allocation) ** 2
+                for share, allocation in zip(norm_shares, norm_allocations)
             )
         )
 
@@ -493,10 +485,8 @@ def dispr_index(shares, allocations, metric_type="Gallagher"):
             1.0
             / len(norm_shares)
             * sum(
-                [
-                    abs(share - allocation)
-                    for share, allocation in zip(norm_shares, norm_allocations)
-                ]
+                abs(share - allocation)
+                for share, allocation in zip(norm_shares, norm_allocations)
             )
         )
 
@@ -508,10 +498,8 @@ def dispr_index(shares, allocations, metric_type="Gallagher"):
 
     elif metric_type in ["dHondt", "dhondt", "d’Hondt", "d’hondt"]:
         index = max(
-            [
-                1.0 * allocation / share
-                for share, allocation in zip(norm_shares, norm_allocations)
-            ]
+            1.0 * allocation / share
+            for share, allocation in zip(norm_shares, norm_allocations)
         )
 
     elif metric_type == "Cox-Shugart":

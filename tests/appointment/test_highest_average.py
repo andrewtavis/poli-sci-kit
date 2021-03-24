@@ -76,7 +76,7 @@ def test_ha_jefferson(long_votes_list, seats_large):
     )
 
 
-def test_ha_jefferson(long_votes_list, seats_large):
+def test_ha_webster(long_votes_list, seats_large):
     results = [
         32,
         23,
@@ -112,7 +112,7 @@ def test_ha_jefferson(long_votes_list, seats_large):
     )
 
 
-def test_ha_jefferson(long_votes_list, seats_large):
+def test_ha_huntington_hill(long_votes_list, seats_large):
     results = [
         32,
         22,
@@ -152,14 +152,13 @@ def test_ha_jefferson(long_votes_list, seats_large):
 
 def test_ha_threshold(short_votes_list):
     seats = 200
-
     results = [118, 82, 0, 0, 0]
 
     assert (
         highest_average(
             averaging_style="Jefferson",
             shares=short_votes_list,
-            total_alloc=200,
+            total_alloc=seats,
             alloc_threshold=0.2,
             min_alloc=None,
             tie_break="majority",
@@ -172,7 +171,6 @@ def test_ha_threshold(short_votes_list):
 
 def test_ha_modifier(short_votes_list):
     seats = 5
-
     results = [2, 2, 1, 0, 0]
 
     assert (
@@ -192,7 +190,6 @@ def test_ha_modifier(short_votes_list):
 
 def test_ha_tie_break(tie_votes_list):
     seats = 8
-
     results_1 = [3, 2, 1, 1, 1]
     results_2 = [3, 1, 2, 1, 1]
 
@@ -210,7 +207,6 @@ def test_ha_tie_break(tie_votes_list):
 
 def test_ha_majority(tie_votes_list):
     seats = 8
-
     results = [4, 1, 1, 1, 1]
 
     assert (
