@@ -173,7 +173,7 @@ def test_lr_modifier(short_votes_list):
         largest_remainder(
             quota_style="Hare",
             shares=short_votes_list,
-            total_alloc=5,
+            total_alloc=seats,
             alloc_threshold=None,
             min_alloc=None,
             tie_break="majority",
