@@ -1,3 +1,12 @@
+### poli-sci-kit 0.1.2.5 (March 24, 2021)
+
+Changes include:
+
+  - Package structure has been modified for better testing and a cleaner wheel
+  - Bug fixes and refactoring for cleaner code
+  - Checks for code quality have been added
+  - Examples now function in Google Colab
+
 ### poli-sci-kit 0.1.0 (Feb 10, 2021)
 
 First stable release of poli-sci-kit
