@@ -217,6 +217,8 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 
 # To-Do [`↩`](#contents) <a id="to-do"></a>
 
+Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
+
 - Checks for [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) implementations
 
 - Adding the [Adams method](https://en.wikipedia.org/wiki/Highest_averages_method) to [appointment.methods.highest_average](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py)
