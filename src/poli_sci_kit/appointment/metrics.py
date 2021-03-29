@@ -30,9 +30,9 @@ Contents:
 """
 
 from math import exp, log, sqrt
-from scipy.stats import linregress
 
 from poli_sci_kit.utils import normalize
+from scipy.stats import linregress
 
 
 def ideal_share(share, total_shares, total_alloc):

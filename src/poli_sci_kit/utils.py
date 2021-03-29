@@ -19,7 +19,6 @@ import colorsys
 
 import numpy as np
 import pandas as pd
-
 from colormath.color_objects import sRGBColor
 
 
