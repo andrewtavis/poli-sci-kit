@@ -223,11 +223,11 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 
 Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
 
-- Checks for [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) implementations
-
 - Adding the [Adams method](https://en.wikipedia.org/wiki/Highest_averages_method) to [appointment.methods.highest_average](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py)
 
-- Adding equations to [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) docstrings for the [documentation](http://poli-sci-kit.readthedocs.io/en/latest/)
+- Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/plot/parliament.py) [(see issue)](https://github.com/andrewtavis/poli-sci-kit/issues/20)
+
+- Adding equations to [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/appointment/methods.py) docstrings for the [documentation](http://poli-sci-kit.readthedocs.io/en/latest/) [(see issue)](https://github.com/andrewtavis/poli-sci-kit/issues/19)
 
 - Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit
 
@@ -239,8 +239,6 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 - Improving [tests](https://github.com/andrewtavis/poli-sci-kit/tree/main/tests) for greater [code coverage](https://codecov.io/gh/andrewtavis/poli-sci-kit)
 
 - Improving [code quality](https://app.codacy.com/gh/andrewtavis/poli-sci-kit/dashboard) by refactoring large functions and checking conventions
-
-- Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/plot/parliament.py)
 
 # References
 
