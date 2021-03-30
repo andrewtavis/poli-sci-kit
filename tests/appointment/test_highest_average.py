@@ -1,27 +1,29 @@
 """
-Highest Average Method Tests
-----------------------------
+Highest Averages Method Tests
+-----------------------------
 """
 
-from poli_sci_kit.appointment.methods import highest_average
+from poli_sci_kit.appointment.methods import highest_averages
 
 
-def test_ha_sum(highest_average_styles, votes, seats):
+def test_ha_sum(highest_averages_styles, votes, seats):
     assert (
         sum(
-            highest_average(
-                averaging_style=highest_average_styles, shares=votes, total_alloc=seats,
+            highest_averages(
+                averaging_style=highest_averages_styles,
+                shares=votes,
+                total_alloc=seats,
             )
         )
         == seats
     )
 
 
-def test_ha_min_alloc(highest_average_styles, votes, seats):
+def test_ha_min_alloc(highest_averages_styles, votes, seats):
     assert all(
         alloc >= 3
-        for alloc in highest_average(
-            averaging_style=highest_average_styles,
+        for alloc in highest_averages(
+            averaging_style=highest_averages_styles,
             shares=votes,
             total_alloc=seats,
             min_alloc=3,
@@ -29,11 +31,11 @@ def test_ha_min_alloc(highest_average_styles, votes, seats):
     )
 
 
-def test_ha_greater_than_zero(highest_average_styles, votes, seats):
+def test_ha_greater_than_zero(highest_averages_styles, votes, seats):
     assert all(
         alloc >= 0
-        for alloc in highest_average(
-            averaging_style=highest_average_styles, shares=votes, total_alloc=seats,
+        for alloc in highest_averages(
+            averaging_style=highest_averages_styles, shares=votes, total_alloc=seats,
         )
     )
 
@@ -67,7 +69,7 @@ def test_ha_jefferson(long_votes_list, seats_large):
     ]
 
     assert (
-        highest_average(
+        highest_averages(
             averaging_style="Jefferson",
             shares=long_votes_list,
             total_alloc=seats_large,
@@ -105,7 +107,7 @@ def test_ha_webster(long_votes_list, seats_large):
     ]
 
     assert (
-        highest_average(
+        highest_averages(
             averaging_style="Webster", shares=long_votes_list, total_alloc=seats_large,
         )
         == results
@@ -141,7 +143,7 @@ def test_ha_huntington_hill(long_votes_list, seats_large):
     ]
 
     assert (
-        highest_average(
+        highest_averages(
             averaging_style="Huntington-Hill",
             shares=long_votes_list,
             total_alloc=seats_large,
@@ -155,7 +157,7 @@ def test_ha_threshold(short_votes_list):
     results = [118, 82, 0, 0, 0]
 
     assert (
-        highest_average(
+        highest_averages(
             averaging_style="Jefferson",
             shares=short_votes_list,
             total_alloc=seats,
@@ -174,7 +176,7 @@ def test_ha_modifier(short_votes_list):
     results = [2, 2, 1, 0, 0]
 
     assert (
-        highest_average(
+        highest_averages(
             averaging_style="Jefferson",
             shares=short_votes_list,
             total_alloc=seats,
@@ -193,7 +195,7 @@ def test_ha_tie_break(tie_votes_list):
     results_1 = [3, 2, 1, 1, 1]
     results_2 = [3, 1, 2, 1, 1]
 
-    assert highest_average(
+    assert highest_averages(
         averaging_style="Jefferson",
         shares=tie_votes_list,
         total_alloc=seats,
@@ -210,7 +212,7 @@ def test_ha_majority(tie_votes_list):
     results = [4, 1, 1, 1, 1]
 
     assert (
-        highest_average(
+        highest_averages(
             averaging_style="Jefferson",
             shares=tie_votes_list,
             total_alloc=seats,

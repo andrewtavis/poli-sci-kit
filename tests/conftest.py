@@ -81,11 +81,11 @@ def largest_remainder_styles(request):
 
 
 @pytest.fixture(params=["Jefferson", "Webster", "Huntington-Hill"])
-def highest_average_styles(request):
+def highest_averages_styles(request):
     return request.param
 
 
-# Jefferson highest average from tie_votes_list[0] and total_alloc=seats
+# Jefferson highest averages from tie_votes_list[0] and total_alloc=seats
 @pytest.fixture(params=[1918578])
 def share(request):
     return request.param
@@ -97,7 +97,7 @@ def allocations(request):
     return request.param
 
 
-# Jefferson highest average from tie_votes_list[0] and total_alloc=seats
+# Jefferson highest averages from tie_votes_list[0] and total_alloc=seats
 @pytest.fixture(params=[7])
 def allocation(request):
     return request.param

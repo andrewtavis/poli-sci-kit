@@ -50,7 +50,7 @@ import poli_sci_kit
 
 Largest Remainder: Hare, Droop, Hagenbach–Bischoff (incl Hamilton, Vinton, Hare–Niemeyer)
 
-Highest Average: Jefferson, Webster, Huntington-Hill
+Highest Averages: Jefferson, Webster, Huntington-Hill
 
 Arguments to allow allocation thresholds, minimum allocations per group, tie break conditions, and other election features are also provided. Along with deriving results for visualization and reporting, these functions allow the user to analyze outcomes given systematic or situational changes. The [appointment.metrics](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/metrics.py) module further provides diagnostics to analyze the results of elections, apportionments, and other political science scenarios.
 
@@ -63,7 +63,7 @@ vote_counts = [2700, 900, 3300, 1300, 2150, 500]
 seats_to_allocate = 50
 
 # Huntington-Hill is the method used to allocate House of Representatives seats to US states
-ha_allocations = appointment.methods.highest_average(
+ha_allocations = appointment.methods.highest_averages(
     averaging_style="Huntington-Hill",
     shares=vote_counts,
     total_alloc=seats_to_allocate,
@@ -223,7 +223,7 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 
 Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
 
-- Adding the [Adams method](https://en.wikipedia.org/wiki/Highest_averages_method) to [appointment.methods.highest_average](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py)
+- Adding the [Adams method](https://en.wikipedia.org/wiki/Highest_averages_method) to [appointment.methods.highest_averages](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py)
 
 - Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/parliament.py) [(see issue)](https://github.com/andrewtavis/poli-sci-kit/issues/20)
 

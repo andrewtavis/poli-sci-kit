@@ -9,7 +9,7 @@ Contents:
 
         Options: Hare, Droop, Hagenbach–Bischoff
 
-    highest_average
+    highest_averages
 
         Options: Jefferson, Webster, Huntington-Hill
 """
@@ -233,7 +233,7 @@ def largest_remainder(
     return allocations
 
 
-def highest_average(
+def highest_averages(
     averaging_style="Jefferson",
     shares=None,
     total_alloc=None,
@@ -244,7 +244,7 @@ def highest_average(
     modifier=None,
 ):
     """
-    Apportion seats using the Highest Average (Jefferson, Webster, Huntington-Hill) methods.
+    Apportion seats using the Highest Averages (Jefferson, Webster, Huntington-Hill) methods.
 
     Parameters
     ----------
@@ -374,7 +374,7 @@ def highest_average(
 
         else:
             print(
-                f"'{averaging_style}' is not a supported highest average method. Please choose from 'Jefferson', 'Webster', or 'Huntington-Hill'"
+                f"'{averaging_style}' is not a supported highest averages method. Please choose from 'Jefferson', 'Webster', or 'Huntington-Hill'"
             )
             print(
                 "Naming conventions for methods differ across regions, with United States naming conventions used in social-sci-kit."
@@ -440,7 +440,7 @@ def highest_average(
         ):
             non_majority_shares = [s for s in shares if s != max(shares)]
             reduced_seats = total_alloc - int(ceil(total_alloc / 2))
-            non_majority_allocations = highest_average(
+            non_majority_allocations = highest_averages(
                 averaging_style=averaging_style,
                 shares=non_majority_shares,
                 total_alloc=reduced_seats,

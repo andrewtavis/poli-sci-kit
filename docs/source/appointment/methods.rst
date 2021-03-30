@@ -6,7 +6,7 @@ methods
 **Functions**
 
 * :py:func:`poli_sci_kit.appointment.methods.largest_remainder`
-* :py:func:`poli_sci_kit.appointment.methods.highest_average`
+* :py:func:`poli_sci_kit.appointment.methods.highest_averages`
 
 .. autofunction:: poli_sci_kit.appointment.methods.largest_remainder
-.. autofunction:: poli_sci_kit.appointment.methods.highest_average
+.. autofunction:: poli_sci_kit.appointment.methods.highest_averages
