@@ -56,7 +56,7 @@ def largest_remainder(
                 - Hagenbach–Bischoff :
 
                     .. math::
-                        quota_{HB} &= \frac{\textrm{total shares}}{\textrm{total allocations} + 1}
+                        quota_{\textrm{HB}} &= \frac{\textrm{total shares}}{\textrm{total allocations} + 1}
 
                     Note: favors larger groups more than the Hare quota
 
