@@ -39,15 +39,24 @@ def largest_remainder(
             Options:
                 Each defines a divisor from which remainders are defined
 
-                - Hare : total_shares / total_allocations
+                - Hare :
+
+                    .. math::
+                        quota_hare = \frac{total shares}{total allocations}
 
                     Note: the simplest form of largest remainder quota
 
-                - Droop : int(total_shares / (total_allocations + 1)) + 1
+                - Droop :
+
+                    .. math::
+                        quota_droop = int(\frac{total shares}{total allocations + 1}) + 1
 
                     Note: favors larger groups more than the Hare quota
 
-                - Hagenbach–Bischoff : total_shares / (total_allocations + 1)
+                - Hagenbach–Bischoff :
+
+                    .. math::
+                        quota_hb = \frac{total shares}{total allocations + 1}
 
                     Note: favors larger groups more than the Hare quota
 
