@@ -28,7 +28,7 @@ def largest_remainder(
     tie_break="majority",
     majority_bonus=False,
 ):
-    """
+    r"""
     Apportion seats using the Largest Remainder (Hamilton, Vinton, Hare–Niemeyer) methods.
 
     Parameters
