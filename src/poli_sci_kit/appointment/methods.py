@@ -42,21 +42,21 @@ def largest_remainder(
                 - Hare :
 
                     .. math::
-                        quota_{Hare} &= \frac{total shares}{total allocations}
+                        quota_{\textrm{Hare}} &= \frac{\textrm{total shares}}{\textrm{total allocations}}
 
                     Note: the simplest form of largest remainder quota
 
                 - Droop :
 
                     .. math::
-                        quota_{Droop} &= int \biggl( \frac{total shares}{total allocations + 1}) + 1
+                        quota_{\textrm{Droop}} &= int \biggl(\frac{\textrm{total shares}}{\textrm{total allocations} + 1}\biggr) + 1
 
                     Note: favors larger groups more than the Hare quota
 
                 - Hagenbach–Bischoff :
 
                     .. math::
-                        quota_{Hagenbach–Bischoff} &= \frac{total shares}{total allocations + 1}
+                        quota_{\textrm{Hagenbach–Bischoff}} &= \frac{\textrm{total shares}}{\textrm{total allocations} + 1}
 
                     Note: favors larger groups more than the Hare quota
 
