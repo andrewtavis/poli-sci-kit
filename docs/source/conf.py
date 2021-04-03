@@ -37,7 +37,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "numpydoc",
     "sphinx.ext.viewcode",
-    "sphinx.ext.pngmath",
+    "sphinx.ext.imgmath",
 ]
 
 numpydoc_show_inherited_class_members = False
