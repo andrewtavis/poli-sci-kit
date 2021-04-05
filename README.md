@@ -229,7 +229,7 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 
 - Adding equations to [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) docstrings for the [documentation](http://poli-sci-kit.readthedocs.io/en/latest/) [(see issue)](https://github.com/andrewtavis/poli-sci-kit/issues/19)
 
-- Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit
+- Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit [(see issue)](https://github.com/andrewtavis/poli-sci-kit/issues/22)
 
 - Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
     - This would allow quick comparisons of actual systems with variations
