@@ -223,6 +223,8 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 
 Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
 
+- Creating a concise [requirements.txt](https://github.com/andrewtavis/poli-sci-kit/blob/main/requirements.txt) and [environment.yml](https://github.com/andrewtavis/poli-sci-kit/blob/main/environment.yml) [(see issue)](https://github.com/andrewtavis/poli-sci-kit/issues/24)
+
 - Adding the [Adams method](https://en.wikipedia.org/wiki/Highest_averages_method) to [appointment.methods.highest_averages](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) [(see issue)](https://github.com/andrewtavis/poli-sci-kit/issues/21)
 
 - Finishing accurate allocations in the semicircle variation of [poli_sci_kit.plot.parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/parliament.py) [(see issue)](https://github.com/andrewtavis/poli-sci-kit/issues/20)
