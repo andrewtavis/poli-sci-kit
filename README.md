@@ -244,7 +244,7 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 
 # References
 
-<details><summary><strong>Full list of references<strong></summary>
+<details><summary><strong>Full list of references</strong></summary>
 <p>
 
 - https://github.com/crflynn/voting
