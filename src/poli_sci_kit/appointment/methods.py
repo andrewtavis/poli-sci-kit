@@ -39,24 +39,26 @@ def largest_remainder(
             Options:
                 Each defines a divisor from which remainders are defined
 
+                For equations: q is quota, s is total shares, and a is total allocations
+
                 - Hare :
 
                     .. math::
-                        quota_{H} &= \frac{\textrm{total shares}}{\textrm{total allocations}}
+                        q &= \frac{s}{a}
 
                     Note: the simplest form of largest remainder quota
 
                 - Droop :
 
                     .. math::
-                        quota_{D} &= int \biggl(\frac{\textrm{total shares}}{\textrm{total allocations} + 1}\biggr) + 1
+                        q &= int \biggl(\frac{s}{a + 1}\biggr) + 1
 
                     Note: favors larger groups more than the Hare quota
 
                 - Hagenbach–Bischoff :
 
                     .. math::
-                        quota_{\textrm{HB}} &= \frac{\textrm{total shares}}{\textrm{total allocations} + 1}
+                        q &= \frac{s}{a + 1}
 
                     Note: favors larger groups more than the Hare quota
 
@@ -261,7 +263,9 @@ def highest_averages(
             The style that highest averages are computed
 
             Options:
-                Each defines a divisor for each region or party to determines the next seat based on all previous assignments (d is divisor, s is share, and a is the number already allocated)
+                Each defines a divisor for each region or party to determines the next seat based on all previous assignments
+
+                For equations: d is divisor, s is share, and a is the number already allocated
 
                 - Jefferson :
 
