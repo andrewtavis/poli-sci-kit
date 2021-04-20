@@ -252,7 +252,7 @@ def highest_averages(
     majority_bonus=False,
     modifier=None,
 ):
-    """
+    r"""
     Apportion seats using the Highest Averages (Jefferson, Webster, Huntington-Hill) methods.
 
     Parameters
@@ -261,17 +261,26 @@ def highest_averages(
             The style that highest averages are computed
 
             Options:
-                Each defines a divisor for each region or party to determines the next seat based on all previous assignments
+                Each defines a divisor for each region or party to determines the next seat based on all previous assignments (d is divisor, s is share, and a is the number already allocated)
 
-                - Jefferson : divisor_i = share_i / (num_already_allocated_i + 1)
+                - Jefferson :
+
+                    .. math::
+                        \textrm{d}_{i} &= \frac{s_{i}}{a_{i} + 1}
 
                     Note: an absolute majority always lead to an absolute majority in seats (favors large groups)
 
-                - Webster : divisor_i = share_i / ((2 * num_already_allocated_i) + 1)
+                - Webster :
+
+                    .. math::
+                        \textrm{d}_{i} &= \frac{s_{i}}{(2 \cdot a_{i}) + 1}
 
                     Note: generally the smallest deviation from ideal shares (favors medium groups)
 
-                - Huntington-Hill : divisor_i = share_i / sqrt(num_already_allocated_i * (num_already_allocated_i + 1))
+                - Huntington-Hill :
+
+                    .. math::
+                        \textrm{d}_{i} &= \frac{s_{i}}{\sqrt{a_{i} \cdot (a_{i} + 1)}}
 
                     Note: assures that all regions or parties receive at least one vote (favors small groups)
 
