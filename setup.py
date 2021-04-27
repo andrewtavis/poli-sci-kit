@@ -1,3 +1,5 @@
+import os
+
 try:
     from setuptools import setup
 except ImportError:
@@ -5,14 +7,18 @@ except ImportError:
 
 from setuptools import find_packages
 
-with open("README.md", "r") as fh:
+package_directory = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(package_directory, "README.md"), encoding="utf-8") as fh:
     long_description = fh.read()
+
+with open(os.path.join(package_directory, "requirements.txt")) as req_file:
+    requirements = req_file.readlines()
 
 setup_args = dict(
     name="poli-sci-kit",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
-    version="0.1.2.7.1",
+    version="0.1.2.8",
     author="Andrew Tavis McAllister",
     author_email="andrew.t.mcallister@gmail.com",
     classifiers=[
@@ -28,6 +34,8 @@ setup_args = dict(
         "Programming Language :: Python :: 3.8",
         "Operating System :: OS Independent",
     ],
+    python_requires=">=3.6",
+    install_requires=requirements,
     description="Political elections, appointment, analysis and visualization in Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -35,7 +43,5 @@ setup_args = dict(
     url="https://github.com/andrewtavis/poli-sci-kit",
 )
 
-install_requires = ["pytest-cov", "scipy", "numpy", "pandas", "seaborn", "colormath"]
-
 if __name__ == "__main__":
-    setup(**setup_args, install_requires=install_requires)
+    setup(**setup_args)
