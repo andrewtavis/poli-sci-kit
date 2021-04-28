@@ -4,15 +4,15 @@ channels:
   - anaconda
   - defaults
 dependencies:
-  - black=19.10b0
-  - certifi=2020.12.5
-  - numpy=1.19.2
-  - packaging=20.9
-  - pandas=1.2.1
-  - pyopenssl=20.0.1
-  - pytest=6.2.2
-  - pytest-cov=2.11.1
-  - scipy=1.5.2
-  - seaborn=0.11.1
+  - black>=19.10b0
+  - certifi>=2020.12.5
+  - numpy>=1.19.2
+  - packaging>=20.9
+  - pandas>=1.2.1
+  - pyopenssl>=20.0.1
+  - pytest>=6.2.2
+  - pytest-cov>=2.11.1
+  - scipy>=1.5.2
+  - seaborn>=0.11.1
   - pip:
-    - colormath==3.0.0
+    - colormath>=3.0.0
