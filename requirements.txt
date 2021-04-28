@@ -7,4 +7,5 @@ pandas>=1.2.1
 pyOpenSSL>=20.0.1
 pytest>=6.2.2
 pytest-cov>=2.11.1
+scipy>=1.5.2
 seaborn>=0.11.1
