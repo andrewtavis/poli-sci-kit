@@ -102,7 +102,7 @@ def gen_parl_points(
     total_seats = sum(allocations)
 
     if not labels:
-        # For dataframe assignment
+        # For dataframe assignment.
         labels = [f"group_{i}" for i in range(len(allocations))]
 
     if speaker:
@@ -120,15 +120,15 @@ def gen_parl_points(
             largest_group_index = allocations.index(max(allocations))
             allocations[largest_group_index] -= 1
 
-            # Reassign 'speaker' to the largest group's name so it can be assigned later
+            # Reassign 'speaker' to the largest group's name so it can be assigned later.
             speaker = labels[largest_group_index]
 
         elif speaker in labels:
             largest_group_index = labels.index(speaker)
             allocations[largest_group_index] -= 1
 
-    # Make an empty dataframe and fill it with coordinates for the structure
-    # Then assign group values for allocation based on the rows
+    # Make an empty dataframe and fill it with coordinates for the structure.
+    # Then assign group values for allocation based on the rows.
     df_seat_lctns = pd.DataFrame(
         columns=["group", "row", "row_position", "x_loc", "y_loc"]
     )
@@ -142,7 +142,7 @@ def gen_parl_points(
             angles = np.linspace(start=np.pi, stop=0, num=seats)
             x_coordinates, y_coordinates = [], []
 
-            # Broadcast angles to their corresponding coordinates
+            # Broadcast angles to their corresponding coordinates.
             x_coordinates = list(r * np.cos(angles))
             y_coordinates = list(r * np.sin(angles))
 
@@ -157,7 +157,7 @@ def gen_parl_points(
         )  # 0 or 1 based on whether the seats divide evenly into the rows
         row_seats[-1] += extra_seat
 
-        # Shift the seats per row such that it's always increasing
+        # Shift the seats per row such that it's always increasing.
         if num_rows % 2 != 0:
             seats_shift = list(range(-int(num_rows / 2), int(num_rows / 2) + 1, 1))
         else:
@@ -177,7 +177,7 @@ def gen_parl_points(
             xs += arc_xs
             ys += arc_ys
             row_indexes += [i] * spr
-            # List of lists for position indexes such that they can be accessed by row and position
+            # List of lists for position indexes such that they can be accessed by row and position.
             row_position_indexes += [list(range(spr))]
 
         for i in range(total_seats):
@@ -189,13 +189,13 @@ def gen_parl_points(
             item for sublist in row_position_indexes for item in sublist
         ]
 
-        # Index the group and deplete a copy of allocations at its location
+        # Index the group and deplete a copy of allocations at its location.
         group_index = 0
         seats_to_allocate = allocations.copy()
         row_index = 0
 
         while total_seats > 0:
-            # Assign based on row and the current index within that row
+            # Assign based on row and the current index within that row.
             if row_position_indexes[row_index] != []:
                 index_to_assign = [
                     i
@@ -219,7 +219,7 @@ def gen_parl_points(
                 if row_index == num_rows:
                     row_index = 0
 
-                # Make sure that radii are filled before rows are completed
+                # Make sure that radii are filled before rows are completed.
                 for i in range(num_rows):
                     if len(row_position_indexes[i]) < i + 2:
                         if i != 0:
@@ -234,7 +234,8 @@ def gen_parl_points(
     elif style == "rectangle":
         x_coordinate = 0
 
-        # y_coordinates are split by baseline of 2 units, with double that for the middle aisle
+        # y_coordinates are split by baseline of 2 units, with double that for
+        # the middle aisle.
         equa_distant_indexes = list(range(0, num_rows * 2, 2))
         y_coordinates = [
             i
@@ -278,13 +279,13 @@ def gen_parl_points(
                 x_coordinate += 2
                 position_index += 1
 
-                # Reset to the start of the next row
+                # Reset to the start of the next row.
                 if (i + 1) % int(total_seats / num_rows) == 0:
                     row_index += 1
                     x_coordinate = 0
                     position_index = 0
 
-            # Add last seats that were rounded off
+            # Add last seats that were rounded off.
             max_x = max(df_seat_lctns["x_loc"])
             max_pos = max(df_seat_lctns["x_loc"])
             row_index = 0  # reset to first row
@@ -296,17 +297,17 @@ def gen_parl_points(
                 df_seat_lctns.loc[i, "y_loc"] = y_coordinate
                 row_index += 1
 
-            # Sort df for index based assignment
+            # Sort df for index based assignment.
             df_seat_lctns.sort_values(
                 ["row", "x_loc", "y_loc"], ascending=[True, True, True], inplace=True
             )
             df_seat_lctns.reset_index(inplace=True, drop=True)
 
-            # Define the top and bottom rows so they can be filled in order
+            # Define the top and bottom rows so they can be filled in order.
             top_rows = y_coordinates[int((len(y_coordinates) + 1) / 2) :]
             bottom_rows = y_coordinates[: int((len(y_coordinates) + 1) / 2)]
 
-            # Find the total seats in each section to be depleated
+            # Find the total seats in each section to be depleated.
             total_top_seats = 0
             for row in top_rows:
                 total_top_seats += len(df_seat_lctns[df_seat_lctns["y_loc"] == row])
@@ -315,11 +316,11 @@ def gen_parl_points(
             for row in bottom_rows:
                 total_bottom_seats += len(df_seat_lctns[df_seat_lctns["y_loc"] == row])
 
-            # Index the group and deplete a copy of allocations at its location
+            # Index the group and deplete a copy of allocations at its location.
             group_index = 0
             seats_to_allocate = allocations.copy()
 
-            # Top assignment from low to high and left to right
+            # Top assignment from low to high and left to right.
             top_x = 0
             top_y = top_rows[0]
 
@@ -338,7 +339,7 @@ def gen_parl_points(
                     group_index += 1
 
                 if top_y == top_rows[-1]:
-                    # Move right and reset vertical
+                    # Move right and reset vertical.
                     top_x += 2
                     top_y = top_rows[0]
 
@@ -348,10 +349,10 @@ def gen_parl_points(
 
                 total_top_seats -= 1
 
-            # Bottom assignment from high to low and right to left
+            # Bottom assignment from high to low and right to left.
             bottom_x = max(df_seat_lctns["x_loc"])
             bottom_y = bottom_rows[-1]
-            # Fix initial position in case of unequal seats per row
+            # Fix initial position in case of unequal seats per row.
             while (
                 len(
                     [
@@ -363,7 +364,7 @@ def gen_parl_points(
                 )
                 == 0
             ):
-                # Move down
+                # Move down.
                 bottom_y -= 2
 
             while total_bottom_seats > 0:
@@ -386,7 +387,7 @@ def gen_parl_points(
                     bottom_y = bottom_rows[-1]
 
                 else:
-                    # Move down
+                    # Move down.
                     bottom_y -= 2
 
                 total_bottom_seats -= 1
@@ -520,7 +521,8 @@ def scale_saturation(rgb_trip, sat):
             colorsys.hls_to_rgb saturation of the given color
     """
     if (isinstance(rgb_trip, str)) and (len(rgb_trip) == 9) and (rgb_trip[-2:] == "00"):
-        # An RGBA has been provided and its alpha is 00, so return it for a transparent marker
+        # An RGBA has been provided and its alpha is 00, so return it for
+        # a transparent marker.
         return rgb_trip
 
     if (isinstance(rgb_trip, str)) and (len(rgb_trip) == 7):

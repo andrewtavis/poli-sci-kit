@@ -9,9 +9,9 @@ Contents:
     consistency_condition
 """
 
-import pandas as pd
 from math import ceil, floor
 
+import pandas as pd
 from poli_sci_kit.appointment.metrics import ideal_share
 
 
@@ -110,10 +110,11 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             tup[0] for tup in sorted(enumerate(seat_sums), key=lambda i: i[1])
         ]
 
-        # Order seat allocation columns by increasing total
+        # Order seat allocation columns by increasing total.
         df_seats = df_seats[[df_seats.columns[i] for i in seat_sums_sorted_indexes]]
 
-        # Check that elements of each column are less than corresponding ones in later columns
+        # Check that elements of each column are less than corresponding
+        # ones in later columns.
         check_cols = [
             [
                 df_seats.loc[:, df_seats.columns[j]]
@@ -123,14 +124,16 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             for j in range(len(df_seats.columns))
         ]
 
-        # Return True if the column elements are always less than following ones, or the str of the later columns that break the condition
-        # str() is used to assure that 1 != True in the later sets
+        # Return True if the column elements are always less than following
+        # ones, or the str of the later columns that break the condition.
+        # str() is used to assure that 1 != True in the later sets.
         check_cols = [
             [True if c[j].all() == True else str(j) for j in range(len(c))]
             for c in check_cols
         ]
 
-        # Return True if the column's total allotment passes the condition, or the index of columns with which the column fails
+        # Return True if the column's total allotment passes the condition,
+        # or the index of columns with which the column fails.
         check_cols = [
             True
             if list(set(c))[0] == True and len(set(c)) == 1
@@ -143,19 +146,20 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
         cols_droppped = 0
         for i in col_range:
             if check_cols[i] == True:
-                # Drop the column, and add to an indexer to maintain lengths
+                # Drop the column, and add to an indexer to maintain lengths.
                 df_fail_report.drop(
                     df_fail_report.columns[i - cols_droppped], axis=1, inplace=True
                 )
                 cols_droppped += 1
 
             else:
-                # Keep the column, and remove the indexes of any columns that break the condition to keep them as well
+                # Keep the column, and remove the indexes of any columns that
+                # break the condition to keep them as well.
                 for later_col in check_cols[i]:
                     col_range.pop(later_col)
 
         if len(df_fail_report.columns) != 0:
-            # Find elements in a row that are greater than following elements
+            # Find elements in a row that are greater than following elements.
             check_rows = [
                 [
                     [
@@ -186,7 +190,8 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             rows_droppped = 0
             for i in range(len(df_fail_report.index)):
                 if check_rows[i] == True:
-                    # Drop the row if no elements are greater than following ones, and add to an indexer to maintain lengths
+                    # Drop the row if no elements are greater than following ones,
+                    # and add to an indexer to maintain lengths.
                     df_fail_report.drop(
                         df_fail_report.index[i - rows_droppped], axis=0, inplace=True
                     )
@@ -206,7 +211,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             return check_pass
 
     elif check_type == "share_monotony":
-        # The fail report df has share and seat columns alternated
+        # The fail report df has share and seat columns alternated.
         df_fail_report = pd.DataFrame()
         col = 0
         for i in range(len(df_shares.columns)):
@@ -219,7 +224,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             )
             col += 1
 
-        # Check which share and seat columns are less than one another
+        # Check which share and seat columns are less than one another.
         check_share_rows = [
             [
                 [
@@ -244,7 +249,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             for row in df_seats.index
         ]
 
-        # Combine the above for indexes where the condition is met and not
+        # Combine the above for indexes where the condition is met and not.
         check_shares_seats = [
             [
                 [
@@ -271,10 +276,11 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             else:
                 rows_kept.append(i)
 
-        # Column indexes, indexing over pairs as share and seat columns are dropped together
+        # Column indexes, indexing over pairs as share and seat columns are
+        # dropped together.
         col_pair_range = list(range(int(len(df_fail_report.columns) / 2)))
 
-        # Indexing which columns to keep
+        # Indexing which columns to keep.
         col_pairs_to_keep = []
         for r in rows_kept:
             for c in col_pair_range:
@@ -290,7 +296,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
 
         col_pairs_to_keep = list(set(col_pairs_to_keep))
 
-        # Return those columns to be dropped
+        # Return those columns to be dropped.
         cols_to_keep = [[2 * i, 2 * i + 1] for i in col_pairs_to_keep]
         cols_to_keep = [item for sublist in cols_to_keep for item in sublist]
 
