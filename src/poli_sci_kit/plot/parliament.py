@@ -106,7 +106,7 @@ def parliament(
     if labels == None:
         labels = list(df_seat_lctns["group"].unique())
 
-    # Loop through groups and plot their allocations
+    # Loop through groups and plot their allocations.
     for g, lbl in enumerate(labels):
         df_subsetted = df_seat_lctns[df_seat_lctns["group"] == lbl]
 
@@ -120,7 +120,7 @@ def parliament(
             edgecolor="#D2D2D3",
         )  # edge color same as legend outline
 
-    # Make plot a proportional and remove background axes
+    # Make plot a proportional and remove background axes.
     ax.axis("equal")
     ax.axis("off")
 

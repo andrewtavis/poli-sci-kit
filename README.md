@@ -2,7 +2,7 @@
   <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/poli-sci-kit_logo_transparent.png" width=463 height=251></a>
 </div>
 
---------------------------------------
+---
 
 [![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
 [![ci](https://img.shields.io/github/workflow/status/andrewtavis/poli-sci-kit/CI?logo=github)](https://github.com/andrewtavis/poli-sci-kit/actions?query=workflow%3ACI)
@@ -21,6 +21,7 @@
 **poli-sci-kit** is a Python package for political science appointment and election analysis. The goal is to provide a comprehensive tool for all methods needed to analyze and simulate election results. See the [documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for a full outline of the package including algorithms and visualization techniques.
 
 # **Contents**<a id="contents"></a>
+
 - [Installation](#installation)
 - [Appointment](#appointment)
 - [Plotting](#plotting)
@@ -215,10 +216,11 @@ plt.show()
 Examples in poli-sci-kit use publicly available Wikidata statistics sourced via the Python package [wikirepo](https://github.com/andrewtavis/wikirepo). Current examples include:
 
 - [US HoR](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/us_house_of_rep.ipynb)
-    - Allocates seats to a version of the US House of Representatives that includes all US territories and Washington DC given census data, with this further being used to derive relative vote strengths of state citizens in the US presidential election
+
+  - Allocates seats to a version of the US House of Representatives that includes all US territories and Washington DC given census data, with this further being used to derive relative vote strengths of state citizens in the US presidential election
 
 - [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb)
-    - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain countries and organizations, the distribution of seats based on Freedom House indexes, as well as disproportionality metrics
+  - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain countries and organizations, the distribution of seats based on Freedom House indexes, as well as disproportionality metrics
 
 # To-Do [`↩`](#contents) <a id="to-do"></a>
 
@@ -233,7 +235,8 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 - Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit [(see issue)](https://github.com/andrewtavis/poli-sci-kit/issues/22)
 
 - Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
-    - This would allow quick comparisons of actual systems with variations
+
+  - This would allow quick comparisons of actual systems with variations
 
 - Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
 

@@ -111,7 +111,7 @@ def dispr_bar(
     ax = sns.barplot(
         data=df, x=df.index, y="disproportionality", saturation=dsat, ax=axis
     )
-    # Change widths by looping over the bars and adjusting the width/position
+    # Change widths by looping over the bars and adjusting the width/position.
     bar_widths = []
     bar_positions = []
     prev_bar_position = 0
@@ -123,7 +123,7 @@ def dispr_bar(
         bar_widths.append(new_width * len(df))
         bar_positions.append(prev_bar_position)
 
-    # Add heights to the top and bottom of bars
+    # Add heights to the top and bottom of bars.
     for p in ax.patches:
         height = p.get_height()
         if height < 0:  # compensates for text height for negative bar labels

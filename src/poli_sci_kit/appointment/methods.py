@@ -117,7 +117,8 @@ def largest_remainder(
         ), "The sum of the minimum seats to be allocated cannot be more than the seats to be allocated."
         baseline_allocations = [min_alloc] * len(shares)
 
-        # Save the original remainders and allocations to avoid penalization from new divisions after minimum seat allocation
+        # Save the original remainders and allocations to avoid penalization
+        # from new divisions after minimum seat allocation.
         seat_quota = get_quota(
             quota_style=quota_style, shares=shares, total_alloc=total_alloc
         )
@@ -125,7 +126,8 @@ def largest_remainder(
             *[modf(1.0 * s / seat_quota) for s in shares]
         )
 
-        # If possible, append the original allocations with the baseline such that the seats for remainders are used for the minimum allocation
+        # If possible, append the original allocations with the baseline such
+        # that the seats for remainders are used for the minimum allocation.
         original_with_baseline = [
             a if a >= baseline_allocations[i] else baseline_allocations[i]
             for i, a in enumerate(original_allocations)
@@ -134,7 +136,7 @@ def largest_remainder(
             original_with_baseline = [int(a) for a in original_with_baseline]
 
         elif sum(original_with_baseline) > total_alloc:
-            # We need to just use the baseline and assign over it
+            # We need to just use the baseline and assign over it.
             original_with_baseline = baseline_allocations
 
         total_alloc -= sum(original_with_baseline)
@@ -152,9 +154,10 @@ def largest_remainder(
         if (
             original_with_baseline != baseline_allocations
         ):  # we have extra allocations already
+        # Don't allocate any more seats based on the quota.
             allocations = [0] * len(
                 shares
-            )  # don't allocate any more seats based on the quota
+            )
 
     allocations = [int(a) for a in allocations]
     unallocated = int(total_alloc - sum(allocations))
@@ -172,17 +175,17 @@ def largest_remainder(
         i for i in allocatable if remainders[i] == remainders[last_assigned_remainder]
     ]
 
-    # Assign for all that are greater than the last remainder to be assigned
+    # Assign for all that are greater than the last remainder to be assigned.
     for k in [i for i in allocatable if i not in equal_to_last_assigned][:unallocated]:
         allocations[k] += 1
         unallocated -= 1
 
-    # Assign the last assignable remainder if there is no tie
+    # Assign the last assignable remainder if there is no tie.
     if len(equal_to_last_assigned) == 1 and unallocated == 1:
         allocations[equal_to_last_assigned[0]] += 1
         unallocated -= 1
 
-    # Tie break conditions
+    # Tie break conditions.
     else:
         if tie_break == "majority":
             sorted_by_results = [
@@ -201,7 +204,7 @@ def largest_remainder(
                     allocations[sorted_by_results[k]] += 1
 
             else:
-                # Defaults to random for those with equal allocation and remainder
+                # Defaults to random for those with equal allocation and remainder.
                 tie_break = "random"
 
         if tie_break == "random":
@@ -218,7 +221,8 @@ def largest_remainder(
         allocations = [a + original_with_baseline[i] for i, a in enumerate(allocations)]
 
     if majority_bonus:
-        # If a single majority group does not receive at least 50%, then they are given it, and assignment is redone for the rest
+        # If a single majority group does not receive at least 50%, then
+        # they are given it, and assignment is redone for the rest.
         if (
             not allocations[shares.index(max(shares))] >= int(ceil(total_alloc / 2))
             and len([s for s in shares if s == max(shares)]) == 1
@@ -235,7 +239,7 @@ def largest_remainder(
                 majority_bonus=False,
             )
 
-            # Insert majority allocation
+            # Insert majority allocation.
             non_majority_allocations[
                 shares.index(max(shares)) : shares.index(max(shares))
             ] = [int(ceil(total_alloc / 2))]
@@ -410,19 +414,20 @@ def highest_averages(
 
             return
 
-        # Find those indexes that have a maximum quotient to check if a tie break is needed
+        # Find those indexes that have a maximum quotient to check if a tie break
+        # is needed.
         max_quotient_indexes = [
             q[0] for q in enumerate(quotients) if q[1] == max(quotients)
         ]
 
-        # Normal assignment to all that have the max quotient
+        # Normal assignment to all that have the max quotient.
         if len(max_quotient_indexes) <= remaining_alloc:
             for i in max_quotient_indexes:
                 allocations[i] += 1
 
             remaining_alloc -= len(max_quotient_indexes)
 
-        # Tie break conditions
+        # Tie break conditions.
         elif len(max_quotient_indexes) > remaining_alloc:
             if tie_break == "majority":
                 sorted_by_results = [
@@ -441,7 +446,7 @@ def highest_averages(
                     remaining_alloc -= 1
 
                 else:
-                    # Defaults to random for those with equal allocation and remainder
+                    # Defaults to random for those with equal allocation and remainder.
                     tie_break = "random"
 
             if tie_break == "random":
@@ -455,7 +460,8 @@ def highest_averages(
                 )
 
     if majority_bonus:
-        # If a single majority group does not receive at least 50%, then they are given it, and assignment is redone for the rest
+        # If a single majority group does not receive at least 50%, then
+        # they are given it, and assignment is redone for the rest.
         if (
             not allocations[shares.index(max(shares))] >= int(ceil(total_alloc / 2))
             and len([s for s in shares if s == max(shares)]) == 1
@@ -473,7 +479,7 @@ def highest_averages(
                 modifier=modifier,
             )
 
-            # Insert majority allocation
+            # Insert majority allocation.
             non_majority_allocations[
                 shares.index(max(shares)) : shares.index(max(shares))
             ] = [int(ceil(total_alloc / 2))]

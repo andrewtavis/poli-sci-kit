@@ -91,19 +91,19 @@ def share(request):
     return request.param
 
 
-# Jefferson highest averages from tie_votes_list with total_alloc=seats
+# Jefferson highest averages from tie_votes_list with total_alloc=seats.
 @pytest.fixture(params=[[7, 4, 4, 3, 2]])
 def allocations(request):
     return request.param
 
 
-# Jefferson highest averages from tie_votes_list[0] and total_alloc=seats
+# Jefferson highest averages from tie_votes_list[0] and total_alloc=seats.
 @pytest.fixture(params=[7])
 def allocation(request):
     return request.param
 
 
-# sum(tie_votes_list)
+# sum(tie_votes_list).
 @pytest.fixture(params=[5543232])
 def total_shares(request):
     return request.param
