@@ -7,11 +7,11 @@ Methods used to derive allocations based on received shares.
 Contents:
     largest_remainder (aka Hamilton, Vinton, Hare–Niemeyer)
 
-        Options: Hare, Droop, Hagenbach–Bischoff
+        Options: Hare, Droop, Hagenbach–Bischoff.
 
     highest_averages
 
-        Options: Jefferson, Webster, Huntington-Hill
+        Options: Jefferson, Webster, Huntington-Hill.
 """
 
 from math import ceil, modf, sqrt
@@ -34,10 +34,10 @@ def largest_remainder(
     Parameters
     ----------
         quota_style : str (default=Hare)
-            The style of quota vote-seat quota to use
+            The style of quota vote-seat quota to use.
 
             Options:
-                Each defines a divisor from which remainders are defined
+                Each defines a divisor from which remainders are defined.
 
                 For equations: q is quota, s is total shares, and a is total allocations
 
@@ -46,49 +46,49 @@ def largest_remainder(
                     .. math::
                         q &= \frac{s}{a}
 
-                    Note: the simplest form of largest remainder quota
+                    Note: the simplest form of largest remainder quota.
 
                 - Droop :
 
                     .. math::
                         q &= int \biggl(\frac{s}{a + 1}\biggr) + 1
 
-                    Note: favors larger groups more than the Hare quota
+                    Note: favors larger groups more than the Hare quota.
 
                 - Hagenbach–Bischoff :
 
                     .. math::
                         q &= \frac{s}{a + 1}
 
-                    Note: favors larger groups more than the Hare quota
+                    Note: favors larger groups more than the Hare quota.
 
         shares : list (default=None)
-            A list of populations or votes for regions or parties
+            A list of populations or votes for regions or parties.
 
         total_alloc : int (default=None)
-            The number to be allocated
+            The number to be allocated.
 
         alloc_threshold : float (default=None)
-            A minimum percentage of the population or votes that must be met to receive an allocation
+            A minimum percentage of the population or votes that must be met to receive an allocation.
 
         min_alloc : int (default=None)
-            A minimum number of allocations that each group must receive
+            A minimum number of allocations that each group must receive.
 
         tie_break : str (default=majority)
-            How a tie break is done (by majority or random, with a majority tie defaulting to random)
+            How a tie break is done (by majority or random, with a majority tie defaulting to random).
 
         majority_bonus : bool (default=False)
-            Whether the largest group is automatically given 50% of the vote
+            Whether the largest group is automatically given 50% of the vote.
 
     Returns
     -------
         allocations : list
-            A list of allocations in the order of the provided shares
+            A list of allocations in the order of the provided shares.
     """
     assert (
         alloc_threshold == None or min_alloc == None
     ), """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation.
-        Set one of alloc_threshold or min_alloc to None"""
+        Set one of alloc_threshold or min_alloc to None."""
 
     def get_quota(quota_style, shares, total_alloc):
         if quota_style == "Hare":
@@ -154,10 +154,8 @@ def largest_remainder(
         if (
             original_with_baseline != baseline_allocations
         ):  # we have extra allocations already
-        # Don't allocate any more seats based on the quota.
-            allocations = [0] * len(
-                shares
-            )
+            # Don't allocate any more seats based on the quota.
+            allocations = [0] * len(shares)
 
     allocations = [int(a) for a in allocations]
     unallocated = int(total_alloc - sum(allocations))
@@ -264,61 +262,62 @@ def highest_averages(
     Parameters
     ----------
         averaging_style : str (default=Jefferson)
-            The style that highest averages are computed
+            The style that highest averages are computed.
 
             Options:
-                Each defines a divisor for each region or party to determines the next seat based on all previous assignments
+                Each defines a divisor for each region or party to determines the next seat based on all previous assignments.
 
-                For equations: d is divisor, s is share, and a is the number already allocated
+                For equations: d is divisor, s is share, and a is the number already allocated.
 
                 - Jefferson :
 
                     .. math::
                         \textrm{d}_{i} &= \frac{s_{i}}{a_{i} + 1}
 
-                    Note: an absolute majority always lead to an absolute majority in seats (favors large groups)
+                    Note: an absolute majority always lead to an absolute majority in seats (favors large groups).
 
                 - Webster :
 
                     .. math::
                         \textrm{d}_{i} &= \frac{s_{i}}{(2 \cdot a_{i}) + 1}
 
-                    Note: generally the smallest deviation from ideal shares (favors medium groups)
+                    Note: generally the smallest deviation from ideal shares (favors medium groups).
 
                 - Huntington-Hill :
 
                     .. math::
                         \textrm{d}_{i} &= \frac{s_{i}}{\sqrt{a_{i} \cdot (a_{i} + 1)}}
 
-                    Note: assures that all regions or parties receive at least one vote (favors small groups)
+                    Note: assures that all regions or parties receive at least one vote (favors small groups).
 
         shares : list (default=None)
-            A list of populations or votes for regions or parties
+            A list of populations or votes for regions or parties.
 
         total_alloc : int (default=None)
-            The number to be allocated
+            The number to be allocated.
 
         alloc_threshold : float (default=None)
-            A minimum percentage of the population or votes that must be met to receive an allocation
+            A minimum percentage of the population or votes that must be met to receive an allocation.
 
         min_alloc : int (default=None)
-            A minimum number of allocations that each group must receive
+            A minimum number of allocations that each group must receive.
 
         tie_break : str (default=majority)
-            How a tie break is done (by majority or random, with a majority tie defaulting to random)
+            How a tie break is done (by majority or random, with a majority tie defaulting to random).
 
         modifier : float (default=None)
-            What to replace the divisor of the first quotient by to change the advantage of groups yet to receive an assignment
-            Note: modifiers > 1 disadvantage smaller parties, and modifiers < 1 advantage them
+            What to replace the divisor of the first quotient by to change the advantage of groups yet to receive an assignment.
+
+            Note: modifiers > 1 disadvantage smaller parties, and modifiers < 1 advantage them.
 
     Returns
     -------
         allocations : list
-            A list of allocations in the order of the provided shares
+            A list of allocations in the order of the provided shares.
     """
     assert (
         alloc_threshold == None or min_alloc == None
-    ), """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation. Set one of 'alloc_threshold' or 'min_alloc' to None"""
+    ), """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation. Set one of 'alloc_threshold' or 'min_alloc' to None."""
 
     assert (
         alloc_threshold == None or averaging_style != "Huntington-Hill"
@@ -400,10 +399,10 @@ def highest_averages(
 
         else:
             print(
-                f"'{averaging_style}' is not a supported highest averages method. Please choose from 'Jefferson', 'Webster', or 'Huntington-Hill'"
+                f"'{averaging_style}' is not a supported highest averages method. Please choose from 'Jefferson', 'Webster', or 'Huntington-Hill'."
             )
             print(
-                "Naming conventions for methods differ across regions, with United States naming conventions used in social-sci-kit."
+                "Naming conventions for methods differ across regions, with United States naming conventions used in poli-sci-kit."
             )
             print(
                 """US assignment method name conversions:

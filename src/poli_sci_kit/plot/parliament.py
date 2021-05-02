@@ -32,40 +32,41 @@ def parliament(
     Parameters
     ----------
         allocations : list
-            The share of seats given to the regions or parties
+            The share of seats given to the regions or parties.
 
         labels : list (contains strs) : optional (default=None)
-            The names of the groups
+            The names of the groups.
 
         colors : list : optional (default=None)
-            The colors of the groups as hex keys
+            The colors of the groups as hex keys.
 
         style : str (default=semicircle)
-            Whether to plot the parliament as a semicircle or a rectangle
+            Whether to plot the parliament as a semicircle or a rectangle.
 
         num_rows : int (default=2)
-            The number of rows in the plot
+            The number of rows in the plot.
 
         marker_size : int or float (default=200)
-            The size of the scatterplot markers that make up the plot
+            The size of the scatterplot markers that make up the plot.
 
         speaker : bool : optional (default=False)
-            Whether to include a point for the speaker of the house colored by their group
-            Note: 'True' colors the point based on the largest group, but passing a name from 'labels' is also possible
+            Whether to include a point for the speaker of the house colored by their group.
+
+            Note: 'True' colors the point based on the largest group, but passing a name from 'labels' is also possible.
 
         df_seat_lctns : df : optional (default=None)
-            A df of coordinates to plot
+            A df of coordinates to plot.
 
         dsat : float : optional (default=default_sat)
-            The degree of desaturation to be applied to the colors
+            The degree of desaturation to be applied to the colors.
 
         axis : str : optional (default=None)
-            Adds an axis to plots so they can be combined
+            Adds an axis to plots so they can be combined.
 
     Returns
     -------
         ax : matplotlib.pyplot.subplot
-            Parliament seat distribution as either an arc or a rectangle, each having the option to be converted to seats
+            Parliament seat distribution as either an arc or a rectangle, each having the option to be converted to seats.
     """
     assert num_rows <= sum(
         allocations
@@ -74,9 +75,9 @@ def parliament(
     if colors:
         assert len(colors) == len(
             allocations
-        ), "The number of colors provided doesn't match the number of counts to be displayed"
+        ), "The number of colors provided doesn't match the number of counts to be displayed."
 
-    elif colors == None:
+    elif colors is None:
         sns.set_palette("deep")  # default sns palette
         colors = [
             utils.rgb_to_hex(c)
@@ -97,13 +98,13 @@ def parliament(
             speaker=speaker,
         )
 
-    if style == "semicircle":
-        marker = "o"
-
-    elif style == "rectangle":
+    if style == "rectangle":
         marker = "s"
 
-    if labels == None:
+    elif style == "semicircle":
+        marker = "o"
+
+    if labels is None:
         labels = list(df_seat_lctns["group"].unique())
 
     # Loop through groups and plot their allocations.

@@ -26,15 +26,15 @@ def quota_condition(shares, seats):
     Parameters
     ----------
         shares : list
-            The preportion of the population or votes for the regions or parties
+            The preportion of the population or votes for the regions or parties.
 
         seats : list
-            The share of seats given to the regions or parties
+            The share of seats given to the regions or parties.
 
     Returns
     -------
         check_pass or fail_report: bool or list (contains tuples)
-            A value of True, or a list of corresponding arguments where the check has failed and their indexes
+            A value of True, or a list of corresponding arguments where the check has failed and their indexes.
     """
     assert len(shares) == len(
         seats
@@ -46,20 +46,19 @@ def quota_condition(shares, seats):
         for i, s in enumerate(shares)
     ]
 
-    fail_report = {}
-    for i, c in enumerate(check_list):
-        if c == False:
-            fail_report[i] = (shares[i], seats[i])
+    fail_report = {
+        i: (shares[i], seats[i]) for i, c in enumerate(check_list) if c == False
+    }
 
     check_pass = False not in check_list
     print("Quota condition passed:", check_pass)
 
-    if not check_pass:
-        print("Returning list of argument elements that failed the condition.")
-        return fail_report
-
-    else:
+    if check_pass:
         return check_pass
+
+    print("Returning list of argument elements that failed the condition.")
+
+    return fail_report
 
 
 def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monotony"):
@@ -68,34 +67,34 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
 
     Notes
     -----
-    Rows and columns of the df(s) will be marked and dropped if consistent, with a failed condition being if the resulting df has size > 0 (some where inconsistent)
+        Rows and columns of the df(s) will be marked and dropped if consistent, with a failed condition being if the resulting df has size > 0 (some where inconsistent).
 
     Parameters
     ----------
         df_shares : pd.DataFrame (num_region_party, num_variation; contains ints, default=None)
-            Preportions of the population or votes for the regions or parties given variance
+            Preportions of the population or votes for the regions or parties given variance.
 
         df_seats : pd.DataFrame (num_region_party, num_variation; contains ints, default=None)
-            Shares of seats given to the regions or parties given variance
+            Shares of seats given to the regions or parties given variance.
 
         check_type : str
-            Whether the consistency of a change in seats or a change in shares is checked
+            Whether the consistency of a change in seats or a change in shares is checked.
 
             Options:
-                The style of monotony to derive the consistency with
+                The style of monotony to derive the consistency with.
 
                 - seat_monotony : An incease in total seats does not decrease alloted seats
 
-                    Note: use sums of cols of df_seats, checking col element monotony given a differences in sums
+                    Note: use sums of cols of df_seats, checking col element monotony given a differences in sums.
 
                 - share_monotony : An incease in shares does not decrease alloted seats
 
-                    Note: use rows of df_shares and check coinciding elements of df_seats for monotony
+                    Note: use rows of df_shares and check coinciding elements of df_seats for monotony.
 
     Returns
     -------
         check_pass or df_fail_report: bool or pd.DataFrame (contains ints)
-            A value of True, or False with a df of corresponding arguments where the check has failed
+            A value of True, or False with a df of corresponding arguments where the check has failed.
     """
     if df_shares is not None and df_seats is not None:
         assert (

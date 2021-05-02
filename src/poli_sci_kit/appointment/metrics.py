@@ -2,7 +2,7 @@
 Appointment Metrics
 -------------------
 
-Functions to analyze the results of appointments, allocations and other social science scenarios.
+Functions to analyze the results of appointments, allocations and other political science scenarios.
 
 Based on
     Kohler, U., and Zeh, J. (2012). “Apportionment methods”.
@@ -42,18 +42,18 @@ def ideal_share(share, total_shares, total_alloc):
     Parameters
     ----------
         share : int
-            The proportion to be checked
+            The proportion to be checked.
 
         total_shares : int
-            The total amount of shares
+            The total amount of shares.
 
         total_alloc : int
-            The number of allocations to provide
+            The number of allocations to provide.
 
     Returns
     -------
         ideal : float
-            The ideal share that would be allocated
+            The ideal share that would be allocated.
     """
     return 1.0 * share / total_shares * total_alloc
 
@@ -65,21 +65,21 @@ def alloc_to_share_ratio(share, total_shares, allocation, total_alloc):
     Parameters
     ----------
         share : int
-            The proportion to be checked
+            The proportion to be checked.
 
         total_shares : int
-            The total amount of shares
+            The total amount of shares.
 
         allocation : int
-            The share of allocations given to the region or group
+            The share of allocations given to the region or group.
 
         total_alloc : int
-            The number of allocations to provide
+            The number of allocations to provide.
 
     Returns
     -------
         asr : float
-            The ratio of the allocations the region or group received to their proportion of the original shares
+            The ratio of the allocations the region or group received to their proportion of the original shares.
     """
     return 1.0 * (allocation / total_alloc) / (share / total_shares)
 
@@ -91,21 +91,21 @@ def sqr_alloc_to_share_error(share, total_shares, allocation, total_alloc):
     Parameters
     ----------
         share : int
-            The proportion to be checked
+            The proportion to be checked.
 
         total_shares : int
-            The total amount of shares
+            The total amount of shares.
 
         allocation : int
-            The share of allocations given to the region or group
+            The share of allocations given to the region or group.
 
         total_alloc : int
-            The number of allocations to provide
+            The number of allocations to provide.
 
     Returns
     -------
         sqr_asr_err : float
-            The squared of the error of the allocation to share ratio
+            The squared of the error of the allocation to share ratio.
     """
     asr = alloc_to_share_ratio(
         share=share,
@@ -124,18 +124,18 @@ def total_alloc_to_share_error(shares, allocations, proportional=True):
     Parameters
     ----------
         shares : list
-            The proportion of the original shares for the regions or groups
+            The proportion of the original shares for the regions or groups.
 
         allocations : list
-            The share of allocations given to the regions or groups
+            The share of allocations given to the regions or groups.
 
         proportional : bool (default=False)
-            Whether the assignment's error is calculated as proportional to the region or group shares
+            Whether the assignment's error is calculated as proportional to the region or group shares.
 
     Returns
     -------
         total_asr_err : float
-            The summation of the allocation to share ratio error for all populations or groups
+            The summation of the allocation to share ratio error for all populations or groups.
     """
     assert len(shares) == len(
         allocations
@@ -171,15 +171,15 @@ def rep_weight(share, allocation):
     Parameters
     ----------
         share : int
-            The proportion to be checked
+            The proportion to be checked.
 
         allocation : int
-            The allocation provided
+            The allocation provided.
 
     Returns
     -------
         rep_weight : float
-            The number of shares per allocation
+            The number of shares per allocation.
     """
     return share / allocation
 
@@ -191,21 +191,21 @@ def sqr_rep_weight_error(share, total_shares, allocation, total_alloc):
     Parameters
     ----------
         share : int
-            The proportion to be checked
+            The proportion to be checked.
 
         total_shares : int
-            The total amount of shares
+            The total amount of shares.
 
         allocation : int
-            The share of allocations given to the region or group
+            The share of allocations given to the region or group.
 
         total_alloc : int
-            The number of allocations to provide
+            The number of allocations to provide.
 
     Returns
     -------
         sqr_rw_err : float
-            The squared of the error of the allocation to share ratio
+            The squared of the error of the allocation to share ratio.
     """
     rw = rep_weight(share=share, allocation=allocation)
 
@@ -219,18 +219,18 @@ def total_rep_weight_error(shares, allocations, proportional=True):
     Parameters
     ----------
         shares : list
-            The proportion of the original shares for the regions or groups
+            The proportion of the original shares for the regions or groups.
 
         allocations : list
-            The share of allocations given to the regions or groups
+            The share of allocations given to the regions or groups.
 
         proportional : bool (default=False)
-            Whether the assignment's error is calculated as proportional to the region or group shares
+            Whether the assignment's error is calculated as proportional to the region or group shares.
 
     Returns
     -------
         total_rw_err : float
-            The summation of the representative weight error for all populations or groups
+            The summation of the representative weight error for all populations or groups.
     """
     assert len(shares) == len(
         allocations
@@ -266,33 +266,33 @@ def div_index(shares, q=None, metric_type="Shannon"):
     Parameters
     ----------
         shares : list
-            The proportion of the original shares for the regions or groups
+            The proportion of the original shares for the regions or groups.
 
         q : float
-            The order of diversity (a weight value for the sensitivity of the diversity value to rare vs. abundant)
+            The order of diversity (a weight value for the sensitivity of the diversity value to rare vs. abundant).
 
         metric_type : str (default=Shannon)
-            The type of formula to use
+            The type of formula to use.
 
             Options:
-                The available measures of diversity
+                The available measures of diversity.
 
-                - Shannon : approaches zero (one) when shares are concentrated (dispersed), uncertainty (certainty) of the next element goes to zero
+                - Shannon : approaches zero (one) when shares are concentrated (dispersed), uncertainty (certainty) of the next element goes to zero.
 
-                - Renyi : generalization of the Shannon diversity
+                - Renyi : generalization of the Shannon diversity.
 
-                - Simpson : probability that two entities taken at random from the dataset of interest represent the same type (assumes replacement)
+                - Simpson : probability that two entities taken at random from the dataset of interest represent the same type (assumes replacement).
 
-                - Gini-Simpson : opposite of the Simpson diversity, the probability that two entities are from different types
+                - Gini-Simpson : opposite of the Simpson diversity, the probability that two entities are from different types.
 
-                - Berger-Parker : proportional abundance of the most abundant type
+                - Berger-Parker : proportional abundance of the most abundant type.
 
-                - Effective : number of equally abundant types needed for the average proportional abundance of types to equal that of the dataset
+                - Effective : number of equally abundant types needed for the average proportional abundance of types to equal that of the dataset.
 
     Returns
     -------
         index : float
-            The measure of diversity given the share distribution
+            The measure of diversity given the share distribution.
     """
     norm_shares = normalize(vals=shares)
 
@@ -302,7 +302,7 @@ def div_index(shares, q=None, metric_type="Shannon"):
     elif metric_type == "Renyi":
         assert (
             q
-        ), "The order of diversity 'q' argument must be used with Renyi diversity calculations"
+        ), "The order of diversity 'q' argument must be used with Renyi diversity calculations."
         index = 1.0 / (1 - q) * log(sum([share ** q for share in norm_shares]))
 
     elif metric_type == "Simpson":
@@ -317,7 +317,7 @@ def div_index(shares, q=None, metric_type="Shannon"):
     elif metric_type == "Effective":
         assert (
             q
-        ), "The order of diversity 'q' argument must be used with Effective diversity calculations"
+        ), "The order of diversity 'q' argument must be used with Effective diversity calculations."
         if q == 1:
             index = exp(div_index(shares=shares, q=None, metric_type="Shannon"))
         else:
@@ -338,15 +338,15 @@ def effective_number_of_groups(shares, metric_type="Laakso-Taagepera"):
     Parameters
     ----------
         shares : list
-            The proportion of the original shares for the regions or groups
+            The proportion of the original shares for the regions or groups.
 
-        metric_type : str (default=Laakso-Taagepera, option=Golosov, Inverse-Simpson)
-            The type of formula to use
+        metric_type : str (default=Laakso-Taagepera, options=Golosov, Inverse-Simpson)
+            The type of formula to use.
 
     Returns
     -------
         num_groups : float
-            A float representing the efficient number of groups given the share distributions
+            A float representing the efficient number of groups given the share distributions.
     """
     norm_shares = normalize(vals=shares)
 
@@ -370,57 +370,63 @@ def dispr_index(shares, allocations, metric_type="Gallagher"):
     Parameters
     ----------
         shares : list
-            The proportion of the original shares for the regions or groups
+            The proportion of the original shares for the regions or groups.
 
         allocations : list
-            The share of allocations given to the regions or groups
+            The share of allocations given to the regions or groups.
 
         metric_type : str (default=Gallagher)
-            The type of formula to use
+            The type of formula to use.
 
             Options:
-                The available measures of disproportionality
+                The available measures of disproportionality.
 
-                - Gallagher : measure of absolute difference in percent of allocations received to true proportion
-                    Note 1: accounts for magnitudes of the individual shifts
+                - Gallagher : measure of absolute difference in percent of allocations received to true proportion.
 
-                    Note 2: deals with the magnitudes of the disproportionality, not the percentage differences from ideality
+                    Note 1: accounts for magnitudes of the individual shifts.
 
-                    Note 3: a general form with k instead of the square root, 1/2 and second power is not monotone to k, as is thus not included
+                    Note 2: deals with the magnitudes of the disproportionality, not the percentage differences from ideality.
 
-                - Loosemore–Hanby : the total excess of allocated shares of overrepresented groups over the exact quota and the total shortage accruing to other groups
-                    Note 1: is not consistent (it fails Dalton's principle of transfers, where transfering shares may lead to adverse effects on allocations)
+                    Note 3: a general form with k instead of the square root, 1/2 and second power is not monotone to k, as is thus not included.
 
-                    Note 2: does not account for the magnitude of individual disproportionality (that few large shifts should potentially be worse than many small)
+                - Loosemore–Hanby : the total excess of allocated shares of overrepresented groups over the exact quota and the total shortage accruing to other groups.
 
-                - Rose : 100 minus the Loosemore–Hanby index, so in this case larger numbers are better (suffers from similar issues)
+                    Note 1: is not consistent (it fails Dalton's principle of transfers, where transfering shares may lead to adverse effects on allocations).
 
-                - Rae : measure of the average absolute difference in percent of allocations received to true proportion
-                    Note 1: includes the number of groups in the calculation, and thus is effected if there are many small groups
+                    Note 2: does not account for the magnitude of individual disproportionality (that few large shifts should potentially be worse than many small).
 
-                    Note 2: don't use to compare appointments across situations with different numbers of groups
+                - Rose : 100 minus the Loosemore–Hanby index, so in this case larger numbers are better (suffers from similar issues).
 
-                - Sainte-Laguë (chi-squared) : measure of relative difference in percent of allocations received to true proportion
-                    Note 1: has no upper limit
+                - Rae : measure of the average absolute difference in percent of allocations received to true proportion.
 
-                    Note 2: downplays the disproportionality that effects larger groups
+                    Note 1: includes the number of groups in the calculation, and thus is effected if there are many small groups.
 
-                    Note 3: sensitive to if there are is large portion of the shares that are 'other' and don't receive votes
+                    Note 2: don't use to compare appointments across situations with different numbers of groups.
 
-                - d’Hondt : measure of relative difference in percent of allocations received to true proportion
-                    Note: does not account for the magnitude of individual disproportionality (that few large shifts should be worse than many small)
+                - Sainte-Laguë (chi-squared) : measure of relative difference in percent of allocations received to true proportion.
 
-                - Cox-Shugart : the slope of the line of best fit between the shares and allocations
-                    Note 1: main advantage is directly showing whether larger or smaller groups are benefitting (>1 or <1 respectively)
+                    Note 1: has no upper limit.
 
-                    Note 2: this index can be negative, and if it is, that implies a negative shares-allocations ratio
+                    Note 2: downplays the disproportionality that effects larger groups.
 
-                Note: the Gini index as a measure of disproportionality is not included, as in many cases smaller groups have a greater allocation proportion
+                    Note 3: sensitive to if there are is large portion of the shares that are 'other' and don't receive votes.
+
+                - d’Hondt : measure of relative difference in percent of allocations received to true proportion.
+
+                    Note: does not account for the magnitude of individual disproportionality (that few large shifts should be worse than many small).
+
+                - Cox-Shugart : the slope of the line of best fit between the shares and allocations.
+
+                    Note 1: main advantage is directly showing whether larger or smaller groups are benefitting (>1 or <1 respectively).
+
+                    Note 2: this index can be negative, and if it is, that implies a negative shares-allocations ratio.
+
+                Note: the Gini index as a measure of disproportionality is not included, as in many cases smaller groups have a greater allocation proportion.
 
     Returns
     -------
         index : float
-            A measure of disproportionality between allocations and original shares
+            A measure of disproportionality between allocations and original shares.
     """
     assert len(shares) == len(
         allocations
