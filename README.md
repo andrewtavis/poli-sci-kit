@@ -27,7 +27,7 @@
 - [Examples](#examples)
 - [To-Do](#to-do)
 
-# Installation [`↩`](#contents) <a id="installation"></a>
+# Installation [`⇧`](#contents) <a id="installation"></a>
 
 poli-sci-kit can be downloaded from PyPI via pip or sourced directly from this repository:
 
@@ -45,7 +45,7 @@ python setup.py install
 import poli_sci_kit
 ```
 
-# Appointment [`↩`](#contents) <a id="appointment"></a>
+# Appointment [`⇧`](#contents) <a id="appointment"></a>
 
 [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Included methods are:
 
@@ -103,7 +103,7 @@ passes_qc
 
 Allocation consistency can further be checked using dataframes of shares and seats given electoral settings. See [appointment.checks](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/checks.py) and [the documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for explanations of method checks.
 
-# Plotting [`↩`](#contents) <a id="plotting"></a>
+# Plotting [`⇧`](#contents) <a id="plotting"></a>
 
 poli-sci-kit provides Python only implementations of common electoral plots.
 
@@ -210,7 +210,7 @@ plt.show()
   <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/gh_images/dispr_bar.png" width="600" />
 </p>
 
-# Examples [`↩`](#contents) <a id="examples"></a>
+# Examples [`⇧`](#contents) <a id="examples"></a>
 
 Examples in poli-sci-kit use publicly available Wikidata statistics sourced via the Python package [wikirepo](https://github.com/andrewtavis/wikirepo). Current examples include:
 
@@ -221,7 +221,7 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 - [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb)
   - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain countries and organizations, the distribution of seats based on Freedom House indexes, as well as disproportionality metrics
 
-# To-Do [`↩`](#contents) <a id="to-do"></a>
+# To-Do [`⇧`](#contents) <a id="to-do"></a>
 
 Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
 
