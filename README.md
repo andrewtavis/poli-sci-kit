@@ -237,6 +237,8 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 
   - This would allow quick comparisons of actual systems with variations
 
+- Adding methods such as quadratic voting to poli-sci-kit to allow for preference based simulations
+
 - Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
 
 - Improving [tests](https://github.com/andrewtavis/poli-sci-kit/tree/main/tests) for greater [code coverage](https://codecov.io/gh/andrewtavis/poli-sci-kit)
