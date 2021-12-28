@@ -15,8 +15,6 @@ import sys
 
 sys.path.insert(0, os.path.abspath(".."))
 
-import poli_sci_kit
-
 # -- Project information -----------------------------------------------------
 
 project = "poli-sci-kit"
