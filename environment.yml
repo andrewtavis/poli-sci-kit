@@ -4,7 +4,7 @@ channels:
   - anaconda
   - defaults
 dependencies:
-  - black
+  - black>=19.10b0
   - certifi>=2020.12.5
   - numpy>=1.19.2
   - packaging>=20.9
