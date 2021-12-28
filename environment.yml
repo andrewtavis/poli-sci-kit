@@ -4,7 +4,7 @@ channels:
   - anaconda
   - defaults
 dependencies:
-  - black>=19.10b0
+  - black
   - certifi>=2020.12.5
   - numpy>=1.19.2
   - packaging>=20.9
@@ -15,4 +15,4 @@ dependencies:
   - scipy>=1.5.2
   - seaborn>=0.11.1
   - pip:
-    - colormath>=3.0.0
+      - colormath>=3.0.0
