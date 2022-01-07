@@ -24,6 +24,8 @@
 - [Installation](#installation)
 - [Appointment](#appointment)
 - [Plotting](#plotting)
+  - [Parliament Plots](#parliament-plots)
+  - [Disproportionality Bar Plot](#disproportionality-bar-plot)
 - [Examples](#examples)
 - [To-Do](#to-do)
 
@@ -49,9 +51,9 @@ import poli_sci_kit
 
 [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Included methods are:
 
-Largest Remainder: Hare, Droop, Hagenbach–Bischoff (incl Hamilton, Vinton, Hare–Niemeyer)
+#### Largest Remainder: Hare, Droop, Hagenbach–Bischoff (incl Hamilton, Vinton, Hare–Niemeyer)
 
-Highest Averages: Jefferson, Webster, Huntington-Hill
+#### Highest Averages: Jefferson, Webster, Huntington-Hill
 
 Arguments to allow allocation thresholds, minimum allocations per group, tie break conditions, and other election features are also provided. Along with deriving results for visualization and reporting, these functions allow the user to analyze outcomes given systematic or situational changes. The [appointment.metrics](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/metrics.py) module further provides diagnostics to analyze the results of elections, apportionments, and other political science scenarios.
 
@@ -118,7 +120,7 @@ parties = ['CDU/CSU', 'FDP', 'Greens', 'Die Linke', 'SPD', 'AfD']
 party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0']
 ```
 
-### Parliament Plots
+### • Parliament Plots [`⇧`](#contents) <a id="parliament-plots"></a>
 
 poli_sci_kit provides implementations of both rectangular and semicircle [parliament plots](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/parliament.py):
 
@@ -155,7 +157,7 @@ plt.show()
   <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/gh_images/semicircle_parliament.png" width="400" />
 </p>
 
-### Disproportionality Bar Plot
+### • Disproportionality Bar Plot [`⇧`](#contents) <a id="disproportionality-bar-plot"></a>
 
 A novel addition to social science analysis is the [disproportionality bar plot](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/dispr_bar.py), which graphically depicts the disproportionality between expected and realized results. Bar widths are the proportion of shares (ex: votes received), and heights are the difference or relative difference between shares and allocations (ex: parliament seats received).
 
