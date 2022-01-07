@@ -79,7 +79,11 @@ ha_allocations = appointment.methods.highest_averages(
 
 ha_allocations
 # [26, 9, 37, 12, 23, 5]
+```
 
+We can then compute various metrics to derive disproportionality:
+
+```python
 # The Gallagher method is a measure of absolute difference similar to summing square residuals
 disproportionality = appointment.metrics.dispr_index(
     shares=vote_counts,
