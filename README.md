@@ -258,6 +258,8 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 
 - https://github.com/crflynn/voting
 
+  - License: https://github.com/crflynn/voting/blob/master/LICENSE.txt
+
 - https://blogs.reading.ac.uk/readingpolitics/2015/06/29/electoral-disproportionality-what-is-it-and-how-should-we-measure-it/
 
 - Balinski, M. L., and Young, H. P. (1982). Fair Representation: Meeting the Ideal of One Man, One Vote. New Haven, London: Yale University Press.
