@@ -6,6 +6,10 @@ poli-sci-kit tries to follow [semantic versioning](https://semver.org/), a MAJOR
 - MINOR version when we add functionality in a backwards compatible manner
 - PATCH version when we make backwards compatible bug fixes
 
+# poli-sci-kit 1.0.1 (June 3rd, 2022)
+
+- Updates source code files with direct references to codes they're based on.
+
 # poli-sci-kit 1.0.0 (December 28th, 2021)
 
 - Release switches poli-sci-kit over to [semantic versioning](https://semver.org/) and indicates that it is stable

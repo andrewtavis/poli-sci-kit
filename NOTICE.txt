@@ -1,0 +1,60 @@
+Notice
+
+The poli-sci-kit developers (PSK) built the Python package "poli-sci-kit"
+(SERVICE) as an open-source application. This SERVICE is provided by PSK
+at no cost and is intended for use as is.
+
+This notice policy (NOTICE) is used to inform those who use the
+service (USERS) of the policies for the use of this SERVICE, as well
+as make the policies of sourced code and data clear.
+
+1. Third-Party Source Code
+
+This SERVICE was based on third party code. All source code used in
+the creation of this SERVICE comes from sources that allow its full
+use in the manner done so by the SERVICE. This section lists the source
+code on which the SERVICE was based as well as the coinciding licenses
+of each.
+
+1.1. voting by Christopher Flynn
+Source code: https://github.com/crflynn/voting
+License: https://github.com/crflynn/voting/blob/master/LICENSE.txt
+
+MIT License
+
+Copyright (c) 2018-2019 Christopher Flynn
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+2. Changes
+
+This NOTICE is subject to change. Updates to this NOTICE will replace
+all prior instances, and if deemed material will further be clearly
+stated in the next applicable update to the SERVICE. PSK encourages
+the USERS to familiarize themselves with any changes to this NOTICE.
+
+3. Contact
+
+If you have any questions, concerns, or suggestions about this NOTICE,
+do not hesitate to visit https://github.com/andrewtavis/poli-sci-kit.
+The person responsible for such inquiries is Andrew Tavis McAllister.
+
+4. Effective Date
+
+This NOTICE is effective as of the 3rd of June, 2022.

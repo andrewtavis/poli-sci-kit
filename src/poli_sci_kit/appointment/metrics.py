@@ -5,6 +5,11 @@ Appointment Metrics
 Functions to analyze the results of appointments, allocations and other political science scenarios.
 
 Based on
+    Flynn, C. voting: Diversity / (dis)proportionality measures, election quotas, and apportionment methods in pure
+    Python. (2020).
+    URL: https://github.com/crflynn/voting
+    License: https://github.com/crflynn/voting/blob/master/LICENSE.txt
+
     Kohler, U., and Zeh, J. (2012). “Apportionment methods”.
     The Stata Journal, Vol. 12, No. 3, pp. 375–392.
     URL: https://journals.sagepub.com/doi/pdf/10.1177/1536867X1201200303

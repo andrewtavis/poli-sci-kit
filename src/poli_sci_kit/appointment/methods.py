@@ -4,6 +4,12 @@ Appointment Methods
 
 Methods used to derive allocations based on received shares.
 
+Based on
+    Flynn, C. voting: Diversity / (dis)proportionality measures, election quotas, and apportionment methods in pure
+    Python. (2020).
+    URL: https://github.com/crflynn/voting
+    License: https://github.com/crflynn/voting/blob/master/LICENSE.txt
+
 Contents:
     largest_remainder (aka Hamilton, Vinton, Hare–Niemeyer)
 
