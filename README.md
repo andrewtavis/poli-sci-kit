@@ -272,9 +272,7 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 <details><summary><strong>Full list of references</strong></summary>
 <p>
 
-- https://github.com/crflynn/voting
-
-  - License: https://github.com/crflynn/voting/blob/master/LICENSE.txt
+- [voting](https://github.com/crflynn/voting) by [crflynn](https://github.com/crflynn) ([License](https://github.com/crflynn/voting/blob/master/LICENSE.txt))
 
 - https://blogs.reading.ac.uk/readingpolitics/2015/06/29/electoral-disproportionality-what-is-it-and-how-should-we-measure-it/
 
