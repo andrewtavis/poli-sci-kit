@@ -18,11 +18,11 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 project = "poli-sci-kit"
-copyright = "2020-2021, poli-sci-kit developers (BSD License)"
+copyright = "2020, poli-sci-kit developers (BSD License)"
 author = "poli-sci-kit developers"
 
 # The full version, including alpha/beta/rc tags
-release = "1.0.1"
+release = "1.0.2"
 
 
 # -- General configuration ---------------------------------------------------
