@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/poli-sci-kit_logo_transparent.png" width=463 height=251></a>
+  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/logo/poli-sci-kit_logo_transparent.png" width=463 height=251></a>
 </div>
 
 ---
@@ -167,8 +167,8 @@ plt.show()
 ```
 
 <p align="middle">
-  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/gh_images/rectangle_parliament.png" width="400" />
-  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/gh_images/semicircle_parliament.png" width="400" />
+  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/rectangle_parliament.png" width="400" />
+  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/semicircle_parliament.png" width="400" />
 </p>
 
 <a id="disproportionality-bar-plot"></a>
@@ -225,7 +225,7 @@ plt.show()
 ```
 
 <p align="middle">
-  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/gh_images/dispr_bar.png" width="600" />
+  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/dispr_bar.png" width="600" />
 </p>
 
 <a id="examples"></a>

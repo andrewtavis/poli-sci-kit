@@ -1,4 +1,4 @@
-.. image:: https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/resources/poli-sci-kit_logo_transparent.png
+.. image:: https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/logo/poli-sci-kit_logo_transparent.png
     :width: 463
     :height: 251
     :align: center
