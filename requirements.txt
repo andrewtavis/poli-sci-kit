@@ -1,5 +1,4 @@
 black>=19.10b0
-certifi>=2020.12.5
 colormath>=3.0.0
 numpy>=1.19.2
 packaging>=20.9
