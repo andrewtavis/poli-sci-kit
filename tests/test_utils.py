@@ -24,7 +24,7 @@ def test_gen_faction_groups():
     ) == [["a", "b", "f"], ["c", "d", "e",]]
 
 
-def test_semiscirled_parl_plot(allocations):
+def test_semicircle_parl_plot(allocations):
     assert list(
         utils.gen_parl_points(
             allocations=allocations, style="semicircle", num_rows=2, speaker=False,

@@ -12,6 +12,6 @@ def test_semicircle_parl_plot(monkeypatch, allocations):
     plot.parliament(allocations=allocations, style="semicircle")
 
 
-def test_rectangleparl_plot(monkeypatch, allocations):
+def test_rectangle_parl_plot(monkeypatch, allocations):
     monkeypatch.setattr(plt, "show", lambda: None)
     plot.parliament(allocations=allocations, style="rectangle")
