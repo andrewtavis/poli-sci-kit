@@ -25,6 +25,8 @@ def parliament(
     df_seat_lctns=None,
     dsat=default_sat,
     axis=None,
+    legend=False,
+    **kwargs
 ):
     """
     Produces a parliament plot given seat allocations.
@@ -114,11 +116,12 @@ def parliament(
         s=marker_size,
         edgecolor="#D2D2D3",
         ax=axis,
+        legend=legend,
+        **kwargs
     )  # edge color same as legend outline
 
     # Make plot a proportional and remove background axes.
     ax.axis("equal")
     ax.axis("off")
-    ax.legend("off")
 
     return ax
