@@ -174,6 +174,9 @@ def gen_parl_points(
         ]  # greater shift for higher rows for more equal spacing
         seats_per_row = [rs + seats_shift[i] for i, rs in enumerate(row_seats)]
 
+        if any(seats <= 0 for seats in seats_per_row):
+            raise Exception(f'Cannot allocate {total_seats} seats into {num_rows} rows. Try a smaller number of rows.')
+
         row_indexes = []
         row_position_indexes = []
         for i, spr in enumerate(seats_per_row):
