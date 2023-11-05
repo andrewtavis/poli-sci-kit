@@ -25,17 +25,12 @@ def test_gen_faction_groups():
 
 
 def test_semicircle_parl_plot(allocations):
-    assert list(
-        utils.gen_parl_points(
-            allocations=allocations, style="semicircle", num_rows=2, speaker=False,
-        )["row"]
-    ) == [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    test_df = utils.gen_parl_points(
+        allocations=allocations, style="semicircle", num_rows=2, speaker=False,
+    )
 
-    assert list(
-        utils.gen_parl_points(
-            allocations=allocations, style="semicircle", num_rows=2, speaker=False,
-        )["row_position"]
-    ) == [0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    assert list(test_df["row"]) == [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+    assert list(test_df["row_position"]) == [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 5, 7, 6, 8, 7, 9, 8, 10]
 
     test_df = utils.gen_parl_points(
         allocations=allocations, style="semicircle", num_rows=2, speaker=True,
