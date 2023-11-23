@@ -103,7 +103,7 @@ def dispr_bar(
         ]
         sns.set_palette(colors)
 
-    elif colors == None:
+    elif colors is None:
         sns.set_palette("deep")  # default sns palette
         colors = [
             utils.rgb_to_hex(c)
@@ -131,15 +131,16 @@ def dispr_bar(
         if height < 0:  # compensates for text height for negative bar labels
             ax.text(
                 x=p.get_x() + p.get_width() / 2.0,
-                y=height
-                + 1.5 * min([abs(i) for i in disproportionality]) * -1,  # put below
+                y=(
+                    height + 1.5 * min(abs(i) for i in disproportionality) * -1
+                ),
                 s=str(height),
                 ha="center",
             )
         else:
             ax.text(
                 x=p.get_x() + p.get_width() / 2.0,
-                y=height + 0.75 * min([abs(i) for i in disproportionality]),
+                y=height + 0.75 * min(abs(i) for i in disproportionality),
                 s=str(height),
                 ha="center",
             )

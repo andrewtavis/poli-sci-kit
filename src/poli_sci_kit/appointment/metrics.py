@@ -308,7 +308,7 @@ def div_index(shares, q=None, metric_type="Shannon"):
         assert (
             q
         ), "The order of diversity 'q' argument must be used with Renyi diversity calculations."
-        index = 1.0 / (1 - q) * log(sum([share ** q for share in norm_shares]))
+        index = 1.0 / (1 - q) * log(sum(share ** q for share in norm_shares))
 
     elif metric_type == "Simpson":
         index = sum(share ** 2 for share in norm_shares)
@@ -469,10 +469,8 @@ def dispr_index(shares, allocations, metric_type="Gallagher"):
             1.0
             / 2
             * sum(
-                [
-                    abs(share - allocation)
-                    for share, allocation in zip(norm_shares, norm_allocations)
-                ]
+                abs(share - allocation)
+                for share, allocation in zip(norm_shares, norm_allocations)
             )
         )
 

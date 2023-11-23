@@ -106,7 +106,7 @@ def parliament(
     elif style == "semicircle":
         marker = "o"
 
-    # Plot parliament in a scatterplot
+    # Plot parliament in a scatterplot.
     ax = sns.scatterplot(
         data=df_seat_lctns,
         x="x_loc",
@@ -114,11 +114,11 @@ def parliament(
         hue="group",
         marker=marker,
         s=marker_size,
-        edgecolor="#D2D2D3",
+        edgecolor="#D2D2D3", # edge color same as legend outline
         ax=axis,
         legend=legend,
         **kwargs
-    )  # edge color same as legend outline
+    )
 
     # Make plot a proportional and remove background axes.
     ax.axis("equal")

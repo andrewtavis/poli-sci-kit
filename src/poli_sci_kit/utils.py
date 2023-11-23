@@ -148,24 +148,24 @@ def gen_parl_points(
 
             return x_coordinates, y_coordinates, list(angles)
 
-        # Store point coordinates (x, y) and their angles with origin (0, 0)
+        # Store point coordinates (x, y) and their angles with origin (0, 0).
         xs, ys, thetas = [], [], []
 
-        # Create a list with radii values for each row
+        # Create a list with radii values for each row.
         radii = range(2, 2 + num_rows)
 
-        # Calculate the number of seats each row will have
+        # Calculate the number of seats each row will have.
         row_seats = [int(total_seats / num_rows)] * num_rows
         extra_seat = total_seats - sum(
             row_seats
-        )  # 0 or 1 based on whether the seats divide evenly into the rows
+        )  # 0 or 1 based on whether the seats divide evenly into the rows.
         row_seats[-1] += extra_seat
 
         # Shift the seats per row such that it's always increasing.
         if num_rows % 2 != 0:
-            seats_shift = list(range(-int(num_rows / 2), int(num_rows / 2) + 1, 1))
+            seats_shift = list(range(-int(num_rows / 2), int(num_rows / 2) + 1))
         else:
-            positive_shift = list(range(1, int(num_rows / 2) + 1, 1))
+            positive_shift = list(range(1, int(num_rows / 2) + 1))
             negative_shift = [-1 * i for i in positive_shift[::-1]]
             seats_shift = negative_shift + positive_shift
 
@@ -175,7 +175,7 @@ def gen_parl_points(
         seats_per_row = [rs + seats_shift[i] for i, rs in enumerate(row_seats)]
 
         if any(seats <= 0 for seats in seats_per_row):
-            raise Exception(f'Cannot allocate {total_seats} seats into {num_rows} rows. Try a smaller number of rows.')
+            raise ValueError(f"Cannot allocate {total_seats} seats into {num_rows} rows. Try a smaller number of rows.")
 
         row_indexes = []
         row_position_indexes = []
@@ -188,7 +188,7 @@ def gen_parl_points(
             # List of lists for position indexes such that they can be accessed by row and position.
             row_position_indexes += [list(range(spr))]
 
-        # Populate dataframe with coordinates, row number and position, and angles
+        # Populate dataframe with coordinates, row number and position and angles.
         df_seat_lctns["x_loc"] = xs
         df_seat_lctns["y_loc"] = ys
         df_seat_lctns["theta"] = thetas
@@ -197,15 +197,17 @@ def gen_parl_points(
             item for sublist in row_position_indexes for item in sublist
         ]
 
-        # Generate list of seat labels
+        # Generate list of seat labels.
         seat_labels = []
         for n_seats, label in zip(allocations, labels):
             seat_labels.extend([label]*n_seats)
 
-        # Sort plot points by their angle with the origin (0,0)
-        df_seat_lctns.sort_values(by=["theta", "row"], ascending=[False, True], inplace=True)
+        # Sort plot points by their angle with the origin (0, 0).
+        df_seat_lctns = df_seat_lctns.sort_values(
+            by=["theta", "row"], ascending=[False, True]
+        )
 
-        # Assign seat labels
+        # Assign seat labels.
         df_seat_lctns["group"] = seat_labels
 
     elif style == "rectangle":
@@ -330,17 +332,12 @@ def gen_parl_points(
             bottom_x = max(df_seat_lctns["x_loc"])
             bottom_y = bottom_rows[-1]
             # Fix initial position in case of unequal seats per row.
-            while (
-                len(
-                    [
-                        i
-                        for i in df_seat_lctns.index
-                        if df_seat_lctns.loc[i, "x_loc"] == bottom_x
-                        and df_seat_lctns.loc[i, "y_loc"] == bottom_y
-                    ]
-                )
-                == 0
-            ):
+            while not [
+                i
+                for i in df_seat_lctns.index
+                if df_seat_lctns.loc[i, "x_loc"] == bottom_x
+                and df_seat_lctns.loc[i, "y_loc"] == bottom_y
+            ]:
                 # Move down.
                 bottom_y -= 2
 
@@ -359,7 +356,7 @@ def gen_parl_points(
                     group_index += 1
 
                 if bottom_y == bottom_rows[0]:
-                    # Move left and reset vertical
+                    # Move left and reset vertical.
                     bottom_x -= 2
                     bottom_y = bottom_rows[-1]
 
@@ -407,7 +404,7 @@ def swap_parl_allocations(df, row_0, pos_0, row_1, pos_1):
 
     Parameters
     ----------
-        df    : pandas.DataFrame
+        df : pandas.DataFrame
             DataFrame containing parliament data
 
         row_0 : int
@@ -485,7 +482,7 @@ def rgb_to_hex(rgb_trip):
 
 def scale_saturation(rgb_trip, sat):
     """
-    Changes the saturation of rgb color.
+    Changes the saturation of an rgb color.
 
     Parameters
     ----------

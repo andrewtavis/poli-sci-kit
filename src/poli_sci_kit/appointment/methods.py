@@ -92,7 +92,7 @@ def largest_remainder(
             A list of allocations in the order of the provided shares.
     """
     assert (
-        alloc_threshold == None or min_alloc == None
+        alloc_threshold is None or min_alloc is None
     ), """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation.
         Set one of alloc_threshold or min_alloc to None."""
 
@@ -111,9 +111,7 @@ def largest_remainder(
         return seat_quota
 
     if alloc_threshold:
-        passed_threshold = [
-            True if 1.0 * s / sum(shares) > alloc_threshold else False for s in shares
-        ]
+        passed_threshold = [1.0 * s / sum(shares) > alloc_threshold for s in shares]
         shares = [s if passed_threshold[i] == True else 0 for i, s in enumerate(shares)]
 
     original_remainders = None
@@ -224,30 +222,27 @@ def largest_remainder(
     if min_alloc:
         allocations = [a + original_with_baseline[i] for i, a in enumerate(allocations)]
 
-    if majority_bonus:
-        # If a single majority group does not receive at least 50%, then
-        # they are given it, and assignment is redone for the rest.
-        if (
-            not allocations[shares.index(max(shares))] >= int(ceil(total_alloc / 2))
-            and len([s for s in shares if s == max(shares)]) == 1
-        ):
-            non_majority_shares = [s for s in shares if s != max(shares)]
-            reduced_seats = total_alloc - int(ceil(total_alloc / 2))
-            non_majority_allocations = largest_remainder(
-                quota_style=quota_style,
-                shares=non_majority_shares,
-                total_alloc=reduced_seats,
-                alloc_threshold=alloc_threshold,
-                min_alloc=min_alloc,
-                tie_break=tie_break,
-                majority_bonus=False,
-            )
+    if majority_bonus and (
+                allocations[shares.index(max(shares))] < int(ceil(total_alloc / 2))
+                and len([s for s in shares if s == max(shares)]) == 1
+            ):
+        non_majority_shares = [s for s in shares if s != max(shares)]
+        reduced_seats = total_alloc - int(ceil(total_alloc / 2))
+        non_majority_allocations = largest_remainder(
+            quota_style=quota_style,
+            shares=non_majority_shares,
+            total_alloc=reduced_seats,
+            alloc_threshold=alloc_threshold,
+            min_alloc=min_alloc,
+            tie_break=tie_break,
+            majority_bonus=False,
+        )
 
-            # Insert majority allocation.
-            non_majority_allocations[
-                shares.index(max(shares)) : shares.index(max(shares))
-            ] = [int(ceil(total_alloc / 2))]
-            allocations = non_majority_allocations
+        # Insert majority allocation.
+        non_majority_allocations[
+            shares.index(max(shares)) : shares.index(max(shares))
+        ] = [int(ceil(total_alloc / 2))]
+        allocations = non_majority_allocations
 
     return allocations
 
@@ -322,14 +317,16 @@ def highest_averages(
             A list of allocations in the order of the provided shares.
     """
     assert (
-        alloc_threshold == None or min_alloc == None
+        alloc_threshold is None or min_alloc is None
     ), """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation. Set one of 'alloc_threshold' or 'min_alloc' to None."""
 
     assert (
-        alloc_threshold == None or averaging_style != "Huntington-Hill"
+        alloc_threshold is None or averaging_style != "Huntington-Hill"
     ), """The Huntington-Hill method requires all groups to receive a seat, and thus cannot be used with a threshold. Set 'alloc_threshold' to None."""
 
-    if averaging_style == "Huntington-Hill" and (min_alloc == None or min_alloc == 0):
+    if averaging_style == "Huntington-Hill" and (
+        min_alloc is None or min_alloc == 0
+    ):
         print(
             "A minimum allocation is required in the denominator of Huntington-Hill calculations."
         )
@@ -340,9 +337,7 @@ def highest_averages(
         min_alloc = 1
 
     if alloc_threshold:
-        passed_threshold = [
-            True if 1.0 * i / sum(shares) > alloc_threshold else False for i in shares
-        ]
+        passed_threshold = [1.0 * i / sum(shares) > alloc_threshold for i in shares]
         shares = [s if passed_threshold[i] == True else 0 for i, s in enumerate(shares)]
 
     if min_alloc != None and min_alloc > 0:
@@ -464,30 +459,27 @@ def highest_averages(
                     f"A tie break is required for the last seat(s), and an invalid argument '{tie_break}' has been passed. Please choose from 'majority' or 'random'."
                 )
 
-    if majority_bonus:
-        # If a single majority group does not receive at least 50%, then
-        # they are given it, and assignment is redone for the rest.
-        if (
-            not allocations[shares.index(max(shares))] >= int(ceil(total_alloc / 2))
-            and len([s for s in shares if s == max(shares)]) == 1
-        ):
-            non_majority_shares = [s for s in shares if s != max(shares)]
-            reduced_seats = total_alloc - int(ceil(total_alloc / 2))
-            non_majority_allocations = highest_averages(
-                averaging_style=averaging_style,
-                shares=non_majority_shares,
-                total_alloc=reduced_seats,
-                alloc_threshold=alloc_threshold,
-                min_alloc=min_alloc,
-                tie_break=tie_break,
-                majority_bonus=False,
-                modifier=modifier,
-            )
+    if majority_bonus and (
+                not allocations[shares.index(max(shares))] >= int(ceil(total_alloc / 2))
+                and len([s for s in shares if s == max(shares)]) == 1
+            ):
+        non_majority_shares = [s for s in shares if s != max(shares)]
+        reduced_seats = total_alloc - int(ceil(total_alloc / 2))
+        non_majority_allocations = highest_averages(
+            averaging_style=averaging_style,
+            shares=non_majority_shares,
+            total_alloc=reduced_seats,
+            alloc_threshold=alloc_threshold,
+            min_alloc=min_alloc,
+            tie_break=tie_break,
+            majority_bonus=False,
+            modifier=modifier,
+        )
 
-            # Insert majority allocation.
-            non_majority_allocations[
-                shares.index(max(shares)) : shares.index(max(shares))
-            ] = [int(ceil(total_alloc / 2))]
-            allocations = non_majority_allocations
+        # Insert majority allocation.
+        non_majority_allocations[
+            shares.index(max(shares)) : shares.index(max(shares))
+        ] = [int(ceil(total_alloc / 2))]
+        allocations = non_majority_allocations
 
     return allocations

@@ -26,7 +26,7 @@ def quota_condition(shares, seats):
     Parameters
     ----------
         shares : list
-            The preportion of the population or votes for the regions or parties.
+            The proportion of the population or votes for the regions or parties.
 
         seats : list
             The share of seats given to the regions or parties.
@@ -72,7 +72,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
     Parameters
     ----------
         df_shares : pd.DataFrame (num_region_party, num_variation; contains ints, default=None)
-            Preportions of the population or votes for the regions or parties given variance.
+            Proportions of the population or votes for the regions or parties given variance.
 
         df_seats : pd.DataFrame (num_region_party, num_variation; contains ints, default=None)
             Shares of seats given to the regions or parties given variance.
@@ -83,11 +83,11 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             Options:
                 The style of monotony to derive the consistency with.
 
-                - seat_monotony : An incease in total seats does not decrease alloted seats
+                - seat_monotony : An increase in total seats does not decrease alloted seats
 
                     Note: use sums of cols of df_seats, checking col element monotony given a differences in sums.
 
-                - share_monotony : An incease in shares does not decrease alloted seats
+                - share_monotony : An increase in shares does not decrease alloted seats
 
                     Note: use rows of df_shares and check coinciding elements of df_seats for monotony.
 
@@ -142,14 +142,14 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
 
         col_range = list(range(len(df_fail_report.columns)))  # list to use .pop()
 
-        cols_droppped = 0
+        cols_dropped = 0
         for i in col_range:
             if check_cols[i] == True:
                 # Drop the column, and add to an indexer to maintain lengths.
                 df_fail_report.drop(
-                    df_fail_report.columns[i - cols_droppped], axis=1, inplace=True
+                    df_fail_report.columns[i - cols_dropped], axis=1, inplace=True
                 )
-                cols_droppped += 1
+                cols_dropped += 1
 
             else:
                 # Keep the column, and remove the indexes of any columns that
@@ -186,15 +186,15 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
                 for i in check_rows
             ]
 
-            rows_droppped = 0
+            rows_dropped = 0
             for i in range(len(df_fail_report.index)):
                 if check_rows[i] == True:
                     # Drop the row if no elements are greater than following ones,
                     # and add to an indexer to maintain lengths.
                     df_fail_report.drop(
-                        df_fail_report.index[i - rows_droppped], axis=0, inplace=True
+                        df_fail_report.index[i - rows_dropped], axis=0, inplace=True
                     )
-                    rows_droppped += 1
+                    rows_dropped += 1
 
         check_pass = len(df_fail_report.columns) == 0
         print(
@@ -299,13 +299,13 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
         cols_to_keep = [[2 * i, 2 * i + 1] for i in col_pairs_to_keep]
         cols_to_keep = [item for sublist in cols_to_keep for item in sublist]
 
-        cols_droppped = 0
+        cols_dropped = 0
         for col in range(len(df_fail_report.columns)):
             if col not in cols_to_keep:
                 df_fail_report.drop(
-                    df_fail_report.columns[col - cols_droppped], axis=1, inplace=True
+                    df_fail_report.columns[col - cols_dropped], axis=1, inplace=True
                 )
-                cols_droppped += 1
+                cols_dropped += 1
 
     else:
         ValueError(
