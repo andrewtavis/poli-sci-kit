@@ -141,17 +141,20 @@ def gen_parl_points(
             Generates an arc of the parliament plot given a radius and the number of seats.
             """
             angles = np.linspace(start=np.pi, stop=0, num=seats)
-            x_coordinates, y_coordinates = [], []
 
             # Broadcast angles to their corresponding coordinates.
             x_coordinates = list(r * np.cos(angles))
             y_coordinates = list(r * np.sin(angles))
 
-            return x_coordinates, y_coordinates
+            return x_coordinates, y_coordinates, list(angles)
 
-        xs, ys = [], []
+        # Store point coordinates (x, y) and their angles with origin (0, 0)
+        xs, ys, thetas = [], [], []
+
+        # Create a list with radii values for each row
         radii = range(2, 2 + num_rows)
 
+        # Calculate the number of seats each row will have
         row_seats = [int(total_seats / num_rows)] * num_rows
         extra_seat = total_seats - sum(
             row_seats
@@ -171,66 +174,39 @@ def gen_parl_points(
         ]  # greater shift for higher rows for more equal spacing
         seats_per_row = [rs + seats_shift[i] for i, rs in enumerate(row_seats)]
 
+        if any(seats <= 0 for seats in seats_per_row):
+            raise Exception(f'Cannot allocate {total_seats} seats into {num_rows} rows. Try a smaller number of rows.')
+
         row_indexes = []
         row_position_indexes = []
         for i, spr in enumerate(seats_per_row):
-            arc_xs, arc_ys = arc_coordinates(radii[i], spr)
+            arc_xs, arc_ys, arc_angles = arc_coordinates(radii[i], spr)
             xs += arc_xs
             ys += arc_ys
+            thetas += arc_angles
             row_indexes += [i] * spr
             # List of lists for position indexes such that they can be accessed by row and position.
             row_position_indexes += [list(range(spr))]
 
-        for i in range(total_seats):
-            df_seat_lctns.loc[i, "x_loc"] = xs[i]
-            df_seat_lctns.loc[i, "y_loc"] = ys[i]
-
+        # Populate dataframe with coordinates, row number and position, and angles
+        df_seat_lctns["x_loc"] = xs
+        df_seat_lctns["y_loc"] = ys
+        df_seat_lctns["theta"] = thetas
         df_seat_lctns["row"] = row_indexes
         df_seat_lctns["row_position"] = [
             item for sublist in row_position_indexes for item in sublist
         ]
 
-        # Index the group and deplete a copy of allocations at its location.
-        group_index = 0
-        seats_to_allocate = allocations.copy()
-        row_index = 0
+        # Generate list of seat labels
+        seat_labels = []
+        for n_seats, label in zip(allocations, labels):
+            seat_labels.extend([label]*n_seats)
 
-        while total_seats > 0:
-            # Assign based on row and the current index within that row.
-            if row_position_indexes[row_index] != []:
-                index_to_assign = [
-                    i
-                    for i in df_seat_lctns.index
-                    if df_seat_lctns.loc[i, "row"] == row_index
-                    and df_seat_lctns.loc[i, "row_position"]
-                    == row_position_indexes[row_index][0]
-                ][0]
+        # Sort plot points by their angle with the origin (0,0)
+        df_seat_lctns.sort_values(by=["theta", "row"], ascending=[False, True], inplace=True)
 
-                df_seat_lctns.loc[index_to_assign, "group"] = labels[group_index]
-
-                total_seats -= 1
-
-                seats_to_allocate[group_index] -= 1
-                if seats_to_allocate[group_index] == 0:
-                    group_index += 1
-
-                row_position_indexes[row_index].pop(0)
-
-                row_index += 1
-                if row_index == num_rows:
-                    row_index = 0
-
-                # Make sure that radii are filled before rows are completed.
-                for i in range(num_rows):
-                    if len(row_position_indexes[i]) < i + 2:
-                        if i != 0:
-                            row_index -= 1
-                        else:
-                            row_index = num_rows - 1
-
-            else:
-                while row_position_indexes[row_index] == []:
-                    row_index += 1
+        # Assign seat labels
+        df_seat_lctns["group"] = seat_labels
 
     elif style == "rectangle":
         x_coordinate = 0
@@ -305,10 +281,10 @@ def gen_parl_points(
             df_seat_lctns.reset_index(inplace=True, drop=True)
 
             # Define the top and bottom rows so they can be filled in order.
-            top_rows = y_coordinates[int((len(y_coordinates) + 1) / 2) :]
-            bottom_rows = y_coordinates[: int((len(y_coordinates) + 1) / 2)]
+            top_rows = y_coordinates[int((len(y_coordinates) + 1) / 2):]
+            bottom_rows = y_coordinates[:int((len(y_coordinates) + 1) / 2)]
 
-            # Find the total seats in each section to be depleated.
+            # Find the total seats in each section to be depleted.
             total_top_seats = 0
             for row in top_rows:
                 total_top_seats += len(df_seat_lctns[df_seat_lctns["y_loc"] == row])
@@ -431,6 +407,9 @@ def swap_parl_allocations(df, row_0, pos_0, row_1, pos_1):
 
     Parameters
     ----------
+        df    : pandas.DataFrame
+            DataFrame containing parliament data
+
         row_0 : int
             The row of one seat to swap.
 
@@ -477,7 +456,7 @@ def hex_to_rgb(hex_rep):
             An RGB tuple color representation.
     """
     return sRGBColor(
-        *[int(hex_rep[i + 1 : i + 3], 16) for i in (0, 2, 4)], is_upscaled=True
+        *[int(hex_rep[i + 1:i + 3], 16) for i in (0, 2, 4)], is_upscaled=True
     )
 
 
@@ -506,7 +485,7 @@ def rgb_to_hex(rgb_trip):
 
 def scale_saturation(rgb_trip, sat):
     """
-    Changes the saturation of an rgb color.
+    Changes the saturation of rgb color.
 
     Parameters
     ----------
