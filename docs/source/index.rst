@@ -10,7 +10,7 @@
 .. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
 
-.. |ci| image:: https://img.shields.io/github/workflow/status/andrewtavis/poli-sci-kit/CI?logo=github
+.. |ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/ci.yml?branch=main?logo=github
     :target: https://github.com/andrewtavis/poli-sci-kit/actions?query=workflow%3ACI
 
 .. |codecov| image:: https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg
