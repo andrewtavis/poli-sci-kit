@@ -103,22 +103,41 @@ def parliament(
     if style == "rectangle":
         marker = "s"
 
+        if labels is None:
+            labels = list(df_seat_lctns["group"].unique())
+
+        # Loop through groups and plot their allocations.
+        for g, lbl in enumerate(labels):
+            df_subsetted = df_seat_lctns[df_seat_lctns["group"] == lbl]
+
+            ax = sns.scatterplot(
+                data=df_subsetted,
+                x="x_loc",
+                y="y_loc",
+                color=colors[g],
+                marker=marker,
+                s=marker_size,
+                edgecolor="#D2D2D3",  # edge color same as legend outline
+                ax=axis,
+                legend=legend,
+                **kwargs
+            )
+
     elif style == "semicircle":
         marker = "o"
 
-    # Plot parliament in a scatterplot.
-    ax = sns.scatterplot(
-        data=df_seat_lctns,
-        x="x_loc",
-        y="y_loc",
-        hue="group",
-        marker=marker,
-        s=marker_size,
-        edgecolor="#D2D2D3", # edge color same as legend outline
-        ax=axis,
-        legend=legend,
-        **kwargs
-    )
+        ax = sns.scatterplot(
+            data=df_seat_lctns,
+            x="x_loc",
+            y="y_loc",
+            hue="group",
+            marker=marker,
+            s=marker_size,
+            edgecolor="#D2D2D3", # edge color same as legend outline
+            ax=axis,
+            legend=legend,
+            **kwargs
+        )
 
     # Make plot a proportional and remove background axes.
     ax.axis("equal")
