@@ -283,8 +283,8 @@ def gen_parl_points(
             df_seat_lctns.reset_index(inplace=True, drop=True)
 
             # Define the top and bottom rows so they can be filled in order.
-            top_rows = y_coordinates[int((len(y_coordinates) + 1) / 2):]
-            bottom_rows = y_coordinates[:int((len(y_coordinates) + 1) / 2)]
+            top_rows = y_coordinates[int((len(y_coordinates) + 1) / 2) :]
+            bottom_rows = y_coordinates[: int((len(y_coordinates) + 1) / 2)]
 
             # Find the total seats in each section to be depleted.
             total_top_seats = 0
@@ -331,6 +331,7 @@ def gen_parl_points(
             # Bottom assignment from high to low and right to left.
             bottom_x = max(df_seat_lctns["x_loc"])
             bottom_y = bottom_rows[-1]
+
             # Fix initial position in case of unequal seats per row.
             while not [
                 i

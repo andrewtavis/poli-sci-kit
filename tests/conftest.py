@@ -85,7 +85,7 @@ def highest_averages_styles(request):
     return request.param
 
 
-# Jefferson highest averages from tie_votes_list[0] and total_alloc=seats
+# Jefferson highest averages from tie_votes_list[0] and total_alloc=seats.
 @pytest.fixture(params=[1918578])
 def share(request):
     return request.param
