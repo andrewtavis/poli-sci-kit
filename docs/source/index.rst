@@ -56,13 +56,13 @@ Installation
     import poli_sci_kit
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 2
+    :caption: Contents:
 
-   appointment/index
-   plot
-   utils
-   notes
+    appointment/index
+    plot
+    utils
+    notes
 
 Project Indices
 ===============
