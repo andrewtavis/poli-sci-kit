@@ -5,13 +5,16 @@
     :target: https://github.com/andrewtavis/poli-sci-kit
 ============
 
-|rtd| |ci| |codecov| |pyversions| |pypi| |pypistatus| |license| |coc| |codestyle| |colab|
+|rtd| |pr_ci| |python_package_ci| |codecov| |pyversions| |pypi| |pypistatus| |license| |coc| |codestyle| |colab|
 
 .. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
 
-.. |ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/ci.yml?branch=main?logo=github
-    :target: https://github.com/andrewtavis/poli-sci-kit/actions?query=workflow%3ACI
+.. |pr_ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/pr_ci.yml?branch=main?&label=ci&logo=ruff
+    :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/pr_ci.yaml
+
+.. |python_package_ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/python_package_ci.yml?branch=main?&label=build&logo=pytest
+    :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/python_package_ci.yaml
 
 .. |codecov| image:: https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg
     :target: https://codecov.io/gh/andrewtavis/poli-sci-kit

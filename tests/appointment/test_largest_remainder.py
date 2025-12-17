@@ -1,6 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
-Largest Remainder Method Tests
-------------------------------
+Largest Remainder method tests.
 """
 
 from poli_sci_kit.appointment.methods import largest_remainder

@@ -1,6 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
-Appointment Check Tests
------------------------
+Appointment check tests.
 """
 
 import pandas as pd

@@ -1,6 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
-Fixtures
---------
+Fixtures for tests.
 """
 
 import pytest

@@ -1,6 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
-Highest Averages Method Tests
------------------------------
+Highest Averages method tests.
 """
 
 from poli_sci_kit.appointment.methods import highest_averages

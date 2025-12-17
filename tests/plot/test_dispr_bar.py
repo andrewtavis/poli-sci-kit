@@ -1,6 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
-Disproportionality Bar Plot Tests
----------------------------------
+Disproportionality bar plot tests.
 """
 
 import matplotlib.pyplot as plt

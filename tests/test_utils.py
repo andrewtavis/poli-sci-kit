@@ -1,6 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
-Utilities Tests
----------------
+Utilities for tests.
 """
 
 from poli_sci_kit import utils

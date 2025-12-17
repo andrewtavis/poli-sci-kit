@@ -1,6 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
-Parliament Plot Tests
----------------------
+Parliament plot tests.
 """
 
 import matplotlib.pyplot as plt
