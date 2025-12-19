@@ -2,11 +2,10 @@
 import os
 
 try:
-    from setuptools import setup
+    from setuptools import find_packages, setup
+
 except ImportError:
     from distutils.core import setup
-
-from setuptools import find_packages
 
 package_directory = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(package_directory, "README.md"), encoding="utf-8") as fh:
@@ -34,13 +33,14 @@ setup_args = dict(
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.6",
+    python_requires=">=3.10",
     install_requires=requirements,
     description="Political elections, appointment, analysis and visualization in Python",
     long_description=long_description,
