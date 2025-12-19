@@ -4,6 +4,7 @@ Disproportionality bar plot tests.
 """
 
 import matplotlib.pyplot as plt
+
 from poli_sci_kit import plot
 
 

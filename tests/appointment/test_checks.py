@@ -4,6 +4,7 @@ Appointment check tests.
 """
 
 import pandas as pd
+
 from poli_sci_kit.appointment.checks import consistency_condition, quota_condition
 
 

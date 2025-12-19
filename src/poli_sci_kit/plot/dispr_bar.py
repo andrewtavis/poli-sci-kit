@@ -11,6 +11,7 @@ Contents:
 
 import pandas as pd
 import seaborn as sns
+
 from poli_sci_kit import utils
 
 default_sat = 0.95

@@ -13,6 +13,7 @@ Contents:
 from math import ceil, floor
 
 import pandas as pd
+
 from poli_sci_kit.appointment.metrics import ideal_share
 
 

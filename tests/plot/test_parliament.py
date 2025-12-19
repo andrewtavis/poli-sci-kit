@@ -4,8 +4,9 @@ Parliament plot tests.
 """
 
 import matplotlib.pyplot as plt
-from poli_sci_kit import plot
 import pytest
+
+from poli_sci_kit import plot
 
 
 def test_semicircle_parl_plot(monkeypatch, allocations):
