@@ -10,10 +10,10 @@
 .. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
 
-.. |pr_ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/pr_ci.yaml?branch=main?&label=ci&logo=ruff
+.. |pr_ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/pr_ci.yaml?branch=main&label=ci&logo=ruff
     :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/pr_ci.yaml
 
-.. |python_package_ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/python_package_ci.yaml?branch=main?&label=build&logo=pytest
+.. |python_package_ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/python_package_ci.yaml?branch=main&label=build&logo=pytest
     :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/python_package_ci.yaml
 
 .. |codecov| image:: https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg
