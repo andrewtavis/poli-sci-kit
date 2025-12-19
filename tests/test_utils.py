@@ -21,19 +21,74 @@ def test_gen_faction_groups():
     test_list = ["a", "b", "c", "d", "e", "f"]
     assert utils.gen_faction_groups(
         original_list=test_list, factions_indexes=[[0, 1, 5], [2, 3, 4]]
-    ) == [["a", "b", "f"], ["c", "d", "e",]]
+    ) == [
+        ["a", "b", "f"],
+        [
+            "c",
+            "d",
+            "e",
+        ],
+    ]
 
 
 def test_semicircle_parl_plot(allocations):
     test_df = utils.gen_parl_points(
-        allocations=allocations, style="semicircle", num_rows=2, speaker=False,
+        allocations=allocations,
+        style="semicircle",
+        num_rows=2,
+        speaker=False,
     )
 
-    assert list(test_df["row"]) == [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1]
-    assert list(test_df["row_position"]) == [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 5, 7, 6, 8, 7, 9, 8, 10]
+    assert list(test_df["row"]) == [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+    ]
+    assert list(test_df["row_position"]) == [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        6,
+        5,
+        7,
+        6,
+        8,
+        7,
+        9,
+        8,
+        10,
+    ]
 
     test_df = utils.gen_parl_points(
-        allocations=allocations, style="semicircle", num_rows=2, speaker=True,
+        allocations=allocations,
+        style="semicircle",
+        num_rows=2,
+        speaker=True,
     )
 
     assert test_df["x_loc"][len(test_df) - 1] == 0
@@ -43,18 +98,27 @@ def test_semicircle_parl_plot(allocations):
 def test_rectangle_parl_plot(allocations):
     assert list(
         utils.gen_parl_points(
-            allocations=allocations, style="rectangle", num_rows=4, speaker=False,
+            allocations=allocations,
+            style="rectangle",
+            num_rows=4,
+            speaker=False,
         )["row"]
     ) == [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3]
 
     assert list(
         utils.gen_parl_points(
-            allocations=allocations, style="rectangle", num_rows=4, speaker=False,
+            allocations=allocations,
+            style="rectangle",
+            num_rows=4,
+            speaker=False,
         )["row_position"]
     ) == [0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4]
 
     test_df = utils.gen_parl_points(
-        allocations=allocations, style="rectangle", num_rows=4, speaker=True,
+        allocations=allocations,
+        style="rectangle",
+        num_rows=4,
+        speaker=True,
     )
 
     assert test_df["x_loc"][len(test_df) - 1] == 0
@@ -63,7 +127,10 @@ def test_rectangle_parl_plot(allocations):
 
 def test_swap_parl_allocations(allocations):
     test_df = utils.gen_parl_points(
-        allocations=allocations, style="rectangle", num_rows=4, speaker=False,
+        allocations=allocations,
+        style="rectangle",
+        num_rows=4,
+        speaker=False,
     )
 
     test_swap_df = test_df.copy()

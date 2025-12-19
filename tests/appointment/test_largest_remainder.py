@@ -33,7 +33,9 @@ def test_lr_greater_than_zero(largest_remainder_styles, votes, seats):
     assert all(
         alloc >= 0
         for alloc in largest_remainder(
-            quota_style=largest_remainder_styles, shares=votes, total_alloc=seats,
+            quota_style=largest_remainder_styles,
+            shares=votes,
+            total_alloc=seats,
         )
     )
 
@@ -68,7 +70,9 @@ def test_lr_hare(long_votes_list, seats_large):
 
     assert (
         largest_remainder(
-            quota_style="Hare", shares=long_votes_list, total_alloc=seats_large,
+            quota_style="Hare",
+            shares=long_votes_list,
+            total_alloc=seats_large,
         )
         == results
     )
@@ -104,7 +108,9 @@ def test_lr_droop(long_votes_list, seats_large):
 
     assert (
         largest_remainder(
-            quota_style="Droop", shares=long_votes_list, total_alloc=seats_large,
+            quota_style="Droop",
+            shares=long_votes_list,
+            total_alloc=seats_large,
         )
         == results
     )

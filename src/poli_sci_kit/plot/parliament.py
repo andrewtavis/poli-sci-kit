@@ -27,7 +27,7 @@ def parliament(
     dsat=default_sat,
     axis=None,
     legend=False,
-    **kwargs
+    **kwargs,
 ):
     """
     Produces a parliament plot given seat allocations.
@@ -71,14 +71,14 @@ def parliament(
         ax : matplotlib.pyplot.subplot
             Parliament seat distribution as either an arc or a rectangle, each having the option to be converted to seats.
     """
-    assert num_rows <= sum(
-        allocations
-    ), "The number of rows cannot exceed the number of seats to be allocated."
+    assert num_rows <= sum(allocations), (
+        "The number of rows cannot exceed the number of seats to be allocated."
+    )
 
     if colors:
-        assert len(colors) == len(
-            allocations
-        ), "The number of colors provided doesn't match the number of counts to be displayed."
+        assert len(colors) == len(allocations), (
+            "The number of colors provided doesn't match the number of counts to be displayed."
+        )
 
     elif colors is None:
         sns.set_palette("deep")  # default sns palette
@@ -121,7 +121,7 @@ def parliament(
                 edgecolor="#D2D2D3",  # edge color same as legend outline
                 ax=axis,
                 legend=legend,
-                **kwargs
+                **kwargs,
             )
 
     elif style == "semicircle":
@@ -134,10 +134,10 @@ def parliament(
             hue="group",
             marker=marker,
             s=marker_size,
-            edgecolor="#D2D2D3", # edge color same as legend outline
+            edgecolor="#D2D2D3",  # edge color same as legend outline
             ax=axis,
             legend=legend,
-            **kwargs
+            **kwargs,
         )
 
     # Make plot a proportional and remove background axes.

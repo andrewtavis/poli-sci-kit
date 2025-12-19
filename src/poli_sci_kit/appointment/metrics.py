@@ -143,9 +143,9 @@ def total_alloc_to_share_error(shares, allocations, proportional=True):
         total_asr_err : float
             The summation of the allocation to share ratio error for all populations or groups.
     """
-    assert len(shares) == len(
-        allocations
-    ), "The total different shares of a population or vote must equal that of the allocations."
+    assert len(shares) == len(allocations), (
+        "The total different shares of a population or vote must equal that of the allocations."
+    )
 
     sum_share = sum(shares)
     sum_allocations = sum(allocations)
@@ -238,9 +238,9 @@ def total_rep_weight_error(shares, allocations, proportional=True):
         total_rw_err : float
             The summation of the representative weight error for all populations or groups.
     """
-    assert len(shares) == len(
-        allocations
-    ), "The total different shares of a population or vote must equal that of the allocations."
+    assert len(shares) == len(allocations), (
+        "The total different shares of a population or vote must equal that of the allocations."
+    )
 
     sum_share = sum(shares)
     sum_allocations = sum(allocations)
@@ -306,28 +306,28 @@ def div_index(shares, q=None, metric_type="Shannon"):
         index = -1 * sum(share * log(share) for share in norm_shares)
 
     elif metric_type == "Renyi":
-        assert (
-            q
-        ), "The order of diversity 'q' argument must be used with Renyi diversity calculations."
-        index = 1.0 / (1 - q) * log(sum(share ** q for share in norm_shares))
+        assert q, (
+            "The order of diversity 'q' argument must be used with Renyi diversity calculations."
+        )
+        index = 1.0 / (1 - q) * log(sum(share**q for share in norm_shares))
 
     elif metric_type == "Simpson":
-        index = sum(share ** 2 for share in norm_shares)
+        index = sum(share**2 for share in norm_shares)
 
     elif metric_type == "Gini-Simpson":
-        index = 1 - sum(share ** 2 for share in norm_shares)
+        index = 1 - sum(share**2 for share in norm_shares)
 
     elif metric_type == "Berger-Parker":
         index = max(norm_shares)
 
     elif metric_type == "Effective":
-        assert (
-            q
-        ), "The order of diversity 'q' argument must be used with Effective diversity calculations."
+        assert q, (
+            "The order of diversity 'q' argument must be used with Effective diversity calculations."
+        )
         if q == 1:
             index = exp(div_index(shares=shares, q=None, metric_type="Shannon"))
         else:
-            index = sum(share ** q for share in norm_shares) ** (1.0 / (1 - q))
+            index = sum(share**q for share in norm_shares) ** (1.0 / (1 - q))
 
     else:
         ValueError(
@@ -357,13 +357,11 @@ def effective_number_of_groups(shares, metric_type="Laakso-Taagepera"):
     norm_shares = normalize(vals=shares)
 
     if metric_type == "Laakso-Taagepera":
-        return 1.0 / sum(share ** 2 for share in norm_shares)
+        return 1.0 / sum(share**2 for share in norm_shares)
 
     elif metric_type == "Golosov":
         max_share = max(shares)
-        return sum(
-            share / (share + max_share ** 2 - share ** 2) for share in norm_shares
-        )
+        return sum(share / (share + max_share**2 - share**2) for share in norm_shares)
 
     elif metric_type == "Inverse-Simpson":
         return 1.0 / div_index(shares=shares, metric_type="Shannon")
@@ -434,9 +432,9 @@ def dispr_index(shares, allocations, metric_type="Gallagher"):
         index : float
             A measure of disproportionality between allocations and original shares.
     """
-    assert len(shares) == len(
-        allocations
-    ), "The number of different shares must equal the number of different allocations."
+    assert len(shares) == len(allocations), (
+        "The number of different shares must equal the number of different allocations."
+    )
 
     available_metrics = [
         "Gallagher",

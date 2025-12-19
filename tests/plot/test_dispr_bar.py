@@ -10,14 +10,18 @@ from poli_sci_kit import plot
 def test_dispr_bar(monkeypatch, short_votes_list, allocations):
     monkeypatch.setattr(plt, "show", lambda: None)
     plot.dispr_bar(
-        shares=short_votes_list, allocations=allocations, percent=False,
+        shares=short_votes_list,
+        allocations=allocations,
+        percent=False,
     )
 
 
 def test_dispr_bar_percent(monkeypatch, short_votes_list, allocations):
     monkeypatch.setattr(plt, "show", lambda: None)
     plot.dispr_bar(
-        shares=short_votes_list, allocations=allocations, percent=True,
+        shares=short_votes_list,
+        allocations=allocations,
+        percent=True,
     )
 
 

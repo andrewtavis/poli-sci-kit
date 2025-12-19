@@ -21,6 +21,6 @@ def test_rectangle_parl_plot(monkeypatch, allocations):
 def test_parl_plot_row_exception():
     with pytest.raises(
         ValueError,
-        match="Cannot allocate 12 seats into 4 rows. Try a smaller number of rows."
+        match="Cannot allocate 12 seats into 4 rows. Try a smaller number of rows.",
     ):
         plot.parliament(allocations=[2, 2, 8], num_rows=4)

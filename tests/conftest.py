@@ -45,12 +45,32 @@ def long_votes_list(request):
     return request.param
 
 
-@pytest.fixture(params=[[1918578, 1348072, 1023503, 937901, 639747,]])
+@pytest.fixture(
+    params=[
+        [
+            1918578,
+            1348072,
+            1023503,
+            937901,
+            639747,
+        ]
+    ]
+)
 def short_votes_list(request):
     return request.param
 
 
-@pytest.fixture(params=[[1918578, 1023503, 1023503, 937901, 639747,]])
+@pytest.fixture(
+    params=[
+        [
+            1918578,
+            1023503,
+            1023503,
+            937901,
+            639747,
+        ]
+    ]
+)
 def tie_votes_list(request):
     return request.param
 
@@ -117,7 +137,11 @@ def div_index_metrics(request):
 
 
 @pytest.fixture(
-    params=["Laakso-Taagepera", "Golosov", "Inverse-Simpson",]
+    params=[
+        "Laakso-Taagepera",
+        "Golosov",
+        "Inverse-Simpson",
+    ]
 )
 def effective_group_metrics(request):
     return request.param
