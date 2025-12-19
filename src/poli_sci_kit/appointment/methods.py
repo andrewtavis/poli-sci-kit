@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
 Appointment Methods
 -------------------
@@ -116,9 +117,9 @@ def largest_remainder(
 
     original_remainders = None
     if min_alloc != None and min_alloc > 0:
-        assert (
-            min_alloc * len(shares) <= total_alloc
-        ), "The sum of the minimum seats to be allocated cannot be more than the seats to be allocated."
+        assert min_alloc * len(shares) <= total_alloc, (
+            "The sum of the minimum seats to be allocated cannot be more than the seats to be allocated."
+        )
         baseline_allocations = [min_alloc] * len(shares)
 
         # Save the original remainders and allocations to avoid penalization
@@ -223,9 +224,9 @@ def largest_remainder(
         allocations = [a + original_with_baseline[i] for i, a in enumerate(allocations)]
 
     if majority_bonus and (
-                allocations[shares.index(max(shares))] < int(ceil(total_alloc / 2))
-                and len([s for s in shares if s == max(shares)]) == 1
-            ):
+        allocations[shares.index(max(shares))] < int(ceil(total_alloc / 2))
+        and len([s for s in shares if s == max(shares)]) == 1
+    ):
         non_majority_shares = [s for s in shares if s != max(shares)]
         reduced_seats = total_alloc - int(ceil(total_alloc / 2))
         non_majority_allocations = largest_remainder(
@@ -316,24 +317,22 @@ def highest_averages(
         allocations : list
             A list of allocations in the order of the provided shares.
     """
-    assert (
-        alloc_threshold is None or min_alloc is None
-    ), """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation. Set one of 'alloc_threshold' or 'min_alloc' to None."""
+    assert alloc_threshold is None or min_alloc is None, (
+        """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation. Set one of 'alloc_threshold' or 'min_alloc' to None."""
+    )
 
-    assert (
-        alloc_threshold is None or averaging_style != "Huntington-Hill"
-    ), """The Huntington-Hill method requires all groups to receive a seat, and thus cannot be used with a threshold. Set 'alloc_threshold' to None."""
+    assert alloc_threshold is None or averaging_style != "Huntington-Hill", (
+        """The Huntington-Hill method requires all groups to receive a seat, and thus cannot be used with a threshold. Set 'alloc_threshold' to None."""
+    )
 
-    if averaging_style == "Huntington-Hill" and (
-        min_alloc is None or min_alloc == 0
-    ):
+    if averaging_style == "Huntington-Hill" and (min_alloc is None or min_alloc == 0):
         print(
             "A minimum allocation is required in the denominator of Huntington-Hill calculations."
         )
         print("A minimum allocation of 1 will be applied.")
-        assert (
-            len(shares) <= total_alloc
-        ), "There must be at least one seat per group when using the Huntington-Hill method."
+        assert len(shares) <= total_alloc, (
+            "There must be at least one seat per group when using the Huntington-Hill method."
+        )
         min_alloc = 1
 
     if alloc_threshold:
@@ -341,9 +340,9 @@ def highest_averages(
         shares = [s if passed_threshold[i] == True else 0 for i, s in enumerate(shares)]
 
     if min_alloc != None and min_alloc > 0:
-        assert (
-            min_alloc * len(shares) <= total_alloc
-        ), "The sum of the minimum seats to be allocated cannot be more than the seats to be allocated."
+        assert min_alloc * len(shares) <= total_alloc, (
+            "The sum of the minimum seats to be allocated cannot be more than the seats to be allocated."
+        )
         allocations = [min_alloc] * len(shares)
         total_alloc -= sum(allocations)
 
@@ -354,7 +353,6 @@ def highest_averages(
 
     remaining_alloc = total_alloc
     while remaining_alloc > 0:
-
         if averaging_style == "Jefferson":
             if modifier:
                 quotients = [
@@ -460,9 +458,9 @@ def highest_averages(
                 )
 
     if majority_bonus and (
-                not allocations[shares.index(max(shares))] >= int(ceil(total_alloc / 2))
-                and len([s for s in shares if s == max(shares)]) == 1
-            ):
+        not allocations[shares.index(max(shares))] >= int(ceil(total_alloc / 2))
+        and len([s for s in shares if s == max(shares)]) == 1
+    ):
         non_majority_shares = [s for s in shares if s != max(shares)]
         reduced_seats = total_alloc - int(ceil(total_alloc / 2))
         non_majority_allocations = highest_averages(

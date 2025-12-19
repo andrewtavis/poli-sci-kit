@@ -1,17 +1,6 @@
-name: psk-dev
-channels:
-  - conda-forge
-  - anaconda
-  - defaults
+name: poli-sci-kit-dev
 dependencies:
-  - black>=19.10b0
-  - numpy>=1.19.2
-  - packaging>=20.9
-  - pandas>=1.2.1
-  - pyopenssl>=20.0.1
-  - pytest>=6.2.2
-  - pytest-cov>=2.11.1
-  - scipy>=1.5.2
-  - seaborn>=0.11.1
+  - python>=3.10
+  - pip
   - pip:
-      - colormath>=3.0.0
+      - -r requirements-dev.txt

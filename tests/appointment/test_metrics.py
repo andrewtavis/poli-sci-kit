@@ -1,4 +1,7 @@
-"""Appointment metric tests"""
+# SPDX-License-Identifier: BSD-3-Clause
+"""
+Appointment metric tests.
+"""
 
 from poli_sci_kit.appointment import metrics
 

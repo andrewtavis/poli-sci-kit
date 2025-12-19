@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
 Utilities
 ---------
@@ -31,9 +32,9 @@ def normalize(vals):
 
 def gen_list_of_lists(original_list, new_structure):
     """Generates a list of lists with a given structure from a given list."""
-    assert len(original_list) == sum(
-        new_structure
-    ), "The number of elements in the original list and desired structure don't match."
+    assert len(original_list) == sum(new_structure), (
+        "The number of elements in the original list and desired structure don't match."
+    )
 
     return [
         [original_list[i + sum(new_structure[:j])] for i in range(new_structure[j])]
@@ -107,16 +108,16 @@ def gen_parl_points(
         labels = [f"group_{i}" for i in range(len(allocations))]
 
     if speaker:
-        assert (speaker == True) or (
-            speaker in labels
-        ), "Either the 'speaker' argument must be true, or must match an element from the provided 'labels' argument."
+        assert (speaker == True) or (speaker in labels), (
+            "Either the 'speaker' argument must be true, or must match an element from the provided 'labels' argument."
+        )
         total_seats -= 1
         allocations = list(allocations)
 
         if speaker == True:
-            assert (
-                len([c for c in allocations if c == max(allocations)]) == 1
-            ), "Two parties got the highest number of seats in the allocation. Please assign the speaker via passing one of their names."
+            assert len([c for c in allocations if c == max(allocations)]) == 1, (
+                "Two parties got the highest number of seats in the allocation. Please assign the speaker via passing one of their names."
+            )
 
             largest_group_index = allocations.index(max(allocations))
             allocations[largest_group_index] -= 1
@@ -175,7 +176,9 @@ def gen_parl_points(
         seats_per_row = [rs + seats_shift[i] for i, rs in enumerate(row_seats)]
 
         if any(seats <= 0 for seats in seats_per_row):
-            raise ValueError(f"Cannot allocate {total_seats} seats into {num_rows} rows. Try a smaller number of rows.")
+            raise ValueError(
+                f"Cannot allocate {total_seats} seats into {num_rows} rows. Try a smaller number of rows."
+            )
 
         row_indexes = []
         row_position_indexes = []
@@ -200,7 +203,7 @@ def gen_parl_points(
         # Generate list of seat labels.
         seat_labels = []
         for n_seats, label in zip(allocations, labels):
-            seat_labels.extend([label]*n_seats)
+            seat_labels.extend([label] * n_seats)
 
         # Sort plot points by their angle with the origin (0, 0).
         df_seat_lctns = df_seat_lctns.sort_values(
@@ -454,7 +457,7 @@ def hex_to_rgb(hex_rep):
             An RGB tuple color representation.
     """
     return sRGBColor(
-        *[int(hex_rep[i + 1:i + 3], 16) for i in (0, 2, 4)], is_upscaled=True
+        *[int(hex_rep[i + 1 : i + 3], 16) for i in (0, 2, 4)], is_upscaled=True
     )
 
 

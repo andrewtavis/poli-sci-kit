@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
 Disproportionality Bar Plot
 ---------------------------
@@ -10,6 +11,7 @@ Contents:
 
 import pandas as pd
 import seaborn as sns
+
 from poli_sci_kit import utils
 
 default_sat = 0.95
@@ -67,9 +69,9 @@ def dispr_bar(
         ax : matplotlib.pyplot.subplot
             A bar plot with aggregate or relative seat-share differences and bar widths representing share proportions.
     """
-    assert len(shares) == len(
-        allocations
-    ), "The number of different shares must equal the number of different seat allocations."
+    assert len(shares) == len(allocations), (
+        "The number of different shares must equal the number of different seat allocations."
+    )
 
     if total_shares and total_alloc:
         share_percents = [i / total_shares for i in shares]
@@ -94,9 +96,9 @@ def dispr_bar(
     df = pd.DataFrame(disproportionality, index=labels, columns=["disproportionality"])
 
     if colors:
-        assert len(colors) == len(
-            shares
-        ), "The number of colors provided doesn't match the number of counts to be displayed."
+        assert len(colors) == len(shares), (
+            "The number of colors provided doesn't match the number of counts to be displayed."
+        )
         colors = [
             utils.scale_saturation(rgb_trip=utils.hex_to_rgb(c), sat=dsat)
             for c in colors
@@ -131,9 +133,7 @@ def dispr_bar(
         if height < 0:  # compensates for text height for negative bar labels
             ax.text(
                 x=p.get_x() + p.get_width() / 2.0,
-                y=(
-                    height + 1.5 * min(abs(i) for i in disproportionality) * -1
-                ),
+                y=(height + 1.5 * min(abs(i) for i in disproportionality) * -1),
                 s=str(height),
                 ha="center",
             )

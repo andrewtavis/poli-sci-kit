@@ -5,7 +5,8 @@
 <ol></ol>
 
 [![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
-[![ci](https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/ci.yml?branch=main?logo=github)](https://github.com/andrewtavis/poli-sci-kit/actions?query=workflow%3ACI)
+[![pr_ci](https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/pr_ci.yml?branch=main?&label=ci&logo=ruff)](https://github.com/andrewtavis/poli-sci-kit/actions/workflows/pr_ci.yaml)
+[![python_package_ci](https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/python_package_ci.yml?branch=main?&label=build&logo=pytest)](https://github.com/andrewtavis/poli-sci-kit/actions/workflows/python_package_ci.yaml)
 [![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
 [![pyversions](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python&logoColor=FFD43B&color=306998)](https://pypi.org/project/poli-sci-kit/)
 [![pypi](https://img.shields.io/pypi/v/poli-sci-kit.svg?color=4B8BBE)](https://pypi.org/project/poli-sci-kit/)
@@ -21,15 +22,16 @@
 
 <a id="contents"></a>
 
-# **Contents**
+## **Contents**
 
-- [Installation](#installation)
-- [Appointment](#appointment)
-- [Plotting](#plotting)
-  - [Parliament Plots](#parliament-plots)
-  - [Disproportionality Bar Plot](#disproportionality-bar-plot)
-- [Examples](#examples)
-- [To-Do](#to-do)
+- [Installation](#installation-)
+- [Appointment](#appointment-)
+- [Plotting](#plotting-)
+  - [Parliament Plots](#parliament-plots-)
+  - [Disproportionality Bar Plot](#disproportionality-bar-plot-)
+- [Examples](#examples-)
+- [Development environment](#development-environment-)
+- [To-Do](#to-do-)
 
 <a id="installation"></a>
 
@@ -71,7 +73,7 @@ from poli_sci_kit import appointment
 vote_counts = [2700, 900, 3300, 1300, 2150, 500]
 seats_to_allocate = 50
 
-# Huntington-Hill is the method used to allocate House of Representatives seats to US states
+# Huntington-Hill is the method used to allocate House of Representatives seats to US states.
 ha_allocations = appointment.methods.highest_averages(
     averaging_style="Huntington-Hill",
     shares=vote_counts,
@@ -90,7 +92,7 @@ ha_allocations
 We can then compute various metrics to derive disproportionality:
 
 ```python
-# The Gallagher method is a measure of absolute difference similar to summing square residuals
+# The Gallagher method is a measure of absolute difference similar to summing square residuals.
 disproportionality = appointment.metrics.dispr_index(
     shares=vote_counts,
     allocations=ha_allocations,
@@ -127,7 +129,7 @@ Visualizing the above results:
 import matplotlib.pyplot as plt
 import poli_sci_kit
 
-# German political parties
+# German political parties.
 parties = ['CDU/CSU', 'FDP', 'Greens', 'Die Linke', 'SPD', 'AfD']
 party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0']
 ```
@@ -240,6 +242,83 @@ Examples in poli-sci-kit use publicly available Wikidata statistics sourced via 
 
 - [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb) [(Open in Colab)](https://colab.research.google.com/github/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb)
   - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain countries and organizations, the distribution of seats based on Freedom House indexes, as well as disproportionality metrics
+
+<a name="development-environment-"></a>
+
+## Development environment [`⇧`](#contents)
+
+Please follow the steps below to set up your development environment for poli-sci-kit contributions.
+
+### Clone repository
+
+```bash
+# Clone your fork of the repo into the current directory.
+git clone https://github.com/<your-username>/poli-sci-kit.git
+# Navigate to the newly cloned directory.
+cd poli-sci-kit
+# Assign the original repo to a remote called "upstream".
+git remote add upstream https://github.com/andrewtavis/poli-sci-kit.git
+```
+
+- Now, if you run `git remote -v` you should see two remote repositories named:
+  - `origin` (forked repository)
+  - `upstream` (poli-sci-kit repository)
+
+### Conda environment
+
+Download [Anaconda](https://www.anaconda.com/download) if you don't have it installed already.
+
+```bash
+conda env create --file environment.yml
+conda activate poli-sci-kit-dev
+```
+
+### pip environment
+
+Create a virtual environment, activate it and install dependencies:
+
+```bash
+# Unix or MacOS:
+python3 -m venv venv
+source venv/bin/activate
+
+# Windows:
+python -m venv venv
+venv\Scripts\activate.bat
+
+# After activating venv:
+pip install --upgrade pip
+pip install -r requirements-dev.txt
+
+# To install the CLI for local development:
+pip install -e .
+```
+
+### pre-commit
+
+Install [pre-commit](https://pre-commit.com/) to ensure that each of your commits is properly checked against our linter and formatters:
+
+```bash
+# In the project root:
+pre-commit install
+
+# Then test the pre-commit hooks to see how it works:
+pre-commit run --all-files
+```
+
+> [!NOTE]
+> pre-commit is Python package that can be installed via pip or any other Python package manager. You can also find it in our [requirements-dev.txt](./requirements-dev.txt) file.
+>
+> ```bash
+> pip install pre-commit
+> ```
+
+> [!NOTE]
+> If you are having issues with pre-commit and want to send along your changes regardless, you can ignore the pre-commit hooks via the following:
+>
+> ```bash
+> git commit --no-verify -m "COMMIT_MESSAGE"
+> ```
 
 <a id="to-do"></a>
 

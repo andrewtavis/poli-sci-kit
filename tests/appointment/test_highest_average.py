@@ -1,6 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
-Highest Averages Method Tests
------------------------------
+Highest Averages method tests.
 """
 
 from poli_sci_kit.appointment.methods import highest_averages
@@ -35,7 +35,9 @@ def test_ha_greater_than_zero(highest_averages_styles, votes, seats):
     assert all(
         alloc >= 0
         for alloc in highest_averages(
-            averaging_style=highest_averages_styles, shares=votes, total_alloc=seats,
+            averaging_style=highest_averages_styles,
+            shares=votes,
+            total_alloc=seats,
         )
     )
 
@@ -108,7 +110,9 @@ def test_ha_webster(long_votes_list, seats_large):
 
     assert (
         highest_averages(
-            averaging_style="Webster", shares=long_votes_list, total_alloc=seats_large,
+            averaging_style="Webster",
+            shares=long_votes_list,
+            total_alloc=seats_large,
         )
         == results
     )

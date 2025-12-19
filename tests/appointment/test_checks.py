@@ -1,9 +1,10 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
-Appointment Check Tests
------------------------
+Appointment check tests.
 """
 
 import pandas as pd
+
 from poli_sci_kit.appointment.checks import consistency_condition, quota_condition
 
 

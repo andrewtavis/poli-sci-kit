@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: BSD-3-Clause
 """
 Appointment Method Checks
 -------------------------
@@ -12,6 +13,7 @@ Contents:
 from math import ceil, floor
 
 import pandas as pd
+
 from poli_sci_kit.appointment.metrics import ideal_share
 
 
@@ -36,9 +38,9 @@ def quota_condition(shares, seats):
         check_pass or fail_report: bool or list (contains tuples)
             A value of True, or a list of corresponding arguments where the check has failed and their indexes.
     """
-    assert len(shares) == len(
-        seats
-    ), "The total different shares of a population or vote must equal that of the allocated seats."
+    assert len(shares) == len(seats), (
+        "The total different shares of a population or vote must equal that of the allocated seats."
+    )
 
     check_list = [
         ceil(ideal_share(s, sum(shares), sum(seats))) >= seats[i]
@@ -97,9 +99,9 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             A value of True, or False with a df of corresponding arguments where the check has failed.
     """
     if df_shares is not None and df_seats is not None:
-        assert (
-            df_shares.shape == df_seats.shape
-        ), "The number of share variations must be equal to the number of seat allocation variations."
+        assert df_shares.shape == df_seats.shape, (
+            "The number of share variations must be equal to the number of seat allocation variations."
+        )
 
     if check_type == "seat_monotony":
         df_fail_report = df_seats.copy()
