@@ -84,7 +84,7 @@ def dispr_bar(
         round(seat_percents[i] - p, 4) for i, p in enumerate(share_percents)
     ]
 
-    if percent == True:
+    if percent:
         disproportionality = [
             round(disproportionality[i] / p * 100, 4)
             for i, p in enumerate(share_percents)

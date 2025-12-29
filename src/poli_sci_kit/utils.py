@@ -108,13 +108,13 @@ def gen_parl_points(
         labels = [f"group_{i}" for i in range(len(allocations))]
 
     if speaker:
-        assert (speaker == True) or (speaker in labels), (
+        assert (speaker) or (speaker in labels), (
             "Either the 'speaker' argument must be true, or must match an element from the provided 'labels' argument."
         )
         total_seats -= 1
         allocations = list(allocations)
 
-        if speaker == True:
+        if speaker:
             assert len([c for c in allocations if c == max(allocations)]) == 1, (
                 "Two parties got the highest number of seats in the allocation. Please assign the speaker via passing one of their names."
             )
@@ -512,6 +512,6 @@ def scale_saturation(rgb_trip, sat):
     if isinstance(rgb_trip, sRGBColor):
         rgb_trip = rgb_trip.get_value_tuple()
 
-    h, l, s = colorsys.rgb_to_hls(*rgb_trip)
+    h, l, s = colorsys.rgb_to_hls(*rgb_trip) # noqa: E741
 
     return colorsys.hls_to_rgb(h, min(1, l * sat), s=s)
