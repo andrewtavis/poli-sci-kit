@@ -48,9 +48,7 @@ def quota_condition(shares, seats):
         for i, s in enumerate(shares)
     ]
 
-    fail_report = {
-        i: (shares[i], seats[i]) for i, c in enumerate(check_list) if not c
-    }
+    fail_report = {i: (shares[i], seats[i]) for i, c in enumerate(check_list) if not c}
 
     check_pass = False not in check_list
     print("Quota condition passed:", check_pass)
@@ -129,8 +127,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
         # ones, or the str of the later columns that break the condition.
         # str() is used to assure that 1 != True in the later sets.
         check_cols = [
-            [True if c[j].all() else str(j) for j in range(len(c))]
-            for c in check_cols
+            [True if c[j].all() else str(j) for j in range(len(c))] for c in check_cols
         ]
 
         # Return True if the column's total allotment passes the condition,
@@ -255,8 +252,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             [
                 [
                     False
-                    if check_share_rows[i][j][k]
-                    and not check_seat_rows[i][j][k]
+                    if check_share_rows[i][j][k] and not check_seat_rows[i][j][k]
                     else True
                     for k in range(len(check_share_rows[0][0]))
                 ]

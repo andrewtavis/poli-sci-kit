@@ -512,6 +512,6 @@ def scale_saturation(rgb_trip, sat):
     if isinstance(rgb_trip, sRGBColor):
         rgb_trip = rgb_trip.get_value_tuple()
 
-    h, l, s = colorsys.rgb_to_hls(*rgb_trip) # noqa: E741
+    h, l, s = colorsys.rgb_to_hls(*rgb_trip)  # noqa: E741
 
     return colorsys.hls_to_rgb(h, min(1, l * sat), s=s)
