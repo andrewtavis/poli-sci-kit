@@ -48,9 +48,7 @@ def quota_condition(shares, seats):
         for i, s in enumerate(shares)
     ]
 
-    fail_report = {
-        i: (shares[i], seats[i]) for i, c in enumerate(check_list) if c == False
-    }
+    fail_report = {i: (shares[i], seats[i]) for i, c in enumerate(check_list) if not c}
 
     check_pass = False not in check_list
     print("Quota condition passed:", check_pass)
@@ -129,16 +127,15 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
         # ones, or the str of the later columns that break the condition.
         # str() is used to assure that 1 != True in the later sets.
         check_cols = [
-            [True if c[j].all() == True else str(j) for j in range(len(c))]
-            for c in check_cols
+            [True if c[j].all() else str(j) for j in range(len(c))] for c in check_cols
         ]
 
         # Return True if the column's total allotment passes the condition,
         # or the index of columns with which the column fails.
         check_cols = [
             True
-            if list(set(c))[0] == True and len(set(c)) == 1
-            else [i + int(item) for item in list(set(c)) if item != True]
+            if list(set(c))[0] and len(set(c)) == 1
+            else [i + int(item) for item in list(set(c)) if not item]
             for i, c in enumerate(check_cols)
         ]
 
@@ -146,7 +143,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
 
         cols_dropped = 0
         for i in col_range:
-            if check_cols[i] == True:
+            if check_cols[i]:
                 # Drop the column, and add to an indexer to maintain lengths.
                 df_fail_report.drop(
                     df_fail_report.columns[i - cols_dropped], axis=1, inplace=True
@@ -176,7 +173,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             check_rows = [
                 [
                     True
-                    if list(set(comparison))[0] == True and len(set(comparison)) == 1
+                    if list(set(comparison))[0] and len(set(comparison)) == 1
                     else False
                     for comparison in i
                 ]
@@ -184,13 +181,13 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             ]
 
             check_rows = [
-                True if list(set(i))[0] == True and len(set(i)) == 1 else False
+                True if list(set(i))[0] and len(set(i)) == 1 else False
                 for i in check_rows
             ]
 
             rows_dropped = 0
             for i in range(len(df_fail_report.index)):
-                if check_rows[i] == True:
+                if check_rows[i]:
                     # Drop the row if no elements are greater than following ones,
                     # and add to an indexer to maintain lengths.
                     df_fail_report.drop(
@@ -255,8 +252,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             [
                 [
                     False
-                    if check_share_rows[i][j][k] == True
-                    and check_seat_rows[i][j][k] != True
+                    if check_share_rows[i][j][k] and not check_seat_rows[i][j][k]
                     else True
                     for k in range(len(check_share_rows[0][0]))
                 ]
@@ -269,7 +265,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
         for i in range(len(df_fail_report.index)):
             row_element_checker = 0
             for element_check in check_shares_seats[i]:
-                if list(set(element_check))[0] == True and len(set(element_check)) == 1:
+                if list(set(element_check))[0] and len(set(element_check)) == 1:
                     row_element_checker += 1
 
             if row_element_checker == len(check_shares_seats[i]):
@@ -286,13 +282,13 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
         for r in rows_kept:
             for c in col_pair_range:
                 if (
-                    list(set(check_shares_seats[r][c]))[0] != True
+                    not list(set(check_shares_seats[r][c]))[0]
                     or len(set(check_shares_seats[r][c])) != 1
                 ):
                     col_pairs_to_keep.append(c)
 
                     for later_col in range(len(check_shares_seats[r][c])):
-                        if check_shares_seats[r][c][later_col] == False:
+                        if not check_shares_seats[r][c][later_col]:
                             col_pairs_to_keep.append(later_col)
 
         col_pairs_to_keep = list(set(col_pairs_to_keep))

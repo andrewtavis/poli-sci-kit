@@ -113,10 +113,10 @@ def largest_remainder(
 
     if alloc_threshold:
         passed_threshold = [1.0 * s / sum(shares) > alloc_threshold for s in shares]
-        shares = [s if passed_threshold[i] == True else 0 for i, s in enumerate(shares)]
+        shares = [s if passed_threshold[i] else 0 for i, s in enumerate(shares)]
 
     original_remainders = None
-    if min_alloc != None and min_alloc > 0:
+    if min_alloc is not None and min_alloc > 0:
         assert min_alloc * len(shares) <= total_alloc, (
             "The sum of the minimum seats to be allocated cannot be more than the seats to be allocated."
         )
@@ -154,7 +154,7 @@ def largest_remainder(
     )
     remainders, allocations = zip(*[modf(1.0 * s / seat_quota) for s in shares])
 
-    if min_alloc != None and min_alloc > 0:
+    if min_alloc is not None and min_alloc > 0:
         remainders = original_remainders
         if (
             original_with_baseline != baseline_allocations
@@ -337,9 +337,9 @@ def highest_averages(
 
     if alloc_threshold:
         passed_threshold = [1.0 * i / sum(shares) > alloc_threshold for i in shares]
-        shares = [s if passed_threshold[i] == True else 0 for i, s in enumerate(shares)]
+        shares = [s if passed_threshold[i] else 0 for i, s in enumerate(shares)]
 
-    if min_alloc != None and min_alloc > 0:
+    if min_alloc is not None and min_alloc > 0:
         assert min_alloc * len(shares) <= total_alloc, (
             "The sum of the minimum seats to be allocated cannot be more than the seats to be allocated."
         )
