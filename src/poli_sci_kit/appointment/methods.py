@@ -457,8 +457,9 @@ def highest_averages(
                     f"A tie break is required for the last seat(s), and an invalid argument '{tie_break}' has been passed. Please choose from 'majority' or 'random'."
                 )
 
-    if majority_bonus and (
-        not allocations[shares.index(max(shares))] >= int(ceil(total_alloc / 2))
+    if (
+        majority_bonus
+        and allocations[shares.index(max(shares))] < int(ceil(total_alloc / 2))
         and len([s for s in shares if s == max(shares)]) == 1
     ):
         non_majority_shares = [s for s in shares if s != max(shares)]

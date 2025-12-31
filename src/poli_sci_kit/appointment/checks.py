@@ -172,17 +172,14 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
 
             check_rows = [
                 [
-                    True
-                    if list(set(comparison))[0] and len(set(comparison)) == 1
-                    else False
+                    bool(list(set(comparison))[0] and len(set(comparison)) == 1)
                     for comparison in i
                 ]
                 for i in check_rows
             ]
 
             check_rows = [
-                True if list(set(i))[0] and len(set(i)) == 1 else False
-                for i in check_rows
+                bool(list(set(i))[0] and len(set(i)) == 1) for i in check_rows
             ]
 
             rows_dropped = 0
