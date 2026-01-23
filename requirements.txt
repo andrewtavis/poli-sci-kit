@@ -29,29 +29,25 @@ numpy>=2.4.1
     #   pandas
     #   scipy
     #   seaborn
-packaging>=25.0
+packaging>=26.0
     # via
     #   -r requirements.in
     #   matplotlib
-pandas>=2.3.3
+pandas>=3.0.0
     # via
     #   -r requirements.in
     #   seaborn
 pillow>=12.1.0
     # via matplotlib
-pyparsing>=3.3.1
+pyparsing>=3.3.2
     # via matplotlib
 python-dateutil>=2.9.0.post0
     # via
     #   matplotlib
     #   pandas
-pytz>=2025.2
-    # via pandas
 scipy>=1.17.0
     # via -r requirements.in
 seaborn>=0.13.2
     # via -r requirements.in
 six>=1.17.0
     # via python-dateutil
-tzdata>=2025.3
-    # via pandas
