@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 <div align="center">
   <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/logo/poli-sci-kit_logo_transparent.png" width=463 height=251></a>
 </div>
@@ -16,13 +18,11 @@
 [![codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![colab](https://img.shields.io/badge/%20-Open%20in%20Colab-097ABB.svg?logo=google-colab&color=097ABB&labelColor=525252)](https://colab.research.google.com/github/andrewtavis/poli-sci-kit)
 
-## Political elections, appointment, analysis and visualization in Python
+### Political elections, appointment, analysis and visualization in Python
 
 **poli-sci-kit** is a Python package for political science appointment and election analysis. The goal is to provide a comprehensive tool for all methods needed to analyze and simulate election results. See the [documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for a full outline of the package including algorithms and visualization techniques.
 
-<a id="contents"></a>
-
-## **Contents**
+# Contents
 
 - [Installation](#installation-)
 - [Appointment](#appointment-)
@@ -33,9 +33,7 @@
 - [Development environment](#development-environment-)
 - [To-Do](#to-do-)
 
-<a id="installation"></a>
-
-# Installation [`⇧`](#contents)
+# Installation
 
 poli-sci-kit can be downloaded from PyPI via pip or sourced directly from this repository:
 
@@ -53,9 +51,9 @@ python setup.py install
 import poli_sci_kit
 ```
 
-<a id="appointment"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-# Appointment [`⇧`](#contents)
+# Appointment
 
 [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Included methods are:
 
@@ -117,9 +115,9 @@ passes_qc
 
 Allocation consistency can further be checked using dataframes of shares and seats given electoral settings. See [appointment.checks](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/checks.py) and [the documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for explanations of method checks.
 
-<a id="plotting"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-# Plotting [`⇧`](#contents)
+# Plotting
 
 poli-sci-kit provides Python only implementations of common electoral plots.
 
@@ -134,9 +132,9 @@ parties = ['CDU/CSU', 'FDP', 'Greens', 'Die Linke', 'SPD', 'AfD']
 party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0']
 ```
 
-<a id="parliament-plots"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-### Parliament Plots [`⇧`](#contents)
+### Parliament Plots
 
 poli_sci_kit provides implementations of both rectangular and semicircle [parliament plots](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/parliament.py):
 
@@ -173,9 +171,9 @@ plt.show()
   <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/semicircle_parliament.png" width="400" />
 </p>
 
-<a id="disproportionality-bar-plot"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-### Disproportionality Bar Plot [`⇧`](#contents)
+### Disproportionality Bar Plot
 
 A novel addition to social science analysis is the [disproportionality bar plot](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/dispr_bar.py), which graphically depicts the disproportionality between expected and realized results. Bar widths are the proportion of shares (ex: votes received), and heights are the difference or relative difference between shares and allocations (ex: parliament seats received).
 
@@ -230,22 +228,21 @@ plt.show()
   <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/dispr_bar.png" width="600" />
 </p>
 
-<a id="examples"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-# Examples [`⇧`](#contents)
+# Examples
 
 Examples in poli-sci-kit use publicly available Wikidata statistics sourced via the Python package [wikirepo](https://github.com/andrewtavis/wikirepo). Current examples include:
 
 - [US HoR](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/us_house_of_rep.ipynb) [(Open in Colab)](https://colab.research.google.com/github/andrewtavis/poli-sci-kit/blob/main/examples/us_house_of_rep.ipynb)
-
   - Allocates seats to a version of the US House of Representatives that includes all US territories and Washington DC given census data, with this further being used to derive relative vote strengths of state citizens in the US presidential election
 
 - [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb) [(Open in Colab)](https://colab.research.google.com/github/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb)
   - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain countries and organizations, the distribution of seats based on Freedom House indexes, as well as disproportionality metrics
 
-<a name="development-environment-"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-## Development environment [`⇧`](#contents)
+## Development environment
 
 Please follow the steps below to set up your development environment for poli-sci-kit contributions.
 
@@ -320,9 +317,9 @@ pre-commit run --all-files
 > git commit --no-verify -m "COMMIT_MESSAGE"
 > ```
 
-<a id="to-do"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-# To-Do [`⇧`](#contents)
+# To-Do
 
 Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
 
@@ -331,7 +328,6 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 - Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit ([see issue](https://github.com/andrewtavis/poli-sci-kit/issues/22))
 
 - Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
-
   - This would allow quick comparisons of actual systems with variations
 
 - Adding methods such as quadratic voting to poli-sci-kit to allow for preference based simulations
@@ -339,6 +335,8 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 - Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
 
 - Improving [tests](https://github.com/andrewtavis/poli-sci-kit/tree/main/tests) for greater [code coverage](https://codecov.io/gh/andrewtavis/poli-sci-kit)
+
+<sub><a href="#top">Back to top.</a></sub>
 
 # References
 
@@ -359,3 +357,5 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 
 </p>
 </details>
+
+<sub><a href="#top">Back to top.</a></sub>
