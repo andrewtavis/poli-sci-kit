@@ -1,3 +1,78 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "poli-sci-kit"
+version = "1.1.0"
+description = "Political elections, appointment, analysis and visualization in Python"
+readme = "README.md"
+requires-python = ">=3.12"
+keywords = [
+    "politics",
+    "analysis",
+    "voting",
+    "democracy",
+    "political-science",
+    "elections",
+    "appointment",
+    "political-appointment-analysis",
+    "disproportionality",
+]
+authors = [
+    { name = "Andrew Tavis McAllister", email = "andrew.t.mcallister@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    # Keep docs dependencies formatted in this way with ruff to allow for upgrades via VS Code extension.
+    "colormath>=3.0.0",
+    "matplotlib>=3.10.8",
+    "numpy>=2.4.2",
+    "packaging>=26.0",
+    "pandas>=3.0.1",
+    "scipy>=1.17.0",
+    "seaborn>=0.13.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.19.1",
+    "prek>=0.3.3",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.2",
+]
+docs = [
+    # Keep docs dependencies formatted in this way with ruff to allow for upgrades via VS Code extension.
+    "m2r2>=0.3.4",
+    "numpydoc>=1.10.0",
+    "sphinx-rtd-theme>=3.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/andrewtavis/poli-sci-kit"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.
 exclude = [
@@ -22,7 +97,6 @@ exclude = [
 ]
 
 [tool.ruff.lint]
-
 select = [
     "E", # pycodestyle errors
     "F", # pyflakes
@@ -42,9 +116,6 @@ max-complexity = 10
 
 [tool.isort]
 line_length = 88
-
-[tool.pytest.ini_options]
-pythonpath = "src"
 
 [tool.coverage.run]
 omit = ["*/tests/*", "*/__init__.py"]

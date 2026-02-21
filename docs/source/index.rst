@@ -44,15 +44,33 @@ Political elections, appointment, analysis and visualization in Python
 
 Installation
 ------------
+
+``poli-sci-kit`` is available for installation via `uv <https://docs.astral.sh/uv/>`_ (recommended) or `pip <https://pypi.org/project/poli-sci-kit/>`_.
+
 .. code-block:: shell
 
+    # Using uv (recommended - fast, Rust-based installer):
+    uv pip install poli-sci-kit
+
+    # Or using pip:
     pip install poli-sci-kit
 
 .. code-block:: shell
 
+    # For a development build of the package:
     git clone https://github.com/andrewtavis/poli-sci-kit.git
     cd poli-sci-kit
-    python setup.py install
+
+    # With uv (recommended):
+    uv sync --all-extras  # install all dependencies
+    source .venv/bin/activate  # activate venv (macOS/Linux)
+    # .venv\Scripts\activate  # activate venv (Windows)
+
+    # Or with pip:
+    python -m venv .venv  # create virtual environment
+    source .venv/bin/activate  # activate venv (macOS/Linux)
+    # .venv\Scripts\activate  # activate venv (Windows)
+    pip install -e .
 
 .. code-block:: python
 

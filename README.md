@@ -35,16 +35,34 @@
 
 # Installation
 
-poli-sci-kit can be downloaded from PyPI via pip or sourced directly from this repository:
+`poli-sci-kit` is available for installation via [uv](https://docs.astral.sh/uv/) (recommended) or [pip](https://pypi.org/project/poli-sci-kit/).
+
+### For Users
 
 ```bash
+# Using uv (recommended - fast, Rust-based installer):
+uv pip install poli-sci-kit
+
+# Or using pip:
 pip install poli-sci-kit
 ```
+
+### For Development Build
 
 ```bash
 git clone https://github.com/andrewtavis/poli-sci-kit.git
 cd poli-sci-kit
-python setup.py install
+
+# With uv (recommended):
+uv sync --all-extras  # install all dependencies
+source .venv/bin/activate  # activate venv (macOS/Linux)
+# .venv\Scripts\activate  # activate venv (Windows)
+
+# Or with pip:
+python -m venv .venv  # create virtual environment
+source .venv/bin/activate  # activate venv (macOS/Linux)
+# .venv\Scripts\activate  # activate venv (Windows)
+pip install -e .
 ```
 
 ```python
@@ -261,57 +279,56 @@ git remote add upstream https://github.com/andrewtavis/poli-sci-kit.git
   - `origin` (forked repository)
   - `upstream` (poli-sci-kit repository)
 
-### Conda environment
+### Environment
+
+Create a virtual environment for poli-sci-kit (Python `>=3.12`), activate it and install dependencies.
+
+> [!NOTE]
+> First, install `uv` if you don't already have it by following the [official installation guide](https://docs.astral.sh/uv/getting-started/installation/).
+
+#### uv venv
+
+```bash
+uv sync --all-extras  # create .venv and install all dependencies from uv.lock
+
+# Unix or macOS:
+source .venv/bin/activate
+
+# Windows:
+.venv\Scripts\activate.bat # .venv\Scripts\activate.ps1 (PowerShell)
+```
+
+#### Conda
 
 Download [Anaconda](https://www.anaconda.com/download) if you don't have it installed already.
 
 ```bash
 conda env create --file environment.yaml
 conda activate poli-sci-kit-dev
+uv pip install -r <(uv export --format requirements-txt)  # install all dependencies from uv.lock
 ```
 
-### pip environment
-
-Create a virtual environment, activate it and install dependencies:
-
-```bash
-# Unix or MacOS:
-python3 -m venv venv
-source venv/bin/activate
-
-# Windows:
-python -m venv venv
-venv\Scripts\activate.bat
-
-# After activating venv:
-pip install --upgrade pip
-pip install -r requirements-dev.txt
-
-# To install the CLI for local development:
-pip install -e .
-```
+> [!NOTE]
+> If you change dependencies in `pyproject.toml`, regenerate the lock file with the following command:
+>
+> ```bash
+> uv lock  # refresh uv.lock for reproducible installs
+> ```
 
 ### pre-commit
 
-Install [pre-commit](https://pre-commit.com/) to ensure that each of your commits is properly checked against our linter and formatters:
+After activating the virtual environment, set up [prek](https://prek.j178.dev/) for pre-commit hooks by running:
 
 ```bash
 # In the project root:
-pre-commit install
+prek install
 
 # Then test the pre-commit hooks to see how it works:
-pre-commit run --all-files
+uv run prek run --all-files
 ```
 
 > [!NOTE]
-> pre-commit is Python package that can be installed via pip or any other Python package manager. You can also find it in our [requirements-dev.txt](./requirements-dev.txt) file.
->
-> ```bash
-> pip install pre-commit
-> ```
-
-> [!NOTE]
-> If you are having issues with pre-commit and want to send along your changes regardless, you can ignore the pre-commit hooks via the following:
+> If you are having issues with prek and want to send along your changes regardless, you can ignore the pre-commit hooks via the following:
 >
 > ```bash
 > git commit --no-verify -m "COMMIT_MESSAGE"

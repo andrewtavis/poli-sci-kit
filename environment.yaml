@@ -2,5 +2,4 @@ name: poli-sci-kit-dev
 dependencies:
   - python>=3.12
   - pip
-  - pip:
-      - -r requirements-dev.txt
+  - uv
