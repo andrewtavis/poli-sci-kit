@@ -27,13 +27,13 @@ from random import shuffle
 
 
 def largest_remainder(
-    quota_style="Hare",
-    shares=None,
-    total_alloc=None,
-    alloc_threshold=None,
-    min_alloc=None,
-    tie_break="majority",
-    majority_bonus=False,
+    quota_style: str = "Hare",
+    shares: list[int] | None = None,
+    total_alloc: int | None = None,
+    alloc_threshold: float | None = None,
+    min_alloc: int | None = None,
+    tie_break: str = "majority",
+    majority_bonus: bool = False,
 ):
     r"""
     Apportion seats using the Largest Remainder (Hamilton, Vinton, Hare–Niemeyer) methods.
@@ -96,8 +96,11 @@ def largest_remainder(
         alloc_threshold is None or min_alloc is None
     ), """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation.
         Set one of alloc_threshold or min_alloc to None."""
+    assert shares is not None, "'shares' must be provided."
+    assert total_alloc is not None, "'total_alloc' must be provided."
+    shares = list(shares)
 
-    def get_quota(quota_style, shares, total_alloc):
+    def get_quota(quota_style: str, shares: list[int], total_alloc: int) -> float:
         if quota_style == "Hare":
             seat_quota = 1.0 * sum(shares) / total_alloc
         elif quota_style == "Droop":
@@ -105,7 +108,7 @@ def largest_remainder(
         elif quota_style == "Hagenbach–Bischoff":
             seat_quota = 1.0 * sum(shares) / (total_alloc + 1)
         else:
-            ValueError(
+            raise ValueError(
                 "Invalid quota provided. Choose from Hare, Droop, or Hagenbach–Bischoff."
             )
 
@@ -115,7 +118,8 @@ def largest_remainder(
         passed_threshold = [1.0 * s / sum(shares) > alloc_threshold for s in shares]
         shares = [s if passed_threshold[i] else 0 for i, s in enumerate(shares)]
 
-    original_remainders = None
+    original_remainders: tuple[float, ...] | None = None
+    original_with_baseline: list[int] = []
     if min_alloc is not None and min_alloc > 0:
         assert min_alloc * len(shares) <= total_alloc, (
             "The sum of the minimum seats to be allocated cannot be more than the seats to be allocated."
@@ -155,6 +159,7 @@ def largest_remainder(
     remainders, allocations = zip(*[modf(1.0 * s / seat_quota) for s in shares])
 
     if min_alloc is not None and min_alloc > 0:
+        assert original_remainders is not None
         remainders = original_remainders
         if (
             original_with_baseline != baseline_allocations
@@ -216,7 +221,7 @@ def largest_remainder(
                 allocations[equal_to_last_assigned[k]] += 1
 
         else:
-            ValueError(
+            raise ValueError(
                 f"A tie break is required for the last seat(s), and an invalid argument '{tie_break}' has been passed. Please choose from 'majority' or 'random'."
             )
 
@@ -249,14 +254,14 @@ def largest_remainder(
 
 
 def highest_averages(
-    averaging_style="Jefferson",
-    shares=None,
-    total_alloc=None,
-    alloc_threshold=None,
-    min_alloc=None,
-    tie_break="majority",
-    majority_bonus=False,
-    modifier=None,
+    averaging_style: str = "Jefferson",
+    shares: list[int] | None = None,
+    total_alloc: int | None = None,
+    alloc_threshold: float | None = None,
+    min_alloc: int | None = None,
+    tie_break: str = "majority",
+    majority_bonus: bool = False,
+    modifier: float | None = None,
 ):
     r"""
     Apportion seats using the Highest Averages (Jefferson, Webster, Huntington-Hill) methods.
@@ -324,6 +329,9 @@ def highest_averages(
     assert alloc_threshold is None or averaging_style != "Huntington-Hill", (
         """The Huntington-Hill method requires all groups to receive a seat, and thus cannot be used with a threshold. Set 'alloc_threshold' to None."""
     )
+    assert shares is not None, "'shares' must be provided."
+    assert total_alloc is not None, "'total_alloc' must be provided."
+    shares = list(shares)
 
     if averaging_style == "Huntington-Hill" and (min_alloc is None or min_alloc == 0):
         print(
@@ -397,20 +405,9 @@ def highest_averages(
                 ]
 
         else:
-            print(
+            raise ValueError(
                 f"'{averaging_style}' is not a supported highest averages method. Please choose from 'Jefferson', 'Webster', or 'Huntington-Hill'."
             )
-            print(
-                "Naming conventions for methods differ across regions, with United States naming conventions used in poli-sci-kit."
-            )
-            print(
-                """US assignment method name conversions:
-            Jeffersion         : D'Hondt, Hagenbach-Bischoff (includes entry quota)
-            Webster            : Sainte-Laguë, Major Fraction
-            Huntington-Hill    : Equal Proportions"""
-            )
-
-            return
 
         # Find those indexes that have a maximum quotient to check if a tie break
         # is needed.
@@ -453,7 +450,7 @@ def highest_averages(
                 remaining_alloc -= 1
 
             else:
-                ValueError(
+                raise ValueError(
                     f"A tie break is required for the last seat(s), and an invalid argument '{tie_break}' has been passed. Please choose from 'majority' or 'random'."
                 )
 

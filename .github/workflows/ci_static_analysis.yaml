@@ -48,6 +48,6 @@ jobs:
         if: always()
         run: uv run ruff check ./src
 
-      # - name: Run ty - Static Type Checking
-      #   if: always()
-      #   run: uv run ty check
+      - name: Run ty - Static Type Checking
+        if: always()
+        run: uv run ty check src
