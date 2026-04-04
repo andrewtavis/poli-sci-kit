@@ -405,6 +405,15 @@ def highest_averages(
                 ]
 
         else:
+            print(
+                "Naming conventions for methods differ across regions, with United States naming conventions used in poli-sci-kit."
+            )
+            print(
+                """US assignment method name conversions:
+            Jeffersion         : D'Hondt, Hagenbach-Bischoff (includes entry quota)
+            Webster            : Sainte-Laguë, Major Fraction
+            Huntington-Hill    : Equal Proportions"""
+            )
             raise ValueError(
                 f"'{averaging_style}' is not a supported highest averages method. Please choose from 'Jefferson', 'Webster', or 'Huntington-Hill'."
             )
