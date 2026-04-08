@@ -4,10 +4,6 @@ Appointment Method Checks
 -------------------------
 
 Functions to conditionally check appointment methods.
-
-Contents:
-    quota_condition,
-    consistency_condition
 """
 
 from math import ceil, floor

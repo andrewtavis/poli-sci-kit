@@ -154,12 +154,12 @@ party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0'
 
 ### Parliament Plots
 
-poli_sci_kit provides implementations of both rectangular and semicircle [parliament plots](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/parliament.py):
+poli_sci_kit provides implementations of both rectangular and semicircle [parliament plots](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/parliament_plot.py):
 
 ```python
 fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2)
 
-ax1 = poli_sci_kit.plot.parliament(
+ax1 = poli_sci_kit.plot.parliament_plot(
     allocations=seat_allocations,
     labels=parties,
     colors=party_colors,
@@ -170,7 +170,7 @@ ax1 = poli_sci_kit.plot.parliament(
     axis=ax1,
 )
 
-ax2 = poli_sci_kit.plot.parliament(
+ax2 = poli_sci_kit.plot.parliament_plot(
     allocations=seat_allocations,
     labels=parties,
     colors=party_colors,
@@ -185,22 +185,22 @@ plt.show()
 ```
 
 <p align="middle">
-  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/rectangle_parliament.png" width="400" />
-  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/semicircle_parliament.png" width="400" />
+  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/rectangle_parliament_plot.png" width="400" />
+  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/semicircle_parliament_plot.png" width="400" />
 </p>
 
 <sub><a href="#top">Back to top.</a></sub>
 
 ### Disproportionality Bar Plot
 
-A novel addition to social science analysis is the [disproportionality bar plot](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/dispr_bar.py), which graphically depicts the disproportionality between expected and realized results. Bar widths are the proportion of shares (ex: votes received), and heights are the difference or relative difference between shares and allocations (ex: parliament seats received).
+A novel addition to social science analysis is the [disproportionality bar plot](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/disproportionality_bar_plot.py), which graphically depicts the disproportionality between expected and realized results. Bar widths are the proportion of shares (ex: votes received), and heights are the difference or relative difference between shares and allocations (ex: parliament seats received).
 
 An example follows:
 
 ```python
 import pltviz
 
-ax = poli_sci_kit.plot.dispr_bar(
+ax = poli_sci_kit.plot.disproportionality_bar_plot(
     shares=votes,
     allocations=ha_allocations,
     labels=parties,
@@ -243,7 +243,7 @@ plt.show()
 ```
 
 <p align="middle">
-  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/dispr_bar.png" width="600" />
+  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/disproportionality_bar_plot.png" width="600" />
 </p>
 
 <sub><a href="#top">Back to top.</a></sub>

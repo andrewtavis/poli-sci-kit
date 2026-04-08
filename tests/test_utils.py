@@ -32,7 +32,7 @@ def test_gen_faction_groups():
 
 
 def test_semicircle_parl_plot(allocations):
-    test_df = utils.gen_parl_points(
+    test_df = utils.gen_parliament_plot_points(
         allocations=allocations,
         style="semicircle",
         num_rows=2,
@@ -84,7 +84,7 @@ def test_semicircle_parl_plot(allocations):
         10,
     ]
 
-    test_df = utils.gen_parl_points(
+    test_df = utils.gen_parliament_plot_points(
         allocations=allocations,
         style="semicircle",
         num_rows=2,
@@ -97,7 +97,7 @@ def test_semicircle_parl_plot(allocations):
 
 def test_rectangle_parl_plot(allocations):
     assert list(
-        utils.gen_parl_points(
+        utils.gen_parliament_plot_points(
             allocations=allocations,
             style="rectangle",
             num_rows=4,
@@ -106,7 +106,7 @@ def test_rectangle_parl_plot(allocations):
     ) == [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3]
 
     assert list(
-        utils.gen_parl_points(
+        utils.gen_parliament_plot_points(
             allocations=allocations,
             style="rectangle",
             num_rows=4,
@@ -114,7 +114,7 @@ def test_rectangle_parl_plot(allocations):
         )["row_position"]
     ) == [0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4]
 
-    test_df = utils.gen_parl_points(
+    test_df = utils.gen_parliament_plot_points(
         allocations=allocations,
         style="rectangle",
         num_rows=4,
@@ -126,7 +126,7 @@ def test_rectangle_parl_plot(allocations):
 
 
 def test_swap_parl_allocations(allocations):
-    test_df = utils.gen_parl_points(
+    test_df = utils.gen_parliament_plot_points(
         allocations=allocations,
         style="rectangle",
         num_rows=4,
