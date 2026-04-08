@@ -4,9 +4,6 @@ Disproportionality Bar Plot
 ---------------------------
 
 The plotting function to create disproportionality bar plots.
-
-Contents:
-    dispr_bar
 """
 
 import pandas as pd
@@ -17,7 +14,7 @@ from poli_sci_kit import utils
 default_sat = 0.95
 
 
-def dispr_bar(
+def disproportionality_bar_plot(
     shares,
     allocations,
     labels=None,

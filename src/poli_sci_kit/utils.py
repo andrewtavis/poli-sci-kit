@@ -4,16 +4,6 @@ Utilities
 ---------
 
 Utility functions for general operations and plotting.
-
-Contents:
-    normalize,
-    gen_list_of_lists,
-    gen_faction_groups,
-    gen_parl_points,
-    swap_parl_allocations,
-    hex_to_rgb,
-    rgb_to_hex,
-    scale_saturation
 """
 
 import colorsys
@@ -66,7 +56,7 @@ def gen_faction_groups(original_list, factions_indexes):
     return gen_list_of_lists(ordered_original_list, factions_structure)
 
 
-def gen_parl_points(
+def gen_parliament_plot_points(
     allocations, labels=None, style="semicircle", num_rows=2, speaker=False
 ):
     """

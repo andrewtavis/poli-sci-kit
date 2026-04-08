@@ -4,9 +4,6 @@ Parliament Plot
 ---------------
 
 The plotting function to create parliament plots.
-
-Contents:
-    parliament
 """
 
 import seaborn as sns
@@ -16,7 +13,7 @@ from poli_sci_kit import utils
 default_sat = 0.95
 
 
-def parliament(
+def parliament_plot(
     allocations,
     labels=None,
     colors=None,
@@ -94,7 +91,7 @@ def parliament(
     sns.set_palette(colors)
 
     if df_seat_lctns is None:
-        df_seat_lctns = utils.gen_parl_points(
+        df_seat_lctns = utils.gen_parliament_plot_points(
             allocations=allocations,
             labels=labels,
             style=style,

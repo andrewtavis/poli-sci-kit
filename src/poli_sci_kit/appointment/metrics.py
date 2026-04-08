@@ -21,18 +21,6 @@ Based on
 
     Taagepera, R., Grofman, B. (2003). "Mapping the Indices of Seats-Votes Disproportionality and Inter-Election Volatility". Party Politics, Vol. 9, No. 6, pp. 659–677.
     URL: https://escholarship.org/content/qt0m9912ff/qt0m9912ff.pdf.
-
-Contents:
-    ideal_share,
-    alloc_to_share_ratio,
-    sqr_alloc_to_share_error,
-    total_alloc_to_share_error,
-    rep_weight,
-    sqr_rep_weight_error,
-    total_rep_weight_error,
-    div_index,
-    effective_number_of_groups
-    dispr_index
 """
 
 from math import exp, log, sqrt

@@ -4,10 +4,6 @@ Appointment Method Checks
 -------------------------
 
 Functions to conditionally check appointment methods.
-
-Contents:
-    quota_condition,
-    consistency_condition
 """
 
 from math import ceil, floor
@@ -102,6 +98,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
         )
 
     if check_type == "seat_monotony":
+        assert df_seats is not None, "'df_seats' must be provided for seat_monotony."
         df_fail_report = df_seats.copy()
 
         seat_sums = [df_seats[col].sum() for col in df_seats.columns]
@@ -143,7 +140,8 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
 
         cols_dropped = 0
         for i in col_range:
-            if check_cols[i]:
+            col_check = check_cols[i]
+            if not isinstance(col_check, list):
                 # Drop the column, and add to an indexer to maintain lengths.
                 df_fail_report.drop(
                     df_fail_report.columns[i - cols_dropped], axis=1, inplace=True
@@ -153,7 +151,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             else:
                 # Keep the column, and remove the indexes of any columns that
                 # break the condition to keep them as well.
-                for later_col in check_cols[i]:
+                for later_col in col_check:
                     col_range.pop(later_col)
 
         if len(df_fail_report.columns) != 0:
@@ -206,6 +204,9 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
             return check_pass
 
     elif check_type == "share_monotony":
+        assert df_shares is not None and df_seats is not None, (
+            "'df_shares' and 'df_seats' must be provided for share_monotony."
+        )
         # The fail report df has share and seat columns alternated.
         df_fail_report = pd.DataFrame()
         col = 0
@@ -303,7 +304,7 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
                 cols_dropped += 1
 
     else:
-        ValueError(
+        raise ValueError(
             "The 'check_type' argument myst be either seat_monotony or share_monotony"
         )
 
