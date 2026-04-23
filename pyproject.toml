@@ -47,7 +47,7 @@ dependencies = [
     "colormath>=3.0.0",
     "matplotlib>=3.10.8",
     "numpy>=2.4.4",
-    "packaging>=26.0",
+    "packaging>=26.1",
     "pandas>=3.0.2",
     "scipy>=1.17.1",
     "seaborn>=0.13.2",
@@ -55,11 +55,11 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "prek>=0.3.8",
+    "prek>=0.3.10",
     "pytest>=9.0.3",
     "pytest-cov>=7.1.0",
-    "ruff>=0.15.9",
-    "ty>=0.0.29",
+    "ruff>=0.15.11",
+    "ty>=0.0.32",
 ]
 
 docs = [
