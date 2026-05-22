@@ -1,4 +1,4 @@
-.. mdinclude:: ../../.github/CONTRIBUTING.md
+.. mdinclude:: ../../CONTRIBUTING.md
 
 =======
 License
