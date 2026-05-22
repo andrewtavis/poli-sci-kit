@@ -9,7 +9,6 @@
 [![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
 [![pr_ci](https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/pr_ci.yaml?branch=main&label=ci&logo=ruff)](https://github.com/andrewtavis/poli-sci-kit/actions/workflows/pr_ci.yaml)
 [![python_package_ci](https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/python_package_ci.yaml?branch=main&label=build&logo=pytest)](https://github.com/andrewtavis/poli-sci-kit/actions/workflows/python_package_ci.yaml)
-[![codecov](https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg)](https://codecov.io/gh/andrewtavis/poli-sci-kit)
 [![pyversions](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python&logoColor=FFD43B&color=306998)](https://pypi.org/project/poli-sci-kit/)
 [![pypi](https://img.shields.io/pypi/v/poli-sci-kit.svg?color=4B8BBE)](https://pypi.org/project/poli-sci-kit/)
 [![pypistatus](https://img.shields.io/pypi/status/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
@@ -350,8 +349,6 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci
 - Adding methods such as quadratic voting to poli-sci-kit to allow for preference based simulations
 
 - Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
-
-- Improving [tests](https://github.com/andrewtavis/poli-sci-kit/tree/main/tests) for greater [code coverage](https://codecov.io/gh/andrewtavis/poli-sci-kit)
 
 <sub><a href="#top">Back to top.</a></sub>
 

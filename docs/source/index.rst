@@ -3,9 +3,8 @@
     :height: 251
     :align: center
     :target: https://github.com/andrewtavis/poli-sci-kit
-============
 
-|rtd| |pr_ci| |python_package_ci| |codecov| |pyversions| |pypi| |pypistatus| |license| |coc| |codestyle| |colab|
+|rtd| |pr_ci| |python_package_ci| |pyversions| |pypi| |pypistatus| |license| |coc| |codestyle| |colab|
 
 .. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
@@ -15,9 +14,6 @@
 
 .. |python_package_ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/python_package_ci.yaml?branch=main&label=build&logo=pytest
     :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/python_package_ci.yaml
-
-.. |codecov| image:: https://codecov.io/gh/andrewtavis/poli-sci-kit/branch/main/graphs/badge.svg
-    :target: https://codecov.io/gh/andrewtavis/poli-sci-kit
 
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python&logoColor=FFD43B&color=306998
     :target: https://pypi.org/project/poli-sci-kit/

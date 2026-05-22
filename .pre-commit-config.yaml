@@ -37,13 +37,13 @@ repos:
         exclude: ^(tests/|.*__init__\.py$)
 
   - repo: https://github.com/to-sta/spdx-checker-pre-commit
-    rev: 0.1.7
+    rev: 0.1.8
     hooks:
       - id: spdx-license-checker
         name: run spdx-checker license check
         exclude: ^(?:.*/)?__init__\.py$
         args: [-l, BSD-3-Clause, --fix, --continue-on-error]
-        types_or: [python, ts]
+        types_or: [python]
 
   - repo: local
     hooks:
