@@ -43,23 +43,22 @@ classifiers = [
 # MARK: Dependencies
 
 dependencies = [
-    # Keep docs dependencies formatted in this way with ruff to allow for upgrades via VS Code extension.
     "colormath>=3.0.0",
-    "matplotlib>=3.10.8",
-    "numpy>=2.4.4",
-    "packaging>=26.1",
-    "pandas>=3.0.2",
+    "matplotlib>=3.10.9",
+    "numpy>=2.4.6",
+    "packaging>=26.2",
+    "pandas>=3.0.3",
     "scipy>=1.17.1",
     "seaborn>=0.13.2",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "prek>=0.3.10",
+    "prek>=0.4.1",
     "pytest>=9.0.3",
     "pytest-cov>=7.1.0",
-    "ruff>=0.15.11",
-    "ty>=0.0.32",
+    "ruff>=0.15.14",
+    "ty>=0.0.38",
 ]
 
 docs = [
