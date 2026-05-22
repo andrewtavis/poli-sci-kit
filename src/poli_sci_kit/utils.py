@@ -443,7 +443,7 @@ def gen_parliament_plot_points(
     return df_seat_lctns
 
 
-def swap_parl_allocations(
+def swap_parliament_allocations(
     df: pd.DataFrame, row_0: int, pos_0: int, row_1: int, pos_1: int
 ):
     """

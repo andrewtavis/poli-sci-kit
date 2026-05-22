@@ -11,7 +11,7 @@ from poli_sci_kit.utils import (
     normalize,
     rgb_to_hex,
     scale_saturation,
-    swap_parl_allocations,
+    swap_parliament_allocations,
 )
 
 
@@ -42,7 +42,7 @@ def test_gen_faction_groups():
     ]
 
 
-def test_semicircle_parl_plot(allocations):
+def test_semicircle_parliament_plot(allocations):
     test_df = gen_parliament_plot_points(
         allocations=allocations,
         style="semicircle",
@@ -106,7 +106,7 @@ def test_semicircle_parl_plot(allocations):
     assert test_df["y_loc"][len(test_df) - 1] == 0
 
 
-def test_rectangle_parl_plot(allocations):
+def test_rectangle_parliament_plot(allocations):
     assert list(
         gen_parliament_plot_points(
             allocations=allocations,
@@ -136,7 +136,7 @@ def test_rectangle_parl_plot(allocations):
     assert test_df["y_loc"][len(test_df) - 1] == 4
 
 
-def test_swap_parl_allocations(allocations):
+def test_swap_parliament_allocations(allocations):
     test_df = gen_parliament_plot_points(
         allocations=allocations,
         style="rectangle",
@@ -145,7 +145,7 @@ def test_swap_parl_allocations(allocations):
     )
 
     test_swap_df = test_df.copy()
-    swap_parl_allocations(df=test_swap_df, row_0=0, pos_0=0, row_1=0, pos_1=1)
+    swap_parliament_allocations(df=test_swap_df, row_0=0, pos_0=0, row_1=0, pos_1=1)
 
     assert test_df["group"][0] == test_swap_df["group"][1]
 

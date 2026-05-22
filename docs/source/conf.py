@@ -15,6 +15,8 @@ import os
 import shutil
 import sys
 
+import sphinx_rtd_theme
+
 sys.path.insert(0, os.path.abspath(".."))
 
 # -- Project information -----------------------------------------------------
@@ -24,7 +26,7 @@ copyright = "2020, poli-sci-kit developers (BSD License)"
 author = "poli-sci-kit developers"
 
 # The full version, including alpha/beta/rc tags
-release = "1.1.0"
+release = "2.0.0"
 
 
 # -- General configuration ---------------------------------------------------
@@ -83,8 +85,6 @@ pygments_style = "sphinx"
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#
-import sphinx_rtd_theme
 
 html_theme = "sphinx_rtd_theme"
 

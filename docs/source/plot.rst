@@ -10,7 +10,7 @@ A novel addition to social science analysis is the `disproportionality bar plot 
 * :py:func:`poli_sci_kit.plot.disproportionality_bar_plot`
 * :py:func:`poli_sci_kit.plot.parliament_plot`
 * :py:func:`poli_sci_kit.utils.gen_parliament_plot_points`
-* :py:func:`poli_sci_kit.utils.swap_parl_allocations`
+* :py:func:`poli_sci_kit.utils.swap_parliament_allocations`
 
 .. autofunction:: poli_sci_kit.plot.disproportionality_bar_plot
 
@@ -24,4 +24,4 @@ The parliament plot function is built on top of scatter plots that are derived i
 
 A final function to swap poorly allocated seats is also provided in `utils <https://github.com/andrewtavis/poli-sci-kit/blob/main/poli_sci_kit/utils.py>`_:
 
-.. autofunction:: poli_sci_kit.utils.swap_parl_allocations
+.. autofunction:: poli_sci_kit.utils.swap_parliament_allocations

@@ -6,19 +6,30 @@ poli-sci-kit tries to follow [semantic versioning](https://semver.org/), a MAJOR
 - MINOR version when we add functionality in a backwards compatible manner
 - PATCH version when we make backwards compatible bug fixes
 
-## poli-sci-kit 1.1.0 (November 25th, 2023)
+## poli-sci-kit 2.0.0
+
+- Function names were changed to make them more verbose for clearer functionality
+- All functions were typed and docstrings were expanded
+- `prek` based pre-commit hooks are used to improve package development
+- `Ruff` is now used for formatting and import sorting instead of `black`
+- Linting is now done with `ty` instead of `mypy`
+- Dependency management is now done via `uv`
+- All production and development dependencies were updated
+- Tests and GitHub workflows were updated given the above changes
+
+## poli-sci-kit 1.1.0
 
 - The assignment of points for semicircle parliament plots now groups points for parties together more appropriately
 
-## poli-sci-kit 1.0.1 (June 3rd, 2022)
+## poli-sci-kit 1.0.1
 
 - Updates source code files with direct references to the code they're based on
 
-## poli-sci-kit 1.0.0 (December 28th, 2021)
+## poli-sci-kit 1.0.0
 
 - Release switches poli-sci-kit over to [semantic versioning](https://semver.org/) and indicates that it is stable
 
-## poli-sci-kit 0.1.2.5 (March 24th, 2021)
+## poli-sci-kit 0.1.2.5
 
 Changes include:
 
@@ -27,7 +38,7 @@ Changes include:
 - Checks for code quality have been added
 - Examples now function in Google Colab
 
-## poli-sci-kit 0.1.0 (Feb 10th, 2021)
+## poli-sci-kit 0.1.0
 
 First stable release of poli-sci-kit
 
@@ -40,7 +51,7 @@ Changes include:
 - Extensive testing of all modules with GH Actions and Codecov
 - Code of conduct and contribution guidelines
 
-## poli-sci-kit 0.0.2.1 (Dec 9th, 2020)
+## poli-sci-kit 0.0.2.1
 
 The minimum viable product of poli-sci-kit
 
