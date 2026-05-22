@@ -6,7 +6,4 @@ License
 
 .. literalinclude:: _static/LICENSE.txt
 
-Change log
-----------
-
 .. mdinclude:: ../../CHANGELOG.md
