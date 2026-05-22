@@ -4,16 +4,16 @@
     :align: center
     :target: https://github.com/andrewtavis/poli-sci-kit
 
-|rtd| |pr_ci| |python_package_ci| |pyversions| |pypi| |pypistatus| |license| |coc| |codestyle| |colab|
+|rtd| |ci_static_analysis| |ci_pytest| |pyversions| |pypi| |pypistatus| |license| |coc| |codestyle| |colab|
 
 .. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
 
-.. |pr_ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/pr_ci.yaml?branch=main&label=ci&logo=ruff
-    :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/pr_ci.yaml
+.. |ci_static_analysis| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/ci_static_analysis.yaml?branch=main&label=ci&logo=ruff
+    :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/ci_static_analysis.yaml
 
-.. |python_package_ci| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/python_package_ci.yaml?branch=main&label=build&logo=pytest
-    :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/python_package_ci.yaml
+.. |ci_pytest| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/ci_pytest.yaml?branch=main&label=build&logo=pytest
+    :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/ci_pytest.yaml
 
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python&logoColor=FFD43B&color=306998
     :target: https://pypi.org/project/poli-sci-kit/
