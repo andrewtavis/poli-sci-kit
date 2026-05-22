@@ -10,7 +10,9 @@ def test_lr_sum(largest_remainder_styles, votes, seats):
     assert (
         sum(
             largest_remainder(
-                quota_style=largest_remainder_styles, shares=votes, total_alloc=seats
+                quota_style=largest_remainder_styles,
+                shares=votes,
+                total_allocation=seats,
             )
         )
         == seats
@@ -23,7 +25,7 @@ def test_lr_min_alloc(largest_remainder_styles, votes, seats):
         for alloc in largest_remainder(
             quota_style=largest_remainder_styles,
             shares=votes,
-            total_alloc=seats,
+            total_allocation=seats,
             min_alloc=3,
         )
     )
@@ -35,7 +37,7 @@ def test_lr_greater_than_zero(largest_remainder_styles, votes, seats):
         for alloc in largest_remainder(
             quota_style=largest_remainder_styles,
             shares=votes,
-            total_alloc=seats,
+            total_allocation=seats,
         )
     )
 
@@ -72,7 +74,7 @@ def test_lr_hare(long_votes_list, seats_large):
         largest_remainder(
             quota_style="Hare",
             shares=long_votes_list,
-            total_alloc=seats_large,
+            total_allocation=seats_large,
         )
         == results
     )
@@ -110,7 +112,7 @@ def test_lr_droop(long_votes_list, seats_large):
         largest_remainder(
             quota_style="Droop",
             shares=long_votes_list,
-            total_alloc=seats_large,
+            total_allocation=seats_large,
         )
         == results
     )
@@ -148,7 +150,7 @@ def test_lr_hb(long_votes_list, seats_large):
         largest_remainder(
             quota_style="Hagenbach–Bischoff",
             shares=long_votes_list,
-            total_alloc=seats_large,
+            total_allocation=seats_large,
         )
         == results
     )
@@ -161,8 +163,8 @@ def test_lr_threshold(short_votes_list, seats_large):
         largest_remainder(
             quota_style="Hare",
             shares=short_votes_list,
-            total_alloc=seats_large,
-            alloc_threshold=0.2,
+            total_allocation=seats_large,
+            allocation_threshold=0.2,
             min_alloc=None,
             tie_break="majority",
             majority_bonus=False,
@@ -179,8 +181,8 @@ def test_lr_modifier(short_votes_list):
         largest_remainder(
             quota_style="Hare",
             shares=short_votes_list,
-            total_alloc=seats,
-            alloc_threshold=None,
+            total_allocation=seats,
+            allocation_threshold=None,
             min_alloc=None,
             tie_break="majority",
             majority_bonus=0.5,
@@ -197,8 +199,8 @@ def test_lr_tie_break(tie_votes_list):
     assert largest_remainder(
         quota_style="Hare",
         shares=tie_votes_list,
-        total_alloc=seats,
-        alloc_threshold=None,
+        total_allocation=seats,
+        allocation_threshold=None,
         min_alloc=None,
         tie_break="majority",
         majority_bonus=False,
@@ -213,8 +215,8 @@ def test_lr_majority(tie_votes_list):
         largest_remainder(
             quota_style="Hare",
             shares=tie_votes_list,
-            total_alloc=seats,
-            alloc_threshold=None,
+            total_allocation=seats,
+            allocation_threshold=None,
             min_alloc=None,
             tie_break="majority",
             majority_bonus=True,

@@ -50,7 +50,14 @@ repos:
       - id: ty-check
         name: run ty static type checking
         files: ^src/
-        entry: ty check src
+        entry: ty check ./src
         language: python
+        additional_dependencies:
+          - colormath
+          - matplotlib
+          - numpy
+          - pandas
+          - scipy
+          - seaborn
         types: [python]
         pass_filenames: false

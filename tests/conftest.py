@@ -105,19 +105,19 @@ def highest_averages_styles(request):
     return request.param
 
 
-# Jefferson highest averages from tie_votes_list[0] and total_alloc=seats.
+# Jefferson highest averages from tie_votes_list[0] and total_allocation=seats.
 @pytest.fixture(params=[1918578])
 def share(request):
     return request.param
 
 
-# Jefferson highest averages from tie_votes_list with total_alloc=seats.
+# Jefferson highest averages from tie_votes_list with total_allocation=seats.
 @pytest.fixture(params=[[7, 4, 4, 3, 2]])
 def allocations(request):
     return request.param
 
 
-# Jefferson highest averages from tie_votes_list[0] and total_alloc=seats.
+# Jefferson highest averages from tie_votes_list[0] and total_allocation=seats.
 @pytest.fixture(params=[7])
 def allocation(request):
     return request.param
@@ -132,7 +132,7 @@ def total_shares(request):
 @pytest.fixture(
     params=["Shannon", "Renyi", "Simpson", "Gini-Simpson", "Berger-Parker", "Effective"]
 )
-def div_index_metrics(request):
+def diversity_index_metrics(request):
     return request.param
 
 
@@ -158,7 +158,7 @@ def effective_group_metrics(request):
         "Cox-Shugart",
     ]
 )
-def dispr_index_metrics(request):
+def disproportionality_index_metrics(request):
     return request.param
 
 

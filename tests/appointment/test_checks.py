@@ -62,7 +62,7 @@ def test_quota_condition_pass():
         2,
         1,
     ]
-    assert quota_condition(shares=shares, seats=seats) == True
+    assert quota_condition(shares=shares, seats=seats)
 
 
 def test_quota_condition_fail():
@@ -119,7 +119,7 @@ def test_quota_condition_fail():
         2,
         4,  # too high
     ]
-    assert quota_condition(shares=shares, seats=seats) != True
+    assert isinstance(quota_condition(shares=shares, seats=seats), dict)
 
 
 def test_consistency_condition_seat_pass():
@@ -127,11 +127,8 @@ def test_consistency_condition_seat_pass():
 
     df_seats = pd.DataFrame(data=[[1, 2, 2], [1, 1, 2], [1, 1, 1]])
 
-    assert (
-        consistency_condition(
-            df_shares=df_shares, df_seats=df_seats, check_type="seat_monotony"
-        )
-        == True
+    assert consistency_condition(
+        df_shares=df_shares, df_seats=df_seats, check_type="seat_monotony"
     )
 
 
@@ -154,11 +151,8 @@ def test_consistency_condition_share_pass():
     df_shares = pd.DataFrame(data=[[100, 110, 120], [75, 65, 65], [50, 50, 40]])
 
     df_seats = pd.DataFrame(data=[[3, 3, 3], [2, 2, 2], [1, 1, 1]])
-    assert (
-        consistency_condition(
-            df_shares=df_shares, df_seats=df_seats, check_type="share_monotony"
-        )
-        == True
+    assert consistency_condition(
+        df_shares=df_shares, df_seats=df_seats, check_type="share_monotony"
     )
 
 

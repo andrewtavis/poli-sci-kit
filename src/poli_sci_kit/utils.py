@@ -1,27 +1,57 @@
 # SPDX-License-Identifier: BSD-3-Clause
 """
-Utilities
----------
-
 Utility functions for general operations and plotting.
 """
 
 import colorsys
+from typing import Optional, Tuple
 
 import numpy as np
 import pandas as pd
 from colormath.color_objects import sRGBColor
 
 
-def normalize(vals):
-    """Returns respective normalized values."""
-    total_vals = sum(vals)
+def normalize(vals: list) -> list:
+    """
+    Return respective normalized values.
 
-    return [1.0 * v / total_vals for v in vals]
+    Parameters
+    ----------
+    vals : list
+        The values to normalize.
+
+    Returns
+    -------
+    list
+        The original values normalized.
+
+    Notes
+    -----
+    Normalization is achieved via:
+
+        .. math::
+        1.0 * v / sum(vals) for v in vals
+    """
+    return [1.0 * v / sum(vals) for v in vals]
 
 
-def gen_list_of_lists(original_list, new_structure):
-    """Generates a list of lists with a given structure from a given list."""
+def gen_list_of_lists(original_list: list, new_structure: list[int]) -> list[list]:
+    """
+    Generate a list of lists with a given structure from a given list.
+
+    Parameters
+    ----------
+    original_list : list
+        The original list of values.
+
+    new_structure : list[int]
+        The buckets structure that should be applied to the list.
+
+    Returns
+    -------
+    list
+        The given list with the structure provided.
+    """
     assert len(original_list) == sum(new_structure), (
         "The number of elements in the original list and desired structure don't match."
     )
@@ -32,22 +62,24 @@ def gen_list_of_lists(original_list, new_structure):
     ]
 
 
-def gen_faction_groups(original_list, factions_indexes):
+def gen_faction_groups(
+    original_list: list, factions_indexes: list[list[int]]
+) -> list[list]:
     """
-    Reorders a list into a list of lists where sublists are faction amounts.
+    Reorder a list into a list of lists where sublists are faction amounts.
 
     Parameters
     ----------
-        original_list : list
-            The data to be reorganized.
+    original_list : list
+        The data to be reorganized.
 
-        factions_indexes : list of lists (contains ints)
-            The structure of original_list indexes to output.
+    factions_indexes : list[list[int]]
+        The structure of original_list indexes to output.
 
     Returns
     -------
-        factioned_list : list of lists
-            The values of original_list ordered as the indexes of factions_indexes.
+    list[list]
+        The values of original_list ordered as the indexes of factions_indexes.
     """
     factions_structure = [len(sublist) for sublist in factions_indexes]
     flat_indexes = [item for sublist in factions_indexes for item in sublist]
@@ -57,39 +89,43 @@ def gen_faction_groups(original_list, factions_indexes):
 
 
 def gen_parliament_plot_points(
-    allocations, labels=None, style="semicircle", num_rows=2, speaker=False
-):
+    allocations: list[int],
+    labels: Optional[list[str]] = None,
+    style: str = "semicircle",
+    num_rows: int = 2,
+    speaker: bool | str = False,
+) -> pd.DataFrame:
     """
-    Produces a df with coordinates for a parliament plot.
+    Produce a df with coordinates for a parliament plot.
 
     Parameters
     ----------
-        allocations : list
-            The share of seats given to the regions or parties.
+    allocations : list[int]
+        The share of seats given to the regions or parties.
 
-        labels : list : optional (default=None)
-            The names of the groups.
+    labels : list[str] : optional (default=None)
+        The names of the groups.
 
-        style : str (default=semicircle)
-            Whether to plot the parliament as a semicircle or a rectangle.
+    style : str (default=semicircle)
+        Whether to plot the parliament as a semicircle or a rectangle.
 
-        num_rows : int (default=2)
-            The number of rows in the plot.
+    num_rows : int (default=2)
+        The number of rows in the plot.
 
-        speaker : bool : optional (default=False)
-            Whether to include a point for the speaker of the house colored by their group.
+    speaker : bool : optional (default=False)
+        Whether to include a point for the speaker of the house colored by their group.
 
-            Note: 'True' colors the point based on the largest group, but passing a name from 'labels' is also possible.
+        Note: 'True' colors the point based on the largest group, but passing a name from 'labels' is also possible.
 
     Returns
     -------
-        df_seat_lctns : pd.DataFrame
-            A dataframe with points to be converted to a parliament plot via seaborn's scatterplot.
+    pd.DataFrame
+        A dataframe with points to be converted to a parliament plot via seaborn's scatter plot.
     """
-    assert style in [
+    assert style in {
         "semicircle",
         "rectangle",
-    ], "Please choose one of semicircle or rectangle for the plotting style."
+    }, "Please choose one of semicircle or rectangle for the plotting style."
 
     total_seats = sum(allocations)
 
@@ -127,9 +163,24 @@ def gen_parliament_plot_points(
 
     if style == "semicircle":
 
-        def arc_coordinates(r, seats):
+        def arc_coordinates(
+            r: float, seats: int
+        ) -> Tuple[list[float], list[float], list[float]]:
             """
             Generates an arc of the parliament plot given a radius and the number of seats.
+
+            Parameters
+            ----------
+            r : float
+                The radius of the arc.
+
+            seats : int
+                The share of seats given to a region or party.
+
+            Returns
+            -------
+            Tuple[list[float], list[float], list[float]]
+                The lists of X and Y coordinates as well as the angles.
             """
             angles = np.linspace(start=np.pi, stop=0, num=seats)
 
@@ -173,7 +224,7 @@ def gen_parliament_plot_points(
         row_indexes = []
         row_position_indexes = []
         for i, spr in enumerate(seats_per_row):
-            arc_xs, arc_ys, arc_angles = arc_coordinates(radii[i], spr)
+            arc_xs, arc_ys, arc_angles = arc_coordinates(r=radii[i], seats=spr)
             xs += arc_xs
             ys += arc_ys
             thetas += arc_angles
@@ -392,31 +443,28 @@ def gen_parliament_plot_points(
     return df_seat_lctns
 
 
-def swap_parl_allocations(df, row_0, pos_0, row_1, pos_1):
+def swap_parl_allocations(
+    df: pd.DataFrame, row_0: int, pos_0: int, row_1: int, pos_1: int
+):
     """
-    Replaces two allocations of the parliament plot df to clean up coloration.
+    Replace two allocations of the parliament plot df to clean up coloration.
 
     Parameters
     ----------
-        df : pandas.DataFrame
-            DataFrame containing parliament data
+    df : pd.DataFrame
+        DataFrame containing parliament data.
 
-        row_0 : int
-            The row of one seat to swap.
+    row_0 : int
+        The row of one seat to swap.
 
-        pos_0 : int
-            The position in the row of one seat to swap.
+    pos_0 : int
+        The position in the row of one seat to swap.
 
-        row_1 : int
-            The row of the other seat to swap.
+    row_1 : int
+        The row of the other seat to swap.
 
-        pos_1 : int
-            The position in the row of the other seat to swap.
-
-    Returns
-    -------
-        df_seat_lctns : pd.DataFrame
-            A parliament plot allocations data frame with two allocations swapped
+    pos_1 : int
+        The position in the row of the other seat to swap.
     """
     allocation_0 = df[(df["row"] == row_0) & (df["row_position"] == pos_0)][
         "group"
@@ -432,40 +480,40 @@ def swap_parl_allocations(df, row_0, pos_0, row_1, pos_1):
     df.loc[index_2, "group"] = allocation_0
 
 
-def hex_to_rgb(hex_rep):
+def hex_to_rgb(hex_rep: str) -> sRGBColor:
     """
-    Converts a hexadecimal representation to its RGB ratios.
+    Convert a hexadecimal representation to its RGB ratios.
 
     Parameters
     ----------
-        hex_rep : str
-            The hex representation of the color.
+    hex_rep : str
+        The hex representation of the color or color itself.
 
     Returns
     -------
-        rgb_trip : tuple
-            An RGB tuple color representation.
+    sRGBColor
+        An RGB tuple color representation.
     """
     return sRGBColor(
         *[int(hex_rep[i + 1 : i + 3], 16) for i in (0, 2, 4)], is_upscaled=True
     )
 
 
-def rgb_to_hex(rgb_trip):
+def rgb_to_hex(rgb_triple: tuple) -> str:
     """
-    Converts rgb ratios to their hexadecimal representation.
+    Convert rgb ratios to their hexadecimal representation.
 
     Parameters
     ----------
-        rgb_trip : tuple
-            An RGB tuple color representation.
+    rgb_triple : tuple
+        An RGB tuple color representation.
 
     Returns
     -------
-        hex_rep : str
-            The hex representation of the color.
+    str
+        The hex representation of the color.
     """
-    trip_0, trip_1, trip_2 = rgb_trip[0], rgb_trip[1], rgb_trip[2]
+    trip_0, trip_1, trip_2 = rgb_triple[0], rgb_triple[1], rgb_triple[2]
     if isinstance(trip_0, (float, np.float64)):
         trip_0 *= 255
         trip_1 *= 255
@@ -474,34 +522,38 @@ def rgb_to_hex(rgb_trip):
     return "#%02x%02x%02x" % (int(trip_0), int(trip_1), int(trip_2))
 
 
-def scale_saturation(rgb_trip, sat):
+def scale_saturation(rgb_triple: str | sRGBColor, sat: float) -> str | tuple:
     """
-    Changes the saturation of an rgb color.
+    Change the saturation of an rgb color.
 
     Parameters
     ----------
-        rgb_trip : tuple
-            An RGB tuple color representation.
+    rgb_triple : str | sRGBColor
+        An RGB tuple color representation.
 
-        sat : float
-            The saturation it rgb_trip should be modified by.
+    sat : float
+        The saturation it rgb_triple should be modified by.
 
     Returns
     -------
-        saturated_rgb : tuple
-            colorsys.hls_to_rgb saturation of the given color.
+    tuple
+        The colorsys.hls_to_rgb saturation of the given color.
     """
-    if (isinstance(rgb_trip, str)) and (len(rgb_trip) == 9) and (rgb_trip[-2:] == "00"):
+    if (
+        (isinstance(rgb_triple, str))
+        and (len(rgb_triple) == 9)
+        and (rgb_triple[-2:] == "00")
+    ):
         # An RGBA has been provided and its alpha is 00, so return it for
         # a transparent marker.
-        return rgb_trip
+        return rgb_triple
 
-    if (isinstance(rgb_trip, str)) and (len(rgb_trip) == 7):
-        rgb_trip = hex_to_rgb(rgb_trip)
+    if (isinstance(rgb_triple, str)) and (len(rgb_triple) == 7):
+        rgb_triple = hex_to_rgb(rgb_triple)
 
-    if isinstance(rgb_trip, sRGBColor):
-        rgb_trip = rgb_trip.get_value_tuple()
+    if isinstance(rgb_triple, sRGBColor):
+        rgb_triple = rgb_triple.get_value_tuple()
 
-    h, l, s = colorsys.rgb_to_hls(*rgb_trip)  # noqa: E741
+    hue, lightness, saturation = colorsys.rgb_to_hls(*rgb_triple)  # ty: ignore[invalid-argument-type]
 
-    return colorsys.hls_to_rgb(h, min(1, l * sat), s=s)
+    return colorsys.hls_to_rgb(hue, min(1, lightness * sat), s=saturation)

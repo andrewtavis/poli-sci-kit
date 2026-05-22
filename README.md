@@ -92,8 +92,8 @@ seats_to_allocate = 50
 ha_allocations = appointment.methods.highest_averages(
     averaging_style="Huntington-Hill",
     shares=vote_counts,
-    total_alloc=seats_to_allocate,
-    alloc_threshold=None,
+    total_allocation=seats_to_allocate,
+    allocation_threshold=None,
     min_alloc=1,
     tie_break="majority",
     majority_bonus=False,
@@ -108,7 +108,7 @@ We can then compute various metrics to derive disproportionality:
 
 ```python
 # The Gallagher method is a measure of absolute difference similar to summing square residuals.
-disproportionality = appointment.metrics.dispr_index(
+disproportionality = appointment.metrics.disproportionality_index(
     shares=vote_counts,
     allocations=ha_allocations,
     metric_type='Gallagher'
@@ -205,7 +205,7 @@ ax = poli_sci_kit.plot.disproportionality_bar_plot(
     labels=parties,
     colors=party_colors,
     total_shares=None,
-    total_alloc=None,
+    total_allocation=None,
     percent=True,
     axis=None,
 )

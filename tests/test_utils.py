@@ -3,23 +3,34 @@
 Utilities for tests.
 """
 
-from poli_sci_kit import utils
+from poli_sci_kit.utils import (
+    gen_faction_groups,
+    gen_list_of_lists,
+    gen_parliament_plot_points,
+    hex_to_rgb,
+    normalize,
+    rgb_to_hex,
+    scale_saturation,
+    swap_parl_allocations,
+)
 
 
 def test_normalize():
-    assert sum(utils.normalize([1, 2, 3, 4, 5])) == 1.0
+    assert sum(normalize([1, 2, 3, 4, 5])) == 1.0
 
 
 def test_gen_list_of_lists():
     test_list = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    assert utils.gen_list_of_lists(
-        original_list=test_list, new_structure=[3, 3, 3]
-    ) == [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+    assert gen_list_of_lists(original_list=test_list, new_structure=[3, 3, 3]) == [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+    ]
 
 
 def test_gen_faction_groups():
     test_list = ["a", "b", "c", "d", "e", "f"]
-    assert utils.gen_faction_groups(
+    assert gen_faction_groups(
         original_list=test_list, factions_indexes=[[0, 1, 5], [2, 3, 4]]
     ) == [
         ["a", "b", "f"],
@@ -32,7 +43,7 @@ def test_gen_faction_groups():
 
 
 def test_semicircle_parl_plot(allocations):
-    test_df = utils.gen_parliament_plot_points(
+    test_df = gen_parliament_plot_points(
         allocations=allocations,
         style="semicircle",
         num_rows=2,
@@ -84,7 +95,7 @@ def test_semicircle_parl_plot(allocations):
         10,
     ]
 
-    test_df = utils.gen_parliament_plot_points(
+    test_df = gen_parliament_plot_points(
         allocations=allocations,
         style="semicircle",
         num_rows=2,
@@ -97,7 +108,7 @@ def test_semicircle_parl_plot(allocations):
 
 def test_rectangle_parl_plot(allocations):
     assert list(
-        utils.gen_parliament_plot_points(
+        gen_parliament_plot_points(
             allocations=allocations,
             style="rectangle",
             num_rows=4,
@@ -106,7 +117,7 @@ def test_rectangle_parl_plot(allocations):
     ) == [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3]
 
     assert list(
-        utils.gen_parliament_plot_points(
+        gen_parliament_plot_points(
             allocations=allocations,
             style="rectangle",
             num_rows=4,
@@ -114,7 +125,7 @@ def test_rectangle_parl_plot(allocations):
         )["row_position"]
     ) == [0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4]
 
-    test_df = utils.gen_parliament_plot_points(
+    test_df = gen_parliament_plot_points(
         allocations=allocations,
         style="rectangle",
         num_rows=4,
@@ -126,7 +137,7 @@ def test_rectangle_parl_plot(allocations):
 
 
 def test_swap_parl_allocations(allocations):
-    test_df = utils.gen_parliament_plot_points(
+    test_df = gen_parliament_plot_points(
         allocations=allocations,
         style="rectangle",
         num_rows=4,
@@ -134,18 +145,18 @@ def test_swap_parl_allocations(allocations):
     )
 
     test_swap_df = test_df.copy()
-    utils.swap_parl_allocations(df=test_swap_df, row_0=0, pos_0=0, row_1=0, pos_1=1)
+    swap_parl_allocations(df=test_swap_df, row_0=0, pos_0=0, row_1=0, pos_1=1)
 
     assert test_df["group"][0] == test_swap_df["group"][1]
 
 
 def test_hex_to_rgb():
-    assert utils.hex_to_rgb("#ffffff").get_value_tuple() == (1.0, 1.0, 1.0)
+    assert hex_to_rgb("#ffffff").get_value_tuple() == (1.0, 1.0, 1.0)
 
 
 def test_rgb_to_hex():
-    assert utils.rgb_to_hex((1.0, 1.0, 1.0)) == "#ffffff"
+    assert rgb_to_hex((1.0, 1.0, 1.0)) == "#ffffff"
 
 
 def test_scale_saturation():
-    assert utils.scale_saturation((1, 1, 1), 0.95) == (0.95, 0.95, 0.95)
+    assert scale_saturation((1, 1, 1), 0.95) == (0.95, 0.95, 0.95)

@@ -1,46 +1,52 @@
 # SPDX-License-Identifier: BSD-3-Clause
 """
-Appointment Method Checks
--------------------------
-
 Functions to conditionally check appointment methods.
 """
 
 from math import ceil, floor
+from typing import Dict, Optional, Tuple
 
 import pandas as pd
 
 from poli_sci_kit.appointment.metrics import ideal_share
 
 
-def quota_condition(shares, seats):
+def quota_condition(
+    shares: list[float], seats: list[int]
+) -> bool | Dict[int, Tuple[int | float, int]]:
     """
-    Checks whether assignment method results fall within the range of the ideal share rounded down and up.
+    Check whether assignment method results fall within the range of the ideal share rounded down and up.
+
+    Parameters
+    ----------
+    shares : list[float]
+        The proportion of the population or votes for the regions or parties.
+
+    seats : list[int]
+        The share of seats given to the regions or parties.
+
+    Returns
+    -------
+    bool | dict[int, tuple[int | float, int]]
+        A value of True, or a list of corresponding arguments where the check has failed and their indexes.
 
     Notes
     -----
     https://en.wikipedia.org/wiki/Quota_rule
-
-    Parameters
-    ----------
-        shares : list
-            The proportion of the population or votes for the regions or parties.
-
-        seats : list
-            The share of seats given to the regions or parties.
-
-    Returns
-    -------
-        check_pass or fail_report: bool or list (contains tuples)
-            A value of True, or a list of corresponding arguments where the check has failed and their indexes.
     """
     assert len(shares) == len(seats), (
         "The total different shares of a population or vote must equal that of the allocated seats."
     )
 
     check_list = [
-        ceil(ideal_share(s, sum(shares), sum(seats))) >= seats[i]
-        and floor(ideal_share(s, sum(shares), sum(seats))) <= seats[i]
+        ceil(
+            ideal_share(share=s, total_shares=sum(shares), total_allocation=sum(seats))
+        )
+        >= seats[i]
+        and floor(
+            ideal_share(share=s, total_shares=sum(shares), total_allocation=sum(seats))
+        )
+        <= seats[i]
         for i, s in enumerate(shares)
     ]
 
@@ -57,13 +63,13 @@ def quota_condition(shares, seats):
     return fail_report
 
 
-def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monotony"):
+def consistency_condition(
+    df_shares: Optional[pd.DataFrame] = None,
+    df_seats: Optional[pd.DataFrame] = None,
+    check_type: str = "seat_monotony",
+) -> bool | pd.DataFrame:
     """
-    Checks the consistency of assignment method results given dataframes of shares and allocations.
-
-    Notes
-    -----
-        Rows and columns of the df(s) will be marked and dropped if consistent, with a failed condition being if the resulting df has size > 0 (some where inconsistent).
+    Check the consistency of assignment method results given dataframes of shares and allocations.
 
     Parameters
     ----------
@@ -89,8 +95,12 @@ def consistency_condition(df_shares=None, df_seats=None, check_type="seat_monoto
 
     Returns
     -------
-        check_pass or df_fail_report: bool or pd.DataFrame (contains ints)
-            A value of True, or False with a df of corresponding arguments where the check has failed.
+    bool | pd.DataFrame
+        A value of True, or False with a df of corresponding arguments where the check has failed.
+
+    Notes
+    -----
+    Rows and columns of the df(s) will be marked and dropped if consistent, with a failed condition being if the resulting df has size > 0 (some where inconsistent).
     """
     if df_shares is not None and df_seats is not None:
         assert df_shares.shape == df_seats.shape, (

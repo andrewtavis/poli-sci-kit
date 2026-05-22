@@ -1,78 +1,78 @@
 # SPDX-License-Identifier: BSD-3-Clause
 """
-Disproportionality Bar Plot
----------------------------
-
 The plotting function to create disproportionality bar plots.
 """
 
+from typing import Optional
+
 import pandas as pd
 import seaborn as sns
+from matplotlib.axes import Axes
 
-from poli_sci_kit import utils
+from poli_sci_kit.utils import hex_to_rgb, rgb_to_hex, scale_saturation
 
 default_sat = 0.95
 
 
 def disproportionality_bar_plot(
-    shares,
-    allocations,
-    labels=None,
-    colors=None,
-    total_shares=None,
-    total_alloc=None,
-    percent=False,
-    dsat=default_sat,
-    axis=None,
-):
+    shares: list,
+    allocations: list,
+    labels: Optional[list[str]] = None,
+    colors: Optional[list[str]] = None,
+    total_shares: Optional[int] = None,
+    total_allocation: Optional[int] = None,
+    percent: bool = False,
+    dsat: float = default_sat,
+    axis: Optional[str] = None,
+) -> Axes:
     """
-    Plots the difference in allocated seats to received shares.
+    Plot the difference in allocated seats to received shares.
 
     Parameters
     ----------
-        shares : list
-            The shares amounts or those that allocations should be compared to.
+    shares : list
+        The shares amounts or those that allocations should be compared to.
 
-        allocations : list
-            The allocated amounts.
+    allocations : list
+        The allocated amounts.
 
-        labels : list (default=None)
-            A list of group names as labels for the x-axis.
+    labels : list[str] (default=None)
+        A list of group names as labels for the x-axis.
 
-        colors : list or list of lists : optional (default=None)
-            The colors of the groups as hex keys.
+    colors : list[str] : optional (default=None)
+        The colors of the groups as hex keys.
 
-        total_shares : int (default=None)
-            The total share amounts.
+    total_shares : int (default=None)
+        The total share amounts.
 
-            Note: allows for subsets of the total groups.
+        Note: allows for subsets of the total groups.
 
-        total_alloc : int (default=None)
-            The total number of allocations amounts.
+    total_allocation : int (default=None)
+        The total number of allocations amounts.
 
-            Note: allows for subsets of the total groups.
+        Note: allows for subsets of the total groups.
 
-        percent : bool (default=False)
-            Whether the y-axis should depict relative changes or not.
+    percent : bool (default=False)
+        Whether the y-axis should depict relative changes or not.
 
-        dsat : float : optional (default=default_sat)
-            The degree of desaturation to be applied to the colors.
+    dsat : float : optional (default=default_sat)
+        The degree of desaturation to be applied to the colors.
 
-        axis : str : optional (default=None)
-            Adds an axis to plots so they can be combined.
+    axis : str : optional (default=None)
+        Adds an axis to plots so they can be combined.
 
     Returns
     -------
-        ax : matplotlib.pyplot.subplot
-            A bar plot with aggregate or relative seat-share differences and bar widths representing share proportions.
+    Axes
+        A bar plot with aggregate or relative seat-share differences and bar widths representing share proportions.
     """
     assert len(shares) == len(allocations), (
         "The number of different shares must equal the number of different seat allocations."
     )
 
-    if total_shares and total_alloc:
+    if total_shares and total_allocation:
         share_percents = [i / total_shares for i in shares]
-        seat_percents = [i / total_alloc for i in allocations]
+        seat_percents = [i / total_allocation for i in allocations]
     else:
         share_percents = [i / sum(shares) for i in shares]
         seat_percents = [i / sum(allocations) for i in allocations]
@@ -88,7 +88,7 @@ def disproportionality_bar_plot(
         ]
 
     if not labels:
-        labels = list(range(len(disproportionality) + 1)[1:])
+        labels = [str(i) for i in list(range(len(disproportionality) + 1)[1:])]
 
     df = pd.DataFrame(disproportionality, index=labels, columns=["disproportionality"])
 
@@ -96,17 +96,15 @@ def disproportionality_bar_plot(
         assert len(colors) == len(shares), (
             "The number of colors provided doesn't match the number of counts to be displayed."
         )
-        colors = [
-            utils.scale_saturation(rgb_trip=utils.hex_to_rgb(c), sat=dsat)
-            for c in colors
+        scaled_colors = [
+            scale_saturation(rgb_triple=hex_to_rgb(c), sat=dsat) for c in colors
         ]
-        sns.set_palette(colors)
+        sns.set_palette(scaled_colors)
 
     elif colors is None:
         sns.set_palette("deep")  # default sns palette
         colors = [
-            utils.rgb_to_hex(c)
-            for c in sns.color_palette(n_colors=len(shares), desat=1)
+            rgb_to_hex(c) for c in sns.color_palette(n_colors=len(shares), desat=1)
         ]
 
     ax = sns.barplot(

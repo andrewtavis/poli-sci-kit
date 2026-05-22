@@ -12,7 +12,7 @@ def test_ha_sum(highest_averages_styles, votes, seats):
             highest_averages(
                 averaging_style=highest_averages_styles,
                 shares=votes,
-                total_alloc=seats,
+                total_allocation=seats,
             )
         )
         == seats
@@ -25,7 +25,7 @@ def test_ha_min_alloc(highest_averages_styles, votes, seats):
         for alloc in highest_averages(
             averaging_style=highest_averages_styles,
             shares=votes,
-            total_alloc=seats,
+            total_allocation=seats,
             min_alloc=3,
         )
     )
@@ -37,7 +37,7 @@ def test_ha_greater_than_zero(highest_averages_styles, votes, seats):
         for alloc in highest_averages(
             averaging_style=highest_averages_styles,
             shares=votes,
-            total_alloc=seats,
+            total_allocation=seats,
         )
     )
 
@@ -74,7 +74,7 @@ def test_ha_jefferson(long_votes_list, seats_large):
         highest_averages(
             averaging_style="Jefferson",
             shares=long_votes_list,
-            total_alloc=seats_large,
+            total_allocation=seats_large,
         )
         == results
     )
@@ -112,7 +112,7 @@ def test_ha_webster(long_votes_list, seats_large):
         highest_averages(
             averaging_style="Webster",
             shares=long_votes_list,
-            total_alloc=seats_large,
+            total_allocation=seats_large,
         )
         == results
     )
@@ -150,7 +150,7 @@ def test_ha_huntington_hill(long_votes_list, seats_large):
         highest_averages(
             averaging_style="Huntington-Hill",
             shares=long_votes_list,
-            total_alloc=seats_large,
+            total_allocation=seats_large,
         )
         == results
     )
@@ -164,8 +164,8 @@ def test_ha_threshold(short_votes_list):
         highest_averages(
             averaging_style="Jefferson",
             shares=short_votes_list,
-            total_alloc=seats,
-            alloc_threshold=0.2,
+            total_allocation=seats,
+            allocation_threshold=0.2,
             min_alloc=None,
             tie_break="majority",
             majority_bonus=False,
@@ -183,8 +183,8 @@ def test_ha_modifier(short_votes_list):
         highest_averages(
             averaging_style="Jefferson",
             shares=short_votes_list,
-            total_alloc=seats,
-            alloc_threshold=None,
+            total_allocation=seats,
+            allocation_threshold=None,
             min_alloc=None,
             tie_break="majority",
             majority_bonus=False,
@@ -202,8 +202,8 @@ def test_ha_tie_break(tie_votes_list):
     assert highest_averages(
         averaging_style="Jefferson",
         shares=tie_votes_list,
-        total_alloc=seats,
-        alloc_threshold=None,
+        total_allocation=seats,
+        allocation_threshold=None,
         min_alloc=None,
         tie_break="random",
         majority_bonus=False,
@@ -219,8 +219,8 @@ def test_ha_majority(tie_votes_list):
         highest_averages(
             averaging_style="Jefferson",
             shares=tie_votes_list,
-            total_alloc=seats,
-            alloc_threshold=None,
+            total_allocation=seats,
+            allocation_threshold=None,
             min_alloc=None,
             tie_break="majority",
             majority_bonus=True,

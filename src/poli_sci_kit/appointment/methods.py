@@ -1,8 +1,5 @@
 # SPDX-License-Identifier: BSD-3-Clause
 """
-Appointment Methods
--------------------
-
 Methods used to derive allocations based on received shares.
 
 Based on
@@ -24,89 +21,112 @@ Contents:
 from math import ceil, modf, sqrt
 from operator import itemgetter
 from random import shuffle
+from typing import Optional
 
 
 def largest_remainder(
     quota_style: str = "Hare",
-    shares: list[int] | None = None,
-    total_alloc: int | None = None,
-    alloc_threshold: float | None = None,
-    min_alloc: int | None = None,
+    shares: Optional[list[int]] = None,
+    total_allocation: Optional[int] = None,
+    allocation_threshold: Optional[float] = None,
+    min_alloc: Optional[int] = None,
     tie_break: str = "majority",
     majority_bonus: bool = False,
-):
+) -> list:
     r"""
     Apportion seats using the Largest Remainder (Hamilton, Vinton, Hare–Niemeyer) methods.
 
     Parameters
     ----------
-        quota_style : str (default=Hare)
-            The style of quota vote-seat quota to use.
+    quota_style : str (default=Hare)
+        The style of quota vote-seat quota to use.
 
-            Options:
-                Each defines a divisor from which remainders are defined.
+        Options:
+            Each defines a divisor from which remainders are defined.
 
-                For equations: q is quota, s is total shares, and a is total allocations
+            For equations: q is quota, s is total shares, and a is total allocations
 
-                - Hare :
+            - Hare :
 
-                    .. math::
-                        q &= \frac{s}{a}
+                .. math::
+                    q &= \frac{s}{a}
 
-                    Note: the simplest form of largest remainder quota.
+                Note: the simplest form of largest remainder quota.
 
-                - Droop :
+            - Droop :
 
-                    .. math::
-                        q &= int \biggl(\frac{s}{a + 1}\biggr) + 1
+                .. math::
+                    q &= int \biggl(\frac{s}{a + 1}\biggr) + 1
 
-                    Note: favors larger groups more than the Hare quota.
+                Note: favors larger groups more than the Hare quota.
 
-                - Hagenbach–Bischoff :
+            - Hagenbach–Bischoff :
 
-                    .. math::
-                        q &= \frac{s}{a + 1}
+                .. math::
+                    q &= \frac{s}{a + 1}
 
-                    Note: favors larger groups more than the Hare quota.
+                Note: favors larger groups more than the Hare quota.
 
-        shares : list (default=None)
-            A list of populations or votes for regions or parties.
+    shares : list (default=None)
+        A list of populations or votes for regions or parties.
 
-        total_alloc : int (default=None)
-            The number to be allocated.
+    total_allocation : int (default=None)
+        The number of allocations to provide.
 
-        alloc_threshold : float (default=None)
-            A minimum percentage of the population or votes that must be met to receive an allocation.
+    allocation_threshold : float (default=None)
+        A minimum percentage of the population or votes that must be met to receive an allocation.
 
-        min_alloc : int (default=None)
-            A minimum number of allocations that each group must receive.
+    min_alloc : int (default=None)
+        A minimum number of allocations that each group must receive.
 
-        tie_break : str (default=majority)
-            How a tie break is done (by majority or random, with a majority tie defaulting to random).
+    tie_break : str (default=majority)
+        How a tie break is done (by majority or random, with a majority tie defaulting to random).
 
-        majority_bonus : bool (default=False)
-            Whether the largest group is automatically given 50% of the vote.
+    majority_bonus : bool (default=False)
+        Whether the largest group is automatically given 50% of the vote.
 
     Returns
     -------
-        allocations : list
-            A list of allocations in the order of the provided shares.
+    list
+        A list of allocations in the order of the provided shares.
     """
     assert (
-        alloc_threshold is None or min_alloc is None
+        allocation_threshold is None or min_alloc is None
     ), """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation.
-        Set one of alloc_threshold or min_alloc to None."""
+        Set one of allocation_threshold or min_alloc to None."""
     assert shares is not None, "'shares' must be provided."
-    assert total_alloc is not None, "'total_alloc' must be provided."
+    assert total_allocation is not None, "'total_allocation' must be provided."
     shares = list(shares)
 
-    def get_quota(quota_style: str, shares: list[int], total_alloc: int) -> float:
+    def get_quota(quota_style: str, shares: list[int], total_allocation: int) -> float:
+        """
+        Derive the number of shares represented by each allocation.
+
+        Parameters
+        ----------
+        quota_style : str
+            The name of the quota style to use in the calculation.
+
+        shares : list[int]
+            The allocated votes.
+
+        total_allocation : int
+            The number of allocations to provide.
+
+        Returns
+        -------
+        float
+            The seat quota for the given quota style.
+        """
         if quota_style == "Hare":
-            seat_quota = 1.0 * sum(shares) / total_alloc
+            seat_quota = 1.0 * sum(shares) / total_allocation
+
         elif quota_style == "Droop":
-            seat_quota = int(sum(shares) / (total_alloc + 1)) + 1
+            seat_quota = int(sum(shares) / (total_allocation + 1)) + 1
+
         elif quota_style == "Hagenbach–Bischoff":
-            seat_quota = 1.0 * sum(shares) / (total_alloc + 1)
+            seat_quota = 1.0 * sum(shares) / (total_allocation + 1)
+
         else:
             raise ValueError(
                 "Invalid quota provided. Choose from Hare, Droop, or Hagenbach–Bischoff."
@@ -114,14 +134,16 @@ def largest_remainder(
 
         return seat_quota
 
-    if alloc_threshold:
-        passed_threshold = [1.0 * s / sum(shares) > alloc_threshold for s in shares]
+    if allocation_threshold:
+        passed_threshold = [
+            1.0 * s / sum(shares) > allocation_threshold for s in shares
+        ]
         shares = [s if passed_threshold[i] else 0 for i, s in enumerate(shares)]
 
     original_remainders: tuple[float, ...] | None = None
     original_with_baseline: list[int] = []
     if min_alloc is not None and min_alloc > 0:
-        assert min_alloc * len(shares) <= total_alloc, (
+        assert min_alloc * len(shares) <= total_allocation, (
             "The sum of the minimum seats to be allocated cannot be more than the seats to be allocated."
         )
         baseline_allocations = [min_alloc] * len(shares)
@@ -129,7 +151,9 @@ def largest_remainder(
         # Save the original remainders and allocations to avoid penalization
         # from new divisions after minimum seat allocation.
         seat_quota = get_quota(
-            quota_style=quota_style, shares=shares, total_alloc=total_alloc
+            quota_style=quota_style,
+            shares=shares,
+            total_allocation=total_allocation,
         )
         original_remainders, original_allocations = zip(
             *[modf(1.0 * s / seat_quota) for s in shares]
@@ -141,20 +165,20 @@ def largest_remainder(
             a if a >= baseline_allocations[i] else baseline_allocations[i]
             for i, a in enumerate(original_allocations)
         ]
-        if sum(original_with_baseline) <= total_alloc:
+        if sum(original_with_baseline) <= total_allocation:
             original_with_baseline = [int(a) for a in original_with_baseline]
 
-        elif sum(original_with_baseline) > total_alloc:
+        elif sum(original_with_baseline) > total_allocation:
             # We need to just use the baseline and assign over it.
             original_with_baseline = baseline_allocations
 
-        total_alloc -= sum(original_with_baseline)
+        total_allocation -= sum(original_with_baseline)
 
-        if total_alloc == 0:
+        if total_allocation == 0:
             return original_with_baseline
 
     seat_quota = get_quota(
-        quota_style=quota_style, shares=shares, total_alloc=total_alloc
+        quota_style=quota_style, shares=shares, total_allocation=total_allocation
     )
     remainders, allocations = zip(*[modf(1.0 * s / seat_quota) for s in shares])
 
@@ -168,7 +192,7 @@ def largest_remainder(
             allocations = [0] * len(shares)
 
     allocations = [int(a) for a in allocations]
-    unallocated = int(total_alloc - sum(allocations))
+    unallocated = int(total_allocation - sum(allocations))
 
     remainders_sorted_ids = [
         i[0] for i in sorted(enumerate(remainders), key=itemgetter(1))
@@ -229,16 +253,16 @@ def largest_remainder(
         allocations = [a + original_with_baseline[i] for i, a in enumerate(allocations)]
 
     if majority_bonus and (
-        allocations[shares.index(max(shares))] < int(ceil(total_alloc / 2))
+        allocations[shares.index(max(shares))] < int(ceil(total_allocation / 2))
         and len([s for s in shares if s == max(shares)]) == 1
     ):
         non_majority_shares = [s for s in shares if s != max(shares)]
-        reduced_seats = total_alloc - int(ceil(total_alloc / 2))
+        reduced_seats = total_allocation - int(ceil(total_allocation / 2))
         non_majority_allocations = largest_remainder(
             quota_style=quota_style,
             shares=non_majority_shares,
-            total_alloc=reduced_seats,
-            alloc_threshold=alloc_threshold,
+            total_allocation=reduced_seats,
+            allocation_threshold=allocation_threshold,
             min_alloc=min_alloc,
             tie_break=tie_break,
             majority_bonus=False,
@@ -247,7 +271,7 @@ def largest_remainder(
         # Insert majority allocation.
         non_majority_allocations[
             shares.index(max(shares)) : shares.index(max(shares))
-        ] = [int(ceil(total_alloc / 2))]
+        ] = [int(ceil(total_allocation / 2))]
         allocations = non_majority_allocations
 
     return allocations
@@ -255,82 +279,85 @@ def largest_remainder(
 
 def highest_averages(
     averaging_style: str = "Jefferson",
-    shares: list[int] | None = None,
-    total_alloc: int | None = None,
-    alloc_threshold: float | None = None,
-    min_alloc: int | None = None,
-    tie_break: str = "majority",
-    majority_bonus: bool = False,
-    modifier: float | None = None,
-):
+    shares: Optional[list[int]] = None,
+    total_allocation: Optional[int] = None,
+    allocation_threshold: Optional[float] = None,
+    min_alloc: Optional[int] = None,
+    tie_break: Optional[str] = "majority",
+    majority_bonus: Optional[bool] = False,
+    modifier: Optional[float] = None,
+) -> list:
     r"""
     Apportion seats using the Highest Averages (Jefferson, Webster, Huntington-Hill) methods.
 
     Parameters
     ----------
-        averaging_style : str (default=Jefferson)
-            The style that highest averages are computed.
+    averaging_style : str (default=Jefferson)
+        The style that highest averages are computed.
 
-            Options:
-                Each defines a divisor for each region or party to determines the next seat based on all previous assignments.
+        Options:
+            Each defines a divisor for each region or party to determines the next seat based on all previous assignments.
 
-                For equations: d is divisor, s is share, and a is the number already allocated.
+            For equations: d is divisor, s is share, and a is the number already allocated.
 
-                - Jefferson :
+            - Jefferson :
 
-                    .. math::
-                        \textrm{d}_{i} &= \frac{s_{i}}{a_{i} + 1}
+                .. math::
+                    \textrm{d}_{i} &= \frac{s_{i}}{a_{i} + 1}
 
-                    Note: an absolute majority always lead to an absolute majority in seats (favors large groups).
+                Note: an absolute majority always lead to an absolute majority in seats (favors large groups).
 
-                - Webster :
+            - Webster :
 
-                    .. math::
-                        \textrm{d}_{i} &= \frac{s_{i}}{(2 \cdot a_{i}) + 1}
+                .. math::
+                    \textrm{d}_{i} &= \frac{s_{i}}{(2 \cdot a_{i}) + 1}
 
-                    Note: generally the smallest deviation from ideal shares (favors medium groups).
+                Note: generally the smallest deviation from ideal shares (favors medium groups).
 
-                - Huntington-Hill :
+            - Huntington-Hill :
 
-                    .. math::
-                        \textrm{d}_{i} &= \frac{s_{i}}{\sqrt{a_{i} \cdot (a_{i} + 1)}}
+                .. math::
+                    \textrm{d}_{i} &= \frac{s_{i}}{\sqrt{a_{i} \cdot (a_{i} + 1)}}
 
-                    Note: assures that all regions or parties receive at least one vote (favors small groups).
+                Note: assures that all regions or parties receive at least one vote (favors small groups).
 
-        shares : list (default=None)
-            A list of populations or votes for regions or parties.
+    shares : list (default=None)
+        A list of populations or votes for regions or parties.
 
-        total_alloc : int (default=None)
-            The number to be allocated.
+    total_allocation : int (default=None)
+        The number of allocations to provide.
 
-        alloc_threshold : float (default=None)
-            A minimum percentage of the population or votes that must be met to receive an allocation.
+    allocation_threshold : float (default=None)
+        A minimum percentage of the population or votes that must be met to receive an allocation.
 
-        min_alloc : int (default=None)
-            A minimum number of allocations that each group must receive.
+    min_alloc : int (default=None)
+        A minimum number of allocations that each group must receive.
 
-        tie_break : str (default=majority)
-            How a tie break is done (by majority or random, with a majority tie defaulting to random).
+    tie_break : str (default=majority)
+        How a tie break is done (by majority or random, with a majority tie defaulting to random).
 
-        modifier : float (default=None)
-            What to replace the divisor of the first quotient by to change the advantage of groups yet to receive an assignment.
+    majority_bonus : bool (default=False)
+        Whether to award a bonus to the majority party.
 
-            Note: modifiers > 1 disadvantage smaller parties, and modifiers < 1 advantage them.
+    modifier : float (default=None)
+        What to replace the divisor of the first quotient by to change the advantage of groups yet to receive an assignment.
+
+        Note: modifiers > 1 disadvantage smaller parties, and modifiers < 1 advantage them.
 
     Returns
     -------
-        allocations : list
-            A list of allocations in the order of the provided shares.
+    list
+        A list of allocations in the order of the provided shares.
     """
-    assert alloc_threshold is None or min_alloc is None, (
-        """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation. Set one of 'alloc_threshold' or 'min_alloc' to None."""
+    assert allocation_threshold is None or min_alloc is None, (
+        """Appointment methods cannot be used with both an entry threshold and a minimum seat allocation. Set one of 'allocation_threshold' or 'min_alloc' to None."""
     )
 
-    assert alloc_threshold is None or averaging_style != "Huntington-Hill", (
-        """The Huntington-Hill method requires all groups to receive a seat, and thus cannot be used with a threshold. Set 'alloc_threshold' to None."""
+    assert allocation_threshold is None or averaging_style != "Huntington-Hill", (
+        """The Huntington-Hill method requires all groups to receive a seat, and thus cannot be used with a threshold. Set 'allocation_threshold' to None."""
     )
     assert shares is not None, "'shares' must be provided."
-    assert total_alloc is not None, "'total_alloc' must be provided."
+    assert total_allocation is not None, "'total_allocation' must be provided."
     shares = list(shares)
 
     if averaging_style == "Huntington-Hill" and (min_alloc is None or min_alloc == 0):
@@ -338,28 +365,30 @@ def highest_averages(
             "A minimum allocation is required in the denominator of Huntington-Hill calculations."
         )
         print("A minimum allocation of 1 will be applied.")
-        assert len(shares) <= total_alloc, (
+        assert len(shares) <= total_allocation, (
             "There must be at least one seat per group when using the Huntington-Hill method."
         )
         min_alloc = 1
 
-    if alloc_threshold:
-        passed_threshold = [1.0 * i / sum(shares) > alloc_threshold for i in shares]
+    if allocation_threshold:
+        passed_threshold = [
+            1.0 * i / sum(shares) > allocation_threshold for i in shares
+        ]
         shares = [s if passed_threshold[i] else 0 for i, s in enumerate(shares)]
 
     if min_alloc is not None and min_alloc > 0:
-        assert min_alloc * len(shares) <= total_alloc, (
+        assert min_alloc * len(shares) <= total_allocation, (
             "The sum of the minimum seats to be allocated cannot be more than the seats to be allocated."
         )
         allocations = [min_alloc] * len(shares)
-        total_alloc -= sum(allocations)
+        total_allocation -= sum(allocations)
 
-        if total_alloc == 0:
+        if total_allocation == 0:
             return allocations
     else:
         allocations = [0] * len(shares)
 
-    remaining_alloc = total_alloc
+    remaining_alloc = total_allocation
     while remaining_alloc > 0:
         if averaging_style == "Jefferson":
             if modifier:
@@ -465,16 +494,16 @@ def highest_averages(
 
     if (
         majority_bonus
-        and allocations[shares.index(max(shares))] < int(ceil(total_alloc / 2))
+        and allocations[shares.index(max(shares))] < int(ceil(total_allocation / 2))
         and len([s for s in shares if s == max(shares)]) == 1
     ):
         non_majority_shares = [s for s in shares if s != max(shares)]
-        reduced_seats = total_alloc - int(ceil(total_alloc / 2))
+        reduced_seats = total_allocation - int(ceil(total_allocation / 2))
         non_majority_allocations = highest_averages(
             averaging_style=averaging_style,
             shares=non_majority_shares,
-            total_alloc=reduced_seats,
-            alloc_threshold=alloc_threshold,
+            total_allocation=reduced_seats,
+            allocation_threshold=allocation_threshold,
             min_alloc=min_alloc,
             tie_break=tie_break,
             majority_bonus=False,
@@ -484,7 +513,7 @@ def highest_averages(
         # Insert majority allocation.
         non_majority_allocations[
             shares.index(max(shares)) : shares.index(max(shares))
-        ] = [int(ceil(total_alloc / 2))]
+        ] = [int(ceil(total_allocation / 2))]
         allocations = non_majority_allocations
 
     return allocations

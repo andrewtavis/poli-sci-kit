@@ -5,22 +5,22 @@ Appointment metric tests.
 
 from poli_sci_kit.appointment.metrics import (
     alloc_to_share_ratio,
-    dispr_index,
-    div_index,
+    disproportionality_index,
+    diversity_index,
     effective_number_of_groups,
     ideal_share,
-    rep_weight,
+    representative_weight,
     sqr_alloc_to_share_error,
-    sqr_rep_weight_error,
-    total_alloc_to_share_error,
-    total_rep_weight_error,
+    sqr_representative_weight_error,
+    total_allocation_to_share_error,
+    total_representative_weight_error,
 )
 
 
 def test_ideal_share(share, total_shares, seats):
     assert (
         round(
-            ideal_share(share=share, total_shares=total_shares, total_alloc=seats),
+            ideal_share(share=share, total_shares=total_shares, total_allocation=seats),
             4,
         )
         == 6.9222
@@ -34,7 +34,7 @@ def test_alloc_to_share_ratio(share, total_shares, allocation, seats):
                 share=share,
                 total_shares=total_shares,
                 allocation=allocation,
-                total_alloc=seats,
+                total_allocation=seats,
             ),
             4,
         )
@@ -49,7 +49,7 @@ def test_square_alloc_to_share_ratio(share, total_shares, allocation, seats):
                 share=share,
                 total_shares=total_shares,
                 allocation=allocation,
-                total_alloc=seats,
+                total_allocation=seats,
             ),
             6,
         )
@@ -57,10 +57,10 @@ def test_square_alloc_to_share_ratio(share, total_shares, allocation, seats):
     )
 
 
-def test_total_alloc_to_share_error(tie_votes_list, allocations):
+def test_total_allocation_to_share_error(tie_votes_list, allocations):
     assert (
         round(
-            total_alloc_to_share_error(
+            total_allocation_to_share_error(
                 shares=tie_votes_list, allocations=allocations, proportional=True
             ),
             6,
@@ -69,18 +69,21 @@ def test_total_alloc_to_share_error(tie_votes_list, allocations):
     )
 
 
-def test_rep_weight(share, allocation):
-    assert round(rep_weight(share=share, allocation=allocation), 4) == 274082.5714
+def test_representative_weight(share, allocation):
+    assert (
+        round(representative_weight(share=share, allocation=allocation), 4)
+        == 274082.5714
+    )
 
 
-def test_sqr_rep_weight_error(share, total_shares, allocation, seats):
+def test_sqr_representative_weight_error(share, total_shares, allocation, seats):
     assert (
         round(
-            sqr_rep_weight_error(
+            sqr_representative_weight_error(
                 share=share,
                 total_shares=total_shares,
                 allocation=allocation,
-                total_alloc=seats,
+                total_allocation=seats,
             ),
             4,
         )
@@ -88,10 +91,10 @@ def test_sqr_rep_weight_error(share, total_shares, allocation, seats):
     )
 
 
-def test_total_rep_weight_error(tie_votes_list, allocations):
+def test_total_representative_weight_error(tie_votes_list, allocations):
     assert (
         round(
-            total_rep_weight_error(
+            total_representative_weight_error(
                 shares=tie_votes_list, allocations=allocations, proportional=True
             ),
             4,
@@ -100,16 +103,21 @@ def test_total_rep_weight_error(tie_votes_list, allocations):
     )
 
 
-def test_div_not_0(short_votes_list, q, div_index_metrics):
-    assert div_index(shares=short_votes_list, q=q, metric_type=div_index_metrics) != 0
-
-
-def test_dispr_not_0(short_votes_list, allocations, dispr_index_metrics):
+def test_div_not_0(short_votes_list, q, diversity_index_metrics):
     assert (
-        dispr_index(
+        diversity_index(
+            shares=short_votes_list, q=q, metric_type=diversity_index_metrics
+        )
+        != 0
+    )
+
+
+def test_dispr_not_0(short_votes_list, allocations, disproportionality_index_metrics):
+    assert (
+        disproportionality_index(
             shares=short_votes_list,
             allocations=allocations,
-            metric_type=dispr_index_metrics,
+            metric_type=disproportionality_index_metrics,
         )
         != 0
     )

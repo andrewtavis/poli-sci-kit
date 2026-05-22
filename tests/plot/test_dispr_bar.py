@@ -36,6 +36,6 @@ def test_disproportionality_bar_plot_subset(
         shares=short_votes_list[:3],
         allocations=allocations[:3],
         total_shares=total_shares,
-        total_alloc=seats,
+        total_allocation=seats,
         percent=True,
     )
