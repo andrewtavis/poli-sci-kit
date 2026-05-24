@@ -1,4 +1,4 @@
-m2r2
+myst-parser
 numpydoc
 poli_sci_kit
 sphinx<7.0.0
