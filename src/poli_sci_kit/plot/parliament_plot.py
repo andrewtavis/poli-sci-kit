@@ -3,8 +3,6 @@
 The plotting function to create parliament plots.
 """
 
-from typing import Optional
-
 import pandas as pd
 import seaborn as sns
 from matplotlib.axes import Axes
@@ -21,15 +19,15 @@ default_sat = 0.95
 
 def parliament_plot(
     allocations: list,
-    labels: Optional[list[str]] = None,
-    colors: Optional[list] = None,
+    labels: list[str] | None = None,
+    colors: list | None = None,
     style: str = "semicircle",
     num_rows: int = 2,
     marker_size: int | float = 200,
     speaker: bool = False,
-    df_seat_lctns: Optional[pd.DataFrame] = None,
+    df_seat_lctns: pd.DataFrame | None = None,
     dsat: float = default_sat,
-    axis: Optional[str] = None,
+    axis: str | None = None,
     legend: bool = False,
     **kwargs,
 ) -> Axes:

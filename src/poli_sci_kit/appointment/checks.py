@@ -4,7 +4,6 @@ Functions to conditionally check appointment methods.
 """
 
 from math import ceil, floor
-from typing import Optional
 
 import pandas as pd
 
@@ -64,8 +63,8 @@ def quota_condition(
 
 
 def consistency_condition(
-    df_shares: Optional[pd.DataFrame] = None,
-    df_seats: Optional[pd.DataFrame] = None,
+    df_shares: pd.DataFrame | None = None,
+    df_seats: pd.DataFrame | None = None,
     check_type: str = "seat_monotony",
 ) -> bool | pd.DataFrame:
     """

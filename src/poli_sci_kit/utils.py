@@ -4,7 +4,6 @@ Utility functions for general operations and plotting.
 """
 
 import colorsys
-from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -90,7 +89,7 @@ def gen_faction_groups(
 
 def gen_parliament_plot_points(
     allocations: list[int],
-    labels: Optional[list[str]] = None,
+    labels: list[str] | None = None,
     style: str = "semicircle",
     num_rows: int = 2,
     speaker: bool | str = False,

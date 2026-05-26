@@ -21,15 +21,14 @@ Contents:
 from math import ceil, modf, sqrt
 from operator import itemgetter
 from random import shuffle
-from typing import Optional
 
 
 def largest_remainder(
     quota_style: str = "Hare",
-    shares: Optional[list[int]] = None,
-    total_allocation: Optional[int] = None,
-    allocation_threshold: Optional[float] = None,
-    min_alloc: Optional[int] = None,
+    shares: list[int] | None = None,
+    total_allocation: int | None = None,
+    allocation_threshold: float | None = None,
+    min_alloc: int | None = None,
     tie_break: str = "majority",
     majority_bonus: bool = False,
 ) -> list:
@@ -279,13 +278,13 @@ def largest_remainder(
 
 def highest_averages(
     averaging_style: str = "Jefferson",
-    shares: Optional[list[int]] = None,
-    total_allocation: Optional[int] = None,
-    allocation_threshold: Optional[float] = None,
-    min_alloc: Optional[int] = None,
-    tie_break: Optional[str] = "majority",
-    majority_bonus: Optional[bool] = False,
-    modifier: Optional[float] = None,
+    shares: list[int] | None = None,
+    total_allocation: int | None = None,
+    allocation_threshold: float | None = None,
+    min_alloc: int | None = None,
+    tie_break: str | None = "majority",
+    majority_bonus: bool | None = False,
+    modifier: float | None = None,
 ) -> list:
     r"""
     Apportion seats using the Highest Averages (Jefferson, Webster, Huntington-Hill) methods.

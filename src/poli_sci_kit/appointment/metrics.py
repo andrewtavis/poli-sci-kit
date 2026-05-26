@@ -21,7 +21,6 @@ Based on
 """
 
 from math import exp, log, sqrt
-from typing import Optional
 
 from scipy.stats import linregress
 
@@ -265,7 +264,7 @@ def total_representative_weight_error(
 
 
 def diversity_index(
-    shares: list, q: Optional[float] = None, metric_type: str = "Shannon"
+    shares: list, q: float | None = None, metric_type: str = "Shannon"
 ) -> float:
     """
     Calculate the diversity index: the uncertainty associated with predicting further elements within the vote or population distributions.

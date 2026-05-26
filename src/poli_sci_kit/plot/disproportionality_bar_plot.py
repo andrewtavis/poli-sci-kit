@@ -3,8 +3,6 @@
 The plotting function to create disproportionality bar plots.
 """
 
-from typing import Optional
-
 import pandas as pd
 import seaborn as sns
 from matplotlib.axes import Axes
@@ -17,13 +15,13 @@ default_sat = 0.95
 def disproportionality_bar_plot(
     shares: list,
     allocations: list,
-    labels: Optional[list[str]] = None,
-    colors: Optional[list[str]] = None,
-    total_shares: Optional[int] = None,
-    total_allocation: Optional[int] = None,
+    labels: list[str] | None = None,
+    colors: list[str] | None = None,
+    total_shares: int | None = None,
+    total_allocation: int | None = None,
     percent: bool = False,
     dsat: float = default_sat,
-    axis: Optional[str] = None,
+    axis: str | None = None,
 ) -> Axes:
     """
     Plot the difference in allocated seats to received shares.
@@ -36,18 +34,18 @@ def disproportionality_bar_plot(
     allocations : list
         The allocated amounts.
 
-    labels : list[str] (default=None)
+    labels : list[str] : optional (default=None)
         A list of group names as labels for the x-axis.
 
     colors : list[str] : optional (default=None)
         The colors of the groups as hex keys.
 
-    total_shares : int (default=None)
+    total_shares : int : optional (default=None)
         The total share amounts.
 
         Note: allows for subsets of the total groups.
 
-    total_allocation : int (default=None)
+    total_allocation : int : optional (default=None)
         The total number of allocations amounts.
 
         Note: allows for subsets of the total groups.
