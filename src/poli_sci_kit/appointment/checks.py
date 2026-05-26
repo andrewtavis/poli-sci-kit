@@ -4,7 +4,7 @@ Functions to conditionally check appointment methods.
 """
 
 from math import ceil, floor
-from typing import Dict, Optional, Tuple
+from typing import Optional
 
 import pandas as pd
 
@@ -13,7 +13,7 @@ from poli_sci_kit.appointment.metrics import ideal_share
 
 def quota_condition(
     shares: list[float], seats: list[int]
-) -> bool | Dict[int, Tuple[int | float, int]]:
+) -> bool | dict[int, tuple[int | float, int]]:
     """
     Check whether assignment method results fall within the range of the ideal share rounded down and up.
 

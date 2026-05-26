@@ -4,7 +4,7 @@ Utility functions for general operations and plotting.
 """
 
 import colorsys
-from typing import Optional, Tuple
+from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -165,7 +165,7 @@ def gen_parliament_plot_points(
 
         def arc_coordinates(
             r: float, seats: int
-        ) -> Tuple[list[float], list[float], list[float]]:
+        ) -> tuple[list[float], list[float], list[float]]:
             """
             Generates an arc of the parliament plot given a radius and the number of seats.
 
