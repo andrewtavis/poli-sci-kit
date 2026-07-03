@@ -55,7 +55,7 @@ Installation
     cd poli-sci-kit
 
     # With uv (recommended):
-    uv sync --all-extras  # install all dependencies
+    uv sync --all-groups  # install all dependencies
     source .venv/bin/activate  # activate venv (macOS/Linux)
     # .venv\Scripts\activate  # activate venv (Windows)
 

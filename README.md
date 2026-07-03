@@ -52,7 +52,7 @@ git clone https://github.com/andrewtavis/poli-sci-kit.git
 cd poli-sci-kit
 
 # With uv (recommended):
-uv sync --all-extras  # install all dependencies
+uv sync --all-groups  # install all dependencies
 source .venv/bin/activate  # activate venv (macOS/Linux)
 # .venv\Scripts\activate  # activate venv (Windows)
 
@@ -287,7 +287,7 @@ Create a virtual environment for poli-sci-kit (Python `>=3.12`), activate it and
 #### uv venv
 
 ```bash
-uv sync --all-extras  # create .venv and install all dependencies from uv.lock
+uv sync --all-groups  # create .venv and install all dependencies from uv.lock
 
 # Unix or macOS:
 source .venv/bin/activate
