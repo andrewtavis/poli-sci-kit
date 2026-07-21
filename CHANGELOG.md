@@ -6,6 +6,10 @@ poli-sci-kit tries to follow [semantic versioning](https://semver.org/), a MAJOR
 - MINOR version when we add functionality in a backwards compatible manner
 - PATCH version when we make backwards compatible bug fixes
 
+## poli-sci-kit 2.0.2
+
+- Dev and production dependencies of the project were updated.
+
 ## poli-sci-kit 2.0.1
 
 - Dependencies of the project were updated and the way they're installed was changed to `uv` based groups.
