@@ -25,9 +25,7 @@ on:
 jobs:
   ci:
     name: Run Static Analysis
-    runs-on: docker
-    container:
-      image: catthehacker/ubuntu:act-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
         uses: actions/checkout@v6

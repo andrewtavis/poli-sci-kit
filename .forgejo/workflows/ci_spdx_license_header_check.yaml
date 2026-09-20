@@ -13,9 +13,7 @@ on:
 
 jobs:
   check_license_header:
-    runs-on: docker
-    container:
-      image: catthehacker/ubuntu:act-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Project
         uses: actions/checkout@v6
