@@ -25,6 +25,8 @@ on:
 jobs:
   run:
     runs-on: ${{ matrix.os }}
+    container:
+      image: catthehacker/ubuntu:act-latest
     strategy:
       fail-fast: true
       matrix:

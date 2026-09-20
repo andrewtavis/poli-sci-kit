@@ -24,8 +24,10 @@ on:
 
 jobs:
   ci:
-    name: Run PR Check
-    runs-on: ubuntu-latest
+    name: Run Static Analysis
+    runs-on: docker
+    container:
+      image: catthehacker/ubuntu:act-latest
     steps:
       - name: Checkout Project
         uses: actions/checkout@v6

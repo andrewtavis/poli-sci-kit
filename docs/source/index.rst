@@ -1,18 +1,18 @@
-.. image:: https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/logo/poli-sci-kit_logo_transparent.png
+.. image:: https://codeberg.org/andrewtavis/poli-sci-kit/raw/branch/main/.forgejo/resources/logo/poli-sci-kit_logo_transparent.png
     :width: 463
     :height: 251
     :align: center
-    :target: https://github.com/andrewtavis/poli-sci-kit
+    :target: https://codeberg.org/andrewtavis/poli-sci-kit
 
 |rtd| |ci_static_analysis| |ci_pytest| |pyversions| |pypi| |pypistatus| |license| |coc| |colab|
 
 .. |rtd| image:: https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
 
-.. |ci_static_analysis| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/ci_static_analysis.yaml?branch=main&label=ci&logo=ruff
+.. |ci_static_analysis| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.forgejo/workflows/ci_static_analysis.yaml?branch=main&label=ci&logo=ruff
     :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/ci_static_analysis.yaml
 
-.. |ci_pytest| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/ci_pytest.yaml?branch=main&label=build&logo=pytest
+.. |ci_pytest| image:: https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.forgejo/workflows/ci_pytest.yaml?branch=main&label=build&logo=pytest
     :target: https://github.com/andrewtavis/poli-sci-kit/actions/workflows/ci_pytest.yaml
 
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python&logoColor=FFD43B&color=306998
@@ -25,10 +25,10 @@
     :target: https://pypi.org/project/poli-sci-kit/
 
 .. |license| image:: https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg
-    :target: https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE.txt
+    :target: https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/LICENSE.txt
 
 .. |coc| image:: https://img.shields.io/badge/coc-Contributor%20Covenant-ff69b4.svg
-    :target: https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CODE_OF_CONDUCT.md
+    :target: https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/.forgejo/CODE_OF_CONDUCT.md
 
 .. |colab| image:: https://img.shields.io/badge/%20-Open%20in%20Colab-097ABB.svg?logo=google-colab&color=097ABB&labelColor=525252
     :target: https://colab.research.google.com/github/andrewtavis/poli-sci-kit
@@ -51,7 +51,8 @@ Installation
 .. code-block:: shell
 
     # For a development build of the package:
-    git clone https://github.com/andrewtavis/poli-sci-kit.git
+    git clone https://codeberg.org/andrewtavis/poli-sci-kit.git
+    # git clone https://codeberg.org/<your-username>/poli-sci-kit.git
     cd poli-sci-kit
 
     # With uv (recommended):

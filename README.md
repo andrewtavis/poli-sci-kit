@@ -1,19 +1,19 @@
 <a id="top"></a>
 
 <div align="center">
-  <a href="https://github.com/andrewtavis/poli-sci-kit"><img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/logo/poli-sci-kit_logo_transparent.png" height=250></a>
+  <a href="https://codeberg.org/andrewtavis/poli-sci-kit"><img src="https://codeberg.org/andrewtavis/poli-sci-kit/raw/branch/main/.forgejo/resources/logo/poli-sci-kit_logo_transparent.png" height=250></a>
 </div>
 
 <ol></ol>
 
 [![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
-[![ci_static_analysis](https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/ci_static_analysis.yaml?branch=main&label=ci&logo=ruff)](https://github.com/andrewtavis/poli-sci-kit/actions/workflows/ci_static_analysis.yaml)
-[![ci_pytest](https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.github/workflows/ci_pytest.yaml?branch=main&label=build&logo=pytest)](https://github.com/andrewtavis/poli-sci-kit/actions/workflows/ci_pytest.yaml)
+[![ci_static_analysis](https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.forgejo/workflows/ci_static_analysis.yaml?branch=main&label=ci&logo=ruff)](https://github.com/andrewtavis/poli-sci-kit/actions/workflows/ci_static_analysis.yaml)
+[![ci_pytest](https://img.shields.io/github/actions/workflow/status/andrewtavis/poli-sci-kit/.forgejo/workflows/ci_pytest.yaml?branch=main&label=build&logo=pytest)](https://github.com/andrewtavis/poli-sci-kit/actions/workflows/ci_pytest.yaml)
 [![pyversions](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python&logoColor=FFD43B&color=306998)](https://pypi.org/project/poli-sci-kit/)
 [![pypi](https://img.shields.io/pypi/v/poli-sci-kit.svg?color=4B8BBE)](https://pypi.org/project/poli-sci-kit/)
 [![pypistatus](https://img.shields.io/pypi/status/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
-[![license](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/LICENSE.txt)
-[![coc](https://img.shields.io/badge/coc-Contributor%20Covenant-ff69b4.svg)](https://github.com/andrewtavis/poli-sci-kit/blob/main/.github/CODE_OF_CONDUCT.md)
+[![license](https://img.shields.io/github/license/andrewtavis/poli-sci-kit.svg)](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/LICENSE.txt)
+[![coc](https://img.shields.io/badge/coc-Contributor%20Covenant-ff69b4.svg)](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/.forgejo/CODE_OF_CONDUCT.md)
 [![colab](https://img.shields.io/badge/%20-Open%20in%20Colab-097ABB.svg?logo=google-colab&color=097ABB&labelColor=525252)](https://colab.research.google.com/github/andrewtavis/poli-sci-kit)
 
 ### Political elections, appointment, analysis and visualization in Python
@@ -48,7 +48,8 @@ pip install poli-sci-kit
 ### For Development Build
 
 ```bash
-git clone https://github.com/andrewtavis/poli-sci-kit.git
+git clone https://codeberg.org/andrewtavis/poli-sci-kit.git
+# git clone https://codeberg.org/<your-username>/poli-sci-kit.git
 cd poli-sci-kit
 
 # With uv (recommended):
@@ -71,13 +72,13 @@ import poli_sci_kit
 
 # Appointment
 
-[appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Included methods are:
+[appointment.methods](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/src/poli_sci_kit/appointment/methods.py) includes functions to allocate parliamentary seats based on population or vote shares. Included methods are:
 
 #### Largest Remainder: Hare, Droop, Hagenbach–Bischoff (incl Hamilton, Vinton, Hare–Niemeyer)
 
 #### Highest Averages: Jefferson, Webster, Huntington-Hill
 
-Arguments to allow allocation thresholds, minimum allocations per group, tie break conditions, and other election features are also provided. Along with deriving results for visualization and reporting, these functions allow the user to analyze outcomes given systematic or situational changes. The [appointment.metrics](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/metrics.py) module further provides diagnostics to analyze the results of elections, apportionments, and other political science scenarios.
+Arguments to allow allocation thresholds, minimum allocations per group, tie break conditions, and other election features are also provided. Along with deriving results for visualization and reporting, these functions allow the user to analyze outcomes given systematic or situational changes. The [appointment.metrics](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/src/poli_sci_kit/appointment/metrics.py) module further provides diagnostics to analyze the results of elections, apportionments, and other political science scenarios.
 
 A basic example of political appointment using poli-sci-kit is:
 
@@ -108,9 +109,7 @@ We can then compute various metrics to derive disproportionality:
 ```python
 # The Gallagher method is a measure of absolute difference similar to summing square residuals.
 disproportionality = appointment.metrics.disproportionality_index(
-    shares=vote_counts,
-    allocations=ha_allocations,
-    metric_type='Gallagher'
+    shares=vote_counts, allocations=ha_allocations, metric_type="Gallagher"
 )
 
 disproportionality
@@ -120,16 +119,13 @@ disproportionality
 We can also check that the allocations pass the [quota condition](https://en.wikipedia.org/wiki/Quota_rule):
 
 ```python
-passes_qc = appointment.checks.quota_condition(
-    shares=vote_counts,
-    seats=ha_allocations
-)
+passes_qc = appointment.checks.quota_condition(shares=vote_counts, seats=ha_allocations)
 
 passes_qc
 # True
 ```
 
-Allocation consistency can further be checked using dataframes of shares and seats given electoral settings. See [appointment.checks](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/checks.py) and [the documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for explanations of method checks.
+Allocation consistency can further be checked using dataframes of shares and seats given electoral settings. See [appointment.checks](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/src/poli_sci_kit/appointment/checks.py) and [the documentation](https://poli-sci-kit.readthedocs.io/en/latest/) for explanations of method checks.
 
 <sub><a href="#top">Back to top.</a></sub>
 
@@ -144,15 +140,15 @@ import matplotlib.pyplot as plt
 import poli_sci_kit
 
 # German political parties.
-parties = ['CDU/CSU', 'FDP', 'Greens', 'Die Linke', 'SPD', 'AfD']
-party_colors = ['#000000', '#ffed00', '#64a12d', '#be3075', '#eb001f', '#009ee0']
+parties = ["CDU/CSU", "FDP", "Greens", "Die Linke", "SPD", "AfD"]
+party_colors = ["#000000", "#ffed00", "#64a12d", "#be3075", "#eb001f", "#009ee0"]
 ```
 
 <sub><a href="#top">Back to top.</a></sub>
 
 ### Parliament Plots
 
-poli_sci_kit provides implementations of both rectangular and semicircle [parliament plots](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/parliament_plot.py):
+poli_sci_kit provides implementations of both rectangular and semicircle [parliament plots](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/src/poli_sci_kit/plot/parliament_plot.py):
 
 ```python
 fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2)
@@ -183,15 +179,15 @@ plt.show()
 ```
 
 <p align="middle">
-  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/rectangle_parliament_plot.png" width="400" />
-  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/semicircle_parliament_plot.png" width="400" />
+  <img src="https://codeberg.org/andrewtavis/poli-sci-kit/raw/branch/main/.forgejo/resources/images/rectangle_parliament_plot.png" width="400" />
+  <img src="https://codeberg.org/andrewtavis/poli-sci-kit/raw/branch/main/.forgejo/resources/images/semicircle_parliament_plot.png" width="400" />
 </p>
 
 <sub><a href="#top">Back to top.</a></sub>
 
 ### Disproportionality Bar Plot
 
-A novel addition to social science analysis is the [disproportionality bar plot](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/plot/disproportionality_bar_plot.py), which graphically depicts the disproportionality between expected and realized results. Bar widths are the proportion of shares (ex: votes received), and heights are the difference or relative difference between shares and allocations (ex: parliament seats received).
+A novel addition to social science analysis is the [disproportionality bar plot](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/src/poli_sci_kit/plot/disproportionality_bar_plot.py), which graphically depicts the disproportionality between expected and realized results. Bar widths are the proportion of shares (ex: votes received), and heights are the difference or relative difference between shares and allocations (ex: parliament seats received).
 
 An example follows:
 
@@ -233,15 +229,15 @@ ax.legend(
     framealpha=1,
 )
 
-ax.axes.set_title('Seat to Vote Share Disproportionality', fontsize=30)
-ax.set_xlabel('Parties', fontsize=20)
-ax.set_ylabel('Percent Shift', fontsize=20)
+ax.axes.set_title("Seat to Vote Share Disproportionality", fontsize=30)
+ax.set_xlabel("Parties", fontsize=20)
+ax.set_ylabel("Percent Shift", fontsize=20)
 
 plt.show()
 ```
 
 <p align="middle">
-  <img src="https://raw.githubusercontent.com/andrewtavis/poli-sci-kit/main/.github/resources/images/disproportionality_bar_plot.png" width="600" />
+  <img src="https://codeberg.org/andrewtavis/poli-sci-kit/raw/branch/main/.forgejo/resources/images/disproportionality_bar_plot.png" width="600" />
 </p>
 
 <sub><a href="#top">Back to top.</a></sub>
@@ -250,10 +246,10 @@ plt.show()
 
 Examples in poli-sci-kit use publicly available Wikidata statistics sourced via the Python package [wikirepo](https://github.com/andrewtavis/wikirepo). Current examples include:
 
-- [US HoR](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/us_house_of_rep.ipynb) [(Open in Colab)](https://colab.research.google.com/github/andrewtavis/poli-sci-kit/blob/main/examples/us_house_of_rep.ipynb)
+- [US HoR](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/examples/us_house_of_rep.ipynb) [(Open in Colab)](https://colab.research.google.com/github/andrewtavis/poli-sci-kit/blob/main/examples/us_house_of_rep.ipynb)
   - Allocates seats to a version of the US House of Representatives that includes all US territories and Washington DC given census data, with this further being used to derive relative vote strengths of state citizens in the US presidential election
 
-- [Global Parliament](https://github.com/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb) [(Open in Colab)](https://colab.research.google.com/github/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb)
+- [Global Parliament](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/examples/global_parliament.ipynb) [(Open in Colab)](https://colab.research.google.com/github/andrewtavis/poli-sci-kit/blob/main/examples/global_parliament.ipynb)
   - Analyzes the allocation of seats in a hypothetical global parliament given the prevalence of certain countries and organizations, the distribution of seats based on Freedom House indexes, as well as disproportionality metrics
 
 <sub><a href="#top">Back to top.</a></sub>
@@ -266,11 +262,11 @@ Please follow the steps below to set up your development environment for poli-sc
 
 ```bash
 # Clone your fork of the repo into the current directory.
-git clone https://github.com/<your-username>/poli-sci-kit.git
+git clone https://codeberg.org/<your-username>/poli-sci-kit.git
 # Navigate to the newly cloned directory.
 cd poli-sci-kit
 # Assign the original repo to a remote called "upstream".
-git remote add upstream https://github.com/andrewtavis/poli-sci-kit.git
+git remote add upstream https://codeberg.org/andrewtavis/poli-sci-kit.git
 ```
 
 - Now, if you run `git remote -v` you should see two remote repositories named:
@@ -336,18 +332,18 @@ uv run prek run --all-files
 
 # To-Do
 
-Please see the [contribution guidelines](https://github.com/andrewtavis/poli-sci-kit/blob/main/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
+Please see the [contribution guidelines](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
 
-- Adding the [Adams method](https://en.wikipedia.org/wiki/Highest_averages_method) to [appointment.methods.highest_averages](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) ([see issue](https://github.com/andrewtavis/poli-sci-kit/issues/21))
+- Adding the [Adams method](https://en.wikipedia.org/wiki/Highest_averages_method) to [appointment.methods.highest_averages](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/src/poli_sci_kit/appointment/methods.py) ([see issue](https://codeberg.org/andrewtavis/poli-sci-kit/issues/21))
 
-- Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit ([see issue](https://github.com/andrewtavis/poli-sci-kit/issues/22))
+- Deriving further needed arguments to assure that all current and historic appointment systems can be simulated using poli-sci-kit ([see issue](https://codeberg.org/andrewtavis/poli-sci-kit/issues/22))
 
-- Potentially indexing preset versions of [appointment.methods](https://github.com/andrewtavis/poli-sci-kit/blob/main/src/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
+- Potentially indexing preset versions of [appointment.methods](https://codeberg.org/andrewtavis/poli-sci-kit/src/branch/main/src/poli_sci_kit/appointment/methods.py) that coincide with the systems used by governments around the world
   - This would allow quick comparisons of actual systems with variations
 
 - Adding methods such as quadratic voting to poli-sci-kit to allow for preference based simulations
 
-- Creating, improving and sharing [examples](https://github.com/andrewtavis/poli-sci-kit/tree/main/examples)
+- Creating, improving and sharing [examples](https://codeberg.org/andrewtavis/poli-sci-kit/tree/main/examples)
 
 <sub><a href="#top">Back to top.</a></sub>
 

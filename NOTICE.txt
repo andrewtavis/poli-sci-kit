@@ -52,7 +52,7 @@ the USERS to familiarize themselves with any changes to this NOTICE.
 3. Contact
 
 If you have any questions, concerns, or suggestions about this NOTICE,
-do not hesitate to visit https://github.com/andrewtavis/poli-sci-kit.
+do not hesitate to visit https://codeberg.org/andrewtavis/poli-sci-kit.
 The person responsible for such inquiries is Andrew Tavis McAllister.
 
 4. Effective Date

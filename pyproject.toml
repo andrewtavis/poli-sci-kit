@@ -44,32 +44,32 @@ classifiers = [
 
 dependencies = [
     "colormath>=3.0.0",
-    "matplotlib>=3.11.1",
-    "numpy>=2.5.1",
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.3",
     "packaging>=26.3",
-    "pandas>=3.0.5",
-    "scipy>=1.18.0",
+    "pandas>=3.0.6",
+    "scipy>=1.18.1",
     "seaborn>=0.13.2",
 ]
 
 [dependency-groups]
 dev = [
-    "prek>=0.4.12",
+    "prek>=0.5.3",
     "pytest>=9.1.1",
     "pytest-cov>=7.1.0",
-    "ruff>=0.16.2",
-    "ty>=0.0.69",
+    "ruff>=0.16.8",
+    "ty>=0.0.82",
 ]
 
 docs = [
     # Keep docs dependencies formatted in this way with ruff to allow for upgrades via VS Code extension.
     "myst-parser>=5.1.0",
-    "numpydoc>=1.10.0",
+    "numpydoc>=1.11.0",
     "sphinx-rtd-theme>=3.1.0",
 ]
 
 [project.urls]
-Homepage = "https://github.com/andrewtavis/poli-sci-kit"
+Homepage = "https://codeberg.org/andrewtavis/poli-sci-kit"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
