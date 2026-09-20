@@ -10,10 +10,10 @@
     :target: http://poli-sci-kit.readthedocs.io/en/latest/
 
 .. |ci_static_analysis| image:: https://codeberg.org/andrewtavis/poli-sci-kit/actions/workflows/ci_static_analysis.yaml/badge.svg?branch=main&label=ci&logo=ruff
-    :target: https://codeberg.org/andrewtavis/poli-sci-kit/actions
+    :target: https://codeberg.org/andrewtavis/poli-sci-kit/actions?workflow=ci_static_analysis.yaml
 
 .. |ci_pytest| image:: https://codeberg.org/andrewtavis/poli-sci-kit/actions/workflows/ci_pytest.yaml/badge.svg?branch=main&label=build&logo=pytest
-    :target: https://codeberg.org/andrewtavis/poli-sci-kit/actions
+    :target: https://codeberg.org/andrewtavis/poli-sci-kit/actions?workflow=ci_pytest.yaml
 
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python&logoColor=FFD43B&color=306998
     :target: https://pypi.org/project/poli-sci-kit/
@@ -34,6 +34,11 @@
     :target: https://colab.research.google.com/github/andrewtavis/poli-sci-kit
 
 Political elections, appointment, analysis and visualization in Python
+
+Maintenance
+-----------
+
+This project is maintained at `codeberg.org/andrewtavis/poli-sci-kit <https://codeberg.org/andrewtavis/poli-sci-kit>`_. Please visit this remote repository for issues and pull requests.
 
 Installation
 ------------
