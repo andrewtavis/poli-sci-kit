@@ -54,11 +54,11 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "prek>=0.5.7",
-    "pytest>=9.1.1",
+    "prek>=0.5.9",
+    "pytest>=9.2.0",
     "pytest-cov>=7.1.0",
-    "ruff>=0.17.2",
-    "ty>=0.0.91",
+    "ruff>=0.17.3",
+    "ty>=0.0.95",
 ]
 
 docs = [
