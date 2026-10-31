@@ -6,6 +6,11 @@ poli-sci-kit tries to follow [semantic versioning](https://semver.org/), a MAJOR
 - MINOR version when we add functionality in a backwards compatible manner
 - PATCH version when we make backwards compatible bug fixes
 
+## poli-sci-kit 2.0.7
+
+- CI was switched over to Forgejo Actions on Codeberg.
+- Development dependencies were updated.
+
 ## poli-sci-kit 2.0.6
 
 - Production, development and sub dependencies were updated.
