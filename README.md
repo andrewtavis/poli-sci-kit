@@ -8,7 +8,7 @@
 
 [![rtd](https://img.shields.io/readthedocs/poli-sci-kit.svg?logo=read-the-docs)](http://poli-sci-kit.readthedocs.io/en/latest/)
 [![ci_static_analysis](https://codeberg.org/andrewtavis/poli-sci-kit/actions/workflows/ci_static_analysis.yaml/badge.svg?branch=main&label=ci&logo=ruff)](https://codeberg.org/andrewtavis/poli-sci-kit/actions?workflow=ci_static_analysis.yaml)
-[![ci_pytest](https://codeberg.org/andrewtavis/poli-sci-kit/actions/workflows/ci_pytest.yaml/badge.svg?branch=main&label=build&logo=pytest)](https://codeberg.org/andrewtavis/poli-sci-kit/actions/?workflow=ci_pytest.yaml)
+[![ci_pytest](https://codeberg.org/andrewtavis/poli-sci-kit/actions/workflows/ci_pytest.yaml/badge.svg?branch=main&label=build&logo=pytest)](https://codeberg.org/andrewtavis/poli-sci-kit/actions?workflow=ci_pytest.yaml)
 [![pyversions](https://img.shields.io/pypi/pyversions/poli-sci-kit.svg?logo=python&logoColor=FFD43B&color=306998)](https://pypi.org/project/poli-sci-kit/)
 [![pypi](https://img.shields.io/pypi/v/poli-sci-kit.svg?color=4B8BBE)](https://pypi.org/project/poli-sci-kit/)
 [![pypistatus](https://img.shields.io/pypi/status/poli-sci-kit.svg)](https://pypi.org/project/poli-sci-kit/)
